@@ -634,3 +634,9 @@ footer.site { padding-bottom: 5.5rem; }   /* keeps the button off the footer tex
   text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
 }
 .story-row p { color: var(--text-dim); }
+
+/* call to action closing a section */
+.section-cta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem;
+  margin-top: 2.2rem; padding-top: 1.6rem; border-top: 1px solid var(--line-soft);
+}

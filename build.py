@@ -72,11 +72,13 @@ NAV = {
 STRINGS = {
     "pt": {
         "skip": "Pular para o conteúdo",
-        "wa": "Falar no WhatsApp",
+        "wa": "Falar com um engenheiro",
         "wa_msg": "Olá! Vim pelo site da PINNeAPPle Labs e tenho um problema de engenharia para discutir.",
         "cta_title": "Tem uma simulação lenta, cara ou difícil de verificar?",
         "cta_lead": "Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.",
-        "cta_primary": "Trazer o problema no WhatsApp",
+        "cta_primary": "Falar com um engenheiro",
+        "docs_nav": "Docs",
+        "cta_short": "Falar com um engenheiro",
         "cta_secondary": "Começar pelo código",
         "foot_tag": "Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.",
         "foot_platform": "Plataforma",
@@ -91,11 +93,13 @@ STRINGS = {
     },
     "en": {
         "skip": "Skip to content",
-        "wa": "Talk on WhatsApp",
+        "wa": "Talk to an engineer",
         "wa_msg": "Hello! I found PINNeAPPle Labs through the site and have an engineering problem to discuss.",
         "cta_title": "Got a simulation that is slow, expensive or hard to verify?",
         "cta_lead": "Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.",
-        "cta_primary": "Bring the problem on WhatsApp",
+        "cta_primary": "Talk to an engineer",
+        "docs_nav": "Docs",
+        "cta_short": "Talk to an engineer",
         "cta_secondary": "Start from the code",
         "foot_tag": "Open-source Physics AI, with verification as part of the product. Models that show their work.",
         "foot_platform": "Platform",
@@ -179,11 +183,12 @@ def head(lang: str, page: str, root: str) -> str:
 """
 
 
-LOGO = """<svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
-        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
-        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
-        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
-        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+LOGO = """<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
       </svg>"""
 
 WA_ICON = """<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg>"""
@@ -196,6 +201,9 @@ def header(lang: str, page: str, root: str) -> str:
         f'{" aria-current=\"page\"" if key == page else ""}>{label}</a>'
         for key, label in NAV[lang]
     )
+    # The documentation lives outside this repo, on the platform's own site.
+    links += (f'\n      <a href="{DOCS}" target="_blank" rel="noopener">'
+              f'{STRINGS[lang]["docs_nav"]} ↗</a>')
     return f"""<header class="site">
   <div class="bar">
     <a class="brand" href="{root}{url(lang, 'home') or ''}">
@@ -288,17 +296,25 @@ def _q(text: str) -> str:
     return urllib.parse.quote(text)
 
 
+def wa_button(lang: str, cls: str = "btn btn-primary", label: str | None = None) -> str:
+    """The primary call to action, in one place so the wording cannot drift."""
+    S = STRINGS[lang]
+    text = label or S["cta_primary"]
+    return (f'<a class="{cls}" href="https://wa.me/{WHATSAPP}?text={_q(S["wa_msg"])}" '
+            f'target="_blank" rel="noopener">{text}</a>')
+
+
 def cta_band(lang: str, root: str) -> str:
     S = STRINGS[lang]
     return f"""  <section class="cta-band">
     <div class="wrap cta-inner">
       <div>
-        <p class="eyebrow">{S['lbl_cases'] if False else ('Traga o seu caso' if lang == 'pt' else 'Bring your case')}</p>
+        <p class="eyebrow">{'Traga o seu caso' if lang == 'pt' else 'Bring your case'}</p>
         <h2>{S['cta_title']}</h2>
         <p class="lead" style="max-width:52ch">{S['cta_lead']}</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="https://wa.me/{WHATSAPP}?text={_q(S['wa_msg'])}" target="_blank" rel="noopener">{S['cta_primary']}</a>
+        {wa_button(lang)}
         <a class="btn btn-ghost" href="{GITHUB}" target="_blank" rel="noopener">{S['cta_secondary']}</a>
       </div>
     </div>
@@ -526,7 +542,7 @@ def page_home(lang: str) -> str:
         <h1>{C['h1']}</h1>
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/{WHATSAPP}?text={_q(S['wa_msg'])}" target="_blank" rel="noopener">{S['cta_primary']}</a>
+          {wa_button(lang)}
           <button class="install" data-copy="{C['install']}" aria-label="{C['install']}">
             <span class="prompt" aria-hidden="true">$</span>
             <span class="cmd">{C['install']}</span>
@@ -587,7 +603,10 @@ def page_home(lang: str) -> str:
         </figure>
       </div>
 """)
-    parts.append("    </div>\n  </section>\n")
+    parts.append(f"""      <p class="section-cta reveal">{wa_button(lang)}<a class="btn btn-ghost" href="{root}{url(lang, 'casos')}">{C['cases_btn']} →</a></p>
+    </div>
+  </section>
+""")
 
     # what exists today
     items = "".join(
@@ -601,6 +620,7 @@ def page_home(lang: str) -> str:
         <p>{C['existing']}</p>
       </div>
       <div class="exist-grid reveal">{items}</div>
+      <p class="section-cta reveal">{wa_button(lang, "btn btn-ghost")}</p>
     </div>
   </section>
 """)
@@ -837,6 +857,7 @@ def page_casos(lang: str) -> str:
 {rows}          </tbody>
         </table>
       </div>
+      <p class="section-cta reveal">{wa_button(lang)}{'<a class="btn btn-ghost" href="' + DOCS + '" target="_blank" rel="noopener">Documentação ↗</a>' if lang == 'pt' else '<a class="btn btn-ghost" href="' + DOCS + '" target="_blank" rel="noopener">Documentation ↗</a>'}</p>
     </div>
   </section>
 
@@ -1014,7 +1035,7 @@ def page_lib(lang: str) -> str:
         <p style="color:var(--text-dim)">{C['start_p']}</p>
         <h3 style="margin:1.8rem 0 .8rem">{C['gains_h']}</h3>
         <ul class="checks">{gains}</ul>
-        <p style="margin-top:1.6rem"><a class="btn btn-primary" href="{DOCS}" target="_blank" rel="noopener">{'Abrir a documentação' if lang == 'pt' else 'Open the docs'} →</a></p>
+        <p class="section-cta" style="margin-top:1.6rem">{wa_button(lang)}<a class="btn btn-ghost" href="{DOCS}" target="_blank" rel="noopener">{'Abrir a documentação' if lang == 'pt' else 'Open the docs'} ↗</a></p>
       </div>
     </div>
   </section>
