@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PINNeAPPle Labs — Physics AI de código aberto, com verificação</title>
-<meta name="description" content="Plataforma de código aberto para Physics-Informed Neural Networks: CFD, modelos substitutos e verificação física. 31 módulos, 248 exemplos, Apache-2.0, no PyPI." />
+<meta name="description" content="CFD, modelos substitutos, verificação e gêmeos digitais sobre uma base aberta. Números medidos, visualizações reais, e o erro declarado em cada entrega." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/" />
@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="PINNeAPPle Labs — Physics AI de código aberto, com verificação" />
-<meta property="og:description" content="CFD, modelos substitutos e verificação física sobre uma base aberta: 31 módulos, 248 exemplos, Apache-2.0." />
+<meta property="og:description" content="CFD, modelos substitutos, verificação e gêmeos digitais sobre uma base aberta. Números medidos, visualizações reais, e o erro declarado em cada entrega." />
 <meta property="og:image" content="img/portfolio/13-aircraft-render-pressure.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -20,10 +20,10 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
 <header class="site">
   <div class="bar">
-    <a class="brand" href="#top">
+    <a class="brand" href="">
       <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
         <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
         <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
@@ -33,14 +33,11 @@
       <span>PINNeAPPle<span class="labs"> Labs</span></span>
     </a>
 
-    <nav class="main" id="primary-nav" aria-label="Navegação principal">
-      <a href="#plataforma">Plataforma</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#apps">Aplicações</a>
-      <a href="#dev">Começar</a>
-      <a href="#codigo-aberto">Código aberto</a>
-      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a>
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="" aria-current="page">Produtos</a>
+      <a href="casos-de-uso/">Casos de uso</a>
+      <a href="lib/">A lib</a>
+      <a href="historia/">História</a>
     </nav>
 
     <div class="bar-cta">
@@ -48,704 +45,188 @@
       <a class="btn btn-primary btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
     </div>
 
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menu">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
     </button>
   </div>
 </header>
-
-<main id="top">
-
-  <!-- ================= HERO ================= -->
-  <section class="hero" aria-labelledby="hero-h">
+<main id="main">
+  <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow">Physics AI de código aberto · Apache-2.0</p>
-        <h1 id="hero-h">Redes informadas por física que mostram a conta.</h1>
-        <p class="lead">O PINNeAPPle é a plataforma aberta para <b>PINNs, operadores neurais e gêmeos digitais</b> em engenharia. Você descreve a equação, treina o modelo e <b>confere cada resposta contra um solver, um experimento ou uma linha de base da indústria</b> — com o erro medido na tela.</p>
-
+        <h1>A simulação não fecha o prazo. A gente faz ela fechar.</h1>
+        <p class="lead">Transformamos o seu caso de engenharia num modelo que responde em segundos e é <b>conferido contra o solver, o ensaio ou a norma</b> — com o erro medido na tela. CFD, substitutos, verificação e gêmeos digitais.</p>
         <div class="hero-actions">
-          <button class="install" data-copy="pip install pinneapple" aria-label="Copiar comando de instalação">
+          <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Trazer o problema no WhatsApp</a>
+          <button class="install" data-copy="pip install pinneapple" aria-label="pip install pinneapple">
             <span class="prompt" aria-hidden="true">$</span>
             <span class="cmd">pip install pinneapple</span>
             <span class="copy-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h1"/></svg></span>
           </button>
           <a class="btn btn-ghost" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Ler a documentação →</a>
         </div>
-
-        <div class="hero-meta">
-          <span class="chip"><span class="dot"></span>PyPI 0.7.0</span>
-          <span class="chip">Python ≥ 3.10</span>
-          <span class="chip">31 módulos</span>
-          <span class="chip">248 exemplos executáveis</span>
-          <span class="chip">63 aplicações</span>
-        </div>
+        <div class="hero-meta"><span class="chip">PyPI 0.7.0</span><span class="chip">31 módulos</span><span class="chip">63 aplicações</span><span class="chip">248 exemplos</span></div>
       </div>
-
       <figure class="hero-media">
-        <video src="videos/hero-aero.mp4" poster="videos/hero-aero.jpg" autoplay muted loop playsinline preload="metadata"
-               aria-label="Avião de corredor único com pressão na pele calculada em OpenFOAM 3D"></video>
-        <figcaption>
-          <span><b>1.920 projetos</b> de avião, 3 objetivos, CFD 3D</span>
-          <span>OpenFOAM</span>
-        </figcaption>
+        <video src="videos/hero-aero.mp4" poster="videos/hero-aero.jpg" muted loop playsinline preload="metadata" data-autoplay
+               aria-label="Pressão na pele, OpenFOAM 3D"></video>
+        <figcaption><span><b>1.920 projetos</b> de avião, 3 objetivos, CFD 3D</span><span>OpenFOAM</span></figcaption>
       </figure>
     </div>
   </section>
-
-  <!-- ================= STATS ================= -->
   <div class="stats" role="list">
-    <div class="stat-cell" role="listitem">
-      <div class="n">104 ★</div>
-      <div class="l">estrelas no GitHub, Apache-2.0, 28 forks</div>
-      <div class="s">PINNeAPPle-Labs/PINNeAPPle</div>
-    </div>
-    <div class="stat-cell" role="listitem">
-      <div class="n cyan">31</div>
-      <div class="l">módulos publicados, do problema em PDE até o serving REST</div>
-      <div class="s">pip install pinneapple</div>
-    </div>
-    <div class="stat-cell" role="listitem">
-      <div class="n">248</div>
-      <div class="l">scripts de exemplo prontos para rodar, com saída conferida</div>
-      <div class="s">examples/</div>
-    </div>
-    <div class="stat-cell" role="listitem">
-      <div class="n cyan">~200.000×</div>
-      <div class="l">mais rápido que a simulação 3D real, num substituto térmico verificado</div>
-      <div class="s">4,46% de erro médio vs. FEniCS</div>
-    </div>
+    <div class="stat-cell" role="listitem"><div class="n">~200.000×</div><div class="l">mais rápido que a simulação 3D real, num substituto térmico</div><div class="s">4,46% de erro vs. FEniCS</div></div>
+    <div class="stat-cell" role="listitem"><div class="n cyan">1,05–1,49×</div><div class="l">erosão simulada vs. ensaio aberto, dentro do fator 2</div><div class="s">Vieira et al. 2016</div></div>
+    <div class="stat-cell" role="listitem"><div class="n">−18,2%</div><div class="l">de arrasto num aerofólio, com a sustentação mantida</div><div class="s">0,04% de variação</div></div>
+    <div class="stat-cell" role="listitem"><div class="n cyan">2,6 h</div><div class="l">de antecedência no alarme do gêmeo, com erro declarado</div><div class="s">HX-201, incrustação</div></div>
   </div>
 
-  <!-- ================= PLATAFORMA ================= -->
-  <section id="plataforma" aria-labelledby="plat-h">
+  <section id="produtos">
     <div class="wrap">
       <div class="section-head split reveal">
+        <div><p class="eyebrow">Produtos</p><h2>Quatro produtos, todos com número medido.</h2></div>
+        <p>Cada um existe em código, roda hoje e mostra o próprio erro. Abra os casos de uso para ver a referência externa de cada número.</p>
+      </div>
+
+      <div class="split-block reveal product-block">
         <div>
-          <p class="eyebrow">Plataforma</p>
-          <h2 id="plat-h">Um pipeline, do PDE escrito à predição servida.</h2>
+          <p class="eyebrow dim">Produto 01 · CFD</p>
+          <h3 class="product-name">PINNeAPPle CFD</h3>
+          <p style="color:var(--text-dim)">O fluxo CFD completo, de E1 a E11: você descreve o problema, o pipeline monta geometria e malha, roda o OpenFOAM, gera o dataset, treina o substituto e fecha com o mapa de provas.</p>
+          <ul class="checks"><li><b>Erosão em curva de 90°:</b> entre 1,05× e 1,49× do ensaio publicado, dentro do fator 2 que a indústria aceita.</li><li><b>Substituto 1,0% de erro</b> na perda de carga em pontos nunca vistos.</li><li><b>32 simulações</b> da geometria ao modelo treinado em 23 minutos.</li></ul>
+          <div class="product-proof"><b>1,05–1,49×</b><span>do ensaio aberto, dentro do fator 2</span></div>
+          <p class="product-actions">
+            <a class="btn btn-ghost btn-sm" href="casos-de-uso/#pinneapple-cfd">ver os casos de CFD →</a>
+          </p>
         </div>
-        <p>Cada camada é um pacote Python independente no PyPI — dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.</p>
-      </div>
-
-      <div class="stack reveal">
-        <div class="layer">
-          <div class="lname">Aplicação<small>APPS &amp; SERVING</small></div>
-          <div class="lmods">
-            <span>pinneapple_app</span><span>pinneapple_lab</span><span>pinneapple_hub</span><span>pinneapple_orchestration</span><span>pinneapple_llm</span><span>REST / FastAPI</span>
-          </div>
-        </div>
-        <div class="layer">
-          <div class="lname">Modelos<small>NEURAL</small></div>
-          <div class="lmods">
-            <span>pinneapple_neural</span><span>pinneapple_models</span><span>PINN</span><span>FNO</span><span>DeepONet</span><span>GNN</span><span>LSTM</span><span>VPINN</span>
-          </div>
-        </div>
-        <div class="layer">
-          <div class="lname">Física &amp; solvers<small>PHYSICS</small></div>
-          <div class="lmods">
-            <span>pinneapple_physics</span><span>pinneapple_solvers</span><span>pinneapple_simulation</span><span>pinneapple_pdb</span><span>OpenFOAM</span><span>FEniCS/dolfinx</span><span>CalculiX</span>
-          </div>
-        </div>
-        <div class="layer">
-          <div class="lname">Análise<small>ANALYSIS &amp; UQ</small></div>
-          <div class="lmods">
-            <span>pinneapple_analysis</span><span>pinneapple_veriphysics</span><span>pinneapple_decision</span><span>pinneapple_adaptation</span><span>UQ</span><span>EnKF</span><span>Monte Carlo</span>
-          </div>
-        </div>
-        <div class="layer">
-          <div class="lname">Dados &amp; geometria<small>DATA</small></div>
-          <div class="lmods">
-            <span>pinneapple_data</span><span>pinneapple_design</span><span>pinneapple_catalog</span><span>pinneapple_pdb</span><span>pinneapple_twin3d</span><span>pinneapple_blender</span>
-          </div>
-        </div>
-        <div class="layer">
-          <div class="lname">Núcleo<small>CORE</small></div>
-          <div class="lmods">
-            <span>pinneapple_core</span><span>pinneapple_problemdesign</span><span>pinneapple_registry</span><span>pinneapple_tools</span><span>pinneapple_security</span><span>pinneapple_systems</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="note reveal">
-        <span><b>Por que isso importa:</b> a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI — aqui a referência é sempre externa ao treino.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PRODUTOS ================= -->
-  <section id="produtos" class="alt" aria-labelledby="prod-h">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Produtos</p>
-          <h2 id="prod-h">Quatro produtos prontos para montar em cima da base.</h2>
-        </div>
-        <p>Não são conceitos: cada um tem código, casos executados e números medidos neste repositório. Os quatro cobrem o ciclo completo — capturar a física, acelerar a resposta, provar que ela está certa e acompanhar o ativo ao longo do tempo.</p>
-      </div>
-
-      <!-- Produto 1 -->
-      <div class="split-block reveal" style="margin-bottom:clamp(3rem,6vw,5rem)">
-        <div>
-          <span class="badge ok">Disponível</span>
-          <p class="eyebrow dim" style="margin-top:1rem">Produto 01 · CFD</p>
-          <h3 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1rem">PINNeAPPle CFD</h3>
-          <p style="color:var(--text-dim)">O fluxo CFD completo, de E1 a E11: você descreve o problema, o pipeline monta a geometria e a malha, roda o OpenFOAM, gera o dataset, treina o substituto e fecha com o mapa de provas do VeriPhysics. Feito para erosão em tubulação, aerodinâmica e troca de calor.</p>
-          <ul class="checks">
-            <li><b>Erosão em curva de 90°:</b> simulação entre 1,05× e 1,49× do ensaio publicado — dentro do fator 2 que a indústria aceita. A fórmula de mão, no mesmo regime, erra por cerca de 100×.</li>
-            <li><b>Campanha completa:</b> 32 simulações da geometria ao modelo treinado rodaram em 23 minutos, e o substituto responde em milissegundos com 1,0% de erro na perda de carga em pontos nunca vistos.</li>
-            <li><b>Frontend de jornada:</b> sete passos para o cliente, mais um modo detalhado para o engenheiro, com login obrigatório em produção.</li>
-            <li><b>Deploy fechado:</b> imagem Docker única com API e telas, OpenFOAM pelo Docker do host, aviso por e-mail com relatório em PDF ao fim de cada processamento.</li>
-          </ul>
-          <div class="hero-meta" style="border-top:none;padding-top:1.4rem;margin-top:1.4rem">
-            <span class="chip">E1–E11</span><span class="chip">OpenFOAM</span><span class="chip">VeriPhysics no fim</span>
-          </div>
-        </div>
-        <figure class="media">
-          <img src="img/erosao.jpg" alt="Mapa 3D de erosão numa curva de tubulação calculado por CFD" loading="lazy" decoding="async" />
-          <figcaption style="padding:.7rem .95rem;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.7rem;color:var(--text-mute);background:var(--ink-2)">Taxa de erosão numa curva de 90°, CFD vs. ensaio</figcaption>
+        <figure class="media product-media">
+          <video src="videos/hero-aero.mp4" poster="videos/hero-aero.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Pressão na pele (Cp) em OpenFOAM 3D, do projeto ao campo"></video>
+          <figcaption>Pressão na pele (Cp) em OpenFOAM 3D, do projeto ao campo</figcaption>
         </figure>
       </div>
 
-      <!-- Produto 2 -->
-      <div class="split-block flip reveal" style="margin-bottom:clamp(3rem,6vw,5rem)">
+      <div class="split-block flip reveal product-block">
         <div>
-          <span class="badge ok">Disponível</span>
-          <p class="eyebrow dim" style="margin-top:1rem">Produto 02 · Substitutos</p>
-          <h3 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1rem">Surrogate Studio</h3>
-          <p style="color:var(--text-dim)">Transforma as simulações que a sua equipe já rodou num modelo que responde em microssegundos — e que é conferido contra o solver a cada entrega, nunca contra ele mesmo. É o produto que troca “esperar o solver” por “ajustar o projeto agora”.</p>
-          <ul class="checks">
-            <li><b>~200.000× mais rápido</b> que a simulação 3D real em sete geometrias de dissipador, com <b>4,46% de erro médio</b> e 7,35% no pior caso contra FEniCS/dolfinx.</li>
-            <li><b>Reprodutível:</b> a previsão de temperatura é determinística — 4,46%/7,35% idênticos em três rodadas em dias diferentes. Só o fator de aceleração muda com a carga da máquina.</li>
-            <li><b>Gêmeo de aerodinâmica veicular:</b> dez rodadas reais de OpenFOAM reduzidas a 6 modos POD, com <b>0,05% de erro no campo de velocidade</b> e 0,17% no Cd, incluindo a inflexão acima de 44 m/s.</li>
-            <li><b>Rede neural com física no meio:</b> 4,5% de erro médio contra elementos finitos 3D em casos que não viu no treino.</li>
-          </ul>
-          <div class="hero-meta" style="border-top:none;padding-top:1.4rem;margin-top:1.4rem">
-            <span class="chip">POD + PINN</span><span class="chip">Verificação automática</span><span class="chip">API REST</span>
-          </div>
+          <p class="eyebrow dim">Produto 02 · Substitutos</p>
+          <h3 class="product-name">Surrogate Studio</h3>
+          <p style="color:var(--text-dim)">Transforma as simulações que a sua equipe já rodou num modelo que responde em microssegundos — conferido contra o solver a cada entrega, nunca contra ele mesmo.</p>
+          <ul class="checks"><li><b>~200.000× mais rápido</b> que a simulação 3D real, em sete geometrias de dissipador.</li><li><b>4,46% de erro médio</b> e 7,35% no pior caso contra FEniCS/dolfinx.</li><li><b>Previsão determinística:</b> os mesmos números em três rodadas, em dias diferentes.</li></ul>
+          <div class="product-proof"><b>~200.000×</b><span>mais rápido, com 4,46% de erro</span></div>
+          <p class="product-actions">
+            <a class="btn btn-ghost btn-sm" href="casos-de-uso/#surrogate-studio">ver os casos de substitutos →</a>
+          </p>
         </div>
-        <figure class="media">
-          <img src="img/surrogate_speed_rerun.jpg" alt="Gráfico de concordância entre o substituto treinado e a simulação 3D real" loading="lazy" decoding="async" />
-          <figcaption style="padding:.7rem .95rem;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.7rem;color:var(--text-mute);background:var(--ink-2)">Substituto vs. FEA 3D: 4,46% de erro médio, ~200.000× mais rápido</figcaption>
+        <figure class="media product-media">
+          <video src="videos/app1.mp4" poster="videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O app de dimensionamento térmico, rodando"></video>
+          <figcaption>O app de dimensionamento térmico, rodando</figcaption>
         </figure>
       </div>
 
-      <!-- Produto 3 -->
-      <div class="split-block reveal">
+      <div class="split-block reveal product-block">
         <div>
-          <span class="badge ok">Disponível</span>
-          <p class="eyebrow dim" style="margin-top:1rem">Produto 03 · Verificação</p>
-          <h3 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1rem">VeriPhysics</h3>
-          <p style="color:var(--text-dim)">O portão de qualidade que falta entre o resultado e a decisão. Recebe um modelo treinado, um caso CFD ou um deck FEA e devolve uma nota por checagem — resíduo da física, convergência, calibração, cobertura — com o número real e a fonte de cada uma. Uma checagem que não rodou aparece como “não rodou”, nunca como nota inventada.</p>
-          <ul class="checks">
-            <li><b>Pegou o que a loss escondeu:</b> num modelo de desgaste já treinado de um cliente real, a loss de treino parecia saudável e o resíduo da física estava centenas de vezes acima do limiar confiável — a rede aprendeu a acertar o alvo violando a equação no caminho.</li>
-            <li><b>Preflight de simulação:</b> uma viga sem apoios termina com “Job finished” e deslocamento de 1,8e11 mm; o checklist marca FAIL antes de você perder a tarde.</li>
-            <li><b>Qualidade de malha:</b> métricas idênticas ao checkMesh do OpenFOAM (pitzDaily: skewness 0,260575, não ortogonalidade 5,95°).</li>
-            <li><b>Convergência e linhagem:</b> cinco execuções reais em OpenFOAM v1912 e CalculiX 2.21 classificadas corretamente — convergida, cortada em 60 iterações, divergida após 5, transiente com Courant 0,85 e viga não linear em 6 incrementos.</li>
-          </ul>
-          <div class="hero-meta" style="border-top:none;padding-top:1.4rem;margin-top:1.4rem">
-            <span class="chip">Relatório em PDF</span><span class="chip">OpenFOAM · CalculiX</span><span class="chip">Sem nota fabricada</span>
-          </div>
+          <p class="eyebrow dim">Produto 03 · Verificação</p>
+          <h3 class="product-name">VeriPhysics</h3>
+          <p style="color:var(--text-dim)">O portão entre o resultado e a decisão: recebe um modelo, um caso CFD ou um deck FEA e devolve uma nota por checagem — resíduo, convergência, calibração, cobertura — com o número e a fonte.</p>
+          <ul class="checks"><li><b>Pegou o que a loss escondeu</b> num modelo de cliente: resíduo centenas de vezes acima do limiar.</li><li><b>Viga sem apoios:</b> “Job finished” com 1,8e11 mm de deslocamento; o preflight marca FAIL antes da execução.</li><li><b>Malha:</b> métricas idênticas ao checkMesh do OpenFOAM.</li></ul>
+          <div class="product-proof"><b>11 checagens</b><span>nenhuma nota fabricada, nunca</span></div>
+          <p class="product-actions">
+            <a class="btn btn-ghost btn-sm" href="casos-de-uso/#veriphysics">ver os casos de verificação →</a>
+          </p>
         </div>
-        <figure class="media">
-          <img src="img/verificacao.jpg" alt="Relatório de verificação física com nota por checagem e cobertura" loading="lazy" decoding="async" />
-          <figcaption style="padding:.7rem .95rem;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.7rem;color:var(--text-mute);background:var(--ink-2)">Nota de 0 a 1 por checagem, nunca uma média que esconde o que faltou</figcaption>
+        <figure class="media product-media">
+          <video src="videos/app8.mp4" poster="videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O preflight de simulação apontando o que vai falhar"></video>
+          <figcaption>O preflight de simulação apontando o que vai falhar</figcaption>
         </figure>
       </div>
 
-      <!-- Produto 4 -->
-      <div class="split-block flip reveal" style="margin-top:clamp(3rem,6vw,5rem)">
+      <div class="split-block flip reveal product-block">
         <div>
-          <span class="badge ok">Disponível</span>
-          <p class="eyebrow dim" style="margin-top:1rem">Produto 04 · Gêmeo digital</p>
-          <h3 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1rem">PINNeAPPle Twin</h3>
-          <p style="color:var(--text-dim)">A linha de gêmeo digital, em duas camadas. O <b>Twin Runtime</b> põe um modelo validado a trabalhar ao lado do dado real. A <b>camada de comissionamento</b> fecha o ciclo por cima dele: contrato assinado, preflight que pode recusar, backtest contra um instrumento que o filtro nunca vê e evidência arquivada — é o que transforma o runtime em produto fechado.</p>
-          <ul class="checks">
-            <li><b>Runtime em operação:</b> EnKF, previsão com banda 5–95%, alerta por inovação normalizada (χ² a 99,9%), checagem de validade e revalidação, histórico em SQLite ou Postgres, MQTT, REST e OPC&nbsp;UA.</li>
-            <li><b>Portão de aceitação:</b> 11 checagens de preflight — unidade trocada, canal congelado, estimativa subdeterminada, taxa de amostragem que não existe no histórico — mais um backtest contra a sonda redundante. Não passou, não vai para a linha.</li>
-            <li><b>HX-201, permutador com incrustação:</b> 0,216&nbsp;°C de RMSE (0,54% do span) e incrustação estimada em 0,001651&nbsp;&plusmn;&nbsp;0,000010 contra 0,001637 verdadeiro, com a sonda redundante mantida fora do filtro.</li>
-            <li><b>Banda honesta:</b> 95,5% das leituras de validação dentro da banda, calibrada nas 35,4&nbsp;h anteriores e medida nas seguintes. A banda crua cobria 86,4% — o número aparece ao lado, não escondido.</li>
-            <li><b>Alarme por projeção:</b> extrapolar o estado latente avisou 2,6&nbsp;h antes do cruzamento medido, e o erro dessa previsão (1,1&nbsp;h) é reportado junto. A escada NORMAL &rarr; WATCH &rarr; ALARM &rarr; RECALIBRATE tem histerese, e o estado latente sai em AAS (SDK BaSyx), DTDL, NGSI-LD, Eclipse Ditto e OPC&nbsp;UA.</li>
-          </ul>
-          <div class="hero-meta" style="border-top:none;padding-top:1.4rem;margin-top:1.4rem">
-            <span class="chip">Twin Runtime + comissionamento</span><span class="chip">Evidência em JSON</span><span class="chip">Viewer 3D</span>
-          </div>
+          <p class="eyebrow dim">Produto 04 · Gêmeo digital</p>
+          <h3 class="product-name">PINNeAPPle Twin</h3>
+          <p style="color:var(--text-dim)">Um modelo validado trabalhando ao lado do dado real — e a camada que decide se ele pode entrar em operação. Contrato assinado, preflight, backtest contra sonda redundante e evidência arquivada.</p>
+          <ul class="checks"><li><b>0,216 °C de erro</b> no caso HX-201, com incrustação estimada a 0,001651 contra 0,001637 verdadeiro.</li><li><b>95,5% de cobertura</b> da banda na janela de validação, calibrada nas horas anteriores.</li><li><b>Alarme 2,6 h antes</b> do cruzamento medido, com o erro da previsão declarado.</li></ul>
+          <div class="product-proof"><b>2,6 h</b><span>de antecedência, com erro de previsão declarado</span></div>
+          <p class="product-actions">
+            <a class="btn btn-ghost btn-sm" href="casos-de-uso/#pinneapple-twin">ver os casos de gêmeo digital →</a>
+          </p>
         </div>
-        <figure class="media">
-          <img src="img/twin.jpg" alt="Ativo industrial em 3D com painel de leitura ao vivo ao lado" loading="lazy" decoding="async" />
-          <figcaption>Ativo em 3D com a leitura ao vivo: o que não é medido é estimado, com banda e fonte</figcaption>
+        <figure class="media product-media">
+          <img src="img/twin.jpg" alt="Ativo industrial em 3D com painel de leitura ao vivo" loading="lazy" decoding="async" />
+          <figcaption>O ativo em 3D com a leitura viva ao lado</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ================= RESULTADOS ================= -->
-  <section id="resultados" aria-labelledby="res-h">
+  <section id="hoje" class="alt tight">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Resultados medidos</p>
-          <h2 id="res-h">Números que saíram de uma execução, não de uma estimativa.</h2>
-        </div>
-        <p>Toda linha abaixo tem uma referência externa ao treino: um ensaio publicado, um solver de volumes ou elementos finitos, ou uma comparação com a literatura. Onde existe limite, ele está declarado.</p>
+        <div><p class="eyebrow">O que já existe hoje</p><h2>O que já existe hoje</h2></div>
+        <p>Não é um anúncio de roadmap. Está no repositório e no PyPI:</p>
       </div>
+      <div class="exist-grid reveal"><div class="exist-cell"><b>31</b><span>módulos publicados, do PDE ao serving</span></div><div class="exist-cell"><b>63</b><span>aplicações construídas sobre a base</span></div><div class="exist-cell"><b>248</b><span>exemplos executáveis com saída conferida</span></div><div class="exist-cell"><b>15</b><span>padrões da indústria: AAS, DTDL, NGSI-LD, Ditto, OPC UA…</span></div></div>
+    </div>
+  </section>
 
-      <div class="table-wrap reveal">
-        <table class="data">
-          <caption class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Resultados medidos por caso, métrica e referência</caption>
-          <thead>
-            <tr>
-              <th scope="col">Caso</th>
-              <th scope="col">Métrica</th>
-              <th scope="col">Referência</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="name">Substituto térmico<small>7 geometrias de dissipador</small></td>
-              <td class="metric">~200.000× &middot; 4,46%</td>
-              <td>FEniCS/dolfinx 3D + gmsh; pior caso 7,35%</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Erosão em curva de 90°<small>OpenFOAM + substituto</small></td>
-              <td class="metric">1,05–1,49× &middot; 1,0%</td>
-              <td>Vieira et al. 2016, ensaio aberto; critério de fator 2</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Otimização de aerofólio<small>modelo substituto com reverificação</small></td>
-              <td class="metric">&minus;18,2%</td>
-              <td>Arrasto de perfil; sustentação-alvo mantida em 0,04%</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Aerodinâmica veicular<small>10 rodadas de simpleFoam</small></td>
-              <td class="metric cyan">0,05% &middot; 1,3%</td>
-              <td>Campo de velocidade e coeficientes vs. OpenFOAM; Cd a 0,17%</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">PINN vs. volumes finitos<small>comparação campo a campo</small></td>
-              <td class="metric cyan">0,39%</td>
-              <td>Solver de volumes finitos independente; máximo 0,67&nbsp;°C</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Cavidade com tampa móvel<small>refinamento de malha</small></td>
-              <td class="metric">0,19%</td>
-              <td>Ghia et al.; partindo de 1,26%</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Inversão de h com PINN<small>placa 2D e bloco 3D</small></td>
-              <td class="metric cyan">14,8 &plusmn; 0,3</td>
-              <td>Valor verdadeiro 15; ponto quente 79,2&nbsp;°C vs. 79,1&nbsp;°C</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Térmica de PCB<small>oito famílias de encapsulamento</small></td>
-              <td class="metric">dentro de 8%</td>
-              <td>θJA publicado, do SOIC-8 a um BGA de 35&nbsp;mm</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Mobilidade de rover<small>modelo publicado corrigido</small></td>
-              <td class="metric">0,7–3,8%</td>
-              <td>Bekker–Wong; erro de tração 45× menor que a versão original</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Monte Carlo de disco de freio<small>tolerância de fabricação</small></td>
-              <td class="metric">1,9&nbsp;°C</td>
-              <td>Nominal 495,9&nbsp;°C; percentil 95 em 498,1&nbsp;°C, limite 500&nbsp;°C</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-            <tr>
-              <td class="name">Confiança física<small>modelo de cliente, confidencial</small></td>
-              <td class="metric">resíduo &gt;100×</td>
-              <td>Guardrail do VeriPhysics sobre um modelo já treinado</td>
-              <td><span class="badge ok">validado</span></td>
-            </tr>
-          </tbody>
-        </table>
+  <section id="provas">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">Três provas, com imagem.</p><h2>Três provas, com imagem.</h2></div>
+        <p>Resultados que saíram de uma execução, não de uma estimativa.</p>
       </div>
-
-      <div class="gallery reveal" style="margin-top:1.25rem">
-        <figure class="gitem g-w6">
-          <img src="img/portfolio/13-aircraft-render-pressure.jpg" alt="Avião com pressão na pele (Cp) calculada em OpenFOAM 3D" loading="lazy" decoding="async" />
-          <figcaption><b>Aircraft Design Optimizer</b>Pressão na pele (Cp), 1.920 projetos voados, −13% de CO₂/pax-km</figcaption>
+      <div class="gallery reveal">
+        <figure class="gitem g-w4">
+          <img src="img/portfolio/13-aircraft-render-pressure.jpg" alt="Pressão na pele, OpenFOAM 3D" loading="lazy" decoding="async" />
+          <figcaption><b>Pressão na pele, OpenFOAM 3D</b>1.920 projetos, −13% CO₂/pax-km</figcaption>
         </figure>
-        <figure class="gitem g-w6">
-          <img src="img/portfolio/aero_pareto.jpg" alt="Frente de Pareto de 1.920 projetos de avião com os motivos de rejeição" loading="lazy" decoding="async" />
-          <figcaption><b>Três objetivos que brigam</b>Menos CO₂, cruzeiro mais rápido, aproximação mais lenta</figcaption>
+        <figure class="gitem g-w4">
+          <img src="img/portfolio/aero_pareto.jpg" alt="1.920 projetos e a frente de Pareto" loading="lazy" decoding="async" />
+          <figcaption><b>1.920 projetos e a frente de Pareto</b>menos CO₂, cruzeiro mais rápido, aproximação mais lenta</figcaption>
         </figure>
         <figure class="gitem contain g-w4">
-          <img src="img/results/field_vortex_pair.png" alt="Evolução da vorticidade de um par de vórtices de Lamb-Oseen em quatro instantes" loading="lazy" decoding="async" />
-          <figcaption><b>Par de vórtices de Lamb-Oseen</b>Vorticidade em t = 0,01 · 0,30 · 0,80 · 2,00</figcaption>
-        </figure>
-        <figure class="gitem contain g-w4">
-          <img src="img/results/bench_pareto.png" alt="Gráfico de tempo de treino versus erro de teste comparando VPINN, PINN vanilla e PIELM" loading="lazy" decoding="async" />
-          <figcaption><b>Benchmark de arquiteturas</b>Tempo de treino vs. erro de teste, VPINN × PINN × PIELM</figcaption>
-        </figure>
-        <figure class="gitem contain g-w4">
-          <img src="img/results/bench_true_vs_pred.png" alt="Comparação entre solução verdadeira e predições de três modelos" loading="lazy" decoding="async" />
-          <figcaption><b>Verdadeiro vs. previsto</b>Três modelos, mesma condição de contorno</figcaption>
-        </figure>
-        <figure class="gitem contain g-w6">
-          <img src="img/results/field_flow_cylinder.png" alt="Campo de velocidade do escoamento ao redor de um cilindro" loading="lazy" decoding="async" />
-          <figcaption><b>Escoamento ao redor de um cilindro</b>Campo gerado pelo solver de referência da plataforma</figcaption>
-        </figure>
-        <figure class="gitem contain g-w6">
-          <img src="img/results/chassis_von_mises.png" alt="Campo de tensão de von Mises num chassi calculado por elementos finitos" loading="lazy" decoding="async" />
-          <figcaption><b>Chassi, tensão de von Mises</b>Campo de elementos finitos com colocalação PINN</figcaption>
+          <img src="img/results/field_vortex_pair.png" alt="Vorticidade de um par de Lamb-Oseen" loading="lazy" decoding="async" />
+          <figcaption><b>Vorticidade de um par de Lamb-Oseen</b>t = 0,01 · 0,30 · 0,80 · 2,00</figcaption>
         </figure>
       </div>
-
-      <div class="note reveal">
-        <span><b>Onde ainda não chegamos:</b> erosão depende de fator 2, não de precisão de 1%; resíduos estáveis não provam que arrasto estabilizou; e a análise de custo de um dos casos de mobilidade mostrou que <b>um método numérico clássico era mais rápido e mais exato que a própria rede</b> — a recomendação foi o método clássico. Isso está em <a href="#produtos">Produtos</a> e na documentação.</span>
-      </div>
+      <p style="margin-top:1.6rem"><a class="btn btn-primary" href="casos-de-uso/">Ver todos os casos de uso →</a></p>
     </div>
   </section>
 
-  <!-- ================= APPS ================= -->
-  <section id="apps" class="alt-deep" aria-labelledby="apps-h">
+  <section id="destinos" class="alt-deep">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Aplicações</p>
-          <h2 id="apps-h">Sessenta e três aplicações construídas sobre a mesma base.</h2>
-        </div>
-        <p>Protótipos SaaS funcionais, cada um com README, números e limites declarados. As selecionadas abaixo são uma amostra; o acervo completo tem 63. Servem como ponto de partida para um produto seu — ou como prova de que a base aguenta o caso real.</p>
+        <div><p class="eyebrow">Para onde ir agora</p><h2>Para onde ir agora</h2></div>
+        <p>A tela principal mostra o que fazemos. O resto está a um clique:</p>
       </div>
-
-      <div class="grid-3 reveal">
-        <article class="card">
-          <span class="k">Dia 1 · térmica</span>
-          <h3>HeatSink Sizer</h3>
-          <p>Dissipadores de aleta em segundos, com margem térmica e perda de carga, conferidos contra correlações publicadas.</p>
-          <div class="foot"><b>0–5%</b> contra a literatura · <b>4,5%</b> vs. FE 3D</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 2 · eletrônica</span>
-          <h3>PCB Hotspot</h3>
-          <p>Temperatura de junção de cada componente da placa em cerca de um segundo, com calibração por Ensemble Kalman Inversion.</p>
-          <div class="foot"><b>θJA dentro de 8%</b> em 8 famílias</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 3 · dados</span>
-          <h3>Engineering Data Health</h3>
-          <p>Sobe um CSV e recebe o diagnóstico físico dos dados: sensor congelado, código de erro, unidade trocada, balanço de energia.</p>
-          <div class="foot"><b>8 de 8</b> falhas injetadas encontradas</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 4 · interoperabilidade</span>
-          <h3>Data Standardizer</h3>
-          <p>Até oito arquivos, um esquema só, em UTC e com unidades coerentes — e uma checagem de concordância entre as fontes.</p>
-          <div class="foot"><b>9 de 9</b> comparações concordam</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 5 · CFD/FEA</span>
-          <h3>Simulation Metadata</h3>
-          <p>Registro estruturado de cada execução: solver, malha, passo de tempo, condições de contorno e veredito de convergência.</p>
-          <div class="foot"><b>5 execuções reais</b> classificadas corretamente</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 6 · documentos</span>
-          <h3>Form Compiler</h3>
-          <p>Datasheets viram o formulário preenchido, com a fonte de cada valor. Preenche o ASME U-DR-1 e mais quatro formatos.</p>
-          <div class="foot"><b>LLM local</b> opcional, com citação verificada</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 7 · inverso</span>
-          <h3>Inverse Heat Lab</h3>
-          <p>O coeficiente h a partir de alguns termopares, com PINN, em 1D, 2D e 3D, cada resposta conferida contra solução independente.</p>
-          <div class="foot"><b>h = 14,8 ± 0,3</b> para um verdadeiro 15</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 8 · qualidade</span>
-          <h3>Simulation Preflight</h3>
-          <p>Checklist exportável com PASS, WARNING ou FAIL, arquivo e linha, por que importa e como corrigir — antes de rodar.</p>
-          <div class="foot"><b>0,16 Hz</b> em vez de 209 Hz, pego antes</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 9 · malha</span>
-          <h3>Mesh Quality</h3>
-          <p>Aceita OpenFOAM, Gmsh, VTK, Abaqus/CalculiX e STL. Entrega métricas, histogramas, heatmap 3D e os piores elementos.</p>
-          <div class="foot"><b>idêntico ao checkMesh</b> (skewness 0,260575)</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 10 · verificação</span>
-          <h3>Simulation Comparator</h3>
-          <p>Referência contra candidato, campo a campo e ponto a ponto, mesmo em malhas diferentes, com mapa de erro.</p>
-          <div class="foot"><b>1,26% → 0,19%</b> com refinamento</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 11 · rastreabilidade</span>
-          <h3>Model Lineage</h3>
-          <p>CAD, malha, simulação, dataset, modelo, predição: o fio digital completo, com hash e origem, exportado em W3C PROV-JSON.</p>
-          <div class="foot"><b>pega arquivo alterado</b> e dataset misturado</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 12 · CAE</span>
-          <h3>Interoperability Hub</h3>
-          <p>Resultado de OpenFOAM, CalculiX, VTK ou Gmsh vira um dataset físico neutro, com unidade em cada campo.</p>
-          <div class="foot"><b>OpenFOAM → VTU</b> com volume preservado</div>
-        </article>
-        <article class="card">
-          <span class="k">Aeroespacial</span>
-          <h3>Aircraft Design Optimizer</h3>
-          <p>NSGA-II sobre a asa de um avião classe A320, missão completa por projeto, conferência em OpenFOAM 3D e export para glTF, USD e STL.</p>
-          <div class="foot"><b>−13% CO₂/pax-km</b> dentro do portão de 36 m</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 14 · substitutos</span>
-          <h3>Surrogate Studio</h3>
-          <p>Transforma os resultados de simulação que você já tem num modelo rápido, medido em execuções que ele nunca viu, servido com a faixa de validade imposta no endpoint.</p>
-          <div class="foot"><b>endpoint versionado</b> com validade declarada</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 20 · gêmeo digital</span>
-          <h3>Twin Runtime</h3>
-          <p>Põe um modelo validado a trabalhar ao lado do dado operacional, com EnKF, alertas, checagem de validade e revalidação — e diz quando parar de confiar nele.</p>
-          <div class="foot"><b>MQTT · REST · OPC UA</b> · SQLite/Postgres</div>
-        </article>
-        <article class="card">
-          <span class="k">Dia 30 · evidência</span>
-          <h3>Evidence Report</h3>
-          <p>Transforma experimentos e simulações em evidência técnica reproduzível: um teste só consta como aprovado se ele rodou.</p>
-          <div class="foot"><b>SHA-256</b> de cada artefato original</div>
-        </article>
-        <article class="card">
-          <span class="k">Operação</span>
-          <h3>Deploy</h3>
-          <p>Empacota as aplicações térmicas, de dados e de qualidade num único serviço, com login e supervisão.</p>
-          <div class="foot"><b>10 apps</b> num só serviço</div>
-        </article>
-      </div>
+      <div class="dest-grid reveal"><a class="dest" href="casos-de-uso/"><h3>Casos de uso</h3><p>Todas as validações técnicas, com o número medido, a referência externa e o limite declarado de cada uma.</p><span class="go">→</span></a><a class="dest" href="lib/"><h3>Detalhes da lib</h3><p>Arquitetura em camadas, quickstart, benchmarks públicos e o split honesto do código aberto.</p><span class="go">→</span></a><a class="dest" href="historia/"><h3>História do projeto</h3><p>Por que a PINNeAPPle existe, a regra que ela segue e quem constrói.</p><span class="go">→</span></a></div>
     </div>
   </section>
-
-  <!-- ================= DEV / QUICKSTART ================= -->
-  <section id="dev" aria-labelledby="dev-h">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Começar</p>
-          <h2 id="dev-h">A equação entra como texto. O erro sai medido.</h2>
-        </div>
-        <p>Instalação com um comando, sem build. O mesmo pacote roda o problema, o treino, a comparação com o solver e a exportação do relatório.</p>
-      </div>
-
-      <div class="split-block reveal">
-        <div class="code-card" data-tabs>
-          <div class="code-head">
-            <div class="tabs" role="tablist" aria-label="Exemplos de código">
-              <button role="tab" aria-selected="true" tabindex="0" data-file="inverse_heat.py">Problema inverso</button>
-              <button role="tab" aria-selected="false" tabindex="-1" data-file="verification.py">Verificação</button>
-              <button role="tab" aria-selected="false" tabindex="-1" data-file="cli.sh">CLI</button>
-            </div>
-            <span class="fname">inverse_heat.py</span>
-          </div>
-<pre class="code"><span class="c"># o coeficiente h que ninguém mede, a partir de alguns termopares</span>
-<span class="k">from</span> pinneapple_physics <span class="k">import</span> HeatConduction1D
-<span class="k">from</span> pinneapple_neural <span class="k">import</span> PINNTrainer
-
-problem = HeatConduction1D(
-    conductivity=<span class="n">50.0</span>,          <span class="c"># W/(m·K)</span>
-    length=<span class="n">0.30</span>,                <span class="c"># m</span>
-    learn_h=<span class="k">True</span>,              <span class="c"># h entra como parâmetro treinável</span>
-)
-
-model = PINNTrainer(problem, layers=[<span class="n">3</span>, <span class="n">64</span>, <span class="n">64</span>, <span class="n">1</span>])
-report = model.fit(thermocouples=medicoes, epochs=<span class="n">5000</span>)
-
-<span class="f">print</span>(report.h, report.h_std)   <span class="c"># 14.8 0.3  (verdadeiro: 15)</span>
-report.verify_against(<span class="s">"finite-volume"</span>)   <span class="c"># erro por campo, mapa de erro</span></pre>
-
-<pre class="code" hidden><span class="c"># confere consistência física e convergência, não só se "resolveu"</span>
-<span class="k">from</span> pinneapple_analysis.verification <span class="k">import</span> physics_confidence_score <span class="k">as</span> pcs
-
-confianca = pcs.compute_physics_confidence(
-    guardrail_report=guardrail_report,
-    convergence_result=convergence_result,
-)
-
-<span class="c"># uma nota de 0 a 1 por checagem — nunca uma média que</span>
-<span class="c"># esconde uma checagem que não rodou</span>
-<span class="k">for</span> check <span class="k">in</span> confianca.checks:
-    <span class="f">print</span>(check.name, check.score, check.source)</pre>
-
-<pre class="code" hidden><span class="c"># o pipeline CFD de ponta a ponta, E1 a E11</span>
-$ pinneapple-cfd run --problem erosao-curva \
-    --geometry curva_90.stl \
-    --solver openfoam \
-    --verify veriphysics
-
-<span class="c"># o benchmark público, reprodutível</span>
-$ python -m pinneapple.benchmarks.ssqn_helmholtz
-
-<span class="c"># e os 248 exemplos, cada um com saída conferida</span>
-$ python run_all_examples.py</pre>
-        </div>
-
-        <div>
-          <h3 style="margin-bottom:1rem">O que você ganha no primeiro dia</h3>
-          <ul class="checks">
-            <li><b>Um ambiente reproduzível</b> — 248 exemplos com _out versionado, para você comparar byte a byte com o seu resultado.</li>
-            <li><b>Benchmarks públicos</b> — SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O de dados. Nada de “benchmark interno”.</li>
-            <li><b>Documentação navegável</b> — referência por módulo, conceitos centrais, guias e o status de validação de cada capacidade.</li>
-            <li><b>Interoperabilidade real</b> — OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.</li>
-          </ul>
-          <div style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.75rem">
-            <a class="btn btn-primary" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Abrir a documentação</a>
-            <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/tree/main/examples" target="_blank" rel="noopener">Ver os exemplos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= OPEN SOURCE ================= -->
-  <section id="codigo-aberto" class="alt" aria-labelledby="oss-h">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Código aberto</p>
-          <h2 id="oss-h">A base é pública. A verificação também.</h2>
-        </div>
-        <p>Licença Apache-2.0, no PyPI, com releases versionadas. O que é aberto está aberto de verdade — e o que é produto está dito como produto.</p>
-      </div>
-
-      <div class="grid-2 reveal">
-        <article class="repo">
-          <div>
-            <h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/PINNeAPPle</h3>
-            <p>O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST. Tudo o mais aqui é construído em cima deste repositório.</p>
-            <div class="rmeta">
-              <span>★ 104</span><span>forks 28</span><span>Apache-2.0</span><span>PyPI 0.7.0</span><span>Python</span>
-            </div>
-          </div>
-          <div class="rlinks">
-            <a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn btn-ghost btn-sm" href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a>
-            <a class="btn btn-ghost btn-sm" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a>
-          </div>
-        </article>
-
-        <article class="repo">
-          <div>
-            <h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/pinnfactory</h3>
-            <p>Um framework leve e independente para montar PINNs a partir de PDEs escritos em SymPy, com autodiferenciação em PyTorch. Para quem quer PINN sem a plataforma inteira.</p>
-            <div class="rmeta">
-              <span>★ 72</span><span>Apache-2.0</span><span>SymPy + PyTorch</span><span>standalone</span>
-            </div>
-          </div>
-          <div class="rlinks">
-            <a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/pinnfactory" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </article>
-
-        <article class="repo">
-          <div>
-            <h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/PINNeAPPle-Benchmark</h3>
-            <p>Benchmarks públicos e reprodutíveis de Physics AI sobre a plataforma: SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e shard balance.</p>
-            <div class="rmeta">
-              <span>benchmarks/</span><span>reprodutível</span><span>gráficos versionados</span>
-            </div>
-          </div>
-          <div class="rlinks">
-            <a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </article>
-
-        <article class="repo">
-          <div>
-            <h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/pinnaitor</h3>
-            <p>Framework agêntico de uso geral (ELM AI Agentic Framework), em estágio anterior. Ainda não está ligado ao resto da história do PINNeAPPle — dito com clareza.</p>
-            <div class="rmeta">
-              <span>★ 22</span><span>MIT</span><span>estágio inicial</span>
-            </div>
-          </div>
-          <div class="rlinks">
-            <a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/pinnaitor" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="note reveal">
-        <span><b>A separação honesta:</b> os quatro repositórios acima são genuinamente abertos. Os produtos em <a href="#produtos">Produtos</a> rodam em cima deste motor e são entregues como engenharia, não como release de código aberto.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SOBRE ================= -->
-  <section id="sobre" aria-labelledby="sobre-h">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div>
-          <p class="eyebrow">Quem faz</p>
-          <h2 id="sobre-h">Feito por quem tem os dois lados: a equação e a operação.</h2>
-        </div>
-        <p>Física, engenharia industrial e software no mesmo time. A regra é simples: se não tem número medido, não vai para a tela.</p>
-      </div>
-
-      <div class="grid-2 reveal">
-        <div class="card" style="padding:1.6rem">
-          <div class="person">
-            <img src="img/team/yan-barros.jpg" alt="Yan Barros" loading="lazy" decoding="async" />
-            <div>
-              <strong>Yan Barros</strong>
-              <span class="role">criador do PINNeAPPle</span>
-              <p>Físico de formação, une física, IA e engenharia para levar modelos científicos a aplicações reais. Criou o PINNeAPPle e atua com IA aplicada a problemas de engenharia e indústria no Brasil. Tem experiência em clima, agronegócio e astrofísica solar.</p>
-              <a href="https://www.linkedin.com/in/yan-barros-yan" target="_blank" rel="noopener">LinkedIn →</a>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="padding:1.6rem">
-          <div class="person">
-            <img src="img/team/tiago-seixas-bittencourt.jpg" alt="Tiago Seixas Bittencourt" loading="lazy" decoding="async" />
-            <div>
-              <strong>Tiago Seixas Bittencourt</strong>
-              <span class="role">engenheiro metalurgista sênior</span>
-              <p>Mais de 18 anos de liderança na indústria do aço em P&amp;D, inovação industrial, descarbonização e operações em larga escala na América Latina. Mestre em Engenharia Metalúrgica, MBA Executivo e certificações do MIT e da University of Miami.</p>
-              <a href="https://www.linkedin.com/in/tiago-seixas-bittencourt/" target="_blank" rel="noopener">LinkedIn →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CTA ================= -->
-  <section class="cta-band" aria-labelledby="cta-h">
+  <section class="cta-band">
     <div class="wrap cta-inner">
       <div>
         <p class="eyebrow">Traga o seu caso</p>
-        <h2 id="cta-h">Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
         <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:yanbarrosyan@gmail.com?subject=Physics%20AI%20%E2%80%94%20meu%20caso">Falar sobre o meu caso</a>
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Trazer o problema no WhatsApp</a>
         <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
       </div>
     </div>
   </section>
-
 </main>
-
 <footer class="site">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="#top">
+        <a class="brand" href="">
           <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
-            <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
-            <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
-            <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
-            <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
-          </svg>
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
           <span>PINNeAPPle<span class="labs"> Labs</span></span>
         </a>
         <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
@@ -753,10 +234,10 @@ $ python run_all_examples.py</pre>
       <div>
         <h4>Plataforma</h4>
         <ul>
-          <li><a href="#plataforma">Arquitetura</a></li>
-          <li><a href="#produtos">Produtos</a></li>
-          <li><a href="#apps">Aplicações</a></li>
-          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="">Produtos</a></li>
+          <li><a href="casos-de-uso/">Casos de uso</a></li>
+          <li><a href="lib/">A lib</a></li>
+          <li><a href="historia/">História</a></li>
         </ul>
       </div>
       <div>
@@ -764,7 +245,7 @@ $ python run_all_examples.py</pre>
         <ul>
           <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
-          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Documentação</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
           <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
         </ul>
       </div>
@@ -772,8 +253,8 @@ $ python run_all_examples.py</pre>
         <h4>Contato</h4>
         <ul>
           <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
-          <li><a href="https://www.linkedin.com/in/yan-barros-yan" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="en/" hreflang="en">English</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+          <li><a href="en/" hreflang="en">EN</a></li>
         </ul>
       </div>
     </div>
@@ -783,6 +264,10 @@ $ python run_all_examples.py</pre>
     </div>
   </div>
 </footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar no WhatsApp</span>
+</a>
 
 <script src="app.js" defer></script>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>

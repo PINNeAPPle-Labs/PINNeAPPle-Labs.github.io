@@ -101,19 +101,29 @@
     revealables.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- video: only play when visible, pause offscreen ---------- */
-  var heroVideo = document.querySelector('.hero-media video');
-  if (heroVideo && 'IntersectionObserver' in window) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      heroVideo.removeAttribute('autoplay');
-      heroVideo.pause();
-    } else {
-      new IntersectionObserver(function (entries) {
+  /* ---------- video: only load and play when visible, pause offscreen ----------
+     Product clips ship with preload="none" so the first paint stays light; the
+     source is only fetched once the block scrolls into view. */
+  var clips = document.querySelectorAll('video[data-autoplay]');
+  if (clips.length) {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      clips.forEach(function (v) { v.removeAttribute('autoplay'); v.removeAttribute('data-autoplay'); });
+    } else if ('IntersectionObserver' in window) {
+      var vidObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { heroVideo.play().catch(function () {}); }
-          else { heroVideo.pause(); }
+          var v = entry.target;
+          if (entry.isIntersecting) {
+            if (v.preload === 'none') v.preload = 'auto';
+            v.play().catch(function () {});
+          } else {
+            v.pause();
+          }
         });
-      }, { threshold: 0.15 }).observe(heroVideo);
+      }, { threshold: 0.15 });
+      clips.forEach(function (v) { vidObserver.observe(v); });
+    } else {
+      clips.forEach(function (v) { v.play().catch(function () {}); });
     }
   }
 

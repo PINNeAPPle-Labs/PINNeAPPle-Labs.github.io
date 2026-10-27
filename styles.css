@@ -547,3 +547,90 @@ footer.site { padding-block: 4rem 3rem; border-top: 1px solid var(--line); backg
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ==========================================================================
+   Multi-page additions: skip link, sticky WhatsApp, product blocks, pages
+   ========================================================================== */
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--gold); color: #1a1204; padding: 0.7rem 1.1rem;
+  font-weight: 600; border-radius: 0 0 8px 0; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* floating WhatsApp — always visible, follows the scroll */
+.fab {
+  position: fixed; right: 1.15rem; bottom: 1.15rem; z-index: 70;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.8rem 1.15rem; border-radius: 999px;
+  background: #1fae63; color: #04150c;
+  font-family: var(--f-body); font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transition: transform .14s ease, background .14s ease;
+}
+.fab:hover { background: #29c874; transform: translateY(-2px); }
+.fab svg { width: 1.15rem; height: 1.15rem; flex: none; }
+@media (max-width: 620px) {
+  .fab { right: 0.8rem; bottom: 0.8rem; padding: 0.78rem; }
+  .fab span { display: none; }           /* icon only on phones */
+}
+@media (prefers-reduced-motion: reduce) { .fab { transition: none; } }
+footer.site { padding-bottom: 5.5rem; }   /* keeps the button off the footer text */
+
+/* page header for the inner pages */
+.page-head { padding-block: clamp(3rem, 6vw, 4.6rem) clamp(1.5rem, 3vw, 2.4rem); }
+.page-head h1 { max-width: 22ch; margin-bottom: 1.2rem; }
+
+/* product blocks on the main page */
+.product-block { margin-bottom: clamp(3rem, 6vw, 5rem); }
+.product-block:last-child { margin-bottom: 0; }
+.product-name { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 1rem; }
+.product-proof {
+  display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap;
+  margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+}
+.product-proof b {
+  font-family: var(--f-mono); font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: var(--gold); font-weight: 500; letter-spacing: -0.02em;
+}
+.product-proof span { font-size: 0.86rem; color: var(--text-dim); max-width: 28ch; }
+.product-actions { margin-top: 1.2rem; }
+.product-media video, .product-media img {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--ink-3);
+}
+
+/* "what exists today" strip */
+.exist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+@media (max-width: 780px) { .exist-grid { grid-template-columns: repeat(2, 1fr); } }
+.exist-cell { background: var(--ink-2); padding: 1.4rem 1.2rem; }
+.exist-cell b {
+  display: block; font-family: var(--f-mono); font-size: 1.6rem; color: var(--gold);
+  font-weight: 500; font-variant-numeric: tabular-nums;
+}
+.exist-cell span { display: block; margin-top: 0.35rem; font-size: 0.84rem; color: var(--text-dim); }
+
+/* destination cards */
+.dest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 820px) { .dest-grid { grid-template-columns: 1fr; } }
+.dest {
+  position: relative; display: block; padding: 1.7rem 1.6rem 1.5rem;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px;
+  text-decoration: none; transition: border-color .16s ease, transform .16s ease;
+}
+.dest:hover { border-color: var(--gold-dk); transform: translateY(-2px); }
+.dest h3 { margin-bottom: 0.7rem; }
+.dest p { font-size: 0.9rem; color: var(--text-dim); }
+.dest .go {
+  display: inline-block; margin-top: 1.1rem; color: var(--gold);
+  font-family: var(--f-mono); font-size: 0.95rem;
+}
+
+/* story rows */
+.story { display: grid; gap: 1.7rem; max-width: 74ch; }
+.story-row .k {
+  display: block; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+}
+.story-row p { color: var(--text-dim); }

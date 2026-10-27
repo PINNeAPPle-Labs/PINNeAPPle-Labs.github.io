@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Use cases — PINNeAPPle Labs</title>
+<meta name="description" content="PINNeAPPle's technical validations, each with its measured number and external reference — including where we have not got there yet." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/casos-de-uso/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-uso/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-uso/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/casos-de-uso/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Use cases — PINNeAPPle Labs" />
+<meta property="og:description" content="PINNeAPPle's technical validations, each with its measured number and external reference — including where we have not got there yet." />
+<meta property="og:image" content="../../img/portfolio/13-aircraft-render-pressure.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../en/">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../en/">Products</a>
+      <a href="../../en/casos-de-uso/" aria-current="page">Use cases</a>
+      <a href="../../en/lib/">The library</a>
+      <a href="../../en/historia/">Story</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../casos-de-uso/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Use cases</p>
+      <h1>What we have measured, against what, and where we are not there yet.</h1>
+      <p class="lead" style="max-width:68ch">Every row below has a reference external to training: a published experiment, a finite-volume or finite-element solver, or an industry baseline. Where there is a limit, it is stated beside the number.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Technical validations</p><h2>Technical validations</h2></div>
+      <div class="table-wrap reveal">
+        <table class="data">
+          <thead><tr><th scope="col">Case</th><th scope="col">Metric</th><th scope="col">Reference</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+      <tr><td class="name">Thermal surrogate<small>7 heat-sink geometries</small></td><td class="metric">~200,000× · 4.46%</td><td>3D FEniCS/dolfinx + gmsh; worst case 7.35%</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Erosion in a 90° bend<small>OpenFOAM + surrogate</small></td><td class="metric">1.05–1.49× · 1.0%</td><td>Vieira et al. 2016, open experiment; factor-2 criterion</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Airfoil optimization<small>surrogate-guided, re-verified</small></td><td class="metric">−18.2%</td><td>Profile drag; target lift held to 0.04%</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Vehicle aerodynamics<small>10 simpleFoam runs</small></td><td class="metric">0.05% · 1.3%</td><td>Velocity field and coefficients vs. OpenFOAM; Cd at 0.17%</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">PINN vs. finite volumes<small>field-by-field comparison</small></td><td class="metric">0.39%</td><td>Independent finite-volume solver; max 0.67 °C</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Lid-driven cavity<small>mesh refinement</small></td><td class="metric">0.19%</td><td>Ghia et al.; starting from 1.26%</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Inverse h with a PINN<small>2D plate and 3D block</small></td><td class="metric">14.8 ± 0.3</td><td>True value 15; hot spot 79.2 °C vs. 79.1 °C</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">PCB thermodynamics<small>8 package families</small></td><td class="metric">within 8%</td><td>Published θJA, from SOIC-8 to a 35 mm BGA</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Rover mobility<small>published model, corrected</small></td><td class="metric">0.7–3.8%</td><td>Bekker–Wong; traction error 45× lower than the original</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Brake-disc Monte Carlo<small>manufacturing tolerance</small></td><td class="metric">1.9 °C</td><td>Nominal 495.9 °C; 95th percentile at 498.1 °C, limit 500 °C</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">HX-201 twin<small>fouled exchanger</small></td><td class="metric">0.216 °C · 95.5%</td><td>Redundant probe kept out of the filter; true 0.001637 m²K/W</td><td><span class="badge ok">validated</span></td></tr>
+      <tr><td class="name">Physics confidence<small>client model, confidential</small></td><td class="metric">residual >100×</td><td>VeriPhysics guardrail over an already-trained model</td><td><span class="badge ok">validated</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">The pictures behind the numbers</p><h2>The pictures behind the numbers</h2></div>
+      <div class="gallery reveal">
+<figure class="gitem g-w6"><img src="../../img/portfolio/13-aircraft-render-pressure.jpg" alt="Aircraft Design Optimizer" loading="lazy" decoding="async" /><figcaption><b>Aircraft Design Optimizer</b>Skin pressure (Cp), 1,920 designs flown, −13% CO₂/pax-km</figcaption></figure>
+<figure class="gitem g-w6"><img src="../../img/portfolio/aero_pareto.jpg" alt="Three objectives that fight" loading="lazy" decoding="async" /><figcaption><b>Three objectives that fight</b>Less CO₂, faster cruise, slower approach</figcaption></figure>
+<figure class="gitem g-w4"><img src="../../img/erosao.jpg" alt="Erosion in a 90° bend" loading="lazy" decoding="async" /><figcaption><b>Erosion in a 90° bend</b>CFD against an open experiment: 1.05–1.49×, inside factor 2</figcaption></figure>
+<figure class="gitem g-w4"><img src="../../img/surrogate_speed_rerun.jpg" alt="Surrogate vs. 3D FEA" loading="lazy" decoding="async" /><figcaption><b>Surrogate vs. 3D FEA</b>4.46% mean error, ~200,000× faster</figcaption></figure>
+<figure class="gitem g-w4"><img src="../../img/verificacao.jpg" alt="Verification report" loading="lazy" decoding="async" /><figcaption><b>Verification report</b>A score from 0 to 1 per check, and an unrun check says so</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../../img/results/field_vortex_pair.png" alt="Lamb-Oseen vortex pair" loading="lazy" decoding="async" /><figcaption><b>Lamb-Oseen vortex pair</b>Vorticity at t = 0.01 · 0.30 · 0.80 · 2.00</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../../img/results/bench_pareto.png" alt="Architecture benchmark" loading="lazy" decoding="async" /><figcaption><b>Architecture benchmark</b>Training time vs. test error, VPINN × PINN × PIELM</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../../img/results/bench_true_vs_pred.png" alt="True vs. predicted" loading="lazy" decoding="async" /><figcaption><b>True vs. predicted</b>Three models, same boundary condition</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../../img/results/field_flow_cylinder.png" alt="Flow around a cylinder" loading="lazy" decoding="async" /><figcaption><b>Flow around a cylinder</b>Field produced by the reference solver</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../../img/results/chassis_von_mises.png" alt="Chassis, von Mises stress" loading="lazy" decoding="async" /><figcaption><b>Chassis, von Mises stress</b>Finite-element field with PINN collocation</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">Built on the same base</p><h2>Built on the same base</h2></div>
+        <p>The platform holds 63 applications. These are the ones behind the four products above.</p>
+      </div>
+      <div class="grid-3 reveal"><article class="card"><h3>HeatSink Sizer</h3><p>Heat sinks in seconds, checked against published correlations.</p><div class="foot"><b>0–5% vs. literature</b></div></article><article class="card"><h3>PCB Hotspot</h3><p>Junction temperature of every part in about a second.</p><div class="foot"><b>θJA within 8%</b></div></article><article class="card"><h3>Simulation Preflight</h3><p>PASS, WARNING or FAIL before the run, with file and line.</p><div class="foot"><b>caught before the run</b></div></article><article class="card"><h3>Mesh Quality</h3><p>OpenFOAM, Gmsh, VTK, Abaqus, STL: metrics, heatmap, worst elements.</p><div class="foot"><b>identical to checkMesh</b></div></article><article class="card"><h3>Inverse Heat Lab</h3><p>The h coefficient from a few thermocouples, with a PINN.</p><div class="foot"><b>h = 14.8 ± 0.3</b></div></article><article class="card"><h3>Aircraft Design Optimizer</h3><p>NSGA-II over the wing, checked in 3D OpenFOAM.</p><div class="foot"><b>−13% CO₂/pax-km</b></div></article><article class="card"><h3>Surrogate Studio</h3><p>Simulation results become a fast model with enforced validity.</p><div class="foot"><b>versioned endpoint</b></div></article><article class="card"><h3>Twin Runtime</h3><p>A validated model beside operational data, with EnKF and revalidation.</p><div class="foot"><b>MQTT · REST · OPC UA</b></div></article><article class="card"><h3>Evidence Report</h3><p>Experiments become reproducible evidence with SHA-256 on everything.</p><div class="foot"><b>only what ran passes</b></div></article></div>
+      <p style="margin-top:1.6rem"><a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/tree/main/apps" target="_blank" rel="noopener">Browse the set on GitHub →</a></p>
+      <div class="note reveal"><span><b>Where we are not there yet:</b> Erosion relies on a factor-2 band, not 1% precision. Flat residuals do not prove drag has settled. And in one cost analysis a classical numerical method was faster and more accurate than the network itself — the recommendation was the classical method. The twin's band is a state band calibrated on a separate window, and its lead comes from a linear extrapolation whose error is reported.</span></div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Bring the problem on WhatsApp</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../en/">
+          <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../en/">Products</a></li>
+          <li><a href="../../en/casos-de-uso/">Use cases</a></li>
+          <li><a href="../../en/lib/">The library</a></li>
+          <li><a href="../../en/historia/">Story</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk on WhatsApp</a></li>
+          <li><a href="../../casos-de-uso/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk on WhatsApp</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

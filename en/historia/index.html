@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project story — PINNeAPPle Labs</title>
+<meta name="description" content="Why PINNeAPPle exists, how it is built and by whom — one rule: if it has no measured number, it does not go on screen." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/historia/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/historia/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/historia/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/historia/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Project story — PINNeAPPle Labs" />
+<meta property="og:description" content="Why PINNeAPPle exists, how it is built and by whom — one rule: if it has no measured number, it does not go on screen." />
+<meta property="og:image" content="../../img/portfolio/13-aircraft-render-pressure.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../en/">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../en/">Products</a>
+      <a href="../../en/casos-de-uso/">Use cases</a>
+      <a href="../../en/lib/">The library</a>
+      <a href="../../en/historia/" aria-current="page">Story</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../historia/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Story</p>
+      <h1>PINNeAPPle exists because the working had to be visible.</h1>
+      <p class="lead" style="max-width:68ch">AI models for engineering are easy to sell and hard to believe. PINNeAPPle started as a personal library so its author would not have to take anything on trust: every result carries the reference it was checked against.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Why verification first, and not just a model</p><h2>Why verification first, and not just a model</h2></div>
+      <div class="story reveal"><div class="story-row"><span class="k">The problem</span><p>A PINN can hit its target while violating the equation along the way. The training loss looks healthy and the physics residual sits hundreds of times over the threshold — which is exactly what we found in an already-trained model from a real client.</p></div><div class="story-row"><span class="k">The rule</span><p>If it has no number measured against a reference external to training, it does not go on screen. That holds for a README, for a slide and for this landing page.</p></div><div class="story-row"><span class="k">The cost</span><p>Saying "no" is part of the product. In one rover-mobility case the classical numerical method was faster and more accurate than the network — the recommendation was the classical method.</p></div></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">How it is built</p><h2>How it is built</h2></div>
+      <div class="story reveal"><div class="story-row"><span class="k">Open source first</span><p>31 modules on PyPI, Apache-2.0, 248 examples with checked output. The base is public because a verification tool nobody can audit verifies nothing.</p></div><div class="story-row"><span class="k">Public benchmarks</span><p>SSQN Helmholtz, LBM vortex shedding, LPM design space, latency and I/O. No internal benchmark presented as proof.</p></div><div class="story-row"><span class="k">63 applications</span><p>Each with a README, numbers and stated limits. They are a starting point for your own product, or proof that the base holds up on the real case.</p></div></div>
+      <div class="exist-grid reveal" style="margin-top:2.5rem"><div class="exist-cell"><b>104</b><span>GitHub stars</span></div><div class="exist-cell"><b>63</b><span>applications built</span></div><div class="exist-cell"><b>31</b><span>published modules</span></div><div class="exist-cell"><b>248</b><span>runnable examples</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Who builds it</p><h2>Who builds it</h2><p>Physics, industrial engineering and software on the same team. The rule is the same as before: if it has no measured number, it does not go on screen.</p></div>
+      <div class="card" style="padding:1.8rem;max-width:44rem">
+        <div class="person">
+          <img src="../../img/team/yan-barros.jpg" alt="Yan Barros" loading="lazy" decoding="async" />
+          <div>
+            <strong>Yan Barros</strong>
+            <span class="role">creator of PINNeAPPle</span>
+            <p>A physicist by training, he combines physics, AI and engineering to take scientific models into real applications. He created PINNeAPPle and works on AI applied to real engineering and industrial problems in Brazil. His background includes climate, agribusiness and solar astrophysics.</p>
+            <a href="https://www.linkedin.com/in/yan-barros-yan" target="_blank" rel="noopener">LinkedIn →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Bring the problem on WhatsApp</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../en/">
+          <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../en/">Products</a></li>
+          <li><a href="../../en/casos-de-uso/">Use cases</a></li>
+          <li><a href="../../en/lib/">The library</a></li>
+          <li><a href="../../en/historia/">Story</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk on WhatsApp</a></li>
+          <li><a href="../../historia/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk on WhatsApp</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

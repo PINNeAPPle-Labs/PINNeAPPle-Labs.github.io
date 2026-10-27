@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Casos de uso — PINNeAPPle Labs</title>
+<meta name="description" content="As validações técnicas da PINNeAPPle, com o número medido e a referência externa de cada uma — inclusive onde ainda não chegamos." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/casos-de-uso/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-uso/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-uso/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/casos-de-uso/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Casos de uso — PINNeAPPle Labs" />
+<meta property="og:description" content="As validações técnicas da PINNeAPPle, com o número medido e a referência externa de cada uma — inclusive onde ainda não chegamos." />
+<meta property="og:image" content="../img/portfolio/13-aircraft-render-pressure.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../fonts.css" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../">Produtos</a>
+      <a href="../casos-de-uso/" aria-current="page">Casos de uso</a>
+      <a href="../lib/">A lib</a>
+      <a href="../historia/">História</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../en/casos-de-uso/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Casos de uso</p>
+      <h1>O que já medimos, contra o quê, e onde ainda não chegamos.</h1>
+      <p class="lead" style="max-width:68ch">Toda linha abaixo tem uma referência externa ao treino: um ensaio publicado, um solver de volumes ou elementos finitos, ou uma linha de base da indústria. Onde existe limite, ele está declarado ao lado do número.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Validações técnicas</p><h2>Validações técnicas</h2></div>
+      <div class="table-wrap reveal">
+        <table class="data">
+          <thead><tr><th scope="col">Caso</th><th scope="col">Métrica</th><th scope="col">Referência</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+      <tr><td class="name">Substituto térmico<small>7 geometrias de dissipador</small></td><td class="metric">~200.000× · 4,46%</td><td>FEniCS/dolfinx 3D + gmsh; pior caso 7,35%</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Erosão em curva de 90°<small>OpenFOAM + substituto</small></td><td class="metric">1,05–1,49× · 1,0%</td><td>Vieira et al. 2016, ensaio aberto; critério de fator 2</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Otimização de aerofólio<small>substituto com reverificação</small></td><td class="metric">−18,2%</td><td>Arrasto de perfil; sustentação-alvo mantida em 0,04%</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Aerodinâmica veicular<small>10 rodadas de simpleFoam</small></td><td class="metric">0,05% · 1,3%</td><td>Campo de velocidade e coeficientes vs. OpenFOAM; Cd a 0,17%</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">PINN vs. volumes finitos<small>comparação campo a campo</small></td><td class="metric">0,39%</td><td>Solver de volumes finitos independente; máximo 0,67 °C</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Cavidade com tampa móvel<small>refinamento de malha</small></td><td class="metric">0,19%</td><td>Ghia et al.; partindo de 1,26%</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Inversão de h com PINN<small>placa 2D e bloco 3D</small></td><td class="metric">14,8 ± 0,3</td><td>Valor verdadeiro 15; ponto quente 79,2 °C vs. 79,1 °C</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Térmica de PCB<small>8 famílias de encapsulamento</small></td><td class="metric">dentro de 8%</td><td>θJA publicado, do SOIC-8 a um BGA de 35 mm</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Mobilidade de rover<small>modelo publicado corrigido</small></td><td class="metric">0,7–3,8%</td><td>Bekker–Wong; erro de tração 45× menor que o original</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Monte Carlo de disco de freio<small>tolerância de fabricação</small></td><td class="metric">1,9 °C</td><td>Nominal 495,9 °C; percentil 95 em 498,1 °C, limite 500 °C</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Gêmeo HX-201<small>permutador com incrustação</small></td><td class="metric">0,216 °C · 95,5%</td><td>Sonda redundante fora do filtro; verdadeiro 0,001637 m²K/W</td><td><span class="badge ok">validado</span></td></tr>
+      <tr><td class="name">Confiança física<small>modelo de cliente, confidencial</small></td><td class="metric">resíduo >100×</td><td>Guardrail do VeriPhysics sobre um modelo já treinado</td><td><span class="badge ok">validado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">As imagens por trás dos números</p><h2>As imagens por trás dos números</h2></div>
+      <div class="gallery reveal">
+<figure class="gitem g-w6"><img src="../img/portfolio/13-aircraft-render-pressure.jpg" alt="Aircraft Design Optimizer" loading="lazy" decoding="async" /><figcaption><b>Aircraft Design Optimizer</b>Pressão na pele (Cp), 1.920 projetos voados, −13% de CO₂/pax-km</figcaption></figure>
+<figure class="gitem g-w6"><img src="../img/portfolio/aero_pareto.jpg" alt="Três objetivos que brigam" loading="lazy" decoding="async" /><figcaption><b>Três objetivos que brigam</b>Menos CO₂, cruzeiro mais rápido, aproximação mais lenta</figcaption></figure>
+<figure class="gitem g-w4"><img src="../img/erosao.jpg" alt="Erosão numa curva de 90°" loading="lazy" decoding="async" /><figcaption><b>Erosão numa curva de 90°</b>CFD contra ensaio aberto: 1,05–1,49×, dentro do fator 2</figcaption></figure>
+<figure class="gitem g-w4"><img src="../img/surrogate_speed_rerun.jpg" alt="Substituto vs. FEA 3D" loading="lazy" decoding="async" /><figcaption><b>Substituto vs. FEA 3D</b>4,46% de erro médio, ~200.000× mais rápido</figcaption></figure>
+<figure class="gitem g-w4"><img src="../img/verificacao.jpg" alt="Relatório de verificação" loading="lazy" decoding="async" /><figcaption><b>Relatório de verificação</b>Uma nota de 0 a 1 por checagem, e o que não rodou aparece como tal</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../img/results/field_vortex_pair.png" alt="Par de vórtices de Lamb-Oseen" loading="lazy" decoding="async" /><figcaption><b>Par de vórtices de Lamb-Oseen</b>Vorticidade em t = 0,01 · 0,30 · 0,80 · 2,00</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../img/results/bench_pareto.png" alt="Benchmark de arquiteturas" loading="lazy" decoding="async" /><figcaption><b>Benchmark de arquiteturas</b>Tempo de treino vs. erro de teste, VPINN × PINN × PIELM</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../img/results/bench_true_vs_pred.png" alt="Verdadeiro vs. previsto" loading="lazy" decoding="async" /><figcaption><b>Verdadeiro vs. previsto</b>Três modelos, mesma condição de contorno</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../img/results/field_flow_cylinder.png" alt="Escoamento ao redor de um cilindro" loading="lazy" decoding="async" /><figcaption><b>Escoamento ao redor de um cilindro</b>Campo gerado pelo solver de referência</figcaption></figure>
+<figure class="gitem contain g-w4"><img src="../img/results/chassis_von_mises.png" alt="Chassi, tensão de von Mises" loading="lazy" decoding="async" /><figcaption><b>Chassi, tensão de von Mises</b>Campo de elementos finitos com colocação PINN</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">Construído sobre a mesma base</p><h2>Construído sobre a mesma base</h2></div>
+        <p>A plataforma tem 63 aplicações. Estas são as que sustentam os quatro produtos acima.</p>
+      </div>
+      <div class="grid-3 reveal"><article class="card"><h3>HeatSink Sizer</h3><p>Dissipadores em segundos, conferidos contra correlações publicadas.</p><div class="foot"><b>0–5% vs. literatura</b></div></article><article class="card"><h3>PCB Hotspot</h3><p>Temperatura de junção de cada componente em cerca de um segundo.</p><div class="foot"><b>θJA dentro de 8%</b></div></article><article class="card"><h3>Simulation Preflight</h3><p>PASS, WARNING ou FAIL antes de rodar, com arquivo e linha.</p><div class="foot"><b>falha pega antes da execução</b></div></article><article class="card"><h3>Mesh Quality</h3><p>OpenFOAM, Gmsh, VTK, Abaqus, STL: métricas, heatmap, piores elementos.</p><div class="foot"><b>idêntico ao checkMesh</b></div></article><article class="card"><h3>Inverse Heat Lab</h3><p>O coeficiente h a partir de alguns termopares, com PINN.</p><div class="foot"><b>h = 14,8 ± 0,3</b></div></article><article class="card"><h3>Aircraft Design Optimizer</h3><p>NSGA-II sobre a asa, conferido em OpenFOAM 3D.</p><div class="foot"><b>−13% CO₂/pax-km</b></div></article><article class="card"><h3>Surrogate Studio</h3><p>Resultados de simulação viram um modelo rápido com validade imposta.</p><div class="foot"><b>endpoint versionado</b></div></article><article class="card"><h3>Twin Runtime</h3><p>Modelo validado ao lado do dado real, com EnKF e revalidação.</p><div class="foot"><b>MQTT · REST · OPC UA</b></div></article><article class="card"><h3>Evidence Report</h3><p>Experimentos viram evidência reproduzível com SHA-256 de tudo.</p><div class="foot"><b>só passa o que rodou</b></div></article></div>
+      <p style="margin-top:1.6rem"><a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/tree/main/apps" target="_blank" rel="noopener">Ver o acervo no GitHub →</a></p>
+      <div class="note reveal"><span><b>Onde ainda não chegamos:</b> Erosão depende do fator 2, não de precisão de 1%. Resíduos estáveis não provam que arrasto estabilizou. E numa das análises de custo, um método numérico clássico era mais rápido e mais exato que a própria rede — a recomendação foi o método clássico. A banda do gêmeo é de estado, calibrada numa janela separada, e o lead vem de extrapolação linear cujo erro é reportado.</span></div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Trazer o problema no WhatsApp</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../">
+          <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../">Produtos</a></li>
+          <li><a href="../casos-de-uso/">Casos de uso</a></li>
+          <li><a href="../lib/">A lib</a></li>
+          <li><a href="../historia/">História</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+          <li><a href="../en/casos-de-uso/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar no WhatsApp</span>
+</a>
+
+<script src="../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A biblioteca PINNeAPPle — PINNeAPPle Labs</title>
+<meta name="description" content="Arquitetura, quickstart e o split honesto do código aberto da plataforma PINNeAPPle: 31 módulos, 248 exemplos, Apache-2.0." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/lib/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/lib/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/lib/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/lib/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="A biblioteca PINNeAPPle — PINNeAPPle Labs" />
+<meta property="og:description" content="Arquitetura, quickstart e o split honesto do código aberto da plataforma PINNeAPPle: 31 módulos, 248 exemplos, Apache-2.0." />
+<meta property="og:image" content="../img/portfolio/13-aircraft-render-pressure.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../fonts.css" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../">Produtos</a>
+      <a href="../casos-de-uso/">Casos de uso</a>
+      <a href="../lib/" aria-current="page">A lib</a>
+      <a href="../historia/">História</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../en/lib/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">A biblioteca</p>
+      <h1>Um pipeline, do PDE escrito à predição servida.</h1>
+      <p class="lead" style="max-width:68ch">Cada camada é um pacote Python independente no PyPI — dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.</p>
+      <div class="hero-meta">
+        <span class="chip"><span class="dot"></span>PyPI 0.7.0</span>
+        <span class="chip">Python ≥ 3.10</span>
+        <span class="chip">31 módulos</span>
+        <span class="chip">248 exemplos</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Arquitetura em camadas</p><h2>Arquitetura em camadas</h2></div>
+      <div class="stack reveal">
+<div class="layer"><div class="lname">Aplicação<small>APPS &amp; SERVING</small></div><div class="lmods"><span>pinneapple_app</span><span>pinneapple_lab</span><span>pinneapple_hub</span><span>pinneapple_orchestration</span><span>pinneapple_llm</span><span>REST / FastAPI</span></div></div>
+<div class="layer"><div class="lname">Modelos<small>NEURAL</small></div><div class="lmods"><span>pinneapple_neural</span><span>pinneapple_models</span><span>PINN</span><span>FNO</span><span>DeepONet</span><span>GNN</span><span>LSTM</span><span>VPINN</span></div></div>
+<div class="layer"><div class="lname">Física &amp; solvers<small>PHYSICS</small></div><div class="lmods"><span>pinneapple_physics</span><span>pinneapple_solvers</span><span>pinneapple_simulation</span><span>pinneapple_pdb</span><span>OpenFOAM</span><span>FEniCS/dolfinx</span><span>CalculiX</span></div></div>
+<div class="layer"><div class="lname">Análise<small>ANALYSIS &amp; UQ</small></div><div class="lmods"><span>pinneapple_analysis</span><span>pinneapple_veriphysics</span><span>pinneapple_decision</span><span>pinneapple_adaptation</span><span>UQ</span><span>EnKF</span><span>Monte Carlo</span></div></div>
+<div class="layer"><div class="lname">Dados &amp; geometria<small>DATA</small></div><div class="lmods"><span>pinneapple_data</span><span>pinneapple_design</span><span>pinneapple_catalog</span><span>pinneapple_pdb</span><span>pinneapple_twin3d</span><span>pinneapple_blender</span></div></div>
+<div class="layer"><div class="lname">Núcleo<small>CORE</small></div><div class="lmods"><span>pinneapple_core</span><span>pinneapple_problemdesign</span><span>pinneapple_registry</span><span>pinneapple_tools</span><span>pinneapple_security</span><span>pinneapple_systems</span></div></div>
+      </div>
+      <div class="note reveal"><span><b>Por que isso importa:</b> a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI — aqui a referência é sempre externa ao treino.</span></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap split-block reveal">
+      <div class="code-card">
+        <div class="code-head"><span class="fname">inverse_heat.py</span></div>
+        <pre class="code"><span class="c"># o coeficiente h que ninguém mede, a partir de alguns termopares</span>
+<span class="k">from</span> pinneapple_physics <span class="k">import</span> HeatConduction1D
+<span class="k">from</span> pinneapple_neural <span class="k">import</span> PINNTrainer
+
+problem = HeatConduction1D(conductivity=<span class="n">50.0</span>, length=<span class="n">0.30</span>, learn_h=<span class="k">True</span>)
+model = PINNTrainer(problem, layers=[<span class="n">3</span>, <span class="n">64</span>, <span class="n">64</span>, <span class="n">1</span>])
+report = model.fit(thermocouples=medicoes, epochs=<span class="n">5000</span>)
+
+<span class="f">print</span>(report.h, report.h_std)         <span class="c"># 14.8 0.3  (verdadeiro: 15)</span>
+report.verify_against(<span class="s">"finite-volume"</span>)  <span class="c"># erro por campo, mapa de erro</span></pre>
+      </div>
+      <div>
+        <p class="eyebrow">A equação entra como texto</p>
+        <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">A equação entra como texto</h2>
+        <p style="color:var(--text-dim)">Instalação com um comando, sem build. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.</p>
+        <h3 style="margin:1.8rem 0 .8rem">O que você ganha no primeiro dia</h3>
+        <ul class="checks"><li><b>Um ambiente reproduzível</b> — 248 exemplos com saída versionada, para comparar com o seu resultado.</li><li><b>Benchmarks públicos</b> — SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.</li><li><b>Interoperabilidade real</b> — OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.</li><li><b>Padrões da indústria</b> — AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.</li></ul>
+        <p style="margin-top:1.6rem"><a class="btn btn-primary" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Abrir a documentação →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">A base é pública. A verificação também.</p><h2>A base é pública. A verificação também.</h2></div>
+        <p>Apache-2.0, no PyPI, com releases versionadas. O que é aberto está aberto de verdade — e o que é produto está dito como produto.</p>
+      </div>
+      <div class="grid-2 reveal"><article class="repo">
+          <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/PINNeAPPle</h3>
+            <p>O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.</p><div class="rmeta"><span>★ 104 · forks 28 · Apache-2.0 · PyPI 0.7.0</span></div></div>
+          <div class="rlinks"><a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></div>
+        </article><article class="repo">
+          <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/pinnfactory</h3>
+            <p>Framework leve e independente para PINNs a partir de PDEs em SymPy, com autodiferenciação em PyTorch.</p><div class="rmeta"><span>★ 72 · Apache-2.0 · standalone</span></div></div>
+          <div class="rlinks"><a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/pinnfactory" target="_blank" rel="noopener">GitHub</a></div>
+        </article><article class="repo">
+          <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/PINNeAPPle-Benchmark</h3>
+            <p>Benchmarks públicos e reprodutíveis: SSQN Helmholtz, LBM vortex shedding, LPM, latência, shard balance.</p><div class="rmeta"><span>reprodutível · gráficos versionados</span></div></div>
+          <div class="rlinks"><a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark" target="_blank" rel="noopener">GitHub</a></div>
+        </article><article class="repo">
+          <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/pinnaitor</h3>
+            <p>Framework agêntico de uso geral (ELM AI Agentic Framework), em estágio anterior — dito com clareza.</p><div class="rmeta"><span>★ 22 · MIT · estágio inicial</span></div></div>
+          <div class="rlinks"><a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/pinnaitor" target="_blank" rel="noopener">GitHub</a></div>
+        </article></div>
+      <div class="note reveal"><span><b>A separação honesta:</b> Os quatro repositórios acima são genuinamente abertos. Os produtos são entregues como engenharia, não como release de código aberto.</span></div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Trazer o problema no WhatsApp</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../">
+          <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 3c1.6 3.1 1.6 6.2 0 9.3-1.6-3.1-1.6-6.2 0-9.3Z" stroke="#f0b32e" stroke-width="1.6"/>
+        <path d="M16 12.3c2.7 1.2 4.6 3.7 5.4 7-2.9.2-5.6-.9-7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M16 12.3c-2.7 1.2-4.6 3.7-5.4 7 2.9.2 5.6-.9 7.4-3.1" stroke="#3dd6c4" stroke-width="1.6"/>
+        <path d="M14 22.4c.7 1.9 1.4 3.6 2 5.1.6-1.5 1.3-3.2 2-5.1" stroke="#f0b32e" stroke-width="1.6"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../">Produtos</a></li>
+          <li><a href="../casos-de-uso/">Casos de uso</a></li>
+          <li><a href="../lib/">A lib</a></li>
+          <li><a href="../historia/">História</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+          <li><a href="../en/lib/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar no WhatsApp</span>
+</a>
+
+<script src="../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
