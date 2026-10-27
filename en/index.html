@@ -78,7 +78,7 @@
           <span class="chip">Python ≥ 3.10</span>
           <span class="chip">31 modules</span>
           <span class="chip">248 runnable examples</span>
-          <span class="chip">15 applications</span>
+          <span class="chip">63 applications</span>
         </div>
       </div>
 
@@ -179,9 +179,9 @@
       <div class="section-head split reveal">
         <div>
           <p class="eyebrow">Products</p>
-          <h2 id="prod-h">Three products ready to build on the base.</h2>
+          <h2 id="prod-h">Four products ready to build on the base.</h2>
         </div>
-        <p>Not concepts: each has code, executed cases and numbers measured in this repository. Together they cover the whole cycle — capture the physics, accelerate the answer, prove it is right.</p>
+        <p>Not concepts: each has code, executed cases and numbers measured in this repository. Together they cover the whole cycle — capture the physics, accelerate the answer, prove it is right, and follow the asset over time.</p>
       </div>
 
       <!-- Product 1 -->
@@ -250,6 +250,30 @@
         <figure class="media">
           <img src="../img/verificacao.jpg" alt="Physics verification report with a score per check and coverage" loading="lazy" decoding="async" />
           <figcaption style="padding:.7rem .95rem;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.7rem;color:var(--text-mute);background:var(--ink-2)">A score from 0 to 1 per check, never an average that hides what was skipped</figcaption>
+        </figure>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="split-block flip reveal" style="margin-top:clamp(3rem,6vw,5rem)">
+        <div>
+          <span class="badge ok">Available</span>
+          <p class="eyebrow dim" style="margin-top:1rem">Product 04 · Digital twin</p>
+          <h3 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1rem">PINNeAPPle Twin</h3>
+          <p style="color:var(--text-dim)">The digital-twin line, in two layers. <b>Twin Runtime</b> puts a validated model to work next to operational data. The <b>commissioning layer</b> closes the cycle on top of it: a signed contract, a preflight that can refuse, a backtest against an instrument the filter never sees, and filed evidence — which is what turns a runtime into a closed product.</p>
+          <ul class="checks">
+            <li><b>A runtime that runs:</b> EnKF, forecasts with 5–95% bands, an alert on the normalised innovation (χ² at 99.9%), validity checks and revalidation, history in SQLite or Postgres, MQTT, REST and OPC&nbsp;UA.</li>
+            <li><b>An acceptance gate:</b> 11 preflight checks — swapped unit, frozen channel, under-determined estimate, a declared sampling rate the history never produced — plus a backtest against the redundant probe. If it does not pass, it does not go on line.</li>
+            <li><b>HX-201, a fouled exchanger:</b> 0.216&nbsp;°C RMSE (0.54% of span) and fouling estimated at 0.001651&nbsp;&plusmn;&nbsp;0.000010 against a true 0.001637, with the redundant probe kept out of the filter.</li>
+            <li><b>An honest band:</b> 95.5% of validation readings inside the band, calibrated on the preceding 35.4&nbsp;h and measured on the hours after. The raw band covered 86.4% — that number is printed beside it, not hidden.</li>
+            <li><b>Alarm by projection:</b> extrapolating the latent state warned 2.6&nbsp;h before the measured crossing, and the error of that forecast (1.1&nbsp;h) is reported with it. The NORMAL &rarr; WATCH &rarr; ALARM &rarr; RECALIBRATE ladder has hysteresis, and the latent state goes out as AAS (BaSyx SDK), DTDL, NGSI-LD, Eclipse Ditto and OPC&nbsp;UA.</li>
+          </ul>
+          <div class="hero-meta" style="border-top:none;padding-top:1.4rem;margin-top:1.4rem">
+            <span class="chip">Twin Runtime + commissioning</span><span class="chip">JSON evidence</span><span class="chip">3D viewer</span>
+          </div>
+        </div>
+        <figure class="media">
+          <img src="../img/twin.jpg" alt="Industrial asset in 3D with a live reading panel beside it" loading="lazy" decoding="async" />
+          <figcaption>The asset in 3D beside the live reading: what is not measured is estimated, with its band and source</figcaption>
         </figure>
       </div>
     </div>
@@ -390,9 +414,9 @@
       <div class="section-head split reveal">
         <div>
           <p class="eyebrow">Applications</p>
-          <h2 id="apps-h">Fifteen applications built on the same base.</h2>
+          <h2 id="apps-h">Sixty-three applications built on the same base.</h2>
         </div>
-        <p>Working SaaS prototypes, each with a README, numbers and stated limits. Use them as a starting point for your own product — or as proof the base holds up on the real case.</p>
+        <p>Working SaaS prototypes, each with a README, numbers and stated limits. The selection below is a sample; the full set is 63. Use them as a starting point for your own product — or as proof the base holds up on the real case.</p>
       </div>
 
       <div class="grid-3 reveal">
@@ -475,15 +499,27 @@
           <div class="foot"><b>−13% CO₂/pax-km</b> inside the 36 m gate</div>
         </article>
         <article class="card">
-          <span class="k">Process</span>
-          <h3>Design Requirements</h3>
-          <p>Specifications and datasheets compiled into a traceable requirement, with conflicts flagged and missing mandatory items listed.</p>
-          <div class="foot"><b>ASME · API · TEMA</b> across five formats</div>
+          <span class="k">Day 14 · surrogates</span>
+          <h3>Surrogate Studio</h3>
+          <p>Turns the simulation results you already have into a fast predictive model, measured on runs it never saw, served with its validity range enforced at the endpoint.</p>
+          <div class="foot"><b>versioned endpoint</b> with a stated validity range</div>
+        </article>
+        <article class="card">
+          <span class="k">Day 20 · digital twin</span>
+          <h3>Twin Runtime</h3>
+          <p>Puts a validated model to work next to operational data, with EnKF, alerts, validity checks and revalidation — and says when to stop trusting it.</p>
+          <div class="foot"><b>MQTT · REST · OPC UA</b> · SQLite/Postgres</div>
+        </article>
+        <article class="card">
+          <span class="k">Day 30 · evidence</span>
+          <h3>Evidence Report</h3>
+          <p>Turns experiments and simulations into reproducible technical evidence: a test counts as passed only if it ran.</p>
+          <div class="foot"><b>SHA-256</b> of every original artifact</div>
         </article>
         <article class="card">
           <span class="k">Operations</span>
           <h3>Deploy</h3>
-          <p>Packages the ten thermal, data and quality applications into a single supervised service with login.</p>
+          <p>Packages the thermal, data and quality applications into a single supervised service with login.</p>
           <div class="foot"><b>10 apps</b> in one service</div>
         </article>
       </div>
