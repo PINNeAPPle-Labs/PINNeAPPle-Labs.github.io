@@ -597,7 +597,7 @@ def page_home(lang: str) -> str:
   <section id="hoje" class="alt tight">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['existing_h']}</p><h2>{C['existing_h']}</h2></div>
+        <div><p class="eyebrow">{_k(lang, 'hoje')}</p><h2>{C['existing_h']}</h2></div>
         <p>{C['existing']}</p>
       </div>
       <div class="exist-grid reveal">{items}</div>
@@ -611,7 +611,7 @@ def page_home(lang: str) -> str:
   <section id="provas">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['feat_h']}</p><h2>{C['feat_h']}</h2></div>
+        <div><p class="eyebrow">{_k(lang, 'provas')}</p><h2>{C['feat_h']}</h2></div>
         <p>{C['feat_p']}</p>
       </div>
       <div class="gallery reveal">
@@ -642,7 +642,7 @@ def page_home(lang: str) -> str:
   <section id="destinos" class="alt-deep">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['dest_h']}</p><h2>{C['dest_h']}</h2></div>
+        <div><p class="eyebrow">{_k(lang, 'depois')}</p><h2>{C['dest_h']}</h2></div>
         <p>{C['dest_p']}</p>
       </div>
       <div class="dest-grid reveal">{dests}</div>
@@ -654,6 +654,27 @@ def page_home(lang: str) -> str:
     parts.append("</main>")
     parts.append(footer(lang, "home", root))
     return "".join(parts)
+
+
+KICKERS = {
+    "pt": {
+        "hoje": "Hoje", "provas": "Provas", "depois": "Continue",
+        "prova": "Prova", "imagens": "Imagens", "plus": "E mais",
+        "arquitetura": "Arquitetura", "comecar": "Começar",
+        "porque": "Por quê", "como": "Como", "equipe": "Equipe", "aberto": "Código aberto",
+    },
+    "en": {
+        "hoje": "Today", "provas": "Proof", "depois": "Next",
+        "prova": "Evidence", "imagens": "Figures", "plus": "And more",
+        "arquitetura": "Architecture", "comecar": "Get started",
+        "porque": "Why", "como": "How", "equipe": "Team", "aberto": "Open source",
+    },
+}
+
+
+def _k(lang: str, key: str) -> str:
+    """A short section kicker, distinct from the heading below it."""
+    return KICKERS[lang][key]
 
 
 def _anchor(name: str) -> str:
@@ -807,7 +828,7 @@ def page_casos(lang: str) -> str:
 
   <section>
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['table_h']}</p><h2>{C['table_h']}</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'prova')}</p><h2>{C['table_h']}</h2></div>
       <div class="table-wrap reveal">
         <table class="data">
           <thead><tr><th scope="col">{'Caso' if lang == 'pt' else 'Case'}</th><th scope="col">{'Métrica' if lang == 'pt' else 'Metric'}</th><th scope="col">{'Referência' if lang == 'pt' else 'Reference'}</th><th scope="col">Status</th></tr></thead>
@@ -820,7 +841,7 @@ def page_casos(lang: str) -> str:
 
   <section class="alt">
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['gallery_h']}</p><h2>{C['gallery_h']}</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'imagens')}</p><h2>{C['gallery_h']}</h2></div>
       <div class="gallery reveal">
 {gal}      </div>
     </div>
@@ -829,7 +850,7 @@ def page_casos(lang: str) -> str:
   <section>
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['apps_h']}</p><h2>{C['apps_h']}</h2></div>
+        <div><p class="eyebrow">{_k(lang, 'plus')}</p><h2>{C['apps_h']}</h2></div>
         <p>{C['apps_p']}</p>
       </div>
       <div class="grid-3 reveal">{apps}</div>
@@ -973,7 +994,7 @@ def page_lib(lang: str) -> str:
 
   <section>
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['stack_h']}</p><h2>{C['stack_h']}</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'arquitetura')}</p><h2>{C['stack_h']}</h2></div>
       <div class="stack reveal">
 {stack}      </div>
       <div class="note reveal"><span><b>{'Por que isso importa' if lang == 'pt' else 'Why this matters'}:</b> {'a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI — aqui a referência é sempre externa ao treino.' if lang == 'pt' else 'the same library that trains the network also runs the reference solver. Comparing a model against itself is the most common mistake in Physics AI — here the reference is always external to training.'}</span></div>
@@ -987,7 +1008,7 @@ def page_lib(lang: str) -> str:
         {CODE if lang == 'pt' else CODE_EN}
       </div>
       <div>
-        <p class="eyebrow">{C['start_h']}</p>
+        <p class="eyebrow">{_k(lang, 'comecar')}</p>
         <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">{C['start_h']}</h2>
         <p style="color:var(--text-dim)">{C['start_p']}</p>
         <h3 style="margin:1.8rem 0 .8rem">{C['gains_h']}</h3>
@@ -1000,7 +1021,7 @@ def page_lib(lang: str) -> str:
   <section>
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['oss_h']}</p><h2>{C['oss_h']}</h2></div>
+        <div><p class="eyebrow">{_k(lang, 'aberto')}</p><h2>{C['oss_h']}</h2></div>
         <p>{C['oss_p']}</p>
       </div>
       <div class="grid-2 reveal">{repos}</div>
@@ -1090,14 +1111,14 @@ def page_historia(lang: str) -> str:
 
   <section>
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['why_h']}</p><h2>{C['why_h']}</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'porque')}</p><h2>{C['why_h']}</h2></div>
       <div class="story reveal">{why}</div>
     </div>
   </section>
 
   <section class="alt">
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['how_h']}</p><h2>{C['how_h']}</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'como')}</p><h2>{C['how_h']}</h2></div>
       <div class="story reveal">{how}</div>
       <div class="exist-grid reveal" style="margin-top:2.5rem">{stats}</div>
     </div>
@@ -1105,7 +1126,7 @@ def page_historia(lang: str) -> str:
 
   <section>
     <div class="wrap">
-      <div class="section-head reveal"><p class="eyebrow">{C['who_h']}</p><h2>{C['who_h']}</h2><p>{C['who']}</p></div>
+      <div class="section-head reveal"><p class="eyebrow">{_k(lang, 'equipe')}</p><h2>{C['who_h']}</h2><p>{C['who']}</p></div>
       <div class="card" style="padding:1.8rem;max-width:44rem">
         <div class="person">
           <img src="{root}img/team/yan-barros.jpg" alt="{C['person_name']}" loading="lazy" decoding="async" />
