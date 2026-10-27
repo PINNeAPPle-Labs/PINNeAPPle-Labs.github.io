@@ -66,8 +66,8 @@
         <table class="data">
           <thead><tr><th scope="col">Case</th><th scope="col">Metric</th><th scope="col">Reference</th><th scope="col">Status</th></tr></thead>
           <tbody>
-      <tr><td class="name">Thermal surrogate<small>7 heat-sink geometries</small></td><td class="metric">~200,000× · 4.46%</td><td>3D FEniCS/dolfinx + gmsh; worst case 7.35%</td><td><span class="badge ok">validated</span></td></tr>
-      <tr><td class="name">Erosion in a 90° bend<small>OpenFOAM + surrogate</small></td><td class="metric">1.05–1.49× · 1.0%</td><td>Vieira et al. 2016, open experiment; factor-2 criterion</td><td><span class="badge ok">validated</span></td></tr>
+      <tr id="surrogate-studio"><td class="name">Thermal surrogate<small>7 heat-sink geometries</small></td><td class="metric">~200,000× · 4.46%</td><td>3D FEniCS/dolfinx + gmsh; worst case 7.35%</td><td><span class="badge ok">validated</span></td></tr>
+      <tr id="pinneapple-cfd"><td class="name">Erosion in a 90° bend<small>OpenFOAM + surrogate</small></td><td class="metric">1.05–1.49× · 1.0%</td><td>Vieira et al. 2016, open experiment; factor-2 criterion</td><td><span class="badge ok">validated</span></td></tr>
       <tr><td class="name">Airfoil optimization<small>surrogate-guided, re-verified</small></td><td class="metric">−18.2%</td><td>Profile drag; target lift held to 0.04%</td><td><span class="badge ok">validated</span></td></tr>
       <tr><td class="name">Vehicle aerodynamics<small>10 simpleFoam runs</small></td><td class="metric">0.05% · 1.3%</td><td>Velocity field and coefficients vs. OpenFOAM; Cd at 0.17%</td><td><span class="badge ok">validated</span></td></tr>
       <tr><td class="name">PINN vs. finite volumes<small>field-by-field comparison</small></td><td class="metric">0.39%</td><td>Independent finite-volume solver; max 0.67 °C</td><td><span class="badge ok">validated</span></td></tr>
@@ -76,8 +76,8 @@
       <tr><td class="name">PCB thermodynamics<small>8 package families</small></td><td class="metric">within 8%</td><td>Published θJA, from SOIC-8 to a 35 mm BGA</td><td><span class="badge ok">validated</span></td></tr>
       <tr><td class="name">Rover mobility<small>published model, corrected</small></td><td class="metric">0.7–3.8%</td><td>Bekker–Wong; traction error 45× lower than the original</td><td><span class="badge ok">validated</span></td></tr>
       <tr><td class="name">Brake-disc Monte Carlo<small>manufacturing tolerance</small></td><td class="metric">1.9 °C</td><td>Nominal 495.9 °C; 95th percentile at 498.1 °C, limit 500 °C</td><td><span class="badge ok">validated</span></td></tr>
-      <tr><td class="name">HX-201 twin<small>fouled exchanger</small></td><td class="metric">0.216 °C · 95.5%</td><td>Redundant probe kept out of the filter; true 0.001637 m²K/W</td><td><span class="badge ok">validated</span></td></tr>
-      <tr><td class="name">Physics confidence<small>client model, confidential</small></td><td class="metric">residual >100×</td><td>VeriPhysics guardrail over an already-trained model</td><td><span class="badge ok">validated</span></td></tr>
+      <tr id="pinneapple-twin"><td class="name">HX-201 twin<small>fouled exchanger</small></td><td class="metric">0.216 °C · 95.5%</td><td>Redundant probe kept out of the filter; true 0.001637 m²K/W</td><td><span class="badge ok">validated</span></td></tr>
+      <tr id="veriphysics"><td class="name">Physics confidence<small>client model, confidential</small></td><td class="metric">residual >100×</td><td>VeriPhysics guardrail over an already-trained model</td><td><span class="badge ok">validated</span></td></tr>
           </tbody>
         </table>
       </div>

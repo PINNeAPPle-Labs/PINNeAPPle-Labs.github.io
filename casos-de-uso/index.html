@@ -66,8 +66,8 @@
         <table class="data">
           <thead><tr><th scope="col">Caso</th><th scope="col">Métrica</th><th scope="col">Referência</th><th scope="col">Status</th></tr></thead>
           <tbody>
-      <tr><td class="name">Substituto térmico<small>7 geometrias de dissipador</small></td><td class="metric">~200.000× · 4,46%</td><td>FEniCS/dolfinx 3D + gmsh; pior caso 7,35%</td><td><span class="badge ok">validado</span></td></tr>
-      <tr><td class="name">Erosão em curva de 90°<small>OpenFOAM + substituto</small></td><td class="metric">1,05–1,49× · 1,0%</td><td>Vieira et al. 2016, ensaio aberto; critério de fator 2</td><td><span class="badge ok">validado</span></td></tr>
+      <tr id="surrogate-studio"><td class="name">Substituto térmico<small>7 geometrias de dissipador</small></td><td class="metric">~200.000× · 4,46%</td><td>FEniCS/dolfinx 3D + gmsh; pior caso 7,35%</td><td><span class="badge ok">validado</span></td></tr>
+      <tr id="pinneapple-cfd"><td class="name">Erosão em curva de 90°<small>OpenFOAM + substituto</small></td><td class="metric">1,05–1,49× · 1,0%</td><td>Vieira et al. 2016, ensaio aberto; critério de fator 2</td><td><span class="badge ok">validado</span></td></tr>
       <tr><td class="name">Otimização de aerofólio<small>substituto com reverificação</small></td><td class="metric">−18,2%</td><td>Arrasto de perfil; sustentação-alvo mantida em 0,04%</td><td><span class="badge ok">validado</span></td></tr>
       <tr><td class="name">Aerodinâmica veicular<small>10 rodadas de simpleFoam</small></td><td class="metric">0,05% · 1,3%</td><td>Campo de velocidade e coeficientes vs. OpenFOAM; Cd a 0,17%</td><td><span class="badge ok">validado</span></td></tr>
       <tr><td class="name">PINN vs. volumes finitos<small>comparação campo a campo</small></td><td class="metric">0,39%</td><td>Solver de volumes finitos independente; máximo 0,67 °C</td><td><span class="badge ok">validado</span></td></tr>
@@ -76,8 +76,8 @@
       <tr><td class="name">Térmica de PCB<small>8 famílias de encapsulamento</small></td><td class="metric">dentro de 8%</td><td>θJA publicado, do SOIC-8 a um BGA de 35 mm</td><td><span class="badge ok">validado</span></td></tr>
       <tr><td class="name">Mobilidade de rover<small>modelo publicado corrigido</small></td><td class="metric">0,7–3,8%</td><td>Bekker–Wong; erro de tração 45× menor que o original</td><td><span class="badge ok">validado</span></td></tr>
       <tr><td class="name">Monte Carlo de disco de freio<small>tolerância de fabricação</small></td><td class="metric">1,9 °C</td><td>Nominal 495,9 °C; percentil 95 em 498,1 °C, limite 500 °C</td><td><span class="badge ok">validado</span></td></tr>
-      <tr><td class="name">Gêmeo HX-201<small>permutador com incrustação</small></td><td class="metric">0,216 °C · 95,5%</td><td>Sonda redundante fora do filtro; verdadeiro 0,001637 m²K/W</td><td><span class="badge ok">validado</span></td></tr>
-      <tr><td class="name">Confiança física<small>modelo de cliente, confidencial</small></td><td class="metric">resíduo >100×</td><td>Guardrail do VeriPhysics sobre um modelo já treinado</td><td><span class="badge ok">validado</span></td></tr>
+      <tr id="pinneapple-twin"><td class="name">Gêmeo HX-201<small>permutador com incrustação</small></td><td class="metric">0,216 °C · 95,5%</td><td>Sonda redundante fora do filtro; verdadeiro 0,001637 m²K/W</td><td><span class="badge ok">validado</span></td></tr>
+      <tr id="veriphysics"><td class="name">Confiança física<small>modelo de cliente, confidencial</small></td><td class="metric">resíduo >100×</td><td>Guardrail do VeriPhysics sobre um modelo já treinado</td><td><span class="badge ok">validado</span></td></tr>
           </tbody>
         </table>
       </div>

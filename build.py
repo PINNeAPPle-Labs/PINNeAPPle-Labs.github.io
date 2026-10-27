@@ -687,32 +687,32 @@ def _anchor(name: str) -> str:
 
 ROWS = {
     "pt": [
-        ("Substituto térmico", "7 geometrias de dissipador", "~200.000× · 4,46%", "FEniCS/dolfinx 3D + gmsh; pior caso 7,35%"),
-        ("Erosão em curva de 90°", "OpenFOAM + substituto", "1,05–1,49× · 1,0%", "Vieira et al. 2016, ensaio aberto; critério de fator 2"),
-        ("Otimização de aerofólio", "substituto com reverificação", "−18,2%", "Arrasto de perfil; sustentação-alvo mantida em 0,04%"),
-        ("Aerodinâmica veicular", "10 rodadas de simpleFoam", "0,05% · 1,3%", "Campo de velocidade e coeficientes vs. OpenFOAM; Cd a 0,17%"),
-        ("PINN vs. volumes finitos", "comparação campo a campo", "0,39%", "Solver de volumes finitos independente; máximo 0,67 °C"),
-        ("Cavidade com tampa móvel", "refinamento de malha", "0,19%", "Ghia et al.; partindo de 1,26%"),
-        ("Inversão de h com PINN", "placa 2D e bloco 3D", "14,8 ± 0,3", "Valor verdadeiro 15; ponto quente 79,2 °C vs. 79,1 °C"),
-        ("Térmica de PCB", "8 famílias de encapsulamento", "dentro de 8%", "θJA publicado, do SOIC-8 a um BGA de 35 mm"),
-        ("Mobilidade de rover", "modelo publicado corrigido", "0,7–3,8%", "Bekker–Wong; erro de tração 45× menor que o original"),
-        ("Monte Carlo de disco de freio", "tolerância de fabricação", "1,9 °C", "Nominal 495,9 °C; percentil 95 em 498,1 °C, limite 500 °C"),
-        ("Gêmeo HX-201", "permutador com incrustação", "0,216 °C · 95,5%", "Sonda redundante fora do filtro; verdadeiro 0,001637 m²K/W"),
-        ("Confiança física", "modelo de cliente, confidencial", "resíduo >100×", "Guardrail do VeriPhysics sobre um modelo já treinado"),
+        ("Substituto térmico", "7 geometrias de dissipador", "~200.000× · 4,46%", "FEniCS/dolfinx 3D + gmsh; pior caso 7,35%", "surrogate-studio"),
+        ("Erosão em curva de 90°", "OpenFOAM + substituto", "1,05–1,49× · 1,0%", "Vieira et al. 2016, ensaio aberto; critério de fator 2", "pinneapple-cfd"),
+        ("Otimização de aerofólio", "substituto com reverificação", "−18,2%", "Arrasto de perfil; sustentação-alvo mantida em 0,04%", ""),
+        ("Aerodinâmica veicular", "10 rodadas de simpleFoam", "0,05% · 1,3%", "Campo de velocidade e coeficientes vs. OpenFOAM; Cd a 0,17%", ""),
+        ("PINN vs. volumes finitos", "comparação campo a campo", "0,39%", "Solver de volumes finitos independente; máximo 0,67 °C", ""),
+        ("Cavidade com tampa móvel", "refinamento de malha", "0,19%", "Ghia et al.; partindo de 1,26%", ""),
+        ("Inversão de h com PINN", "placa 2D e bloco 3D", "14,8 ± 0,3", "Valor verdadeiro 15; ponto quente 79,2 °C vs. 79,1 °C", ""),
+        ("Térmica de PCB", "8 famílias de encapsulamento", "dentro de 8%", "θJA publicado, do SOIC-8 a um BGA de 35 mm", ""),
+        ("Mobilidade de rover", "modelo publicado corrigido", "0,7–3,8%", "Bekker–Wong; erro de tração 45× menor que o original", ""),
+        ("Monte Carlo de disco de freio", "tolerância de fabricação", "1,9 °C", "Nominal 495,9 °C; percentil 95 em 498,1 °C, limite 500 °C", ""),
+        ("Gêmeo HX-201", "permutador com incrustação", "0,216 °C · 95,5%", "Sonda redundante fora do filtro; verdadeiro 0,001637 m²K/W", "pinneapple-twin"),
+        ("Confiança física", "modelo de cliente, confidencial", "resíduo >100×", "Guardrail do VeriPhysics sobre um modelo já treinado", "veriphysics"),
     ],
     "en": [
-        ("Thermal surrogate", "7 heat-sink geometries", "~200,000× · 4.46%", "3D FEniCS/dolfinx + gmsh; worst case 7.35%"),
-        ("Erosion in a 90° bend", "OpenFOAM + surrogate", "1.05–1.49× · 1.0%", "Vieira et al. 2016, open experiment; factor-2 criterion"),
-        ("Airfoil optimization", "surrogate-guided, re-verified", "−18.2%", "Profile drag; target lift held to 0.04%"),
-        ("Vehicle aerodynamics", "10 simpleFoam runs", "0.05% · 1.3%", "Velocity field and coefficients vs. OpenFOAM; Cd at 0.17%"),
-        ("PINN vs. finite volumes", "field-by-field comparison", "0.39%", "Independent finite-volume solver; max 0.67 °C"),
-        ("Lid-driven cavity", "mesh refinement", "0.19%", "Ghia et al.; starting from 1.26%"),
-        ("Inverse h with a PINN", "2D plate and 3D block", "14.8 ± 0.3", "True value 15; hot spot 79.2 °C vs. 79.1 °C"),
-        ("PCB thermodynamics", "8 package families", "within 8%", "Published θJA, from SOIC-8 to a 35 mm BGA"),
-        ("Rover mobility", "published model, corrected", "0.7–3.8%", "Bekker–Wong; traction error 45× lower than the original"),
-        ("Brake-disc Monte Carlo", "manufacturing tolerance", "1.9 °C", "Nominal 495.9 °C; 95th percentile at 498.1 °C, limit 500 °C"),
-        ("HX-201 twin", "fouled exchanger", "0.216 °C · 95.5%", "Redundant probe kept out of the filter; true 0.001637 m²K/W"),
-        ("Physics confidence", "client model, confidential", "residual >100×", "VeriPhysics guardrail over an already-trained model"),
+        ("Thermal surrogate", "7 heat-sink geometries", "~200,000× · 4.46%", "3D FEniCS/dolfinx + gmsh; worst case 7.35%", "surrogate-studio"),
+        ("Erosion in a 90° bend", "OpenFOAM + surrogate", "1.05–1.49× · 1.0%", "Vieira et al. 2016, open experiment; factor-2 criterion", "pinneapple-cfd"),
+        ("Airfoil optimization", "surrogate-guided, re-verified", "−18.2%", "Profile drag; target lift held to 0.04%", ""),
+        ("Vehicle aerodynamics", "10 simpleFoam runs", "0.05% · 1.3%", "Velocity field and coefficients vs. OpenFOAM; Cd at 0.17%", ""),
+        ("PINN vs. finite volumes", "field-by-field comparison", "0.39%", "Independent finite-volume solver; max 0.67 °C", ""),
+        ("Lid-driven cavity", "mesh refinement", "0.19%", "Ghia et al.; starting from 1.26%", ""),
+        ("Inverse h with a PINN", "2D plate and 3D block", "14.8 ± 0.3", "True value 15; hot spot 79.2 °C vs. 79.1 °C", ""),
+        ("PCB thermodynamics", "8 package families", "within 8%", "Published θJA, from SOIC-8 to a 35 mm BGA", ""),
+        ("Rover mobility", "published model, corrected", "0.7–3.8%", "Bekker–Wong; traction error 45× lower than the original", ""),
+        ("Brake-disc Monte Carlo", "manufacturing tolerance", "1.9 °C", "Nominal 495.9 °C; 95th percentile at 498.1 °C, limit 500 °C", ""),
+        ("HX-201 twin", "fouled exchanger", "0.216 °C · 95.5%", "Redundant probe kept out of the filter; true 0.001637 m²K/W", "pinneapple-twin"),
+        ("Physics confidence", "client model, confidential", "residual >100×", "VeriPhysics guardrail over an already-trained model", "veriphysics"),
     ],
 }
 
@@ -800,9 +800,10 @@ def page_casos(lang: str) -> str:
     root = up(lang, "casos")
     C = CASES[lang]
     rows = "".join(
-        f'      <tr><td class="name">{a}<small>{b}</small></td><td class="metric">{c}</td>'
+        f'      <tr{" id=\"" + anchor + "\"" if anchor else ""}>'
+        f'<td class="name">{a}<small>{b}</small></td><td class="metric">{c}</td>'
         f'<td>{d}</td><td><span class="badge ok">{"validado" if lang == "pt" else "validated"}</span></td></tr>\n'
-        for a, b, c, d in ROWS[lang]
+        for a, b, c, d, anchor in ROWS[lang]
     )
     apps = "".join(
         f'<article class="card"><h3>{a}</h3><p>{b}</p><div class="foot"><b>{c}</b></div></article>'
