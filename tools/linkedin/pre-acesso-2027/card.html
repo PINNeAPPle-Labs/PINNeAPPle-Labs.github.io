@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Card LinkedIn, pré-acesso ao PINNeAPPle Studio</title>
+<!--
+  Card 1200x1200 para o post de pré-acesso no LinkedIn.
+  Renderize com tools/linkedin/pre-acesso-2027/render.py (Playwright, Chrome).
+  Os números vêm do site (img/eng/studio-coverage.webp e a faixa #exist), a tela
+  vem de img/eng/studio-report.webp, uma execução real da aplicação.
+-->
+<style>
+  @font-face{font-family:'Archivo';font-weight:100 900;font-style:normal;font-display:block;
+    src:url('../../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2') format('woff2');}
+  @font-face{font-family:'JetBrains Mono';font-weight:100 800;font-style:normal;font-display:block;
+    src:url('../../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2') format('woff2');}
+
+  :root{
+    --ink:#070a10; --ink-2:#0b1018; --line:#1e2836;
+    --text:#eef2f7; --dim:#93a1b4; --mute:#64748b;
+    --gold:#f0b32e; --gold-hi:#ffc95a; --cyan:#3dd6c4;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1200px;height:1200px}
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--ink);color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    display:flex;flex-direction:column;
+    padding:60px 0 0;
+    position:relative;overflow:hidden;
+  }
+  /* dois brilhos discretos, um dourado no alto e um ciano no canto */
+  body::before{
+    content:'';position:absolute;inset:-200px -200px auto auto;width:900px;height:700px;
+    background:radial-gradient(ellipse at 70% 30%, rgba(240,179,46,.16), rgba(240,179,46,0) 62%);
+    pointer-events:none;
+  }
+  body::after{
+    content:'';position:absolute;left:-260px;top:340px;width:760px;height:600px;
+    background:radial-gradient(ellipse at 40% 40%, rgba(61,214,196,.10), rgba(61,214,196,0) 64%);
+    pointer-events:none;
+  }
+
+  .pad{padding:0 76px}
+
+  /* ---- topo ---- */
+  .top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+  .brand{display:flex;align-items:center;gap:14px;font-size:30px;font-weight:600;letter-spacing:-.01em}
+  .brand svg{width:44px;height:44px}
+  .brand .labs{color:var(--mute);font-weight:400}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:19px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(240,179,46,.38);background:rgba(240,179,46,.07);
+    padding:9px 16px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---- texto ---- */
+  .head{position:relative;z-index:2;margin-top:52px}
+  h1{
+    font-size:88px;line-height:1.03;font-weight:800;letter-spacing:-.035em;
+    text-wrap:balance;
+  }
+  h1 em{font-style:normal;color:var(--gold)}
+  .lead{
+    margin-top:28px;font-size:29px;line-height:1.4;color:var(--dim);max-width:32ch;font-weight:400;
+  }
+  .lead b{color:var(--text);font-weight:600}
+
+  /* ---- tela ---- */
+  .shot{
+    position:relative;margin-top:auto;height:372px;overflow:hidden;
+    border-top:1px solid var(--line);background:var(--ink-2);
+  }
+  /* recorte da tela: 1,66x sobre a captura de 1366 px, começando na coluna
+     de resultados e não no topo da página */
+  .shot img{width:2277px;display:block;margin-left:-100px;margin-top:-417px}
+  .shot::after{
+    content:'';position:absolute;inset:auto 0 0 0;height:130px;z-index:2;
+    background:linear-gradient(0deg, var(--ink-2) 8%, rgba(11,16,24,0));
+  }
+  .cap{
+    padding:16px 76px 0;font-family:'JetBrains Mono',monospace;font-size:17px;
+    color:var(--mute);letter-spacing:.03em;background:var(--ink-2);
+  }
+  .cap b{color:var(--cyan);font-weight:500}
+
+  /* ---- rodapé de números ---- */
+  .nums{
+    display:flex;align-items:flex-end;gap:52px;
+    padding:26px 76px 34px;background:var(--ink);border-top:1px solid var(--line);
+    position:relative;z-index:2;
+  }
+  .num .n{font-family:'Archivo';font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .num .n.hot{color:var(--gold)}
+  .num .l{font-size:17px;color:var(--mute);margin-top:8px;letter-spacing:.01em}
+  .cta{margin-left:auto;text-align:right}
+  .cta .b{
+    display:inline-block;background:var(--gold);color:#120c00;font-weight:700;font-size:22px;
+    padding:14px 22px;border-radius:10px;letter-spacing:-.01em;white-space:nowrap;
+  }
+  .cta .u{
+    font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--mute);margin-top:12px;letter-spacing:.02em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="top pad">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </div>
+    <span class="tag">Prévia fechada · 2027</span>
+  </div>
+
+  <div class="head pad">
+    <h1>Você escreve o problema. O Studio devolve <em>a conta aberta</em>.</h1>
+    <p class="lead">Ele acha a ferramenta que já existe, confere se o seu caso cabe na faixa em que ela foi <b>validada</b> e devolve o número com as verificações ao lado.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../../../img/eng/studio-report.webp" alt="Uma execução do Studio: resultado e verificações" />
+  </div>
+  <p class="cap">Execução real da aplicação · cada verificação com <b>valor</b> e <b>limite</b></p>
+
+  <div class="nums">
+    <div class="num"><div class="n">10.055</div><div class="l">ferramentas catalogadas</div></div>
+    <div class="num"><div class="n">4.987</div><div class="l">executáveis de ponta a ponta</div></div>
+    <div class="num"><div class="n hot">1.693</div><div class="l">verificadas contra referência</div></div>
+    <div class="cta">
+      <span class="b">Entre na lista de pré-acesso</span>
+      <div class="u">pinneapple-labs.github.io</div>
+    </div>
+  </div>
+
+</body>
+</html>
