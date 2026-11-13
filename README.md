@@ -87,16 +87,25 @@ can be recorded again.
 
 ## Pré-acesso (Google Forms)
 
-A chamada de pré-acesso ao Studio é um link do Google Forms guardado numa constante:
+A chamada de pré-acesso ao Studio é um link do Google Forms por idioma:
 
 ```python
 # build.py, no topo
-PREACCESS_FORM = "https://forms.gle/xxxxxxxx"
+PREACCESS_FORM = {
+    "pt": "https://forms.gle/xxxxxxxx",
+    "en": "https://forms.gle/yyyyyyyy",
+}
 ```
 
-Enquanto ela estiver vazia, **nada é renderizado**: nem o item de menu, nem a faixa
-`#pre-acesso` que aparece na home e na página do produto. É de propósito, um botão que leva
-a lugar nenhum é pior que botão nenhum.
+Os dois formulários saem prontos de `tools/create_prerelease_forms.gs`, um script de Google
+Apps Script: abra <https://script.google.com>, cole o arquivo, rode
+`criarFormulariosDePreAcesso` e leia os links no registro de execução. Ele cria os formulários
+(3 perguntas obrigatórias e 1 opcional, e-mail vindo da conta Google), liga cada um a uma
+planilha de respostas e imprime o link curto de cada idioma.
+
+Enquanto um idioma não tiver link, **nada é renderizado nele**: nem o item de menu, nem a
+faixa `#pre-acesso` que aparece na home e na página do produto. É de propósito, um botão que
+leva a lugar nenhum é pior que botão nenhum.
 
 O formulário é externo, então o site continua estático: nenhum backend, nenhum cookie,
 nada carregado do Google antes de a pessoa clicar.

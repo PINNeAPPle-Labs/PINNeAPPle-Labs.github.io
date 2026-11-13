@@ -37,10 +37,14 @@ GITHUB = "https://github.com/PINNeAPPle-Labs/PINNeAPPle"
 PYPI = "https://pypi.org/project/pinneapple/"
 DOCS = "https://pinneapple-labs.github.io/PINNeAPPle/"
 CHANGELOG = f"{GITHUB}/blob/main/CHANGELOG.md"
-# Early-access sign-up. Paste the Google Forms link here (the "Enviar"/"Send" link,
-# the one ending in /viewform). While it is empty the site renders no button at all,
-# because a call to action that leads nowhere is worse than no call to action.
-PREACCESS_FORM = ""
+# Early-access sign-up, one Google Form per language (they are created by
+# `tools/create_prerelease_forms.gs`, which prints the forms.gle link for each).
+# While a language has no link, that language renders no button at all, because a
+# call to action that leads nowhere is worse than no call to action.
+PREACCESS_FORM = {
+    "pt": "",
+    "en": "",
+}
 
 LANGUAGES = {
     "pt": {"code": "pt-BR", "dir": "", "label": "PT", "other": "en", "other_label": "EN"},
@@ -1175,8 +1179,9 @@ def header(lang: str, page: str, root: str) -> str:
     # The documentation lives outside this repo, on the platform's own site.
     links += (f'\n      <a href="{DOCS}" target="_blank" rel="noopener">'
               f'{STRINGS[lang]["docs_nav"]} ↗</a>')
-    if PREACCESS_FORM:
-        links += (f'\n      <a class="pre" href="{PREACCESS_FORM}" target="_blank" rel="noopener">'
+    form = PREACCESS_FORM.get(lang, "")
+    if form:
+        links += (f'\n      <a class="pre" href="{form}" target="_blank" rel="noopener">'
                   f'{STRINGS[lang]["pre_nav"]} ↗</a>')
     other_page = nav_page if not page.startswith("post:") else page
     return f"""<header class="site">
@@ -1275,8 +1280,9 @@ def wa_button(lang: str, cls: str = "btn btn-primary", label: str | None = None)
 
 
 def pre_band(lang: str, root: str) -> str:
-    """The early-access call to action. Empty until PREACCESS_FORM is set."""
-    if not PREACCESS_FORM:
+    """The early-access call to action. Empty until that language has a form."""
+    form = PREACCESS_FORM.get(lang, "")
+    if not form:
         return ""
     S = STRINGS[lang]
     return f"""  <section class="pre-band" id="pre-acesso">
@@ -1287,7 +1293,7 @@ def pre_band(lang: str, root: str) -> str:
         <p class="lead" style="max-width:52ch">{S['pre_lead']}</p>
       </div>
       <div class="pre-actions">
-        <a class="btn btn-primary" href="{PREACCESS_FORM}" target="_blank" rel="noopener">
+        <a class="btn btn-primary" href="{form}" target="_blank" rel="noopener">
           {S['pre_btn']} <span aria-hidden="true">↗</span>
         </a>
         <p class="pre-note">{S['pre_note']}</p>
