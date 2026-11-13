@@ -57,7 +57,7 @@
     <div class="wrap">
       <p class="eyebrow">A biblioteca</p>
       <h1>Um pipeline, do PDE escrito à predição servida.</h1>
-      <p class="lead" style="max-width:68ch">Cada camada é um pacote Python independente no PyPI: dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.</p>
+      <p class="lead" style="max-width:68ch">44 pacotes Python num só install: você importa só a camada que precisa. Nenhuma camada esconde a de baixo, então você vê a malha, o resíduo, a arquitetura e o erro.</p>
       <p style="margin-top:1.6rem">
         <button class="install" data-copy="pip install pinneapple" aria-label="pip install pinneapple">
           <span class="prompt" aria-hidden="true">$</span>
@@ -78,12 +78,13 @@
     <div class="wrap">
       <div class="section-head reveal"><p class="eyebrow">Arquitetura</p><h2>Arquitetura em camadas</h2></div>
       <div class="stack reveal">
-<div class="layer"><div class="lname">Aplicação<small>APPS &amp; SERVING</small></div><div class="lmods"><span>pinneapple_app</span><span>pinneapple_lab</span><span>pinneapple_hub</span><span>pinneapple_orchestration</span><span>pinneapple_llm</span><span>REST / FastAPI</span></div></div>
-<div class="layer"><div class="lname">Modelos<small>NEURAL</small></div><div class="lmods"><span>pinneapple_neural</span><span>pinneapple_models</span><span>PINN</span><span>FNO</span><span>DeepONet</span><span>GNN</span><span>LSTM</span><span>VPINN</span></div></div>
-<div class="layer"><div class="lname">Física &amp; solvers<small>PHYSICS</small></div><div class="lmods"><span>pinneapple_physics</span><span>pinneapple_solvers</span><span>pinneapple_simulation</span><span>pinneapple_pdb</span><span>OpenFOAM</span><span>FEniCS/dolfinx</span><span>CalculiX</span></div></div>
-<div class="layer"><div class="lname">Análise<small>ANALYSIS &amp; UQ</small></div><div class="lmods"><span>pinneapple_analysis</span><span>pinneapple_veriphysics</span><span>pinneapple_decision</span><span>pinneapple_adaptation</span><span>UQ</span><span>EnKF</span><span>Monte Carlo</span></div></div>
-<div class="layer"><div class="lname">Dados &amp; geometria<small>DATA</small></div><div class="lmods"><span>pinneapple_data</span><span>pinneapple_design</span><span>pinneapple_catalog</span><span>pinneapple_pdb</span><span>pinneapple_twin3d</span><span>pinneapple_blender</span></div></div>
-<div class="layer"><div class="lname">Núcleo<small>CORE</small></div><div class="lmods"><span>pinneapple_core</span><span>pinneapple_problemdesign</span><span>pinneapple_registry</span><span>pinneapple_tools</span><span>pinneapple_security</span><span>pinneapple_systems</span></div></div>
+<div class="layer"><div class="lname">Aplicação<small>APPS &amp; SERVING</small></div><div class="lmods"><span>pinneapple_app</span><span>pinneapple_studio</span><span>pinneapple_lab</span><span>pinneapple_hub</span><span>pinneapple_arena</span><span>pinneapple_autolab</span><span>pinneapple_orchestration</span><span>REST / FastAPI</span></div></div>
+<div class="layer"><div class="lname">Agentes<small>AGENTS</small></div><div class="lmods"><span>pinneapple_llm</span><span>pinneapple_reason</span><span>pinneapple_query</span><span>pinneapple_condense</span><span>pinneapple_flow</span><span>pinneapple_mcp</span></div></div>
+<div class="layer"><div class="lname">Modelos<small>NEURAL</small></div><div class="lmods"><span>pinneapple_neural</span><span>pinneapple_models</span><span>pinneapple_train</span><span>pinneapple_worldmodel</span><span>PINN</span><span>FNO</span><span>DeepONet</span><span>GNN</span></div></div>
+<div class="layer"><div class="lname">Física &amp; solvers<small>PHYSICS</small></div><div class="lmods"><span>pinneapple_physics</span><span>pinneapple_solvers</span><span>pinneapple_simulation</span><span>pinneapple_problemdesign</span><span>OpenFOAM</span><span>FEniCS/dolfinx</span><span>CalculiX</span></div></div>
+<div class="layer"><div class="lname">Análise &amp; verificação<small>ANALYSIS &amp; UQ</small></div><div class="lmods"><span>pinneapple_analysis</span><span>pinneapple_veriphysics</span><span>pinneapple_check</span><span>pinneapple_decision</span><span>pinneapple_adaptation</span><span>pinneapple_stability</span><span>UQ</span><span>EnKF</span></div></div>
+<div class="layer"><div class="lname">Dados &amp; geometria<small>DATA</small></div><div class="lmods"><span>pinneapple_data</span><span>pinneapple_design</span><span>pinneapple_catalog</span><span>pinneapple_pdb</span><span>pinneapple_twin3d</span><span>pinneapple_blender</span><span>pinneapple_unity</span><span>pinneapple_perception</span></div></div>
+<div class="layer"><div class="lname">Núcleo<small>CORE</small></div><div class="lmods"><span>pinneapple_core</span><span>pinneapple_registry</span><span>pinneapple_tools</span><span>pinneapple_security</span><span>pinneapple_systems</span><span>pinneapple_science</span><span>pinneapple_presets</span><span>pinneapple_quantum</span><span>pinneapple_futures</span></div></div>
       </div>
       <div class="note reveal"><span><b>Por que isso importa:</b> a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI. Aqui a referência é sempre externa ao treino.</span></div>
     </div>
@@ -107,9 +108,9 @@ report.verify_against(<span class="s">"finite-volume"</span>)  <span class="c">#
       <div>
         <p class="eyebrow">Começar</p>
         <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">A equação entra como texto</h2>
-        <p style="color:var(--text-dim)">Instalação com um comando, sem build. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.</p>
+        <p style="color:var(--text-dim)">Instalação com um comando, sem build. O PyPI está na 0.7.0 e o repositório já está na 0.8.0. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.</p>
         <h3 style="margin:1.8rem 0 .8rem">O que você ganha no primeiro dia</h3>
-        <ul class="checks"><li><b>Um ambiente reproduzível</b>: 248 exemplos com saída versionada, para comparar com o seu resultado.</li><li><b>Benchmarks públicos</b>: SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.</li><li><b>Interoperabilidade real</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.</li><li><b>Padrões da indústria</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.</li></ul>
+        <ul class="checks"><li><b>Um ambiente reproduzível</b>: 105 projetos de exemplo, 173 execuções com saída versionada e 642 arquivos de teste, para comparar com o seu resultado.</li><li><b>Benchmarks públicos</b>: SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.</li><li><b>Interoperabilidade real</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.</li><li><b>Padrões da indústria</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.</li></ul>
         <p class="section-cta" style="margin-top:1.6rem"><a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a><a class="btn btn-ghost" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Abrir a documentação ↗</a></p>
       </div>
     </div>
@@ -123,7 +124,7 @@ report.verify_against(<span class="s">"finite-volume"</span>)  <span class="c">#
       </div>
       <div class="grid-2 reveal"><article class="repo">
           <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/PINNeAPPle</h3>
-            <p>O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.</p><div class="rmeta"><span>★ 104 · forks 28 · Apache-2.0 · PyPI 0.7.0</span></div></div>
+            <p>O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.</p><div class="rmeta"><span>★ 118 · forks 34 · Apache-2.0 · PyPI 0.7.0 · repositório 0.8.0</span></div></div>
           <div class="rlinks"><a class="btn btn-ghost btn-sm" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></div>
         </article><article class="repo">
           <div><h3><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>PINNeAPPle-Labs/pinnfactory</h3>

@@ -79,7 +79,7 @@
         <div><p class="eyebrow">O que é</p><h2>Uma plataforma que responde engenharia, não que desenha gráfico</h2></div>
         <div><p>A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Engineering faz o caminho contrário: começa no pedido, escrito em português comum, e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.</p><p style="margin-top:1rem">Por baixo está a biblioteca aberta da PINNeAPPle: cada ferramenta é uma função real, com assinatura, unidade, faixa de validade e o histórico de testes. A plataforma não inventa capacidade: ela encontra o que existe, confere se o seu caso cabe ali e executa em ambiente isolado.</p></div>
       </div>
-      <div class="exist-grid reveal"><div class="exist-cell"><b>9.523</b><span>ferramentas catalogadas pelo próprio Studio</span></div><div class="exist-cell"><b>4.645</b><span>executáveis de ponta a ponta</span></div><div class="exist-cell"><b>1.115</b><span>verificadas contra uma referência</span></div><div class="exist-cell"><b>66 de 92</b><span>exemplos e reproduções que rodam no Studio</span></div></div>
+      <div class="exist-grid reveal"><div class="exist-cell"><b>10.055</b><span>ferramentas catalogadas pelo próprio Studio</span></div><div class="exist-cell"><b>4.987</b><span>executáveis de ponta a ponta</span></div><div class="exist-cell"><b>1.693</b><span>verificadas contra uma referência</span></div><div class="exist-cell"><b>71 de 97</b><span>exemplos e reproduções que rodam no Studio</span></div></div>
       <p class="src-note reveal">Contagens lidas do Studio na versão atual, as mesmas que a tela de cobertura mostra, a partir do código e das execuções gravadas.</p>
     </div>
   </section>
@@ -116,7 +116,8 @@
         <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">O que a plataforma faz para não te enganar</h2>
         <ul class="checks"><li><b>Ela confere a validade antes de rodar</b>: se o seu caso está fora da faixa em que a ferramenta foi validada, o resultado não sai como se valesse.</li><li><b>Ela não inventa capacidade</b>, porque o catálogo é gerado por introspecção do código real, com o estado de cada ferramenta: descoberta, testada ou verificada.</li><li><b>O que não rodou aparece como não rodou</b>: uma checagem que não executou nunca conta como aprovada e derruba a cobertura do resultado.</li><li><b>A evidência fica arquivada</b>: versão, hardware, tempo, memória, logs e hash de cada arquivo, para reproduzir a execução.</li><li><b>Existe um portão humano</b>: formulação e aprovação de modelo são decisões de engenharia, não da plataforma.</li></ul>
       </div>
-      <figure class="media">
+      <figure class="frame">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>VeriPhysics · verificação</span></div>
         <img src="../img/verificacao.jpg" alt="Relatório de checagens com nota por item" loading="lazy" decoding="async" />
         <figcaption>Nota por checagem, com cobertura declarada. O que não rodou não conta como aprovado.</figcaption>
       </figure>
@@ -142,7 +143,7 @@
         <div><p class="eyebrow">O produto por dentro</p><h2>Telas reais do Studio, hoje</h2></div>
         <p>Nada de mockup: são capturas da aplicação em desenvolvimento, com os dados de uma execução real.</p>
       </div>
-      <div class="shot-grid reveal"><figure class="shot"><img src="../img/eng/studio-report.webp" alt="Relatório de uma execução com verificações e status de evidência" loading="lazy" decoding="async" /><figcaption>O relatório de uma execução: gráfico, verificações com valor e limite, status da evidência e o bloco de reprodução.</figcaption></figure><figure class="shot"><img src="../img/eng/studio-coverage.webp" alt="Tela de cobertura do Studio" loading="lazy" decoding="async" /><figcaption>A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas, nunca estimado.</figcaption></figure></div>
+      <div class="shot-grid reveal"><figure class="shot"><img src="../img/eng/studio-report.webp" alt="Uma execução do Studio com o resultado e as verificações" loading="lazy" decoding="async" /><figcaption>A execução: o job concluído, a evidência declarada, o valor que sai e as verificações com valor e limite, uma por uma.</figcaption></figure><figure class="shot"><img src="../img/eng/studio-coverage.webp" alt="Tela de cobertura do Studio" loading="lazy" decoding="async" /><figcaption>A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas, nunca estimado.</figcaption></figure></div>
       <div class="section-head reveal" style="margin-top:3.5rem">
         <p class="eyebrow">Veja rodando</p><h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">Do pedido ao relatório, em 28 segundos</h2>
         <p>Este vídeo é uma gravação da aplicação, com legenda: a busca em português, a escolha da ferramenta, a execução e a volta com as verificações. Nada foi encenado. A espera do solver foi cortada. O corte preto no meio do vídeo marca onde.</p>

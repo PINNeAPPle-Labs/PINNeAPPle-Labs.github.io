@@ -797,11 +797,11 @@ HOME = {
         caps_p="Cada cartão traz um caso que já rodou, com o número medido. Os exemplos vêm da biblioteca aberta, não de uma promessa de roadmap.",
         how_eyebrow="Como funciona",
         how_h="Três passos, nenhum deles técnico",
-        how_p="O que hoje depende de alguém que saiba montar o caso, amanhã é uma frase escrita e uma conferência.",
+        how_p="O que hoje exige alguém que saiba montar o caso vira uma frase escrita, uma conferência automática e um relatório que se pode mostrar.",
         how=[
-            ("Você escreve o problema", "Em português comum: o que precisa, com que material, que tamanho, que limite. Sem nome de método e sem arquivo de configuração."),
-            ("A plataforma confere e escolhe", "Vê se já existe ferramenta que resolve, se os seus números estão dentro do que ela já provou, e diz o que falta antes de rodar."),
-            ("Você recebe resultado e relatório", "Com as verificações que rodaram, as que não rodaram, a versão do código e o que ainda não foi provado."),
+            ("Você escreve o problema", "Em português comum: o que precisa, de que material, com que tamanho e qual limite. Sem nome de método e sem arquivo de configuração."),
+            ("A plataforma diz se cobre", "Procura a ferramenta que resolve, compara os seus números com a faixa em que ela foi validada e aponta o que falta antes de rodar."),
+            ("Você recebe resultado e relatório", "Com o valor, as verificações que rodaram, as que não rodaram, a versão do código e o que continua não provado."),
         ],
         stats=[
             ("~200.000×", "mais rápido que a simulação 3D real, num substituto térmico", "4,46% de erro vs. FEniCS"),
@@ -810,13 +810,13 @@ HOME = {
             ("2,6 h", "de antecedência no alarme, com o erro declarado", "HX-201, incrustação"),
         ],
         proofs_eyebrow="Do que já rodou",
-        proofs_h="Três resultados, três artigos",
-        proofs_p="Cada um contado por inteiro: o que foi medido, contra o que foi comparado e onde ainda não chegamos.",
+        proofs_h="O que já rodou, com o número na frente",
+        proofs_p="Três experimentos abertos, cada um com artigo inteiro: o que foi medido, contra o que foi comparado e o que ainda não está provado.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Pressão na pele de uma asa otimizada",
-             "Otimização", "1.920 asas, 3 objetivos", "asa-1920-projetos"),
-            ("img/surrogate_speed_rerun.jpg", "Substituto contra FEA 3D",
-             "Modelo substituto", "200 mil vezes mais rápido", "substituto-termico"),
+             "Otimização", "1.920 asas, três objetivos", "asa-1920-projetos"),
+            ("img/erosao.jpg", "Mapa de erosão na parede de uma curva de 90°",
+             "CFD", "A erosão que bateu com o ensaio", "erosao-curva-90"),
             ("img/twin.jpg", "Gêmeo digital de um ativo em 3D",
              "Gêmeo digital", "O aviso 2,6 h antes", "gemeo-hx201"),
         ],
@@ -866,11 +866,11 @@ HOME = {
         caps_p="Every card carries a case that has already run, with its measured number. The examples come from the open library, not from a roadmap promise.",
         how_eyebrow="How it works",
         how_h="Three steps, none of them technical",
-        how_p="What today depends on someone who knows how to build the case becomes, tomorrow, a written sentence and a check.",
+        how_p="What today needs someone who knows how to build the case becomes a written sentence, an automatic check and a report you can show.",
         how=[
-            ("You write the problem", "In plain language: what you need, which material, what size, what limit. No method names and no configuration file."),
-            ("The platform checks and chooses", "It looks for a tool that already solves it, checks whether your numbers sit inside what it has proven, and says what is missing before running."),
-            ("You get the result and the report", "With the checks that ran, the ones that did not, the code version and what has not been proven yet."),
+            ("You write the problem", "In plain words: what you need, from which material, at what size, under which limit. No method name and no configuration file."),
+            ("It says whether it covers you", "It looks for the tool that solves it, compares your numbers with the range that tool was validated in, and names what is missing before the run."),
+            ("You get the result and the report", "With the value, the checks that ran, the ones that did not, the code version and what is still unproven."),
         ],
         stats=[
             ("~200,000×", "faster than the real 3D simulation, on a thermal surrogate", "4.46% error vs. FEniCS"),
@@ -879,13 +879,13 @@ HOME = {
             ("2.6 h", "of alarm lead, with the error stated", "HX-201, fouling"),
         ],
         proofs_eyebrow="From what already ran",
-        proofs_h="Three results, three articles",
-        proofs_p="Each told in full: what was measured, what it was compared against, and where we are not there yet.",
+        proofs_h="What already ran, with the number up front",
+        proofs_p="Three open experiments, each with a full article: what was measured, what it was compared against, and what is not proven yet.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Skin pressure on an optimized wing",
-             "Optimization", "1,920 wings, 3 objectives", "asa-1920-projetos"),
-            ("img/surrogate_speed_rerun.jpg", "Surrogate against 3D FEA",
-             "Surrogate model", "200,000 times faster", "substituto-termico"),
+             "Optimization", "1,920 wings, three objectives", "asa-1920-projetos"),
+            ("img/erosao.jpg", "Erosion map on the wall of a 90° bend",
+             "CFD", "Erosion that met the published experiment", "erosao-curva-90"),
             ("img/twin.jpg", "Digital twin of an asset in 3D",
              "Digital twin", "The warning 2.6 h ahead", "gemeo-hx201"),
         ],
@@ -921,10 +921,10 @@ PRODUCT = {
             "Por baixo está a biblioteca aberta da PINNeAPPle: cada ferramenta é uma função real, com assinatura, unidade, faixa de validade e o histórico de testes. A plataforma não inventa capacidade: ela encontra o que existe, confere se o seu caso cabe ali e executa em ambiente isolado.",
         ],
         counts=[
-            ("9.523", "ferramentas catalogadas pelo próprio Studio"),
-            ("4.645", "executáveis de ponta a ponta"),
-            ("1.115", "verificadas contra uma referência"),
-            ("66 de 92", "exemplos e reproduções que rodam no Studio"),
+            ("10.055", "ferramentas catalogadas pelo próprio Studio"),
+            ("4.987", "executáveis de ponta a ponta"),
+            ("1.693", "verificadas contra uma referência"),
+            ("71 de 97", "exemplos e reproduções que rodam no Studio"),
         ],
         counts_note="Contagens lidas do Studio na versão atual, as mesmas que a tela de cobertura mostra, a partir do código e das execuções gravadas.",
         flow_eyebrow="Do pedido ao relatório",
@@ -973,7 +973,7 @@ PRODUCT = {
         shots_h="Telas reais do Studio, hoje",
         shots_p="Nada de mockup: são capturas da aplicação em desenvolvimento, com os dados de uma execução real.",
         shots=[
-            ("img/eng/studio-report.webp", "Relatório de uma execução com verificações e status de evidência", "O relatório de uma execução: gráfico, verificações com valor e limite, status da evidência e o bloco de reprodução."),
+            ("img/eng/studio-report.webp", "Uma execução do Studio com o resultado e as verificações", "A execução: o job concluído, a evidência declarada, o valor que sai e as verificações com valor e limite, uma por uma."),
             ("img/eng/studio-coverage.webp", "Tela de cobertura do Studio", "A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas, nunca estimado."),
         ],
         film_eyebrow="Veja rodando",
@@ -1016,10 +1016,10 @@ PRODUCT = {
             "Underneath sits PINNeAPPle's open library: every tool is a real function, with a signature, units, a validity range and a test history. The platform does not invent capability: it finds what exists, checks whether your case fits, and runs it in an isolated environment.",
         ],
         counts=[
-            ("9,523", "tools catalogued by the Studio itself"),
-            ("4,645", "runnable end to end"),
-            ("1,115", "verified against a reference"),
-            ("66 of 92", "examples and reproductions that run in the Studio"),
+            ("10,055", "tools catalogued by the Studio itself"),
+            ("4,987", "runnable end to end"),
+            ("1,693", "verified against a reference"),
+            ("71 of 97", "examples and reproductions that run in the Studio"),
         ],
         counts_note="Counts read from the Studio in its current version, the same ones the coverage screen shows, taken from the code and the recorded runs.",
         flow_eyebrow="From request to report",
@@ -1068,7 +1068,7 @@ PRODUCT = {
         shots_h="Real screens from the Studio, today",
         shots_p="No mockups: these are captures of the application under development, with data from a real run.",
         shots=[
-            ("img/eng/studio-report.webp", "A run's report with verifications and evidence status", "A run's report: chart, checks with value and limit, evidence status and the reproduce block."),
+            ("img/eng/studio-report.webp", "A Studio run with its result and checks", "The run: job finished, evidence stated, the value that comes out and the checks with value and limit, one by one."),
             ("img/eng/studio-coverage.webp", "The Studio coverage screen", "The coverage screen: what runs through the Studio, counted from the code and the recorded runs, never estimated."),
         ],
         film_eyebrow="See it running",
@@ -1395,7 +1395,8 @@ def page_produto(lang: str) -> str:
         <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">{C['trust_h']}</h2>
         <ul class="checks">{trust}</ul>
       </div>
-      <figure class="media">
+      <figure class="frame">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>VeriPhysics · {'verificação' if lang == 'pt' else 'verification'}</span></div>
         <img src="{root}img/verificacao.jpg" alt="Relatório de checagens com nota por item" loading="lazy" decoding="async" />
         <figcaption>Nota por checagem, com cobertura declarada. O que não rodou não conta como aprovado.</figcaption>
       </figure>
@@ -1584,36 +1585,38 @@ def page_post(lang: str, slug: str) -> str:
 # ---------------------------------------------------------------------------
 
 LAYERS = [
-    ("Aplicação", "APPS &amp; SERVING", ["pinneapple_app", "pinneapple_lab", "pinneapple_hub", "pinneapple_orchestration", "pinneapple_llm", "REST / FastAPI"]),
-    ("Modelos", "NEURAL", ["pinneapple_neural", "pinneapple_models", "PINN", "FNO", "DeepONet", "GNN", "LSTM", "VPINN"]),
-    ("Física &amp; solvers", "PHYSICS", ["pinneapple_physics", "pinneapple_solvers", "pinneapple_simulation", "pinneapple_pdb", "OpenFOAM", "FEniCS/dolfinx", "CalculiX"]),
-    ("Análise", "ANALYSIS &amp; UQ", ["pinneapple_analysis", "pinneapple_veriphysics", "pinneapple_decision", "pinneapple_adaptation", "UQ", "EnKF", "Monte Carlo"]),
-    ("Dados &amp; geometria", "DATA", ["pinneapple_data", "pinneapple_design", "pinneapple_catalog", "pinneapple_pdb", "pinneapple_twin3d", "pinneapple_blender"]),
-    ("Núcleo", "CORE", ["pinneapple_core", "pinneapple_problemdesign", "pinneapple_registry", "pinneapple_tools", "pinneapple_security", "pinneapple_systems"]),
+    ("Aplicação", "APPS &amp; SERVING", ["pinneapple_app", "pinneapple_studio", "pinneapple_lab", "pinneapple_hub", "pinneapple_arena", "pinneapple_autolab", "pinneapple_orchestration", "REST / FastAPI"]),
+    ("Agentes", "AGENTS", ["pinneapple_llm", "pinneapple_reason", "pinneapple_query", "pinneapple_condense", "pinneapple_flow", "pinneapple_mcp"]),
+    ("Modelos", "NEURAL", ["pinneapple_neural", "pinneapple_models", "pinneapple_train", "pinneapple_worldmodel", "PINN", "FNO", "DeepONet", "GNN"]),
+    ("Física &amp; solvers", "PHYSICS", ["pinneapple_physics", "pinneapple_solvers", "pinneapple_simulation", "pinneapple_problemdesign", "OpenFOAM", "FEniCS/dolfinx", "CalculiX"]),
+    ("Análise &amp; verificação", "ANALYSIS &amp; UQ", ["pinneapple_analysis", "pinneapple_veriphysics", "pinneapple_check", "pinneapple_decision", "pinneapple_adaptation", "pinneapple_stability", "UQ", "EnKF"]),
+    ("Dados &amp; geometria", "DATA", ["pinneapple_data", "pinneapple_design", "pinneapple_catalog", "pinneapple_pdb", "pinneapple_twin3d", "pinneapple_blender", "pinneapple_unity", "pinneapple_perception"]),
+    ("Núcleo", "CORE", ["pinneapple_core", "pinneapple_registry", "pinneapple_tools", "pinneapple_security", "pinneapple_systems", "pinneapple_science", "pinneapple_presets", "pinneapple_quantum", "pinneapple_futures"]),
 ]
 
 LAYERS_EN = [
     ("Application", "APPS &amp; SERVING", LAYERS[0][2]),
-    ("Models", "NEURAL", LAYERS[1][2]),
-    ("Physics &amp; solvers", "PHYSICS", LAYERS[2][2]),
-    ("Analysis", "ANALYSIS &amp; UQ", LAYERS[3][2]),
-    ("Data &amp; geometry", "DATA", LAYERS[4][2]),
-    ("Core", "CORE", LAYERS[5][2]),
+    ("Agents", "AGENTS", LAYERS[1][2]),
+    ("Models", "NEURAL", LAYERS[2][2]),
+    ("Physics &amp; solvers", "PHYSICS", LAYERS[3][2]),
+    ("Analysis &amp; verification", "ANALYSIS &amp; UQ", LAYERS[4][2]),
+    ("Data &amp; geometry", "DATA", LAYERS[5][2]),
+    ("Core", "CORE", LAYERS[6][2]),
 ]
 
 LIB = {
     "pt": dict(
         eyebrow="A biblioteca",
         h1="Um pipeline, do PDE escrito à predição servida.",
-        lead="Cada camada é um pacote Python independente no PyPI: dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.",
+        lead="44 pacotes Python num só install: você importa só a camada que precisa. Nenhuma camada esconde a de baixo, então você vê a malha, o resíduo, a arquitetura e o erro.",
         stack_h="Arquitetura em camadas",
         why_bold="Por que isso importa",
         why="a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI. Aqui a referência é sempre externa ao treino.",
         start_h="A equação entra como texto",
-        start_p="Instalação com um comando, sem build. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.",
+        start_p="Instalação com um comando, sem build. O PyPI está na 0.7.0 e o repositório já está na 0.8.0. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.",
         gains_h="O que você ganha no primeiro dia",
         gains=[
-            "<b>Um ambiente reproduzível</b>: 248 exemplos com saída versionada, para comparar com o seu resultado.",
+            "<b>Um ambiente reproduzível</b>: 105 projetos de exemplo, 173 execuções com saída versionada e 642 arquivos de teste, para comparar com o seu resultado.",
             "<b>Benchmarks públicos</b>: SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.",
             "<b>Interoperabilidade real</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.",
             "<b>Padrões da indústria</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.",
@@ -1623,7 +1626,7 @@ LIB = {
         honest_bold="A separação honesta",
         honest="Os quatro repositórios acima são genuinamente abertos. Os produtos são entregues como engenharia, não como release de código aberto.",
         repos=[
-            ("PINNeAPPle-Labs/PINNeAPPle", "O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.", "★ 104 · forks 28 · Apache-2.0 · PyPI 0.7.0"),
+            ("PINNeAPPle-Labs/PINNeAPPle", "O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.", "★ 118 · forks 34 · Apache-2.0 · PyPI 0.7.0 · repositório 0.8.0"),
             ("PINNeAPPle-Labs/pinnfactory", "Framework leve e independente para PINNs a partir de PDEs em SymPy, com autodiferenciação em PyTorch.", "★ 72 · Apache-2.0 · standalone"),
             ("PINNeAPPle-Labs/PINNeAPPle-Benchmark", "Benchmarks públicos e reprodutíveis: SSQN Helmholtz, LBM vortex shedding, LPM, latência, shard balance.", "reprodutível · gráficos versionados"),
             ("PINNeAPPle-Labs/pinnaitor", "Framework agêntico de uso geral (ELM AI Agentic Framework), em estágio anterior, dito com clareza.", "★ 22 · MIT · estágio inicial"),
@@ -1634,15 +1637,15 @@ LIB = {
     "en": dict(
         eyebrow="The library",
         h1="One pipeline, from the written PDE to the served prediction.",
-        lead="Every layer is an independent Python package on PyPI: use only the part you need. No layer hides the one below it: you see the mesh, the residual, the architecture and the error.",
+        lead="44 Python packages in one install: you import only the layer you need. No layer hides the one below it, so you see the mesh, the residual, the architecture and the error.",
         stack_h="Layered architecture",
         why_bold="Why this matters",
         why="the same library that trains the network also runs the reference solver. Comparing a model against itself is the most common mistake in Physics AI. Here the reference is always external to training.",
         start_h="The equation goes in as text",
-        start_p="One-command install, no build. The same package runs the problem, the training, the comparison against the solver and the report.",
+        start_p="One-command install, no build. PyPI is on 0.7.0 and the repository is already on 0.8.0. The same package runs the problem, the training, the comparison against the solver and the report.",
         gains_h="What you get on day one",
         gains=[
-            "<b>A reproducible environment</b>: 248 examples with versioned output, to compare against your own result.",
+            "<b>A reproducible environment</b>: 105 example projects, 173 runs with versioned output and 642 test files, to compare against your own result.",
             "<b>Public benchmarks</b>: SSQN Helmholtz, LBM vortex shedding, LPM design space, latency and I/O.",
             "<b>Real interoperability</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD and glTF in one session.",
             "<b>Industry standards</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto and OPC UA for what the plant already consumes.",
@@ -1652,7 +1655,7 @@ LIB = {
         honest_bold="The honest split",
         honest="The four repositories above are genuinely open source. The products are delivered as engineering, not as an open-source release.",
         repos=[
-            ("PINNeAPPle-Labs/PINNeAPPle", "The core: PINN, FNO, DeepONet, GNN, solvers, geometry, UQ, digital twins and REST serving.", "★ 104 · 28 forks · Apache-2.0 · PyPI 0.7.0"),
+            ("PINNeAPPle-Labs/PINNeAPPle", "The core: PINN, FNO, DeepONet, GNN, solvers, geometry, UQ, digital twins and REST serving.", "★ 118 · 34 forks · Apache-2.0 · PyPI 0.7.0 · repository 0.8.0"),
             ("PINNeAPPle-Labs/pinnfactory", "A lightweight, standalone framework for PINNs from PDEs in SymPy, with PyTorch autodiff.", "★ 72 · Apache-2.0 · standalone"),
             ("PINNeAPPle-Labs/PINNeAPPle-Benchmark", "Public, reproducible benchmarks: SSQN Helmholtz, LBM vortex shedding, LPM, latency, shard balance.", "reproducible · versioned plots"),
             ("PINNeAPPle-Labs/pinnaitor", "A general-purpose agentic framework (ELM AI Agentic Framework), at an earlier stage, said plainly.", "★ 22 · MIT · early stage"),
