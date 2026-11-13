@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Captures the Studio app screenshots the site shows, in dark mode.
 
-    python3 tools/capture_shots.py [--url http://127.0.0.1:8010/] [--key-file /tmp/pea_key.txt]
+    python3 tools/capture_shots.py [--url http://127.0.0.1:8010/] [--key-file /tmp/pea_key.txt] [--lang pt|en]
 
 The app must be running. Writes `img/eng/*.webp` plus `img/eng/studio-home.jpg`
-(the Open Graph image, which has to be JPEG).
+(the Open Graph image, which has to be JPEG). With `--lang en` every file gets an
+`-en` suffix and the UI is switched to English, which is what the English card of
+the LinkedIn post uses; the site itself shows the Portuguese captures.
 
 Why capture instead of importing the PNGs from `pinneapple-engineering-api/docs/screenshots`:
 those are in the light theme, and a light capture in a dark page reads as a hole punched
@@ -29,6 +31,7 @@ W, H = 1366, 900
 HOME_H = 916  # home content ends here; taller would only add empty space
 QUERY = "dissipador de calor com aletas"
 PRESET = 'a[href*="#/tool/preset%3Aplate_fin_heatsink_forced"]'
+RUN_LABEL = {"pt": "Rodar", "en": "Run"}
 
 
 def save(page, name: str, webp: bool = True) -> None:
@@ -45,8 +48,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default="http://127.0.0.1:8010/")
     ap.add_argument("--key-file", type=Path, default=Path("/tmp/pea_key.txt"))
+    ap.add_argument("--lang", choices=["pt", "en"], default="pt",
+                    help="en writes every file with an -en suffix, in an English UI")
     args = ap.parse_args()
 
+    sfx = "" if args.lang == "pt" else "-en"
+    run_label = RUN_LABEL[args.lang]
     key = re.search(r"pea_[A-Za-z0-9]+", args.key_file.read_text()).group(0)
     OUT.mkdir(parents=True, exist_ok=True)
 
@@ -59,6 +66,7 @@ def main() -> int:
         page = ctx.new_page()
         page.goto(args.url, wait_until="networkidle")
         page.select_option("#theme", "dark")
+        page.select_option("#lang", args.lang)
         page.wait_for_timeout(700)
         if page.locator("#keybtn").is_visible():
             page.click("#keybtn")
@@ -69,13 +77,13 @@ def main() -> int:
         # 1. the home screen
         page.evaluate("window.scrollTo(0,0)")
         page.wait_for_timeout(500)
-        save(page, "studio-home.webp")
-        im = Image.open(OUT / "studio-home.webp").convert("RGB")
+        save(page, f"studio-home{sfx}.webp")
+        im = Image.open(OUT / f"studio-home{sfx}.webp").convert("RGB")
         im.resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS).save(
-            OUT / "studio-home.jpg", "JPEG", quality=86, optimize=True, progressive=True
+            OUT / f"studio-home{sfx}.jpg", "JPEG", quality=86, optimize=True, progressive=True
         )
-        print(f"{'studio-home.jpg':24} {im.width}x{im.height}  "
-              f"{(OUT / 'studio-home.jpg').stat().st_size // 1024} KB")
+        print(f"{f'studio-home{sfx}.jpg':24} {im.width}x{im.height}  "
+              f"{(OUT / f'studio-home{sfx}.jpg').stat().st_size // 1024} KB")
 
         # every shot below is a viewport of 1366x900
         page.set_viewport_size({"width": W, "height": H})
@@ -84,35 +92,36 @@ def main() -> int:
         page.fill("#hq", QUERY)
         page.keyboard.press("Enter")
         page.wait_for_timeout(2500)
-        save(page, "studio-explore.webp")
+        save(page, f"studio-explore{sfx}.webp")
 
         # 3. a job: the tool, the run, and the checks coming back
         page.click(PRESET)
         page.wait_for_timeout(2000)
         page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
-        page.click("button:has-text('Rodar')")
+        page.click(f"button:has-text('{run_label}')")
         for _ in range(120):
             page.wait_for_timeout(500)
-            if "Verificações" in page.evaluate("document.body.innerText"):
+            if "Verifica" in page.evaluate("document.body.innerText") or \
+               "Checks" in page.evaluate("document.body.innerText"):
                 break
         page.wait_for_timeout(1200)
         # frame the run from the button down: the job, the verdict and the checks are
         # what the page claims, so they all have to be in the picture
-        page.evaluate("""() => {
+        page.evaluate("""(label) => {
             const run = [...document.querySelectorAll('button')]
-                .find(b => b.innerText.trim() === 'Rodar');
+                .find(b => b.innerText.trim() === label);
             if (run) {
                 run.scrollIntoView({block: 'start'});
                 window.scrollBy(0, -140);
             }
-        }""")
+        }""", run_label)
         page.wait_for_timeout(800)
-        save(page, "studio-report.webp")
+        save(page, f"studio-report{sfx}.webp")
 
         # 4. coverage
         page.click('a[href="#/cobertura"]')
         page.wait_for_timeout(2500)
-        save(page, "studio-coverage.webp")
+        save(page, f"studio-coverage{sfx}.webp")
 
         ctx.close()
         browser.close()

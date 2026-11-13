@@ -41,7 +41,7 @@ GitHub Pages serves the files as they are, there is no build step on the server.
 | `img/` | product and capability stills; `img/results/` holds real result plots; `img/exp/` holds the figures each article shows, straight from the example that produced them |
 | `videos/` | hero clip, two base-app recordings, the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`) and the `reel-*.mp4` clips the product section scrolls through; all ship `preload="none"` and only load and play when visible |
 | `tools/` | `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
-| `tools/linkedin/pre-acesso-2027/` | the early-access LinkedIn post (`post.md`) and the card that goes with it: `card.html` is the source, `render.py` writes `card.png` and `card.jpg` (1200x1200) |
+| `tools/linkedin/pre-acesso-2027/` | the early-access LinkedIn post (`post.md`) and the cards that go with it: `card.html` is the source, `render.py` writes `card.png`/`card.jpg` (pt) and `card-en.png`/`card-en.jpg` (en), 1200x1200 |
 | `Dockerfile` | nginx image serving the tree, for a self-hosted deploy |
 
 ## Editing

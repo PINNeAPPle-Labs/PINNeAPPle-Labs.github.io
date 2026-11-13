@@ -1,10 +1,16 @@
 # LinkedIn, pré-acesso ao PINNeAPPle Studio
 
-Post de divulgação da lista de pré-acesso. Imagem: `card.jpg` (1200x1200), gerada por
-`render.py` a partir de `card.html`.
+Post de divulgação da lista de pré-acesso, em português e em inglês.
+
+Imagens, todas 1200x1200, geradas por `render.py` a partir de `card.html`:
+
+| arquivo | idioma | o que tem |
+|---|---|---|
+| `card.jpg` | pt | tela do Studio em português (`img/eng/studio-report.webp`) |
+| `card-en.jpg` | en | a mesma execução com a interface em inglês (`img/eng/studio-report-en.webp`) |
 
 Escrito para: LinkedIn, público de engenharia (mecânica, CFD, simulação) e de AI aplicada.
-Idioma principal: português. A versão em inglês, para o post espelho, está no fim.
+O post em inglês é a versão espelho, para a audiência internacional.
 
 ---
 
@@ -101,3 +107,8 @@ Until then, cases keep running with our team, with a closed scope and the work s
 A primeira linha do post é opinião de engenharia, escrita como tal ("na prática"), não é
 número medido. Nenhuma outra afirmação do post é estimativa: todas saem do site ou do
 formulário de pré-acesso.
+
+Sobre a tela do card em inglês: a interface está em inglês, mas a linha do resultado ("T fonte
+64.1 °C ... <= limite 85 °C") sai em português porque é o resumo que a própria ferramenta
+escreve, não um rótulo da interface. Foi mantida assim de propósito, é o texto real da
+execução.

@@ -4,10 +4,11 @@
 <meta charset="utf-8" />
 <title>Card LinkedIn, pré-acesso ao PINNeAPPle Studio</title>
 <!--
-  Card 1200x1200 para o post de pré-acesso no LinkedIn.
-  Renderize com tools/linkedin/pre-acesso-2027/render.py (Playwright, Chrome).
-  Os números vêm do site (img/eng/studio-coverage.webp e a faixa #exist), a tela
-  vem de img/eng/studio-report.webp, uma execução real da aplicação.
+  Card 1200x1200 para o post de pré-acesso no LinkedIn, em pt e em en.
+  Cada texto tem o par data-pt/data-en; o script abaixo troca pelo idioma de
+  ?lang=en e o render.py escreve os dois PNGs (card.png e card-en.png).
+  Os números vêm do site (seção #exist), a tela vem de
+  img/eng/studio-report.webp, uma execução real da aplicação.
 -->
 <style>
   @font-face{font-family:'Archivo';font-weight:100 900;font-style:normal;font-display:block;
@@ -118,28 +119,53 @@
       </svg>
       <span>PINNeAPPle<span class="labs"> Labs</span></span>
     </div>
-    <span class="tag">Prévia fechada · 2027</span>
+    <span class="tag" data-pt="Prévia fechada · 2027" data-en="Closed preview · 2027">Prévia fechada · 2027</span>
   </div>
 
   <div class="head pad">
-    <h1>Você escreve o problema. O Studio devolve <em>a conta aberta</em>.</h1>
-    <p class="lead">Ele acha a ferramenta que já existe, confere se o seu caso cabe na faixa em que ela foi <b>validada</b> e devolve o número com as verificações ao lado.</p>
+    <h1 data-pt="Você escreve o problema. O Studio devolve <em>a conta aberta</em>."
+        data-en="You describe the problem. The Studio <em>shows its work</em>.">Você escreve o problema. O Studio devolve <em>a conta aberta</em>.</h1>
+    <p class="lead"
+       data-pt="Ele acha a ferramenta que já existe, confere se o seu caso cabe na faixa em que ela foi <b>validada</b> e devolve o número com as verificações ao lado."
+       data-en="It finds the tool that already exists, checks whether your case falls inside the range that tool was <b>validated</b> over, and returns the number with the checks alongside it.">Ele acha a ferramenta que já existe, confere se o seu caso cabe na faixa em que ela foi <b>validada</b> e devolve o número com as verificações ao lado.</p>
   </div>
 
   <div class="shot">
-    <img src="../../../img/eng/studio-report.webp" alt="Uma execução do Studio: resultado e verificações" />
+    <!-- a captura em inglês é a mesma execução, com a interface trocada -->
+    <img src="../../../img/eng/studio-report.webp" data-en-src="../../../img/eng/studio-report-en.webp"
+         alt="A run of the Studio: result and checks" />
   </div>
-  <p class="cap">Execução real da aplicação · cada verificação com <b>valor</b> e <b>limite</b></p>
+  <p class="cap"
+     data-pt="Execução real da aplicação · cada verificação com <b>valor</b> e <b>limite</b>"
+     data-en="A real run of the application · every check with a <b>value</b> and a <b>limit</b>">Execução real da aplicação · cada verificação com <b>valor</b> e <b>limite</b></p>
 
   <div class="nums">
-    <div class="num"><div class="n">10.055</div><div class="l">ferramentas catalogadas</div></div>
-    <div class="num"><div class="n">4.987</div><div class="l">executáveis de ponta a ponta</div></div>
-    <div class="num"><div class="n hot">1.693</div><div class="l">verificadas contra referência</div></div>
+    <div class="num"><div class="n" data-pt="10.055" data-en="10,055">10.055</div>
+      <div class="l" data-pt="ferramentas catalogadas" data-en="tools catalogued">ferramentas catalogadas</div></div>
+    <div class="num"><div class="n" data-pt="4.987" data-en="4,987">4.987</div>
+      <div class="l" data-pt="executáveis de ponta a ponta" data-en="runnable end to end">executáveis de ponta a ponta</div></div>
+    <div class="num"><div class="n hot" data-pt="1.693" data-en="1,693">1.693</div>
+      <div class="l" data-pt="verificadas contra referência" data-en="verified against a reference">verificadas contra referência</div></div>
     <div class="cta">
-      <span class="b">Entre na lista de pré-acesso</span>
+      <span class="b" data-pt="Entre na lista de pré-acesso" data-en="Join the early-access list">Entre na lista de pré-acesso</span>
       <div class="u">pinneapple-labs.github.io</div>
     </div>
   </div>
 
+<script>
+  // ?lang=en troca todo texto com data-en; sem parâmetro, fica o português.
+  (function () {
+    var lang = new URLSearchParams(location.search).get('lang');
+    if (lang !== 'en') return;
+    document.documentElement.lang = 'en';
+    document.title = 'LinkedIn card, PINNeAPPle Studio early access';
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      el.innerHTML = el.dataset.en;
+    });
+    document.querySelectorAll('[data-en-src]').forEach(function (el) {
+      el.src = el.dataset.enSrc;
+    });
+  })();
+</script>
 </body>
 </html>
