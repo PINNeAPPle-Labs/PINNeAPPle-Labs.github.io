@@ -42,8 +42,8 @@ CHANGELOG = f"{GITHUB}/blob/main/CHANGELOG.md"
 # While a language has no link, that language renders no button at all, because a
 # call to action that leads nowhere is worse than no call to action.
 PREACCESS_FORM = {
-    "pt": "",
-    "en": "",
+    "pt": "https://forms.gle/FQT8ekYrHBaKizQo8",
+    "en": "https://forms.gle/3F3n132d35N1hWyd6",
 }
 
 LANGUAGES = {
