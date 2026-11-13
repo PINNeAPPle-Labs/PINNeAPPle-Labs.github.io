@@ -948,7 +948,6 @@ POST_BY_SLUG = {p["slug"]: p for p in POSTS}
 
 PAGES = {
     "home": "",
-    "produto": "studio",
     "artigos": "artigos",
     "lib": "lib",
 }
@@ -979,8 +978,8 @@ def up(lang: str, page: str) -> str:
 # ---------------------------------------------------------------------------
 
 NAV = {
-    "pt": [("home", "Início"), ("produto", "O produto"), ("artigos", "Artigos"), ("lib", "A lib")],
-    "en": [("home", "Home"), ("produto", "The product"), ("artigos", "Articles"), ("lib", "The library")],
+    "pt": [("home", "Início"), ("artigos", "Artigos"), ("lib", "A lib")],
+    "en": [("home", "Home"), ("artigos", "Articles"), ("lib", "The library")],
 }
 
 STRINGS = {
@@ -1230,7 +1229,7 @@ def footer(lang: str, page: str, root: str) -> str:
         <h4>{S['foot_platform']}</h4>
         <ul>
           <li><a href="{root}{url(lang, 'home') or ''}">{S['lbl_products']}</a></li>
-          <li><a href="{root}{url(lang, 'produto')}">{S['lbl_product']}</a></li>
+          <li><a href="{root}#produto">{S['lbl_product']}</a></li>
           <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
         </ul>
@@ -1848,7 +1847,7 @@ def page_home(lang: str) -> str:
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
           {wa_button(lang)}
-          {pre_button(lang) or f'<a class="btn btn-ghost" href="{root}{url(lang, 'produto')}">{C["cta_secondary"]} →</a>'}
+          {pre_button(lang) or f'<a class="btn btn-ghost" href="{root}#produto">{C["cta_secondary"]} →</a>'}
         </div>
         <p class="hero-note">{S['hero_note']}</p>
         <div class="hero-meta">{chips}</div>
@@ -1892,62 +1891,7 @@ def page_home(lang: str) -> str:
   </section>
 """)
 
-    points = "".join(f"<li>{p}</li>" for p in C["product_points"])
-    parts.append(f"""
-  <section id="produto">
-    <div class="wrap">
-      <div class="split-block reveal">
-        <div>
-          <p class="badge-soon">{S['soon']}</p>
-          <h2 style="margin-top:1.1rem">{C['product_h']}</h2>
-          <p style="color:var(--text-dim);margin-top:1rem">{C['product_lead']}</p>
-          <ul class="checks">{points}</ul>
-          <p class="product-actions">
-            <a class="btn btn-primary" href="{root}{url(lang, 'produto')}">{C['product_cta']} →</a>
-            <a class="btn btn-ghost" href="https://wa.me/{WHATSAPP}?text={_q(C['product_soon'])}" target="_blank" rel="noopener">{'Entrar na lista' if lang == 'pt' else 'Join the list'}</a>
-          </p>
-          <p class="src-note">{C['product_soon']}</p>
-        </div>
-        <div>
-          {shot('img/eng/studio-report.webp', C['product_cap'], C['product_cap'], root)}
-        </div>
-      </div>
-    </div>
-  </section>
-""")
-
-    caps = "".join(
-        f'<article class="cap reveal"><p class="kind">{kind}</p><h3>{title}</h3><p>{body}</p>'
-        f'<p class="ex"><b>{example}</b></p></article>'
-        for kind, title, body, example in CAPS[lang]
-    )
-    parts.append(f"""
-  <section id="capacidades" class="alt">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['caps_eyebrow']}</p><h2>{C['caps_h']}</h2></div>
-        <p>{C['caps_p']}</p>
-      </div>
-      <div class="grid-3 reveal">{caps}</div>
-    </div>
-  </section>
-""")
-
-    steps = "".join(
-        f'<div class="step reveal"><span class="sn">0{i + 1}</span><h3>{t}</h3><p>{b}</p></div>'
-        for i, (t, b) in enumerate(C["how"])
-    )
-    parts.append(f"""
-  <section id="como">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['how_eyebrow']}</p><h2>{C['how_h']}</h2></div>
-        <p>{C['how_p']}</p>
-      </div>
-      <div class="steps cols3 reveal">{steps}</div>
-    </div>
-  </section>
-""")
+    parts.append(produto_sections(lang, root))
 
     stats = "".join(
         f'    <div class="stat-cell" role="listitem"><div class="n{" cyan" if i % 2 else ""}">{n}</div>'
@@ -2032,11 +1976,10 @@ def page_home(lang: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def page_produto(lang: str) -> str:
-    root = up(lang, "produto")
+def produto_sections(lang: str, root: str) -> str:
+    """The product deep dive, rendered inside the home page."""
     S = STRINGS[lang]
     C = PRODUCT[lang]
-    page = "produto"
 
     chips = "".join(f'<span class="chip">{c}</span>' for c in C["chips"])
     counts = "".join(
@@ -2071,27 +2014,7 @@ def page_produto(lang: str) -> str:
         for name, what, when in C["state_rows"]
     )
 
-    return "".join([
-        head(lang, page, root), header(lang, page, root),
-        f"""<main id="main">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="badge-soon">{S['soon']}</p>
-        <h1 style="margin-top:1.1rem">{C['h1']}</h1>
-        <p class="lead">{C['lead']}</p>
-        <div class="hero-actions">
-          {pre_button(lang, "btn btn-primary") or f'<a class="btn btn-primary" href="https://wa.me/{WHATSAPP}?text={_q(C["cta_primary"])}" target="_blank" rel="noopener">{C["cta_primary"]}</a>'}
-          <a class="btn btn-ghost" href="https://wa.me/{WHATSAPP}?text={_q(S['wa_msg'])}" target="_blank" rel="noopener">{S['wa']}</a>
-        </div>
-        <p class="hero-note">{S['prod_note']}</p>
-        <div class="hero-meta">{chips}</div>
-      </div>
-      <div>{shot('img/eng/studio-home.webp', C['hero_cap'], C['hero_cap'], root)}</div>
-    </div>
-  </section>
-
-  <section id="oque" class="alt tight">
+    return f"""  <section id="produto" class="alt tight">
     <div class="wrap">
       <div class="section-head split reveal">
         <div><p class="eyebrow">{C['what_eyebrow']}</p><h2>{C['what_h']}</h2></div>
@@ -2197,12 +2120,7 @@ def page_produto(lang: str) -> str:
       </p>
     </div>
   </section>
-""",
-        pre_band(lang, root),
-        cta_band(lang, root),
-        "</main>",
-        footer(lang, page, root),
-    ])
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -2515,13 +2433,16 @@ def page_lib(lang: str) -> str:
 
 BUILDERS = {
     "home": page_home,
-    "produto": page_produto,
     "artigos": page_artigos,
     "lib": page_lib,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
 REDIRECTS = {
+    "studio": {
+        "pt": ("/#produto", "Ir para o produto"),
+        "en": ("/en/#produto", "Go to the product"),
+    },
     "engineering": {
         "pt": ("/studio/", "Ver o produto"),
         "en": ("/en/studio/", "See the product"),

@@ -14,18 +14,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/studio/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/studio/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/studio/"/>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pinneapple-labs.github.io/en/studio/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/studio/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/studio/"/>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://pinneapple-labs.github.io/artigos/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/"/>

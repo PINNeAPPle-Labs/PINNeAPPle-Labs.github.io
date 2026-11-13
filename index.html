@@ -36,7 +36,6 @@
 
     <nav class="main" id="primary-nav" aria-label="Plataforma">
       <a href="" aria-current="page">Início</a>
-      <a href="studio/">O produto</a>
       <a href="artigos/">Artigos</a>
       <a href="lib/">A lib</a>
       <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
@@ -100,49 +99,122 @@
       <div class="problem-grid reveal"><article class="problem-card reveal"><h3>O prazo</h3><p>Uma semana para montar o caso, outra para rodar, mais uma para conferir. Quando o resultado chega, a decisão já foi tomada no chute.</p></article><article class="problem-card reveal"><h3>O custo</h3><p>Licença, máquina parada e especialista. Às vezes a simulação custa mais caro que a decisão que ela deveria sustentar.</p></article><article class="problem-card reveal"><h3>A confiança</h3><p>O resultado sai colorido e bonito, e ninguém sabe se está certo. Sem uma referência externa, o número vira opinião.</p></article></div>
     </div>
   </section>
-
-  <section id="produto">
+  <section id="produto" class="alt tight">
     <div class="wrap">
-      <div class="split-block reveal">
-        <div>
-          <p class="badge-soon">Em breve · 2027</p>
-          <h2 style="margin-top:1.1rem">PINNeAPPle Studio</h2>
-          <p style="color:var(--text-dim);margin-top:1rem">A engenharia em texto: você escreve o que precisa, e a plataforma encontra uma ferramenta que já existe, confere se o seu caso está dentro do que aquela ferramenta já provou, roda e devolve o resultado com relatório e evidência.</p>
-          <ul class="checks"><li><b>Entende o pedido escrito</b>, sem nome de método e sem montar o caso.</li><li><b>Diz na cara se cobre</b>: “dá”, “falta este dado”, “só em parte” ou “não cobre”.</li><li><b>Só roda o que tem prova</b>: cada ferramenta é descoberta, testada ou verificada.</li><li><b>Devolve o relatório junto</b>: o que rodou, o que não rodou e a origem de cada número.</li></ul>
-          <p class="product-actions">
-            <a class="btn btn-primary" href="studio/">Ver o produto completo →</a>
-            <a class="btn btn-ghost" href="https://wa.me/5584991287602?text=Chega%20em%202027.%20Quem%20entrar%20na%20lista%20testa%20antes." target="_blank" rel="noopener">Entrar na lista</a>
-          </p>
-          <p class="src-note">Chega em 2027. Quem entrar na lista testa antes.</p>
-        </div>
-        <div>
-          <figure class="frame">
-  <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Studio</span></div>
-  <img src="img/eng/studio-report.webp" alt="O relatório de uma execução: gráfico, verificações com valor e limite, e o status da evidência, aqui “inconclusiva”, porque uma checagem não rodou." loading="lazy" decoding="async" />
-  <figcaption>O relatório de uma execução: gráfico, verificações com valor e limite, e o status da evidência, aqui “inconclusiva”, porque uma checagem não rodou.</figcaption>
-</figure>
-        </div>
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">O que é</p><h2>Uma plataforma que responde engenharia, não que desenha gráfico</h2></div>
+        <div><p>A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Studio faz o caminho contrário: começa no pedido, escrito em português comum, e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.</p><p style="margin-top:1rem">Por baixo está a biblioteca aberta da PINNeAPPle: cada ferramenta é uma função real, com assinatura, unidade, faixa de validade e o histórico de testes. A plataforma não inventa capacidade: ela encontra o que existe, confere se o seu caso cabe ali e executa em ambiente isolado.</p></div>
       </div>
+      <div class="exist-grid reveal"><div class="exist-cell"><b>10.055</b><span>ferramentas catalogadas pelo próprio Studio</span></div><div class="exist-cell"><b>4.987</b><span>executáveis de ponta a ponta</span></div><div class="exist-cell"><b>1.693</b><span>verificadas contra uma referência</span></div><div class="exist-cell"><b>71 de 97</b><span>exemplos e reproduções que rodam no Studio</span></div></div>
+      <p class="src-note reveal">Contagens lidas do Studio na versão atual, as mesmas que a tela de cobertura mostra, a partir do código e das execuções gravadas.</p>
+    </div>
+  </section>
+
+  <section id="fluxo">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">Do pedido ao relatório</p><h2>O caminho que o pedido percorre</h2></div>
+        <p>Quatro etapas entre a frase escrita e o relatório assinado. Nenhuma delas exige que você monte um caso de simulação.</p>
+      </div>
+      <div class="steps reveal"><div class="step reveal"><span class="sn">01</span><h3>Você descreve o problema</h3><p>Uma frase basta: “dissipador de calor com aletas para 60 W”. A plataforma estrutura o pedido e mostra o que já existe para aquilo.</p></div><div class="step reveal"><span class="sn">02</span><h3>Ela diz se cobre</h3><p>Quatro respostas possíveis: cobre e roda; falta um dado (e ela pergunta só esse); cobre em parte (e diz o que teria de mudar); ou não cobre (e diz por quê).</p></div><div class="step reveal"><span class="sn">03</span><h3>Confere antes de rodar</h3><p>Os seus números são comparados com a faixa em que aquela ferramenta já foi validada. Fora da faixa, o resultado não é apresentado como se valesse.</p></div><div class="step reveal"><span class="sn">04</span><h3>Entrega resultado, evidência e relatório</h3><p>Com as verificações que rodaram, as que não rodaram, a versão do código, o tempo e a memória gastos e o hash de cada arquivo.</p></div></div>
+      <div class="single-shot reveal"><div class="reel reveal">
+<figure class="reel-card"><video src="videos/reel-carro.mp4" poster="videos/reel-carro.jpg" muted loop playsinline preload="none" data-autoplay aria-label="CFD 3-D de um carro a 70 m/s, rodada a rodada"></video><figcaption><a href="artigos/aerodinamica-autonoma/">CFD 3-D de um carro a 70 m/s, rodada a rodada</a></figcaption></figure>
+<figure class="reel-card"><video src="videos/reel-rover.mp4" poster="videos/reel-rover.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Rover lunar aprendendo o solo pelas próprias rodas"></video><figcaption><a href="artigos/rover-aprende-solo/">Rover lunar aprendendo o solo pelas próprias rodas</a></figcaption></figure>
+<figure class="reel-card"><video src="videos/reel-unity.mp4" poster="videos/reel-unity.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O mesmo campo girando dentro do Unity"></video><figcaption><a href="artigos/gemeo-no-unity/">O mesmo campo girando dentro do Unity</a></figcaption></figure>
+<figure class="reel-card"><video src="videos/reel-blocos.mp4" poster="videos/reel-blocos.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Busca evolutiva de construções de bloco"></video><figcaption><a href="artigos/construcoes-de-bloco/">Busca evolutiva de construções de bloco</a></figcaption></figure>
+<figure class="reel-card"><video src="videos/reel-enso.mp4" poster="videos/reel-enso.jpg" muted loop playsinline preload="none" data-autoplay aria-label="El Niño de 1997 simulado por ondas de Kelvin"></video><figcaption><a href="artigos/el-nino-28-modelos/">El Niño de 1997 simulado por ondas de Kelvin</a></figcaption></figure>
+</div></div>
+      <p class="reel-note">Cinco pipelines que a base já gerou, cada um com o artigo inteiro: o carro em CFD 3-D, o rover que aprende o solo, o gêmeo dentro do Unity, a busca evolutiva de construções de bloco e o El Niño de 1997.</p>
     </div>
   </section>
 
   <section id="capacidades" class="alt">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">O que dá para fazer</p><h2>Seis coisas que a plataforma vai fazer, e que a base já faz hoje.</h2></div>
-        <p>Cada cartão traz um caso que já rodou, com o número medido. Os exemplos vêm da biblioteca aberta, não de uma promessa de roadmap.</p>
+        <div><p class="eyebrow">O que você vai poder fazer</p><h2>Seis trabalhos que hoje custam uma semana</h2></div>
+        <p>Cada um com um exemplo que já rodou na base aberta. É o que o produto vai colocar na frente de quem não é especialista em método numérico.</p>
       </div>
       <div class="grid-3 reveal"><article class="cap reveal"><p class="kind">Modelo substituto</p><h3>Responder em segundos, não em dias</h3><p>A simulação que você já rodou vira um modelo que responde na hora. Serve para responder “e se?” sem pagar o preço de uma simulação por pergunta.</p><p class="ex"><b>no dissipador: ~200 mil vezes mais rápido, com 4,46% de erro médio</b></p></article><article class="cap reveal"><p class="kind">Gêmeo digital</p><h3>Acompanhar um equipamento de verdade</h3><p>O modelo passa a andar ao lado do dado real, com o erro declarado, e avisa antes de um limite ser cruzado.</p><p class="ex"><b>no HX-201: erro de 0,216 °C e alarme 2,6 h antes</b></p></article><article class="cap reveal"><p class="kind">Otimização de projeto</p><h3>Testar milhares de versões antes de escolher uma</h3><p>Milhares de geometrias avaliadas contra objetivos que brigam entre si, com o mapa de trocas no lugar de uma resposta única.</p><p class="ex"><b>em 1.920 asas: −13% de CO₂ por passageiro-quilômetro</b></p></article><article class="cap reveal"><p class="kind">Verificação</p><h3>Conferir um resultado antes de decidir</h3><p>O resultado é medido contra a física, o ensaio ou a norma, e não contra ele mesmo. O que não foi checado aparece como não checado.</p><p class="ex"><b>pegou resíduo 100× acima do limite num modelo já treinado</b></p></article><article class="cap reveal"><p class="kind">CFD</p><h3>Rodar o caso completo, sem montar o caso</h3><p>Geometria, malha, solver, pós-processamento e a comparação com a referência, na mesma sessão.</p><p class="ex"><b>erosão em curva de 90°: 1,05–1,49× do ensaio publicado</b></p></article><article class="cap reveal"><p class="kind">Dimensionamento rápido</p><h3>Ter o número agora, no meio da reunião</h3><p>Cálculo fechado para o caso do dia: dissipador, placa, elemento. Segundos em vez de horas, contra correlação publicada.</p><p class="ex"><b>dissipador: 0–5% contra a literatura</b></p></article></div>
     </div>
   </section>
 
-  <section id="como">
+  <section id="confianca">
+    <div class="wrap split-block reveal">
+      <div>
+        <p class="eyebrow">Por que dá para confiar</p>
+        <h2 style="font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:1rem">O que a plataforma faz para não te enganar</h2>
+        <ul class="checks"><li><b>Ela confere a validade antes de rodar</b>: se o seu caso está fora da faixa em que a ferramenta foi validada, o resultado não sai como se valesse.</li><li><b>Ela não inventa capacidade</b>, porque o catálogo é gerado por introspecção do código real, com o estado de cada ferramenta: descoberta, testada ou verificada.</li><li><b>O que não rodou aparece como não rodou</b>: uma checagem que não executou nunca conta como aprovada e derruba a cobertura do resultado.</li><li><b>A evidência fica arquivada</b>: versão, hardware, tempo, memória, logs e hash de cada arquivo, para reproduzir a execução.</li><li><b>Existe um portão humano</b>: formulação e aprovação de modelo são decisões de engenharia, não da plataforma.</li></ul>
+      </div>
+      <figure class="frame">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>VeriPhysics · verificação</span></div>
+        <img src="img/verificacao.jpg" alt="Relatório de checagens com nota por item" loading="lazy" decoding="async" />
+        <figcaption>Nota por checagem, com cobertura declarada. O que não rodou não conta como aprovado.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="entra-sai" class="alt">
     <div class="wrap">
       <div class="section-head split reveal">
-        <div><p class="eyebrow">Como funciona</p><h2>Três passos, nenhum deles técnico</h2></div>
-        <p>O que hoje exige alguém que saiba montar o caso vira uma frase escrita, uma conferência automática e um relatório que se pode mostrar.</p>
+        <div><p class="eyebrow">Entra e sai</p><h2>O que você entrega e o que você recebe</h2></div>
+        <p>A mesma lista serve para os dois lados: se o que você tem não cobre o que entra, a plataforma diz isso antes de rodar.</p>
       </div>
-      <div class="steps cols3 reveal"><div class="step reveal"><span class="sn">01</span><h3>Você escreve o problema</h3><p>Em português comum: o que precisa, de que material, com que tamanho e qual limite. Sem nome de método e sem arquivo de configuração.</p></div><div class="step reveal"><span class="sn">02</span><h3>A plataforma diz se cobre</h3><p>Procura a ferramenta que resolve, compara os seus números com a faixa em que ela foi validada e aponta o que falta antes de rodar.</p></div><div class="step reveal"><span class="sn">03</span><h3>Você recebe resultado e relatório</h3><p>Com o valor, as verificações que rodaram, as que não rodaram, a versão do código e o que continua não provado.</p></div></div>
+      <div class="io-grid reveal">
+        <div class="io-col"><h3>Entra</h3><ul class="ticks"><li>O problema escrito, em português comum</li><li>Geometria em STL, STEP ou CAD, quando o caso pede</li><li>Dados de ensaio, série de sensores ou histórico de operação</li><li>Condições de contorno, material e limites de operação</li><li>Um arquivo de simulação existente (OpenFOAM, CalculiX, Abaqus)</li></ul></div>
+        <div class="io-col"><h3>Sai</h3><ul class="ticks"><li>O número que responde à pergunta, com unidade</li><li>O campo, o gráfico ou a série, prontos para levar adiante</li><li>As verificações, uma por uma, com valor e limite</li><li>O relatório em Markdown, com a origem de cada parâmetro</li><li>A evidência arquivada: versão, hardware, tempo e hash dos arquivos</li><li>O que não foi checado e o que ainda não está provado</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="telas">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">O produto por dentro</p><h2>Telas reais do Studio, hoje</h2></div>
+        <p>Nada de mockup: são capturas da aplicação em desenvolvimento, com os dados de uma execução real.</p>
+      </div>
+      <div class="shot-grid reveal"><figure class="shot"><img src="img/eng/studio-report.webp" alt="Uma execução do Studio com o resultado e as verificações" loading="lazy" decoding="async" /><figcaption>A execução: o job concluído, a evidência declarada, o valor que sai e as verificações com valor e limite, uma por uma.</figcaption></figure><figure class="shot"><img src="img/eng/studio-coverage.webp" alt="Tela de cobertura do Studio" loading="lazy" decoding="async" /><figcaption>A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas, nunca estimado.</figcaption></figure></div>
+      <div class="section-head reveal" style="margin-top:3.5rem">
+        <p class="eyebrow">Veja rodando</p><h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">Do pedido ao relatório, em 28 segundos</h2>
+        <p>Este vídeo é uma gravação da aplicação, com legenda: a busca em português, a escolha da ferramenta, a execução e a volta com as verificações. Nada foi encenado. A espera do solver foi cortada. O corte preto no meio do vídeo marca onde.</p>
+      </div>
+      <figure class="fig film reveal">
+        <video src="videos/studio-pt.mp4" poster="videos/studio-pt.jpg" muted playsinline
+               preload="none" data-autoplay controls aria-label="Busca, ferramenta, execução, verificações e relatório: a aplicação respondendo um job de verdade. A espera do solver foi cortada."></video>
+        <figcaption>Busca, ferramenta, execução, verificações e relatório: a aplicação respondendo um job de verdade. A espera do solver foi cortada.</figcaption>
+      </figure>
+      <div class="section-head reveal" style="margin-top:3.5rem">
+        <p class="eyebrow">Mais dois apps da base</p><h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">O que já existe para além do Studio</h2>
+        <p>O Studio executa as ferramentas da biblioteca. Estes dois vídeos são apps da base rodando: dimensionamento térmico e preflight de simulação.</p>
+      </div>
+      <div class="video-grid reveal"><figure class="fig vfig"><video src="videos/app1.mp4" poster="videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Dimensionamento térmico: a resposta sai enquanto você digita"></video><figcaption>Dimensionamento térmico: a resposta sai enquanto você digita</figcaption></figure><figure class="fig vfig"><video src="videos/app8.mp4" poster="videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="Preflight de simulação: PASS, WARNING ou FAIL antes de rodar"></video><figcaption>Preflight de simulação: PASS, WARNING ou FAIL antes de rodar</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section id="estado" class="alt">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">Estado atual, sem marketing</p><h2>O que já roda e o que chega no lançamento</h2></div>
+        <p>A plataforma é construída em módulos. É mais honesto dizer o que está pronto do que fingir que tudo chegou junto.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="data">
+          <thead><tr><th scope="col">Módulo</th><th scope="col">O que faz</th><th scope="col">Quando</th></tr></thead>
+          <tbody>
+      <tr><td class="name">Studio e catálogo</td><td>Busca, filtros, execução de ferramentas da base, relatório e evidência</td><td><span class="badge ok">roda hoje</span></td></tr>
+      <tr><td class="name">Engenheiro (intake)</td><td>Pedido em texto, perguntas de esclarecimento e plano aprovável</td><td><span class="badge ok">roda hoje</span></td></tr>
+      <tr><td class="name">CFD / Solvers</td><td>Caso completo com solver externo e comparação com referência</td><td><span class="badge warn">em 2027</span></td></tr>
+      <tr><td class="name">VeriPhysics</td><td>Checagens de física, convergência e cobertura sobre modelos e resultados</td><td><span class="badge warn">em 2027</span></td></tr>
+      <tr><td class="name">Surrogate Factory</td><td>Treino de substituto com domínio de validade declarado</td><td><span class="badge warn">em 2027</span></td></tr>
+      <tr><td class="name">PINNeAPPle Twin</td><td>Replay de ativo com alarme e erro declarado, depois telemetria ao vivo</td><td><span class="badge warn">em 2027</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note reveal"><span><b>Limite declarado:</b> O que o produto não faz: não substitui ensaio, não garante resultado fora da faixa validada e não decide por você. Quando o método clássico resolve melhor, a recomendação é o método clássico.</span></div>
+      <div class="note reveal"><span><b>Em breve · 2027:</b> Lançamento previsto para 2027, sem data fechada. Quem entra na lista testa antes e ajuda a decidir o que entra primeiro.</span></div>
+      <p class="section-cta reveal">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Quero%20testar%20quando%20abrir" target="_blank" rel="noopener">Quero testar quando abrir</a>
+        <a class="btn btn-ghost" href="lib/">A lib →</a>
+      </p>
     </div>
   </section>
   <div class="stats" role="list">
@@ -280,7 +352,7 @@
         <h4>Plataforma</h4>
         <ul>
           <li><a href="">Início</a></li>
-          <li><a href="studio/">PINNeAPPle Studio</a></li>
+          <li><a href="#produto">PINNeAPPle Studio</a></li>
           <li><a href="artigos/">Artigos</a></li>
           <li><a href="lib/">A lib</a></li>
         </ul>
