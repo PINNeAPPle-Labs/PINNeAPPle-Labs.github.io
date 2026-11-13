@@ -127,6 +127,22 @@
     }
   }
 
+  /* ---------- the talk: nothing from YouTube loads until it is asked for ---------- */
+  document.querySelectorAll('button.yt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-id');
+      if (!id) return;
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      frame.title = btn.getAttribute('aria-label') || 'Video';
+      frame.className = 'yt-frame';
+      frame.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      frame.setAttribute('allowfullscreen', '');
+      btn.replaceWith(frame);
+      frame.focus();
+    });
+  });
+
   /* ---------- nav current section ---------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('nav.main a[href^="#"]'));

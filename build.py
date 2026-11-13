@@ -1282,6 +1282,53 @@ def fig(src: str, alt: str, cap: str, root: str, cls: str = "") -> str:
             f'<figcaption>{cap}</figcaption></figure>')
 
 
+# ---------------------------------------------------------------------------
+# The reel: clips the base generated, for the product page
+# ---------------------------------------------------------------------------
+
+REEL = {
+    "pt": [
+        ("videos/reel-carro.mp4", "videos/reel-carro.jpg",
+         "CFD 3-D de um carro a 70 m/s, rodada a rodada", "aerodinamica-autonoma"),
+        ("videos/reel-rover.mp4", "videos/reel-rover.jpg",
+         "Rover lunar aprendendo o solo pelas próprias rodas", "rover-aprende-solo"),
+        ("videos/reel-unity.mp4", "videos/reel-unity.jpg",
+         "O mesmo campo girando dentro do Unity", "gemeo-no-unity"),
+        ("videos/reel-blocos.mp4", "videos/reel-blocos.jpg",
+         "Busca evolutiva de construções de bloco", "construcoes-de-bloco"),
+        ("videos/reel-enso.mp4", "videos/reel-enso.jpg",
+         "El Niño de 1997 simulado por ondas de Kelvin", "el-nino-28-modelos"),
+    ],
+    "en": [
+        ("videos/reel-carro.mp4", "videos/reel-carro.jpg",
+         "3D CFD of a car at 70 m/s, round by round", "aerodinamica-autonoma"),
+        ("videos/reel-rover.mp4", "videos/reel-rover.jpg",
+         "Lunar rover learning the soil from its own wheels", "rover-aprende-solo"),
+        ("videos/reel-unity.mp4", "videos/reel-unity.jpg",
+         "The same field turning inside Unity", "gemeo-no-unity"),
+        ("videos/reel-blocos.mp4", "videos/reel-blocos.jpg",
+         "Evolutionary search over brick builds", "construcoes-de-bloco"),
+        ("videos/reel-enso.mp4", "videos/reel-enso.jpg",
+         "The 1997 El Niño simulated with Kelvin waves", "el-nino-28-modelos"),
+    ],
+}
+
+
+def reel(lang: str, root: str) -> str:
+    """A strip of clips the examples produced, each linking to its article.
+
+    They are small (70 KB to 430 KB), muted and only play while on screen, so the
+    section costs less than a single screenshot and shows the product working.
+    """
+    cards = "".join(
+        f'<figure class="reel-card"><video src="{root}{mp4}" poster="{root}{poster}" muted loop '
+        f'playsinline preload="none" data-autoplay aria-label="{label}"></video>'
+        f'<figcaption><a href="{root}{url(lang, "post:" + slug)}">{label}</a></figcaption></figure>\n'
+        for mp4, poster, label, slug in REEL[lang]
+    )
+    return f'<div class="reel reveal">\n{cards}</div>'
+
+
 def vfig(src: str, poster: str, cap: str, root: str) -> str:
     return (f'<figure class="fig vfig"><video src="{root}{src}" poster="{root}{poster}" muted loop playsinline '
             f'preload="none" data-autoplay aria-label="{cap}"></video>'
@@ -1403,7 +1450,7 @@ HOME = {
         ],
         proofs_eyebrow="Do que já rodou",
         proofs_h="O que já rodou, com o número na frente",
-        proofs_p="Três experimentos abertos, cada um com artigo inteiro: o que foi medido, contra o que foi comparado e o que ainda não está provado.",
+        proofs_p="Seis experimentos abertos, cada um com artigo inteiro: o que foi medido, contra o que foi comparado e o que ainda não está provado.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Pressão na pele de uma asa otimizada",
              "Otimização", "1.920 asas, três objetivos", "asa-1920-projetos"),
@@ -1411,10 +1458,21 @@ HOME = {
              "CFD", "A erosão que bateu com o ensaio", "erosao-curva-90"),
             ("img/twin.jpg", "Gêmeo digital de um ativo em 3D, com a leitura viva ao lado",
              "Gêmeo digital", "Um ativo em 3D, com leitura viva", "gemeo-hx201"),
+            ("img/exp/unity-thumb.webp", "Carretel com o campo de temperatura, vindo do solver para o Unity",
+             "Gêmeo digital", "Do solver ao motor de jogo, em 23 ms", "gemeo-no-unity"),
+            ("img/exp/motor-campo.webp", "Campo magnético no quarto de máquina do motor do Prius",
+             "Eletromagnetismo", "Dois solvers concordam em 0,19%", "motor-prius-dois-solvers"),
+            ("img/verificacao.jpg", "Run do VeriPhysics com a nota por checagem",
+             "Verificação", "A checagem que não rodou não conta", "guardrail-veriphysics"),
         ],
         news_eyebrow="Artigos",
         news_h="O que a gente mediu, contado por inteiro",
         news_p="Um experimento por artigo, com imagens, vídeo e os números que saíram da execução. Inclusive os que limitam o resultado.",
+        show_eyebrow="A apresentação",
+        show_h="A plataforma inteira em uma gravação",
+        show_p="A apresentação que fizemos no evento da SIMR: o pedido escrito, a busca, a execução e o relatório, sem corte no meio. É o jeito mais rápido de ver o que o PINNeAPPle Studio faz.",
+        show_cap="A apresentação do PINNeAPPle Studio no evento da SIMR",
+        show_play="Assistir à apresentação",
         story_eyebrow="Quem faz",
         story_h="Uma regra só: se não tem número medido, não vai para a tela.",
         story_p=[
@@ -1472,7 +1530,7 @@ HOME = {
         ],
         proofs_eyebrow="From what already ran",
         proofs_h="What already ran, with the number up front",
-        proofs_p="Three open experiments, each with a full article: what was measured, what it was compared against, and what is not proven yet.",
+        proofs_p="Six open experiments, each with a full article: what was measured, what it was compared against, and what is not proven yet.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Skin pressure on an optimized wing",
              "Optimization", "1,920 wings, three objectives", "asa-1920-projetos"),
@@ -1480,10 +1538,21 @@ HOME = {
              "CFD", "Erosion that met the published experiment", "erosao-curva-90"),
             ("img/twin.jpg", "Digital twin of an asset in 3D, with the live reading beside it",
              "Digital twin", "An asset in 3D, with a live reading", "gemeo-hx201"),
+            ("img/exp/unity-thumb.webp", "Spool with the temperature field, from the solver to Unity",
+             "Digital twin", "From the solver to the game engine, in 23 ms", "gemeo-no-unity"),
+            ("img/exp/motor-campo.webp", "Magnetic field in the quarter machine of the Prius motor",
+             "Electromagnetics", "Two solvers agree to 0.19%", "motor-prius-dois-solvers"),
+            ("img/verificacao.jpg", "A VeriPhysics run with the score per check",
+             "Verification", "A check that did not run does not count", "guardrail-veriphysics"),
         ],
         news_eyebrow="Articles",
         news_h="What we measured, told in full",
         news_p="One experiment per article, with images, video and the numbers that came out of the run. Including the ones that limit the result.",
+        show_eyebrow="The talk",
+        show_h="The whole platform in one recording",
+        show_p="The talk we gave at the SIMR event: the written request, the search, the run and the report, without cuts in between. It is the fastest way to see what PINNeAPPle Studio does.",
+        show_cap="The PINNeAPPle Studio talk at the SIMR event",
+        show_play="Watch the talk",
         story_eyebrow="Who makes it",
         story_h="One rule: if it has no measured number, it does not go on screen.",
         story_p=[
@@ -1528,9 +1597,7 @@ PRODUCT = {
             ("03", "Confere antes de rodar", "Os seus números são comparados com a faixa em que aquela ferramenta já foi validada. Fora da faixa, o resultado não é apresentado como se valesse."),
             ("04", "Entrega resultado, evidência e relatório", "Com as verificações que rodaram, as que não rodaram, a versão do código, o tempo e a memória gastos e o hash de cada arquivo."),
         ],
-        flow_shots=[
-            ("img/eng/studio-explore.webp", "Busca por dissipador de calor com aletas no Studio", "A busca por “dissipador de calor com aletas”: 167 resultados, e cada um diz se é executável, testada ou verificada."),
-        ],
+        flow_reel_note="Cinco pipelines que a base já gerou, cada um com o artigo inteiro: o carro em CFD 3-D, o rover que aprende o solo, o gêmeo dentro do Unity, a busca evolutiva de construções de bloco e o El Niño de 1997.",
         caps_eyebrow="O que você vai poder fazer",
         caps_h="Seis trabalhos que hoje custam uma semana",
         caps_p="Cada um com um exemplo que já rodou na base aberta. É o que o produto vai colocar na frente de quem não é especialista em método numérico.",
@@ -1623,9 +1690,7 @@ PRODUCT = {
             ("03", "It checks before running", "Your numbers are compared with the range in which that tool was validated. Outside the range, the result is not presented as if it held."),
             ("04", "It returns result, evidence and report", "With the checks that ran, the ones that did not, the code version, the time and memory spent, and the hash of every file."),
         ],
-        flow_shots=[
-            ("img/eng/studio-explore.webp", "Search for a finned heat sink in the Studio", "The search for “finned heat sink”: 167 results, and each one says whether it is runnable, tested or verified."),
-        ],
+        flow_reel_note="Five pipelines the base has already produced, each with a full article: the car in 3D CFD, the rover learning the soil, the twin inside Unity, the evolutionary search over brick builds and the 1997 El Niño.",
         caps_eyebrow="What you will be able to do",
         caps_h="Six jobs that today cost a week",
         caps_p="Each with an example that has already run on the open base. This is what the product puts in front of someone who is not a numerical-method specialist.",
@@ -1731,6 +1796,22 @@ def page_home(lang: str) -> str:
       <div>
         {shot('img/eng/studio-home.webp', C['hero_cap'], C['hero_cap'], root)}
       </div>
+    </div>
+  </section>
+""")
+
+    parts.append(f"""
+  <section id="apresentacao" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['show_eyebrow']}</p><h2>{C['show_h']}</h2></div>
+        <p>{C['show_p']}</p>
+      </div>
+      <button class="yt reveal" data-id="bTRafLSKADk" aria-label="{C['show_play']}">
+        <img src="{root}img/simr.jpg" alt="{C['show_cap']}" loading="lazy" decoding="async" />
+        <span class="yt-play" aria-hidden="true"></span>
+        <span class="yt-cap">{C['show_cap']}</span>
+      </button>
     </div>
   </section>
 """)
@@ -1904,7 +1985,7 @@ def page_produto(lang: str) -> str:
         f'<div class="step reveal"><span class="sn">{n}</span><h3>{t}</h3><p>{b}</p></div>'
         for n, t, b in C["flow"]
     )
-    flow_shots = "".join(shot(src, alt, cap, root) for src, alt, cap in C["flow_shots"])
+    flow_shots = reel(lang, root)
     caps = "".join(
         f'<article class="cap reveal"><p class="kind">{kind}</p><h3>{title}</h3><p>{body}</p>'
         f'<p class="ex"><b>{example}</b></p></article>'
@@ -1967,6 +2048,7 @@ def page_produto(lang: str) -> str:
       </div>
       <div class="steps reveal">{flow}</div>
       <div class="single-shot reveal">{flow_shots}</div>
+      <p class="reel-note">{C["flow_reel_note"]}</p>
     </div>
   </section>
 

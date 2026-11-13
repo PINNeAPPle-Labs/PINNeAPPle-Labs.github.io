@@ -37,7 +37,7 @@ GitHub Pages serves the files as they are, there is no build step on the server.
 | `app.js` | nav toggle, copy-to-clipboard, code tabs, scroll reveal, section spy, lazy video playback |
 | `fonts.css`, `fonts/` | self-hosted Archivo + JetBrains Mono (latin subset, OFL) |
 | `img/` | product and capability stills; `img/results/` holds real result plots; `img/exp/` holds the figures each article shows, straight from the example that produced them |
-| `videos/` | hero clip, two base-app recordings and the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`); all ship `preload="none"` and only load when visible |
+| `videos/` | hero clip, two base-app recordings, the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`) and the `reel-*.mp4` clips the product page scrolls through; all ship `preload="none"` and only load and play when visible |
 | `tools/` | `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
 | `Dockerfile` | nginx image serving the tree, for a self-hosted deploy |
 
@@ -57,6 +57,14 @@ Two things sit at the top of `build.py` because they are used from every page:
 A post body is a list of blocks: `("h2", text)`, `("p", text)`, `("fig", (src, alt, caption))`,
 `("video", (src, poster, caption))`, rendered by `render_block()`. Long UI screenshots go through
 `shot()`, which wraps them in a browser frame.
+
+The talk on the home page is a `button.yt` with a `data-id`: `app.js` swaps it for a
+`youtube-nocookie` iframe on click, so nothing is requested from YouTube until someone asks for it.
+The poster is local (`img/simr.jpg`), so the section renders without the network too.
+
+The `reel-*.mp4` clips on the product page come straight from the examples (`dashboard_replay.mp4`
+cropped to the dashboard, `evolution_cantilever.mp4`, `traverse.mp4`, `04_surrogate_turntable.mp4`,
+`enso_1997_98_slab.mp4`); the list lives in `REEL` in `build.py`.
 
 The install command on the library page is a `<button class="install" data-copy="…">`; change
 `data-copy` to change what gets copied.
