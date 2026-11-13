@@ -3,7 +3,7 @@
 Landing site for **PINNeAPPle Labs**, open-source Physics AI with verification as part of the
 product. Served at <https://pinneapple-labs.github.io/>.
 
-A commercial home, the product page for **PINNeAPPle Engineering** (with a "coming soon" badge),
+A commercial home, the product page for **PINNeAPPle Studio** (with a "coming soon" badge),
 an articles section with one post per experiment, and the library page, in two languages,
 generated from one script.
 
@@ -19,11 +19,11 @@ That writes:
 |---|---|
 | `index.html` | home (pt-BR) |
 | `en/index.html` | home (English) |
-| `engineering/index.html` · `en/engineering/` | PINNeAPPle Engineering, the product, coming soon |
+| `studio/index.html` · `en/studio/` | PINNeAPPle Studio, the product, coming soon |
 | `artigos/index.html` · `en/artigos/` | article index, newest first |
 | `artigos/<slug>/index.html` · `en/artigos/<slug>/` | one post per experiment, from the `POSTS` list |
 | `lib/index.html` · `en/lib/` | architecture, quickstart, open-source split |
-| `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs to `/artigos/` and `/#historia`; the old URLs keep working |
+| `engineering/`, `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs to `/studio/`, `/artigos/` and `/#historia`; the old URLs keep working |
 
 `build.py` also regenerates `sitemap.xml`. Commit the generated HTML along with the script:
 GitHub Pages serves the files as they are, there is no build step on the server.
@@ -36,9 +36,9 @@ GitHub Pages serves the files as they are, there is no build step on the server.
 | `styles.css` | the design system: tokens, layout, components, the sticky button |
 | `app.js` | nav toggle, copy-to-clipboard, code tabs, scroll reveal, section spy, lazy video playback |
 | `fonts.css`, `fonts/` | self-hosted Archivo + JetBrains Mono (latin subset, OFL) |
-| `img/` | product and capability stills; `img/results/` holds real result plots |
+| `img/` | product and capability stills; `img/results/` holds real result plots; `img/exp/` holds the figures each article shows, straight from the example that produced them |
 | `videos/` | hero clip, two base-app recordings and the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`); all ship `preload="none"` and only load when visible |
-| `tools/` | `import_shots.py` (screenshots from the app repo) and `record_studio.py` (the Studio tours) |
+| `tools/` | `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
 | `Dockerfile` | nginx image serving the tree, for a self-hosted deploy |
 
 ## Editing
@@ -61,7 +61,12 @@ A post body is a list of blocks: `("h2", text)`, `("p", text)`, `("fig", (src, a
 The install command on the library page is a `<button class="install" data-copy="…">`; change
 `data-copy` to change what gets copied.
 
-Screenshots of the Engineering app live in `img/eng/`, generated from
+Article figures are not redrawn or recoloured: `tools/import_figures.py` copies the PNG the
+run wrote, converts it to WebP and, for the card thumbnail only, either crops it to 16:10 or
+leaves it whole on a plate (`chart=True` in the post dict when the source is a matplotlib
+chart, whose axes the crop would cut).
+
+Screenshots of the Studio app live in `img/eng/`, generated from
 `pinneapple-engineering-api/docs/screenshots/` (resized, cropped and converted to WebP, the
 sources are 1366 px wide and some are several thousand pixels tall). `img/eng/studio-home.jpg`
 exists only as the Open Graph image, because link previews want JPEG.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Captures the Engineering app screenshots the site shows, in dark mode.
+"""Captures the Studio app screenshots the site shows, in dark mode.
 
     python3 tools/capture_shots.py [--url http://127.0.0.1:8010/] [--key-file /tmp/pea_key.txt]
 

@@ -36,7 +36,7 @@
 
     <nav class="main" id="primary-nav" aria-label="Platform">
       <a href="../../../en/">Home</a>
-      <a href="../../../en/engineering/">The product</a>
+      <a href="../../../en/studio/">The product</a>
       <a href="../../../en/artigos/" aria-current="page">Articles</a>
       <a href="../../../en/lib/">The library</a>
       <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
@@ -72,7 +72,7 @@
 <p>A client arrived with an already-trained PINN model. The report showed what every report shows: a falling loss, a small error on the test points, a nice plot. The question was simple, and it is the one engineering always asks: can this be used in a design decision?</p><h2>What the guardrail looks at</h2><p>VeriPhysics does not look at the loss. It takes the trained model and measures what the loss does not: the residual of the equation the model is supposed to satisfy, the consistency of the boundary conditions, and the numerical convergence over the set of points where it was evaluated.</p><figure class="fig"><img src="../../../img/verificacao.jpg" alt="A VeriPhysics run with a score per check" loading="lazy" decoding="async" /><figcaption>A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run”, and they pull the coverage down, which is what the score alone hides.</figcaption></figure><h2>The number</h2><p>The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them, which is exactly where nobody looks.</p><p>Around the same time, another case came up on the structural side: an unsupported beam that finished with the message “Job finished” and a displacement of 1.8×10¹¹ mm. The run finished; the result did not exist. Preflight flags FAIL before execution, naming the file and the line.</p><figure class="fig vfig"><video src="../../../videos/app8.mp4" poster="../../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The preflight app pointing at what will fail, before the run"></video><figcaption>The preflight app pointing at what will fail, before the run</figcaption></figure><h2>Why it became a product</h2><p>A tool that only shows the good result pushes the decision onto trust. A tool that shows the check that did not run hands the decision back to engineering. The rule that stayed: <b>a check that did not run never counts as passed</b>, and the final score covers only what actually ran.</p>
         <div class="measure"><b>>100× residual</b><span>over the threshold, with a healthy training loss</span></div>
         <div class="note limits-up"><span><b>What was not proven:</b> The guardrail says the result cannot be used without an explanation; it does not say what the error is, and it does not replace a test. The client's model is confidential: what is published is how the check behaves, not the model.</span></div>
-        <nav class="post-nav" aria-label="More articles"><span></span><a class="post-next" href="../../../en/artigos/asa-1920-projetos/">1,920 wings, three objectives and 13% less CO₂ →</a></nav>
+        <nav class="post-nav" aria-label="More articles"><a class="post-prev" href="../../../en/artigos/co2-supercritico/">← The more accurate surrogate was the one breaking thermodynamics</a><a class="post-next" href="../../../en/artigos/asa-1920-projetos/">1,920 wings, three objectives and 13% less CO₂ →</a></nav>
       </div>
     </div>
   </article>
@@ -110,7 +110,7 @@
         <h4>Platform</h4>
         <ul>
           <li><a href="../../../en/">Home</a></li>
-          <li><a href="../../../en/engineering/">PINNeAPPle Engineering</a></li>
+          <li><a href="../../../en/studio/">PINNeAPPle Studio</a></li>
           <li><a href="../../../en/artigos/">Articles</a></li>
           <li><a href="../../../en/lib/">The library</a></li>
         </ul>

@@ -7,10 +7,11 @@ articles (one post per experiment) and the library page, in two languages.
 Output
 ------
     index.html                        home (pt-BR)          en/index.html
-    engineering/index.html            the product           en/engineering/index.html
+    studio/index.html                 the product           en/studio/index.html
     artigos/index.html                article index         en/artigos/index.html
     artigos/<slug>/index.html         one per post          en/artigos/<slug>/index.html
     lib/index.html                    the library           en/lib/index.html
+    engineering/index.html            redirect to /studio/ (and the /en/ twin)
     casos-de-uso/index.html           redirect to /artigos/ (and the /en/ twin)
     historia/index.html               redirect to /#historia (and the /en/ twin)
 
@@ -50,6 +51,176 @@ LANGUAGES = {
 # ---------------------------------------------------------------------------
 
 POSTS = [
+    dict(
+        slug="aerodinamica-autonoma",
+        iso="2026-11-13",
+        mins=7,
+        thumb="img/exp/aero-autonoma-wake.webp",
+        tag={"pt": "Automação", "en": "Automation"},
+        date={"pt": "13 de novembro de 2026", "en": "13 November 2026"},
+        title={
+            "pt": "20 simulações, 3,3 horas, 15,7% menos arrasto",
+            "en": "20 simulations, 3.3 hours, 15.7% less drag",
+        },
+        lead={
+            "pt": "Um carro de corrida paramétrico, três objetivos declarados e um orçamento de 20 rodadas de CFD. A plataforma escolheu onde gastar cada uma, e o ganho foi conferido de novo na malha fina.",
+            "en": "A parametric racing car, three stated objectives and a budget of 20 CFD runs. The platform chose where to spend each one, and the gain was checked again on the fine mesh.",
+        },
+        metric={
+            "pt": ("−15,7% arrasto", "com o downforce acima do piso de 7 kN; −13,9% na malha fina"),
+            "en": ("−15.7% drag", "with downforce above the 7 kN floor; −13.9% on the fine mesh"),
+        },
+        limits={
+            "pt": "Não há ensaio nem túnel de vento nesta comparação: o ganho é medido contra o próprio baseline, no mesmo solver. A malha da campanha subestima o downforce em 8,4% frente à malha fina, e o substituto erra 2,4% no arrasto e 10,2% no downforce em validação cruzada. Fora da faixa geométrica validada, a previsão não vale.",
+            "en": "There is no test and no wind tunnel in this comparison: the gain is measured against its own baseline, in the same solver. The campaign mesh under-predicts downforce by 8.4% against the fine mesh, and the surrogate errs 2.4% in drag and 10.2% in downforce under cross-validation. Outside the validated geometry range, the prediction does not hold.",
+        },
+        body={
+            "pt": [
+                ("p", "Otimizar com CFD é fácil de descrever e caro de fazer: cada avaliação custa horas de solver. O problema deixa de ser o algoritmo e passa a ser a pergunta que quase ninguém gasta tempo respondendo: <b>qual é o próximo caso que vale simular?</b>"),
+                ("h2", "O que a plataforma fez sozinha"),
+                ("p", "O caso é um carro de corrida paramétrico, com asas, altura de solo e ângulo de difusor, a 70 m/s. A missão recebeu três objetivos ao mesmo tempo: baixar o arrasto, manter o downforce acima de 7 kN e manter o balanço aerodinâmico dianteiro dentro da faixa. O orçamento: 20 rodadas de OpenFOAM 3D."),
+                ("p", "A cada rodada o substituto é retreinado, o NSGA-II propõe os candidatos, e cada candidato recebe um veredito antes de gastar solver: favorável, incerto ou fora de domínio. Só o que vale a pena vira caso novo, e o critério é a própria incerteza do modelo."),
+                ("fig", ("img/exp/aero-autonoma-trust.webp", "Os três vereditos de triagem, A incerto, B favorável, C fora de domínio", "Os três vereditos. A: o intervalo de 95% é maior que a tolerância, então o modelo não decide. B: dentro do domínio validado, com a incerteza na tolerância. C: extrapolação, com o ângulo de difusor acima do que foi simulado. O diamante é o CFD que veio depois, para conferir.")),
+                ("h2", "O número"),
+                ("p", "<b>−15,7% de arrasto</b> contra o baseline, com o downforce acima do piso de 7 kN e o balanço dentro da faixa, em 20 rodadas que somaram <b>3,3 horas</b> de solver (quatro núcleos) e nenhuma falha."),
+                ("p", "O mesmo desenho, rodado na malha fina, dá <b>−13,9%</b>. É esse o número honesto: a malha usada na campanha subestima o downforce em 8,4% e, com ele, exagera um pouco o ganho."),
+                ("fig", ("img/exp/aero-autonoma-pareto.webp", "Candidatos do substituto, frente de Pareto e os casos que foram ao CFD", "Cada × é um candidato do substituto; os anéis são a frente de Pareto; as estrelas são o baseline e o melhor desenho simulado. A linha tracejada é o piso de downforce, e é ela que transforma o problema em negociação em vez de minimização.")),
+                ("h2", "Por que isso importa mais que o número"),
+                ("p", "Um ganho de 15,7% depende de quantas simulações você pode pagar, e o custo aqui está medido: 20 avaliações, três horas e meia, cada uma escolhida por uma razão registrada. Um engenheiro com o mesmo orçamento chegaria longe; a diferença é que aqui o relatório diz onde o substituto estava extrapolando e por que aquela rodada foi comprada."),
+                ("fig", ("img/exp/aero-autonoma-wake.webp", "Vorticidade no plano de esteira do desenho recomendado", "Vorticidade no plano de esteira do desenho recomendado: os vórtices de ponta de asa e o rastro das rodas, o que o arrasto medido está enxergando.")),
+            ],
+            "en": [
+                ("p", "Optimizing with CFD is easy to describe and expensive to do: every evaluation costs hours of solver time. The problem stops being the algorithm and becomes the question almost nobody spends time answering: <b>which case is worth simulating next?</b>"),
+                ("h2", "What the platform did on its own"),
+                ("p", "The case is a parametric racing car, with wings, ride height and diffuser angle, at 70 m/s. The mission took three objectives at once: lower drag, keep downforce above 7 kN, keep the front aero balance inside its band. The budget: 20 runs of 3D OpenFOAM."),
+                ("p", "Every round the surrogate is retrained, NSGA-II proposes the candidates, and each candidate gets a verdict before any solver time is spent: favourable, uncertain or out of domain. Only what is worth it becomes a new case, and the criterion is the model's own uncertainty."),
+                ("fig", ("img/exp/aero-autonoma-trust.webp", "The three triage verdicts, A uncertain, B favourable, C out of domain", "The three verdicts. A: the 95% interval is wider than the tolerance, so the model cannot decide. B: inside the validated domain, with the uncertainty within tolerance. C: extrapolation, with diffuser angle above what was simulated. The diamond is the CFD that came afterwards, to check.")),
+                ("h2", "The number"),
+                ("p", "<b>−15.7% drag</b> against the baseline, with downforce above the 7 kN floor and the balance inside its band, over 20 runs summing <b>3.3 hours</b> of solver time (four cores) and no failures."),
+                ("p", "The same design, run on the fine mesh, gives <b>−13.9%</b>. That is the honest number: the campaign mesh under-predicts downforce by 8.4% and, with it, flatters the gain a little."),
+                ("fig", ("img/exp/aero-autonoma-pareto.webp", "Surrogate candidates, the Pareto front and the cases that went to CFD", "Every × is a surrogate candidate; the rings are the Pareto front; the stars are the baseline and the best simulated design. The dashed line is the downforce floor, and it is what turns the problem into a negotiation instead of a minimisation.")),
+                ("h2", "Why this matters more than the number"),
+                ("p", "A 15.7% gain depends on how many simulations you can pay for, and the cost here is measured: 20 evaluations, three and a half hours, each chosen for a recorded reason. An engineer with the same budget would get far; the difference is that here the report states where the surrogate was extrapolating and why that run was bought."),
+                ("fig", ("img/exp/aero-autonoma-wake.webp", "Vorticity in the wake plane of the recommended design", "Vorticity in the wake plane of the recommended design: the wing-tip vortices and the wheel wake, what the measured drag is looking at.")),
+            ],
+        },
+    ),
+    dict(
+        slug="futebol-fisica",
+        iso="2026-11-12",
+        mins=7,
+        thumb="img/exp/futebol-thumb.webp",
+        chart=True,
+        tag={"pt": "Esporte", "en": "Sport"},
+        date={"pt": "12 de novembro de 2026", "en": "12 November 2026"},
+        title={
+            "pt": "Onde a física ajuda no futebol, e onde ela não ajudou",
+            "en": "Where physics helps in football, and where it did not",
+        },
+        lead={
+            "pt": "Quatro perguntas com os mesmos dados públicos e a mesma regra: um modelo só com o dado contra outro que também conhece a física. Em três frentes a física ganha, na quarta não ganha nada, e o resultado negativo está publicado do mesmo jeito.",
+            "en": "Four questions on the same public data and the same rule: a data-only model against one that also knows the physics. Physics wins in three of them, gains nothing in the fourth, and the negative result is published all the same.",
+        },
+        metric={
+            "pt": ("2,44 m", "de erro no pouso da bola, contra 7,51 m do ajuste polinomial"),
+            "en": ("2.44 m", "of landing error, against 7.51 m for the polynomial fit"),
+        },
+        limits={
+            "pt": "Os dados são públicos e amostrais: três jogos de rastreamento (SkillCorner) e dois de eventos (Metrica), com um jogo para ajustar e outro para testar. O ajuste de gravidade livre devolve 6,1 m/s² como mediana, o que mede o viés do dado de transmissão, não a física da bola. No xG a física não melhorou o modelo, e isso está no texto.",
+            "en": "The data is public and small: three tracking matches (SkillCorner) and two event matches (Metrica), one match to fit and another to test. The free-gravity fit returns 6.1 m/s² as a median, which measures the broadcast data's bias, not the ball's physics. On expected goals physics did not improve the model, and that is stated in the text.",
+        },
+        body={
+            "pt": [
+                ("p", "Dado de rastreamento e de eventos é barato e abundante, e a tentação é jogar tudo num modelo. A pergunta deste experimento é mais estreita e mais útil: quando a física entra, ela <b>paga</b>? Em quatro frentes, a resposta não foi a mesma."),
+                ("h2", "A bola: arrasto, Magnus e uma gravidade que não é 9,81"),
+                ("p", "Em voos altos de dados públicos de rastreamento, o ajuste que deixa a gravidade livre devolve <b>6,09 m/s²</b> como mediana. A bola não ficou mais leve: o dado de transmissão tem viés, e o ajuste o expõe em vez de escondê-lo. Em chutes simulados com 0,2 m de ruído, o mesmo ajuste recupera o coeficiente de arrasto com erro de 0,024."),
+                ("p", "Na prática, prever onde a bola pousa olhando só a primeira metade do voo: o ajuste polinomial erra 7,51 m; arrasto mais Magnus erra 3,37 m; o modelo híbrido, 2,55 m; o modelo aprendido, <b>2,44 m</b>. Todos avaliados nos jogos que ficaram fora do ajuste."),
+                ("fig", ("img/exp/futebol-pouso.webp", "Erro horizontal de pouso por método, em jogos fora do ajuste", "Erro horizontal de pouso, por método, nos jogos que ficaram fora do ajuste. A caixa é a mediana e os quartis, o bigode vai até o extremo. O polinomial erra três vezes mais que o modelo aprendido.")),
+                ("fig", ("img/exp/futebol-voo.webp", "Três voos reais com o ajuste de gravidade livre", "Três voos reais e o ajuste com gravidade livre: 5,2, 1,6 e 0,1 m/s². A dispersão é do dado, e é por isso que o resultado é reportado como mediana e não como um valor único.")),
+                ("h2", "O passe: o campo de controle contra o modelo só de dados"),
+                ("p", "O controle de campo calcula, para cada ponto do gramado, se um jogador chega antes da bola. O modelo de passe que usa esse campo, com o tempo de reação do jogador, teve log-loss de <b>0,150</b> no jogo de teste; a regressão logística só com features de evento ficou em 0,174 e o gradient boosting, em 0,231. Um jogo para ajustar, o outro para testar."),
+                ("fig", ("img/exp/futebol-controle.webp", "Confiabilidade do modelo de passe que usa controle de campo", "Confiabilidade do modelo de passe: quando ele diz 0,3, a frequência observada fica perto de 0,3. Um modelo que acerta a probabilidade serve para decidir em campo; um que só ordena bem, não.")),
+                ("h2", "O xG: aqui a física não pagou"),
+                ("p", "Em finalizações da Euro 2024, o modelo com as features físicas deu log-loss de <b>0,2429</b> contra <b>0,2413</b> do mesmo modelo sem elas. Pior, e dentro do ruído. O xG publicado do StatsBomb, na mesma base de teste, fica em 0,2267. A conclusão ficou registrada como negativa: para finalização, o que decide é o contexto do chute, não a trajetória da bola."),
+                ("h2", "O que sobra"),
+                ("p", "Três de quatro. Onde a física é o fenômeno, como a bola no ar e o tempo de chegada de um jogador, ela ganha por larga margem. Onde ela entra como mais uma coluna numa tabela de features, não ganha nada. Saber a diferença antes de vender a solução é metade do trabalho."),
+            ],
+            "en": [
+                ("p", "Tracking and event data is cheap and abundant, and the temptation is to throw all of it into a model. The question in this experiment is narrower and more useful: when physics comes in, does it <b>pay</b>? Across four fronts, the answer was not the same."),
+                ("h2", "The ball: drag, Magnus and a gravity that is not 9.81"),
+                ("p", "On high flights in public tracking data, the fit that leaves gravity free returns <b>6.09 m/s²</b> as a median. The ball did not get lighter: the broadcast data carries a bias, and the fit exposes it instead of hiding it. On simulated kicks with 0.2 m of noise, the same fit recovers the drag coefficient to within 0.024."),
+                ("p", "In practice, predicting where the ball lands from the first half of the flight alone: the polynomial fit errs 7.51 m; drag plus Magnus errs 3.37 m; the hybrid model 2.55 m; the learned model <b>2.44 m</b>. All of them scored on the matches left out of the fit."),
+                ("fig", ("img/exp/futebol-pouso.webp", "Horizontal landing error per method, on held-out matches", "Horizontal landing error per method, on the matches held out of the fit. The box is the median and the quartiles, the whisker reaches the extreme. The polynomial errs three times more than the learned model.")),
+                ("fig", ("img/exp/futebol-voo.webp", "Three real flights with the free-gravity fit", "Three real flights and the free-gravity fit: 5.2, 1.6 and 0.1 m/s². The spread belongs to the data, which is why the result is reported as a median and not as a single value.")),
+                ("h2", "The pass: pitch control against the data-only model"),
+                ("p", "Pitch control computes, for every point of the pitch, whether a player gets there before the ball. The pass model that uses that field, with the player's reaction time, scored a log-loss of <b>0.150</b> on the test match; logistic regression on event features alone scored 0.174 and gradient boosting 0.231. One match to fit, the other to test."),
+                ("fig", ("img/exp/futebol-controle.webp", "Reliability of the pass model that uses pitch control", "Reliability of the pass model: when it says 0.3, the observed frequency lands near 0.3. A model that gets the probability right can be used to decide on the pitch; one that only ranks well cannot.")),
+                ("h2", "Expected goals: here physics did not pay"),
+                ("p", "On Euro 2024 shots, the model with the physics features scored a log-loss of <b>0.2429</b> against <b>0.2413</b> for the same model without them. Worse, and inside the noise. The published StatsBomb xG on the same test set sits at 0.2267. The conclusion was recorded as negative: for a shot, what decides is the context, not the ball's trajectory."),
+                ("h2", "What is left"),
+                ("p", "Three out of four. Where physics is the phenomenon, as with a ball in the air or a player's time to reach a point, it wins by a wide margin. Where it enters as one more column in a feature table, it wins nothing. Knowing the difference before selling the solution is half the work."),
+            ],
+        },
+    ),
+    dict(
+        slug="co2-supercritico",
+        iso="2026-11-11",
+        mins=7,
+        thumb="img/exp/co2-identidades.webp",
+        chart=True,
+        tag={"pt": "Termodinâmica", "en": "Thermodynamics"},
+        date={"pt": "11 de novembro de 2026", "en": "11 November 2026"},
+        title={
+            "pt": "O substituto mais preciso era o que quebrava a termodinâmica",
+            "en": "The more accurate surrogate was the one breaking thermodynamics",
+        },
+        lead={
+            "pt": "Duas famílias de substituto para CO₂ perto do ponto crítico, com os mesmos dados e o mesmo orçamento de treino. A rede direta acerta mais e viola a identidade de c_v em 1.100%. A de potencial erra mais e, com convexidade na entrada, mantém as seis identidades abaixo de 0,002%.",
+            "en": "Two families of surrogate for CO₂ near the critical point, on the same data and the same training budget. The direct network is more accurate and violates the c_v identity by 1,100%. The potential one errs more and, with input convexity, keeps all six identities below 0.002%.",
+        },
+        metric={
+            "pt": ("1.100%", "de violação da identidade de c_v no substituto direto, contra 0,0021% no potencial com convexidade"),
+            "en": ("1,100%", "violation of the c_v identity in the direct surrogate, against 0.0021% in the convex potential one"),
+        },
+        limits={
+            "pt": "O alvo é uma equação de estado (Span & Wagner, 1996), não um ensaio: o que está medido é a fidelidade ao modelo de referência, não ao CO₂ real. O domínio é o CO₂ supercrítico perto do ponto crítico, com 5 sementes e intervalos de 95%. Na extrapolação mais quente, a rede de potencial (MLP) ficou estável em 33% dos pontos, contra 100% da rede direta, e com 9.000 passos de treino a diferença de erro na região de treino deixa de ser significativa. O potencial custa de 4 a 10 vezes mais tempo de treino.",
+            "en": "The target is an equation of state (Span & Wagner, 1996), not a test: what is measured is fidelity to the reference model, not to real CO₂. The domain is supercritical CO₂ near the critical point, with 5 seeds and 95% intervals. In the hotter extrapolation the potential network (MLP) was stable on 33% of the points, against 100% for the direct one, and at 9,000 training steps the error gap in the training region stops being significant. The potential costs four to ten times more training time.",
+        },
+        body={
+            "pt": [
+                ("p", "Uma rede neural que devolve pressão, entropia, calor específico e velocidade do som, cada uma pela sua própria saída, pode ser muito precisa e ainda assim inútil: nada no treino obriga as derivadas que ligam essas grandezas a continuarem valendo. Perto do ponto crítico, onde as propriedades variam rápido, essa diferença decide se o resultado pode entrar num solver."),
+                ("h2", "O experimento"),
+                ("p", "Mesmos dados (CoolProp sobre a equação de Span & Wagner), mesmos passos de treino, mesmas sementes. Três modelos: rede direta, com uma saída por propriedade; rede de potencial, que aprende a energia de Helmholtz e tira cada propriedade por derivada; e a versão com convexidade na entrada (ICNN, Amos e outros, 2017). A avaliação cobre a região de treino, duas extrapolações (mais quente e mais denso) e seis identidades termodinâmicas."),
+                ("h2", "O número que separa os dois"),
+                ("p", "Erro RMS normalizado pelo desvio da propriedade, na região de treino: <b>0,0995</b> para a rede direta, <b>1,61</b> para a de potencial e <b>1,24</b> para a versão com convexidade. A direta é cerca de <b>16 vezes mais precisa</b>, com um sexto do tempo de treino (21 s por semente, contra 85 s e 213 s)."),
+                ("p", "Nas identidades, o resultado se inverte. Violação relativa no percentil 95: a rede direta viola a relação de Maxwell em <b>41%</b>, a dependência de c_v com a densidade em <b>1.100%</b> e a relação de Mayer em 240%. A de potencial fica em 0,0028% na Maxwell e 0,0003% na de c_v. A exceção é a velocidade do som, onde o potencial sem convexidade é pior que a rede direta, 540% contra 88%, e é justamente o que a versão com convexidade corrige: 0,001%."),
+                ("fig", ("img/exp/co2-identidades.webp", "Violação relativa das identidades termodinâmicas, por modelo", "Violação relativa das seis identidades termodinâmicas, percentil 95, em escala logarítmica de 10⁻⁷ a 10. Vermelho, rede direta; azul, potencial; verde, potencial com convexidade. A barra azul de velocidade do som é a exceção que o texto discute, e a verde mostra o que a convexidade resolve.")),
+                ("fig", ("img/exp/co2-erros.webp", "Erro de propriedade nas três regiões de avaliação", "O outro lado da moeda: o erro de propriedade nas três regiões. Onde a rede direta é mais precisa, e é por uma ordem de grandeza.")),
+                ("h2", "Por que o erro não é o critério"),
+                ("p", "Um solver que recebe calor específico e velocidade do som de fontes que não conversam entre si não converge, ou converge para o que não devia. A rede direta otimiza cada propriedade contra o dado, e nada no treino impede as derivadas de se contradizerem: por isso ela acerta cada número e erra a relação entre eles. Na rede de potencial toda propriedade sai da mesma função, então as identidades valem por construção, e o que sobra é o resíduo do ajuste."),
+                ("p", "O preço está do outro lado, e é honesto dizer qual é. O potencial treina de quatro a dez vezes mais devagar, e fora do domínio ele desestabiliza: na extrapolação mais quente, só 33% dos pontos ficaram estáveis, contra 100% da rede direta. Com o triplo de passos, e mais sementes, a diferença de erro na região de treino deixa de ser significativa, o que sugere que a vantagem da rede direta é de orçamento, não de arquitetura."),
+                ("fig", ("img/exp/co2-isotermas.webp", "Isotermas perto do ponto crítico para os três modelos", "Isotermas perto do ponto crítico, que é onde um erro de 1% em densidade vira um erro grande em pressão. É também a região em que os dois tipos de substituto mais se afastam.")),
+                ("h2", "O que isso decide"),
+                ("p", "Para interpolar propriedades num pós-processamento, onde ninguém vai derivar nada, a rede direta é a escolha. Para alimentar um solver de CFD, a de potencial, com o erro declarado ao lado. O experimento não elege um vencedor: ele põe preço em cada um, que é o que faltava para escolher."),
+            ],
+            "en": [
+                ("p", "A neural network that returns pressure, entropy, heat capacity and speed of sound, each from its own output, can be very accurate and still useless: nothing in the training forces the derivatives that link those quantities to keep holding. Near the critical point, where properties vary fast, that difference decides whether the result can go into a solver."),
+                ("h2", "The experiment"),
+                ("p", "Same data (CoolProp over the Span & Wagner equation), same training steps, same seeds. Three models: a direct network, one output per property; a potential network, which learns the Helmholtz energy and takes every property as a derivative; and the input-convex version (ICNN, Amos and others, 2017). Evaluation covers the training region, two extrapolations (hotter and denser) and six thermodynamic identities."),
+                ("h2", "The number that separates them"),
+                ("p", "RMS error normalised by the property's standard deviation, in the training region: <b>0.0995</b> for the direct network, <b>1.61</b> for the potential one and <b>1.24</b> for the convex version. The direct one is about <b>16 times more accurate</b>, on a sixth of the training time (21 s per seed, against 85 s and 213 s)."),
+                ("p", "On the identities, the result inverts. Relative violation at the 95th percentile: the direct network violates the Maxwell relation by <b>41%</b>, the density dependence of c_v by <b>1,100%</b> and the Mayer relation by 240%. The potential one sits at 0.0028% on Maxwell and 0.0003% on the c_v one. The exception is the speed of sound, where the potential network without convexity is worse than the direct one, 540% against 88%, and that is exactly what the convex version fixes: 0.001%."),
+                ("fig", ("img/exp/co2-identidades.webp", "Relative violation of the thermodynamic identities, per model", "Relative violation of the six thermodynamic identities, 95th percentile, on a log scale from 10⁻⁷ to 10. Red, direct network; blue, potential; green, potential with convexity. The blue speed-of-sound bar is the exception the text discusses, and the green one shows what convexity fixes.")),
+                ("fig", ("img/exp/co2-erros.webp", "Property error across the three evaluation regions", "The other side of the coin: property error across the three regions. Where the direct network is more accurate, and it is by an order of magnitude.")),
+                ("h2", "Why error is not the criterion"),
+                ("p", "A solver handed heat capacity and speed of sound from sources that do not agree with each other either fails to converge or converges to something it should not. The direct network optimises each property against the data, and nothing in the training stops the derivatives from contradicting one another: that is why it gets every number right and the relation between them wrong. In the potential network every property comes from the same function, so the identities hold by construction, and what is left is the fit residual."),
+                ("p", "The price is on the other side, and it is fair to state it. The potential trains four to ten times slower, and outside the domain it destabilises: in the hotter extrapolation only 33% of the points stayed stable, against 100% for the direct network. With triple the steps, and more seeds, the error gap in the training region stops being significant, which suggests the direct network's advantage is one of budget, not of architecture."),
+                ("fig", ("img/exp/co2-isotermas.webp", "Isotherms near the critical point for the three models", "Isotherms near the critical point, which is where a 1% error in density becomes a large error in pressure. It is also the region where the two kinds of surrogate drift furthest apart.")),
+                ("h2", "What this decides"),
+                ("p", "To interpolate properties in post-processing, where nobody will differentiate anything, the direct network is the choice. To feed a CFD solver, the potential one, with the error stated beside it. The experiment crowns no winner: it puts a price on each, which is what was missing in order to choose."),
+            ],
+        },
+    ),
     dict(
         slug="guardrail-veriphysics",
         iso="2026-10-02",
@@ -348,7 +519,7 @@ POST_BY_SLUG = {p["slug"]: p for p in POSTS}
 
 PAGES = {
     "home": "",
-    "produto": "engineering",
+    "produto": "studio",
     "artigos": "artigos",
     "lib": "lib",
 }
@@ -401,7 +572,7 @@ STRINGS = {
         "foot_law": "LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.",
         "foot_rights": "Apache-2.0 no código, verificação por padrão.",
         "lbl_products": "Início",
-        "lbl_product": "PINNeAPPle Engineering",
+        "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Artigos",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
@@ -426,7 +597,7 @@ STRINGS = {
         "foot_law": "LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.",
         "foot_rights": "Apache-2.0 in the code, verification by default.",
         "lbl_products": "Home",
-        "lbl_product": "PINNeAPPle Engineering",
+        "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Articles",
         "lbl_lib": "The library",
         "read_more": "Read the article",
@@ -440,26 +611,26 @@ META = {
     "home": {
         "pt": dict(
             title="PINNeAPPle Labs · engenharia com a conta aberta",
-            desc="Resposta de engenharia em horas, não em semanas. O PINNeAPPle Engineering chega em 2027; hoje os casos já rodam com o time. Números medidos, erro declarado, relatório verificável.",
+            desc="Resposta de engenharia em horas, não em semanas. O PINNeAPPle Studio chega em 2027; hoje os casos já rodam com o time. Números medidos, erro declarado, relatório verificável.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
             title="PINNeAPPle Labs · engineering with the working shown",
-            desc="Engineering answers in hours, not weeks. PINNeAPPle Engineering arrives in 2027; today the cases run with our team. Measured numbers, stated error, verifiable report.",
+            desc="Engineering answers in hours, not weeks. PINNeAPPle Studio arrives in 2027; today the cases run with our team. Measured numbers, stated error, verifiable report.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
     },
     "produto": {
         "pt": dict(
-            title="PINNeAPPle Engineering · lançamento em 2027",
+            title="PINNeAPPle Studio · lançamento em 2027",
             desc="Você escreve o problema de engenharia em português. A plataforma diz se cobre, confere o que já foi provado, roda e devolve o resultado com relatório e evidência. Lançamento em 2027.",
             og="img/eng/studio-home.jpg",
             type="website",
         ),
         "en": dict(
-            title="PINNeAPPle Engineering · launching in 2027",
+            title="PINNeAPPle Studio · launching in 2027",
             desc="You write the engineering problem in plain language. The platform says whether it covers it, checks what has been proven, runs it and returns the result with a report and evidence. Launching in 2027.",
             og="img/eng/studio-home.jpg",
             type="website",
@@ -699,7 +870,7 @@ def vfig(src: str, poster: str, cap: str, root: str) -> str:
 def shot(src: str, alt: str, cap: str, root: str) -> str:
     """An app screenshot inside a browser frame: it reads as a product, not as a render."""
     return f"""<figure class="frame">
-  <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Engineering · Studio</span></div>
+  <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Studio</span></div>
   <img src="{root}{src}" alt="{alt}" loading="lazy" decoding="async" />
   <figcaption>{cap}</figcaption>
 </figure>"""
@@ -768,10 +939,10 @@ HOME = {
     "pt": dict(
         eyebrow="PINNeAPPle Labs · engenharia assistida por física",
         h1="Resposta de engenharia em horas, não em semanas.",
-        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. O produto que faz isso sozinho, o <b>PINNeAPPle Engineering</b>, chega em 2027. Hoje, os casos rodam com o nosso time.",
-        cta_secondary="Conhecer o PINNeAPPle Engineering",
-        chips=["Em breve: PINNeAPPle Engineering", "Números medidos, nunca estimados", "Base de código aberto"],
-        hero_cap="O Studio do PINNeAPPle Engineering: você escreve o que precisa e ele mostra o que já existe pronto para rodar.",
+        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. O produto que faz isso sozinho, o <b>PINNeAPPle Studio</b>, chega em 2027. Hoje, os casos rodam com o nosso time.",
+        cta_secondary="Conhecer o PINNeAPPle Studio",
+        chips=["Em breve: PINNeAPPle Studio", "Números medidos, nunca estimados", "Base de código aberto"],
+        hero_cap="O PINNeAPPle Studio: você escreve o que precisa e ele mostra o que já existe pronto para rodar.",
         problem_eyebrow="O problema",
         problem_h="Por que a simulação trava o projeto",
         problem_p="Não é falta de software. É tempo, custo e, principalmente, confiança no número que sai.",
@@ -781,7 +952,7 @@ HOME = {
             ("A confiança", "O resultado sai colorido e bonito, e ninguém sabe se está certo. Sem uma referência externa, o número vira opinião."),
         ],
         product_eyebrow="O produto",
-        product_h="PINNeAPPle Engineering",
+        product_h="PINNeAPPle Studio",
         product_lead="A engenharia em texto: você escreve o que precisa, e a plataforma encontra uma ferramenta que já existe, confere se o seu caso está dentro do que aquela ferramenta já provou, roda e devolve o resultado com relatório e evidência.",
         product_points=[
             "<b>Entende o pedido escrito</b>, sem nome de método e sem montar o caso.",
@@ -837,10 +1008,10 @@ HOME = {
     "en": dict(
         eyebrow="PINNeAPPle Labs · physics-assisted engineering",
         h1="Engineering answers in hours, not weeks.",
-        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. The product that does this on its own, <b>PINNeAPPle Engineering</b>, arrives in 2027. Today, the cases run with our team.",
-        cta_secondary="Meet PINNeAPPle Engineering",
-        chips=["Arriving in 2027: PINNeAPPle Engineering", "Measured numbers, never estimates", "Open-source base"],
-        hero_cap="The PINNeAPPle Engineering Studio: you write what you need and it shows what is already ready to run.",
+        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. The product that does this on its own, <b>PINNeAPPle Studio</b>, arrives in 2027. Today, the cases run with our team.",
+        cta_secondary="Meet PINNeAPPle Studio",
+        chips=["Arriving in 2027: PINNeAPPle Studio", "Measured numbers, never estimates", "Open-source base"],
+        hero_cap="The PINNeAPPle Studio: you write what you need and it shows what is already ready to run.",
         problem_eyebrow="The problem",
         problem_h="Why simulation holds the project up",
         problem_p="It is not a lack of software. It is time, cost and, mostly, trust in the number that comes out.",
@@ -850,8 +1021,8 @@ HOME = {
             ("The trust", "The result comes out colourful and pretty, and nobody knows whether it is right. Without an external reference, the number is just an opinion."),
         ],
         product_eyebrow="The product",
-        product_h="PINNeAPPle Engineering",
-        product_lead="Engineering in text: you write what you need, and the platform finds a tool that already exists, checks whether your case sits inside what that tool has already proven, runs it, and returns the result with a report and evidence.",
+        product_h="PINNeAPPle Studio",
+        product_lead="Studio in plain text: you write what you need, and the platform finds a tool that already exists, checks whether your case sits inside what that tool has already proven, runs it, and returns the result with a report and evidence.",
         product_points=[
             "<b>It understands the written request</b>, no method name, no case to build.",
             "<b>It says plainly whether it covers you</b>: “yes”, “this value is missing”, “partly” or “no”.",
@@ -908,7 +1079,7 @@ HOME = {
 PRODUCT = {
     "pt": dict(
         eyebrow="O produto · lançamento em 2027",
-        h1="PINNeAPPle Engineering",
+        h1="PINNeAPPle Studio",
         lead="Do problema de engenharia ao relatório que você pode defender numa reunião. Você escreve o que precisa; a plataforma diz se cobre, roda o que já tem prova e devolve o resultado com a conta aberta.",
         chips=["Studio no navegador", "Lançamento em 2027", "Roda sobre a base aberta"],
         cta_primary="Quero testar quando abrir",
@@ -917,7 +1088,7 @@ PRODUCT = {
         what_eyebrow="O que é",
         what_h="Uma plataforma que responde engenharia, não que desenha gráfico",
         what_p=[
-            "A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Engineering faz o caminho contrário: começa no pedido, escrito em português comum, e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.",
+            "A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Studio faz o caminho contrário: começa no pedido, escrito em português comum, e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.",
             "Por baixo está a biblioteca aberta da PINNeAPPle: cada ferramenta é uma função real, com assinatura, unidade, faixa de validade e o histórico de testes. A plataforma não inventa capacidade: ela encontra o que existe, confere se o seu caso cabe ali e executa em ambiente isolado.",
         ],
         counts=[
@@ -982,7 +1153,7 @@ PRODUCT = {
         film=("videos/studio-pt.mp4", "videos/studio-pt.jpg", "Busca, ferramenta, execução, verificações e relatório: a aplicação respondendo um job de verdade. A espera do solver foi cortada."),
         videos_eyebrow="Mais dois apps da base",
         videos_h="O que já existe para além do Studio",
-        videos_p="O Engineering executa as ferramentas da biblioteca. Estes dois vídeos são apps da base rodando: dimensionamento térmico e preflight de simulação.",
+        videos_p="O Studio executa as ferramentas da biblioteca. Estes dois vídeos são apps da base rodando: dimensionamento térmico e preflight de simulação.",
         videos=[
             ("videos/app1.mp4", "videos/app1.jpg", "Dimensionamento térmico: a resposta sai enquanto você digita"),
             ("videos/app8.mp4", "videos/app8.jpg", "Preflight de simulação: PASS, WARNING ou FAIL antes de rodar"),
@@ -1003,7 +1174,7 @@ PRODUCT = {
     ),
     "en": dict(
         eyebrow="The product · launching in 2027",
-        h1="PINNeAPPle Engineering",
+        h1="PINNeAPPle Studio",
         lead="From the engineering problem to a report you can defend in a meeting. You write what you need; the platform says whether it covers it, runs what already has proof, and returns the result with the working shown.",
         chips=["Studio in the browser", "Launching in 2027", "Runs on the open base"],
         cta_primary="I want to test it when it opens",
@@ -1012,7 +1183,7 @@ PRODUCT = {
         what_eyebrow="What it is",
         what_h="A platform that answers engineering, not one that draws plots",
         what_p=[
-            "Most simulation tools hand back a colourful field and leave the interpretation to you. Engineering goes the other way: it starts from the request, written in plain language, and ends in a report that says what was done, what was checked, and what has not been proven yet.",
+            "Most simulation tools hand back a colourful field and leave the interpretation to you. Studio goes the other way: it starts from the request, written in plain language, and ends in a report that says what was done, what was checked, and what has not been proven yet.",
             "Underneath sits PINNeAPPle's open library: every tool is a real function, with a signature, units, a validity range and a test history. The platform does not invent capability: it finds what exists, checks whether your case fits, and runs it in an isolated environment.",
         ],
         counts=[
@@ -1077,7 +1248,7 @@ PRODUCT = {
         film=("videos/studio-en.mp4", "videos/studio-en.jpg", "Search, tool, run, checks and report: the application answering a real job. The solver wait has been cut out."),
         videos_eyebrow="Two more apps from the base",
         videos_h="What already exists beyond the Studio",
-        videos_p="Engineering executes the library's tools. These two clips are base apps running: thermal sizing and simulation preflight.",
+        videos_p="The Studio executes the library's tools. These two clips are base apps running: thermal sizing and simulation preflight.",
         videos=[
             ("videos/app1.mp4", "videos/app1.jpg", "Thermal sizing: the answer appears as you type"),
             ("videos/app8.mp4", "videos/app8.jpg", "Simulation preflight: PASS, WARNING or FAIL before the run"),
@@ -1475,8 +1646,11 @@ def page_produto(lang: str) -> str:
 
 def post_card(lang: str, p: dict, root: str) -> str:
     S = STRINGS[lang]
+    # A chart is not a photograph: cropping it to fill the card would cut the axes
+    # off, so chart cards get the picture whole, on a plate. See `.thumb.chart`.
+    thumb = "thumb chart" if p.get("chart") else "thumb"
     return f"""<a class="post-card" href="{root}{url(lang, 'post:' + p['slug'])}">
-  <span class="thumb"><img src="{root}{p['thumb']}" alt="{p['title'][lang]}" loading="lazy" decoding="async" /></span>
+  <span class="{thumb}"><img src="{root}{p['thumb']}" alt="{p['title'][lang]}" loading="lazy" decoding="async" /></span>
   <span class="pb">
     <span class="meta">{p['tag'][lang]} · {p['mins']} {S['min_read']}</span>
     <h3>{p['title'][lang]}</h3>
@@ -1782,6 +1956,10 @@ BUILDERS = {
 
 # Old addresses that must keep working: the URL stays, the destination changes.
 REDIRECTS = {
+    "engineering": {
+        "pt": ("/studio/", "Ver o produto"),
+        "en": ("/en/studio/", "See the product"),
+    },
     "casos-de-uso": {
         "pt": ("/artigos/", "Ver os artigos"),
         "en": ("/en/artigos/", "See the articles"),

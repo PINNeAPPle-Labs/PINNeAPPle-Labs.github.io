@@ -56,7 +56,7 @@ T = {
         s6=("Relatório", "E com o relatório: o que rodou, o que não rodou, a versão do código."),
         s7=("Cobertura", "O que roda hoje é contado do código e das execuções, nunca estimado."),
         waiting=("Rodando", "Rodando no solver, com os parâmetros declarados."),
-        end=("Em breve", "PINNeAPPle Engineering", "Lançamento em 2027 · pinneapple-labs.github.io"),
+        end=("Em breve", "PINNeAPPle Studio", "Lançamento em 2027 · pinneapple-labs.github.io"),
         marker="Verificações",
     ),
     "en": dict(
@@ -70,7 +70,7 @@ T = {
         s6=("Report", "And with the report: what ran, what did not, the code version."),
         s7=("Coverage", "What runs today is counted from the code and the runs, never estimated."),
         waiting=("Running", "Running in the solver, with the stated parameters."),
-        end=("Coming soon", "PINNeAPPle Engineering", "Launching in 2027 · pinneapple-labs.github.io"),
+        end=("Coming soon", "PINNeAPPle Studio", "Launching in 2027 · pinneapple-labs.github.io"),
         marker="Verifications",
     ),
 }

@@ -14,15 +14,15 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/engineering/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/engineering/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/engineering/"/>
+    <loc>https://pinneapple-labs.github.io/studio/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/studio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/studio/"/>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/en/engineering/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/engineering/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/engineering/"/>
+    <loc>https://pinneapple-labs.github.io/en/studio/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/studio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/studio/"/>
     <priority>0.8</priority>
   </url>
   <url>
@@ -48,6 +48,42 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/lib/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/lib/"/>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/aerodinamica-autonoma/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/aerodinamica-autonoma/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/aerodinamica-autonoma/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/aerodinamica-autonoma/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/aerodinamica-autonoma/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/aerodinamica-autonoma/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/futebol-fisica/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/futebol-fisica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/futebol-fisica/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/futebol-fisica/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/futebol-fisica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/futebol-fisica/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/co2-supercritico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/co2-supercritico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/co2-supercritico/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/co2-supercritico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/co2-supercritico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/co2-supercritico/"/>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/</loc>

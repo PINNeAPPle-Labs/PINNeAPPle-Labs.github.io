@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copies the Engineering app screenshots into the site, ready to serve.
+"""Copies the Studio app screenshots into the site, ready to serve.
 
     python3 tools/import_shots.py [--source <checkout>]
 
