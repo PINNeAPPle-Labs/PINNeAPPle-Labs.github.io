@@ -878,3 +878,6 @@ ul.ticks li::before {
 nav.main a.pre { color: var(--gold); }
 nav.main a.pre:hover { color: var(--gold-hi); }
 @media (max-width: 860px) { .pre-inner { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+/* the line under the two hero buttons: what happens when you click each one */
+.hero-note { margin: 0.9rem 0 0; font-size: 0.8rem; color: var(--text-mute); max-width: 44ch; }

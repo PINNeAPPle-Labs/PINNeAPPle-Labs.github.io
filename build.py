@@ -1014,6 +1014,8 @@ STRINGS = {
         "pre_lead": "O Studio abre em 2027, em prévia fechada. Quem entra na lista recebe o convite antes, na ordem de inscrição, e ajuda a decidir o que entra primeiro.",
         "pre_btn": "Quero pré-acesso",
         "pre_note": "O e-mail serve só para o convite do pré-acesso. Sem spam, e dá para sair em um clique.",
+        "hero_note": "O primeiro botão abre o WhatsApp com o texto pronto. O pré-acesso são três perguntas, e o convite sai em 2027.",
+        "prod_note": "O primeiro botão abre o formulário de pré-acesso: três perguntas, e o convite sai em 2027. O segundo abre o WhatsApp com o texto pronto.",
     },
     "en": {
         "skip": "Skip to content",
@@ -1045,6 +1047,8 @@ STRINGS = {
         "pre_lead": "The Studio opens in 2027, in a closed preview. Whoever joins the list gets the invite first, in sign-up order, and helps decide what ships first.",
         "pre_btn": "Get early access",
         "pre_note": "The e-mail is used for the early-access invite only. No spam, and one click to leave.",
+        "hero_note": "The first button opens WhatsApp with the message ready. Early access is three questions, and the invite goes out in 2027.",
+        "prod_note": "The first button opens the early-access form: three questions, and the invite goes out in 2027. The second opens WhatsApp with the message ready.",
     },
 }
 
@@ -1302,6 +1306,14 @@ def pre_band(lang: str, root: str) -> str:
   </section>
 """
 
+def pre_button(lang: str, cls: str = "btn btn-ghost") -> str:
+    """The early-access button, or nothing when that language has no form yet."""
+    form = PREACCESS_FORM.get(lang, "")
+    if not form:
+        return ""
+    return (f'<a class="{cls}" href="{form}" target="_blank" rel="noopener">'
+            f'{STRINGS[lang]["pre_btn"]} <span aria-hidden="true">↗</span></a>')
+
 def cta_band(lang: str, root: str) -> str:
     S = STRINGS[lang]
     return f"""  <section class="cta-band">
@@ -1454,9 +1466,9 @@ HOME = {
     "pt": dict(
         eyebrow="PINNeAPPle Labs · engenharia assistida por física",
         h1="Resposta de engenharia em horas, não em semanas.",
-        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. O produto que faz isso sozinho, o <b>PINNeAPPle Studio</b>, chega em 2027. Hoje, os casos rodam com o nosso time.",
+        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. Hoje os casos rodam com o nosso time; o <b>PINNeAPPle Studio</b>, que faz isso sozinho, chega em 2027 e já tem lista de pré-acesso.",
         cta_secondary="Conhecer o PINNeAPPle Studio",
-        chips=["Em breve: PINNeAPPle Studio", "Números medidos, nunca estimados", "Base de código aberto"],
+        chips=["CFD, térmico, estrutural, eletromagnetismo", "Números medidos, nunca estimados", "Base de código aberto"],
         hero_cap="O PINNeAPPle Studio: você escreve o que precisa e ele mostra o que já existe pronto para rodar.",
         problem_eyebrow="O problema",
         problem_h="Por que a simulação trava o projeto",
@@ -1534,9 +1546,9 @@ HOME = {
     "en": dict(
         eyebrow="PINNeAPPle Labs · physics-assisted engineering",
         h1="Engineering answers in hours, not weeks.",
-        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. The product that does this on its own, <b>PINNeAPPle Studio</b>, arrives in 2027. Today, the cases run with our team.",
+        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. Today the cases run with our team; <b>PINNeAPPle Studio</b>, which does it on its own, arrives in 2027 and already has an early-access list.",
         cta_secondary="Meet PINNeAPPle Studio",
-        chips=["Arriving in 2027: PINNeAPPle Studio", "Measured numbers, never estimates", "Open-source base"],
+        chips=["CFD, thermal, structural, electromagnetics", "Measured numbers, never estimates", "Open-source base"],
         hero_cap="The PINNeAPPle Studio: you write what you need and it shows what is already ready to run.",
         problem_eyebrow="The problem",
         problem_h="Why simulation holds the project up",
@@ -1836,8 +1848,9 @@ def page_home(lang: str) -> str:
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
           {wa_button(lang)}
-          <a class="btn btn-ghost" href="{root}{url(lang, 'produto')}">{C['cta_secondary']} →</a>
+          {pre_button(lang) or f'<a class="btn btn-ghost" href="{root}{url(lang, 'produto')}">{C["cta_secondary"]} →</a>'}
         </div>
+        <p class="hero-note">{S['hero_note']}</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>
@@ -2068,9 +2081,10 @@ def page_produto(lang: str) -> str:
         <h1 style="margin-top:1.1rem">{C['h1']}</h1>
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/{WHATSAPP}?text={_q(C['cta_primary'])}" target="_blank" rel="noopener">{C['cta_primary']}</a>
-          <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{C['cta_secondary']} →</a>
+          {pre_button(lang, "btn btn-primary") or f'<a class="btn btn-primary" href="https://wa.me/{WHATSAPP}?text={_q(C["cta_primary"])}" target="_blank" rel="noopener">{C["cta_primary"]}</a>'}
+          <a class="btn btn-ghost" href="https://wa.me/{WHATSAPP}?text={_q(S['wa_msg'])}" target="_blank" rel="noopener">{S['wa']}</a>
         </div>
+        <p class="hero-note">{S['prod_note']}</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>{shot('img/eng/studio-home.webp', C['hero_cap'], C['hero_cap'], root)}</div>
