@@ -1,0 +1,5 @@
+# intermediate files from tools/record_studio.py — regenerate, never commit
+videos/.raw*
+
+__pycache__/
+*.pyc

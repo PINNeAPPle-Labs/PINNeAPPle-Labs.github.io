@@ -14,15 +14,27 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/casos-de-uso/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-uso/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-uso/"/>
+    <loc>https://pinneapple-labs.github.io/engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/engineering/"/>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/en/casos-de-uso/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-uso/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-uso/"/>
+    <loc>https://pinneapple-labs.github.io/en/engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/engineering/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/"/>
     <priority>0.8</priority>
   </url>
   <url>
@@ -38,15 +50,75 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/historia/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/historia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/historia/"/>
-    <priority>0.8</priority>
+    <loc>https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/"/>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pinneapple-labs.github.io/en/historia/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/historia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/historia/"/>
-    <priority>0.8</priority>
+    <loc>https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/asa-1920-projetos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/asa-1920-projetos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/asa-1920-projetos/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/asa-1920-projetos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/asa-1920-projetos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/asa-1920-projetos/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/gemeo-hx201/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/gemeo-hx201/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/gemeo-hx201/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/gemeo-hx201/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/gemeo-hx201/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/gemeo-hx201/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/erosao-curva-90/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/substituto-termico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/substituto-termico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/substituto-termico/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/substituto-termico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/substituto-termico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/substituto-termico/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/malha-e-preflight/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/"/>
+    <priority>0.7</priority>
   </url>
 </urlset>

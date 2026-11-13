@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What the training loss was hiding — PINNeAPPle Labs</title>
+<meta name="description" content="An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What the training loss was hiding — PINNeAPPle Labs" />
+<meta property="og:description" content="An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/verificacao.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../../fonts.css" />
+<link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../../en/">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../../en/">Home</a>
+      <a href="../../../en/engineering/">The product</a>
+      <a href="../../../en/artigos/" aria-current="page">Articles</a>
+      <a href="../../../en/lib/">The library</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../../artigos/guardrail-veriphysics/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article>
+    <header class="post-head">
+      <div class="wrap">
+        <p class="post-tagline"><a href="../../../en/artigos/">← Articles</a></p>
+        <p class="eyebrow">Verification</p>
+        <h1>What the training loss was hiding</h1>
+        <p class="lead" style="max-width:62ch">An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product.</p>
+        <p class="post-meta">
+          <span class="chip">2 October 2026</span>
+          <span class="chip">6 min read</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap post-body">
+      <div class="prose">
+<p>A client arrived with an already-trained PINN model. The report showed what every report shows: a falling loss, a small error on the test points, a nice plot. The question was simple, and it is the one engineering always asks: can this be used in a design decision?</p><h2>What the guardrail looks at</h2><p>VeriPhysics does not look at the loss. It takes the trained model and measures what the loss does not: the residual of the equation the model is supposed to satisfy, the consistency of the boundary conditions, and the numerical convergence over the set of points where it was evaluated.</p><figure class="fig"><img src="../../../img/verificacao.jpg" alt="A VeriPhysics run with a score per check" loading="lazy" decoding="async" /><figcaption>A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run” — and they pull the coverage down, which is what the score alone hides.</figcaption></figure><h2>The number</h2><p>The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them — which is exactly where nobody looks.</p><p>Around the same time, another case came up on the structural side: an unsupported beam that finished with the message “Job finished” and a displacement of 1.8×10¹¹ mm. The run finished; the result did not exist. Preflight flags FAIL before execution, naming the file and the line.</p><figure class="fig vfig"><video src="../../../videos/app8.mp4" poster="../../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The preflight app pointing at what will fail, before the run"></video><figcaption>The preflight app pointing at what will fail, before the run</figcaption></figure><h2>Why it became a product</h2><p>A tool that only shows the good result pushes the decision onto trust. A tool that shows the check that did not run hands the decision back to engineering. The rule that stayed: <b>a check that did not run never counts as passed</b>, and the final score covers only what actually ran.</p>
+        <div class="measure"><b>>100× residual</b><span>over the threshold, with a healthy training loss</span></div>
+        <div class="note limits-up"><span><b>What was not proven:</b> The guardrail says the result cannot be used without an explanation; it does not say what the error is, and it does not replace a test. The client's model is confidential: what is published is how the check behaves, not the model.</span></div>
+        <nav class="post-nav" aria-label="More articles"><span></span><a class="post-next" href="../../../en/artigos/asa-1920-projetos/">1,920 wings, three objectives and 13% less CO₂ →</a></nav>
+      </div>
+    </div>
+  </article>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../../en/">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../../en/">Home</a></li>
+          <li><a href="../../../en/engineering/">PINNeAPPle Engineering</a></li>
+          <li><a href="../../../en/artigos/">Articles</a></li>
+          <li><a href="../../../en/lib/">The library</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk to an engineer</a></li>
+          <li><a href="../../../artigos/guardrail-veriphysics/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk to an engineer">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk to an engineer</span>
+</a>
+
+<script src="../../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
