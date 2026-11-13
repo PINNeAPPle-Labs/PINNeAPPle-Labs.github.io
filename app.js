@@ -1,4 +1,4 @@
-/* PINNeAPPle Labs — landing page behaviour */
+/* PINNeAPPle Labs, landing page behaviour */
 (function () {
   'use strict';
 

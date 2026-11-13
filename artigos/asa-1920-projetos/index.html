@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>1.920 asas, três objetivos e 13% menos CO₂ — PINNeAPPle Labs</title>
-<meta name="description" content="Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa” — é o mapa de trocas entre três objetivos que brigam entre si." />
+<title>1.920 asas, três objetivos e 13% menos CO₂ · PINNeAPPle Labs</title>
+<meta name="description" content="Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa”, é o mapa de trocas entre três objetivos que brigam entre si." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/artigos/asa-1920-projetos/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/asa-1920-projetos/" />
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/asa-1920-projetos/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/asa-1920-projetos/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="1.920 asas, três objetivos e 13% menos CO₂ — PINNeAPPle Labs" />
-<meta property="og:description" content="Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa” — é o mapa de trocas entre três objetivos que brigam entre si." />
+<meta property="og:title" content="1.920 asas, três objetivos e 13% menos CO₂ · PINNeAPPle Labs" />
+<meta property="og:description" content="Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa”, é o mapa de trocas entre três objetivos que brigam entre si." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/portfolio/13-aircraft-render-pressure.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
@@ -59,7 +59,7 @@
         <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
         <p class="eyebrow">Otimização</p>
         <h1>1.920 asas, três objetivos e 13% menos CO₂</h1>
-        <p class="lead" style="max-width:62ch">Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa” — é o mapa de trocas entre três objetivos que brigam entre si.</p>
+        <p class="lead" style="max-width:62ch">Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa”, é o mapa de trocas entre três objetivos que brigam entre si.</p>
         <p class="post-meta">
           <span class="chip">20 de setembro de 2026</span>
           <span class="chip">7 min de leitura</span>
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Aumentar a eficiência de uma aeronave não é minimizar um número. Menos CO₂ por passageiro costuma vir com cruzeiro mais lento ou aproximação mais rápida; baixar a velocidade de aproximação costuma custar arrasto. O projeto é uma negociação — e negociação precisa de mapa, não de resposta única.</p><h2>O que foi feito</h2><p>1.920 geometrias de asa geradas e avaliadas com três objetivos ao mesmo tempo: CO₂ por passageiro-quilômetro, velocidade de cruzeiro e velocidade de aproximação. O algoritmo evolutivo (NSGA-II) escolhe a próxima leva; um substituto treinado nas rodadas anteriores guia a busca; os candidatos que sobram são reverificados no OpenFOAM 3D antes de entrar no resultado.</p><figure class="fig"><img src="../../img/portfolio/13-aircraft-render-pressure.jpg" alt="Pressão na pele de uma das asas otimizadas" loading="lazy" decoding="async" /><figcaption>Pressão na pele (Cp) em OpenFOAM 3D, um dos 1.920 projetos avaliados.</figcaption></figure><h2>O número</h2><p><b>−13% de CO₂ por passageiro-quilômetro</b> no conjunto de soluções, com −18,2% de arrasto de perfil e a sustentação-alvo mantida dentro de 0,04%.</p><figure class="fig"><img src="../../img/portfolio/aero_pareto.jpg" alt="Frente de Pareto com três objetivos" loading="lazy" decoding="async" /><figcaption>A frente de Pareto: nenhum ponto domina outro nos três objetivos. Cada ponto é uma troca, não uma vitória.</figcaption></figure><h2>Como ler o resultado</h2><p>A saída é um conjunto de asas, não uma. Quem quer menos CO₂ aceita um cruzeiro diferente; quem precisa de aproximação lenta escolhe outro ponto da frente. A otimização mostra o preço de cada escolha; quem escolhe é a engenharia.</p><figure class="fig vfig"><video src="../../videos/hero-aero.mp4" poster="../../videos/hero-aero.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O campo de pressão girando, do projeto ao resultado"></video><figcaption>O campo de pressão girando, do projeto ao resultado</figcaption></figure>
+<p>Aumentar a eficiência de uma aeronave não é minimizar um número. Menos CO₂ por passageiro costuma vir com cruzeiro mais lento ou aproximação mais rápida; baixar a velocidade de aproximação costuma custar arrasto. O projeto é uma negociação, e negociação precisa de mapa, não de resposta única.</p><h2>O que foi feito</h2><p>1.920 geometrias de asa geradas e avaliadas com três objetivos ao mesmo tempo: CO₂ por passageiro-quilômetro, velocidade de cruzeiro e velocidade de aproximação. O algoritmo evolutivo (NSGA-II) escolhe a próxima leva; um substituto treinado nas rodadas anteriores guia a busca; os candidatos que sobram são reverificados no OpenFOAM 3D antes de entrar no resultado.</p><figure class="fig"><img src="../../img/portfolio/13-aircraft-render-pressure.jpg" alt="Pressão na pele de uma das asas otimizadas" loading="lazy" decoding="async" /><figcaption>Pressão na pele (Cp) em OpenFOAM 3D, um dos 1.920 projetos avaliados.</figcaption></figure><h2>O número</h2><p><b>−13% de CO₂ por passageiro-quilômetro</b> no conjunto de soluções, com −18,2% de arrasto de perfil e a sustentação-alvo mantida dentro de 0,04%.</p><figure class="fig"><img src="../../img/portfolio/aero_pareto.jpg" alt="Frente de Pareto com três objetivos" loading="lazy" decoding="async" /><figcaption>A frente de Pareto: nenhum ponto domina outro nos três objetivos. Cada ponto é uma troca, não uma vitória.</figcaption></figure><h2>Como ler o resultado</h2><p>A saída é um conjunto de asas, não uma. Quem quer menos CO₂ aceita um cruzeiro diferente; quem precisa de aproximação lenta escolhe outro ponto da frente. A otimização mostra o preço de cada escolha; quem escolhe é a engenharia.</p><figure class="fig vfig"><video src="../../videos/hero-aero.mp4" poster="../../videos/hero-aero.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O campo de pressão girando, do projeto ao resultado"></video><figcaption>O campo de pressão girando, do projeto ao resultado</figcaption></figure>
         <div class="measure"><b>−13% CO₂/pax-km</b><span>com a sustentação-alvo mantida em 0,04%</span></div>
         <div class="note limits-up"><span><b>O que não foi provado:</b> Otimização não prova que a asa é fabricável, estruturalmente viável ou boa fora das condições simuladas. O que está medido é arrasto, sustentação e CO₂ nas condições do estudo, conferidos no solver 3D.</span></div>
         <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/guardrail-veriphysics/">← O que a perda de treino escondeu</a><a class="post-next" href="../../artigos/gemeo-hx201/">O gêmeo que avisou 2,6 horas antes →</a></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Traga o seu caso</p>
         <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
-        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>

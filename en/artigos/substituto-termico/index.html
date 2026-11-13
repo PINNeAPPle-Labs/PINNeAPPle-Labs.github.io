@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A heat sink that answers 200,000 times faster — PINNeAPPle Labs</title>
+<title>A heat sink that answers 200,000 times faster · PINNeAPPle Labs</title>
 <meta name="description" content="Seven heat-sink geometries, a 3D solver and a model that returns junction temperature in milliseconds. 4.46% mean error; 7.35% worst case." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/substituto-termico/" />
@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/substituto-termico/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/substituto-termico/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="A heat sink that answers 200,000 times faster — PINNeAPPle Labs" />
+<meta property="og:title" content="A heat sink that answers 200,000 times faster · PINNeAPPle Labs" />
 <meta property="og:description" content="Seven heat-sink geometries, a 3D solver and a model that returns junction temperature in milliseconds. 4.46% mean error; 7.35% worst case." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/surrogate_speed_rerun.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Anyone who designs heat sinks knows the routine: every change of fin is a new 3D simulation. Seven variants become a week; seventy become the whole project.</p><h2>What was done</h2><p>Seven heat-sink geometries solved in 3D FEniCS/dolfinx, with meshes built in gmsh. Then a surrogate trained on those simulations and compared against the solver <b>at points that were not in the training set</b> — the reference is always external to the model.</p><figure class="fig"><img src="../../../img/surrogate_speed_rerun.jpg" alt="Surrogate against 3D FEA: error and speed-up" loading="lazy" decoding="async" /><figcaption>Left: junction temperature, surrogate against 3D FEA, mean error 4.46% and worst case 7.35%. Right: the time gained per geometry — a mean of 227,059×.</figcaption></figure><h2>The numbers</h2><p>Around <b>200,000 times faster</b> (the measured mean across the seven geometries was 227,059×, with the worst case at 57,222×). Mean error of <b>4.46%</b>, worst case <b>7.35%</b>. And the prediction is deterministic: three runs, on different days, returned the same numbers.</p><figure class="fig vfig"><video src="../../../videos/app1.mp4" poster="../../../videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The thermal sizing app running: the answer appears as you type"></video><figcaption>The thermal sizing app running: the answer appears as you type</figcaption></figure><h2>What it changes</h2><p>Exploring the design space now fits inside one meeting. The solver is still called — to validate the choice, not to discover the optimum.</p><figure class="fig"><img src="../../../img/results/bench_true_vs_pred.png" alt="True against predicted" loading="lazy" decoding="async" /><figcaption>True against predicted: three models, the same boundary condition.</figcaption></figure>
+<p>Anyone who designs heat sinks knows the routine: every change of fin is a new 3D simulation. Seven variants become a week; seventy become the whole project.</p><h2>What was done</h2><p>Seven heat-sink geometries solved in 3D FEniCS/dolfinx, with meshes built in gmsh. Then a surrogate trained on those simulations and compared against the solver <b>at points that were not in the training set</b>, the reference is always external to the model.</p><figure class="fig"><img src="../../../img/surrogate_speed_rerun.jpg" alt="Surrogate against 3D FEA: error and speed-up" loading="lazy" decoding="async" /><figcaption>Left: junction temperature, surrogate against 3D FEA, mean error 4.46% and worst case 7.35%. Right: the time gained per geometry, a mean of 227,059×.</figcaption></figure><h2>The numbers</h2><p>Around <b>200,000 times faster</b> (the measured mean across the seven geometries was 227,059×, with the worst case at 57,222×). Mean error of <b>4.46%</b>, worst case <b>7.35%</b>. And the prediction is deterministic: three runs, on different days, returned the same numbers.</p><figure class="fig vfig"><video src="../../../videos/app1.mp4" poster="../../../videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The thermal sizing app running: the answer appears as you type"></video><figcaption>The thermal sizing app running: the answer appears as you type</figcaption></figure><h2>What it changes</h2><p>Exploring the design space now fits inside one meeting. The solver is still called, to validate the choice, not to discover the optimum.</p><figure class="fig"><img src="../../../img/results/bench_true_vs_pred.png" alt="True against predicted" loading="lazy" decoding="async" /><figcaption>True against predicted: three models, the same boundary condition.</figcaption></figure>
         <div class="measure"><b>~200,000×</b><span>faster, at 4.46% mean error</span></div>
         <div class="note limits-up"><span><b>What was not proven:</b> 4.46% is the mean inside the trained geometry range; outside it, the error is unmeasured. Determinism is not accuracy: the same numbers on every run say nothing about regions where there is no data.</span></div>
         <nav class="post-nav" aria-label="More articles"><a class="post-prev" href="../../../en/artigos/erosao-curva-90/">← Erosion in a 90° bend: the numbers met the experiment</a><a class="post-next" href="../../../en/artigos/malha-e-preflight/">The failure that shows up before the run →</a></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Bring your case</p>
         <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
-        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>

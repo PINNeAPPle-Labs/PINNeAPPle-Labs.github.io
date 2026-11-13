@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Um dissipador que responde 200 mil vezes mais rápido — PINNeAPPle Labs</title>
+<title>Um dissipador que responde 200 mil vezes mais rápido · PINNeAPPle Labs</title>
 <meta name="description" content="Sete geometrias de dissipador, um solver 3D e um modelo que devolve a temperatura de junção em milissegundos. Erro médio de 4,46%; pior caso, 7,35%." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/artigos/substituto-termico/" />
@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/substituto-termico/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/substituto-termico/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Um dissipador que responde 200 mil vezes mais rápido — PINNeAPPle Labs" />
+<meta property="og:title" content="Um dissipador que responde 200 mil vezes mais rápido · PINNeAPPle Labs" />
 <meta property="og:description" content="Sete geometrias de dissipador, um solver 3D e um modelo que devolve a temperatura de junção em milissegundos. Erro médio de 4,46%; pior caso, 7,35%." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/surrogate_speed_rerun.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Quem projeta dissipador conhece a rotina: cada mudança de aleta é uma nova simulação 3D. Sete variantes viram uma semana; setenta viram o projeto inteiro.</p><h2>O que foi feito</h2><p>Sete geometrias de dissipador resolvidas em FEniCS/dolfinx 3D, com malha gerada em gmsh. Depois, um substituto treinado nessas simulações e comparado contra o solver <b>em pontos que não estavam no treino</b> — a referência é sempre externa ao modelo.</p><figure class="fig"><img src="../../img/surrogate_speed_rerun.jpg" alt="Substituto contra FEA 3D: erro e ganho de tempo" loading="lazy" decoding="async" /><figcaption>À esquerda, temperatura de junção: substituto contra FEA 3D, erro médio de 4,46% e máximo de 7,35%. À direita, o ganho de tempo por geometria — média de 227.059×.</figcaption></figure><h2>Os números</h2><p>Cerca de <b>200 mil vezes mais rápido</b> (a média medida nas sete geometrias foi 227.059×, com o pior caso em 57.222×). Erro médio de <b>4,46%</b>, pior caso de <b>7,35%</b>. E a previsão é determinística: três rodadas, em dias diferentes, devolveram os mesmos números.</p><figure class="fig vfig"><video src="../../videos/app1.mp4" poster="../../videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O app de dimensionamento térmico rodando: a resposta sai enquanto você digita"></video><figcaption>O app de dimensionamento térmico rodando: a resposta sai enquanto você digita</figcaption></figure><h2>O que isso muda</h2><p>Explorar o espaço de projeto passa a caber numa reunião. O solver continua sendo chamado — para validar a escolha, não para descobrir o ótimo.</p><figure class="fig"><img src="../../img/results/bench_true_vs_pred.png" alt="Verdadeiro contra previsto" loading="lazy" decoding="async" /><figcaption>Verdadeiro contra previsto: três modelos, a mesma condição de contorno.</figcaption></figure>
+<p>Quem projeta dissipador conhece a rotina: cada mudança de aleta é uma nova simulação 3D. Sete variantes viram uma semana; setenta viram o projeto inteiro.</p><h2>O que foi feito</h2><p>Sete geometrias de dissipador resolvidas em FEniCS/dolfinx 3D, com malha gerada em gmsh. Depois, um substituto treinado nessas simulações e comparado contra o solver <b>em pontos que não estavam no treino</b>, a referência é sempre externa ao modelo.</p><figure class="fig"><img src="../../img/surrogate_speed_rerun.jpg" alt="Substituto contra FEA 3D: erro e ganho de tempo" loading="lazy" decoding="async" /><figcaption>À esquerda, temperatura de junção: substituto contra FEA 3D, erro médio de 4,46% e máximo de 7,35%. À direita, o ganho de tempo por geometria, média de 227.059×.</figcaption></figure><h2>Os números</h2><p>Cerca de <b>200 mil vezes mais rápido</b> (a média medida nas sete geometrias foi 227.059×, com o pior caso em 57.222×). Erro médio de <b>4,46%</b>, pior caso de <b>7,35%</b>. E a previsão é determinística: três rodadas, em dias diferentes, devolveram os mesmos números.</p><figure class="fig vfig"><video src="../../videos/app1.mp4" poster="../../videos/app1.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O app de dimensionamento térmico rodando: a resposta sai enquanto você digita"></video><figcaption>O app de dimensionamento térmico rodando: a resposta sai enquanto você digita</figcaption></figure><h2>O que isso muda</h2><p>Explorar o espaço de projeto passa a caber numa reunião. O solver continua sendo chamado, para validar a escolha, não para descobrir o ótimo.</p><figure class="fig"><img src="../../img/results/bench_true_vs_pred.png" alt="Verdadeiro contra previsto" loading="lazy" decoding="async" /><figcaption>Verdadeiro contra previsto: três modelos, a mesma condição de contorno.</figcaption></figure>
         <div class="measure"><b>~200.000×</b><span>mais rápido, com 4,46% de erro médio</span></div>
         <div class="note limits-up"><span><b>O que não foi provado:</b> 4,46% é a média dentro da faixa de geometria treinada; fora dela o erro não está medido. Determinismo não é acerto: os mesmos números em toda rodada não dizem nada sobre regiões onde não há dado.</span></div>
         <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/erosao-curva-90/">← Erosão numa curva de 90°: a conta bateu com o ensaio</a><a class="post-next" href="../../artigos/malha-e-preflight/">A falha que aparece antes de rodar →</a></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Traga o seu caso</p>
         <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
-        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>

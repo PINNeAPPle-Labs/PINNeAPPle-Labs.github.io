@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Builds the PINNeAPPle Labs site: a commercial home, the product page, the
-articles (one post per experiment) and the library page — in two languages.
+articles (one post per experiment) and the library page, in two languages.
 
     python3 build.py
 
@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 # ---------------------------------------------------------------------------
-# Configuration — change here, not in the pages
+# Configuration, change here, not in the pages
 # ---------------------------------------------------------------------------
 
 SITE = "https://pinneapple-labs.github.io"
@@ -43,7 +43,7 @@ LANGUAGES = {
 }
 
 # ---------------------------------------------------------------------------
-# Articles — one post per experiment. Newest first.
+# Articles, one post per experiment. Newest first.
 #
 # Every number here is one already published on this site, with the reference it
 # was measured against. Nothing is rounded up to look better than the run.
@@ -62,8 +62,8 @@ POSTS = [
             "en": "What the training loss was hiding",
         },
         lead={
-            "pt": "Um modelo já treinado, com loss saudável no relatório — e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto.",
-            "en": "An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product.",
+            "pt": "Um modelo já treinado, com loss saudável no relatório, e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto.",
+            "en": "An already-trained model, with a healthy loss in the report, and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product.",
         },
         metric={
             "pt": ("resíduo >100×", "acima do limiar, com a loss de treino saudável"),
@@ -78,9 +78,9 @@ POSTS = [
                 ("p", "Um cliente chegou com um modelo de PINN já treinado. O relatório mostrava o que todo relatório mostra: loss caindo, erro pequeno nos pontos de teste, gráfico bonito. A pergunta era simples e é a mesma que a engenharia faz sempre: dá para usar isso numa decisão de projeto?"),
                 ("h2", "O que o guardrail olha"),
                 ("p", "O VeriPhysics não olha a loss. Ele pega o modelo treinado e mede o que a loss não mede: o resíduo da equação que o modelo deveria satisfazer, a consistência das condições de contorno e a convergência numérica no conjunto de pontos onde ele foi avaliado."),
-                ("fig", ("img/verificacao.jpg", "Run do VeriPhysics com nota por checagem", "Um run do VeriPhysics: nota 100/100 nas duas checagens que rodaram, cobertura 0,50. As duas que não rodaram aparecem como “not run” — e derrubam a cobertura, que é o que a nota esconde.")),
+                ("fig", ("img/verificacao.jpg", "Run do VeriPhysics com nota por checagem", "Um run do VeriPhysics: nota 100/100 nas duas checagens que rodaram, cobertura 0,50. As duas que não rodaram aparecem como “not run”, e derrubam a cobertura, que é o que a nota esconde.")),
                 ("h2", "O número"),
-                ("p", "O resíduo ficou <b>mais de 100 vezes acima do limiar</b> aceito, com a loss de treino aparentemente saudável. O modelo acertava os pontos que estavam no histórico e violava a física entre eles — que é exatamente onde ninguém olha."),
+                ("p", "O resíduo ficou <b>mais de 100 vezes acima do limiar</b> aceito, com a loss de treino aparentemente saudável. O modelo acertava os pontos que estavam no histórico e violava a física entre eles, que é exatamente onde ninguém olha."),
                 ("p", "No mesmo período apareceu outro caso, esse de análise estrutural: uma viga sem apoios que terminou com a mensagem “Job finished” e deslocamento de 1,8×10¹¹ mm. O cálculo terminou; o resultado não existia. O preflight marca FAIL antes da execução, apontando o arquivo e a linha."),
                 ("video", ("videos/app8.mp4", "videos/app8.jpg", "O app de preflight apontando o que vai falhar, antes de rodar")),
                 ("h2", "Por que isso virou produto"),
@@ -90,9 +90,9 @@ POSTS = [
                 ("p", "A client arrived with an already-trained PINN model. The report showed what every report shows: a falling loss, a small error on the test points, a nice plot. The question was simple, and it is the one engineering always asks: can this be used in a design decision?"),
                 ("h2", "What the guardrail looks at"),
                 ("p", "VeriPhysics does not look at the loss. It takes the trained model and measures what the loss does not: the residual of the equation the model is supposed to satisfy, the consistency of the boundary conditions, and the numerical convergence over the set of points where it was evaluated."),
-                ("fig", ("img/verificacao.jpg", "A VeriPhysics run with a score per check", "A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run” — and they pull the coverage down, which is what the score alone hides.")),
+                ("fig", ("img/verificacao.jpg", "A VeriPhysics run with a score per check", "A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run”, and they pull the coverage down, which is what the score alone hides.")),
                 ("h2", "The number"),
-                ("p", "The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them — which is exactly where nobody looks."),
+                ("p", "The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them, which is exactly where nobody looks."),
                 ("p", "Around the same time, another case came up on the structural side: an unsupported beam that finished with the message “Job finished” and a displacement of 1.8×10¹¹ mm. The run finished; the result did not exist. Preflight flags FAIL before execution, naming the file and the line."),
                 ("video", ("videos/app8.mp4", "videos/app8.jpg", "The preflight app pointing at what will fail, before the run")),
                 ("h2", "Why it became a product"),
@@ -112,8 +112,8 @@ POSTS = [
             "en": "1,920 wings, three objectives and 13% less CO₂",
         },
         lead={
-            "pt": "Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa” — é o mapa de trocas entre três objetivos que brigam entre si.",
-            "en": "Multi-objective optimization in 3D CFD: every wing was flown in OpenFOAM, and the result is not “the best wing” — it is the map of trade-offs between three objectives that fight each other.",
+            "pt": "Otimização multiobjetivo em CFD 3D: cada asa foi voada no OpenFOAM, e o resultado não é “a melhor asa”, é o mapa de trocas entre três objetivos que brigam entre si.",
+            "en": "Multi-objective optimization in 3D CFD: every wing was flown in OpenFOAM, and the result is not “the best wing”, it is the map of trade-offs between three objectives that fight each other.",
         },
         metric={
             "pt": ("−13% CO₂/pax-km", "com a sustentação-alvo mantida em 0,04%"),
@@ -125,7 +125,7 @@ POSTS = [
         },
         body={
             "pt": [
-                ("p", "Aumentar a eficiência de uma aeronave não é minimizar um número. Menos CO₂ por passageiro costuma vir com cruzeiro mais lento ou aproximação mais rápida; baixar a velocidade de aproximação costuma custar arrasto. O projeto é uma negociação — e negociação precisa de mapa, não de resposta única."),
+                ("p", "Aumentar a eficiência de uma aeronave não é minimizar um número. Menos CO₂ por passageiro costuma vir com cruzeiro mais lento ou aproximação mais rápida; baixar a velocidade de aproximação costuma custar arrasto. O projeto é uma negociação, e negociação precisa de mapa, não de resposta única."),
                 ("h2", "O que foi feito"),
                 ("p", "1.920 geometrias de asa geradas e avaliadas com três objetivos ao mesmo tempo: CO₂ por passageiro-quilômetro, velocidade de cruzeiro e velocidade de aproximação. O algoritmo evolutivo (NSGA-II) escolhe a próxima leva; um substituto treinado nas rodadas anteriores guia a busca; os candidatos que sobram são reverificados no OpenFOAM 3D antes de entrar no resultado."),
                 ("fig", ("img/portfolio/13-aircraft-render-pressure.jpg", "Pressão na pele de uma das asas otimizadas", "Pressão na pele (Cp) em OpenFOAM 3D, um dos 1.920 projetos avaliados.")),
@@ -137,7 +137,7 @@ POSTS = [
                 ("video", ("videos/hero-aero.mp4", "videos/hero-aero.jpg", "O campo de pressão girando, do projeto ao resultado")),
             ],
             "en": [
-                ("p", "Making an aircraft more efficient is not about minimising one number. Less CO₂ per passenger usually comes with a slower cruise or a faster approach; slowing the approach usually costs drag. The design is a negotiation — and a negotiation needs a map, not a single answer."),
+                ("p", "Making an aircraft more efficient is not about minimising one number. Less CO₂ per passenger usually comes with a slower cruise or a faster approach; slowing the approach usually costs drag. The design is a negotiation, and a negotiation needs a map, not a single answer."),
                 ("h2", "What was done"),
                 ("p", "1,920 wing geometries generated and evaluated against three objectives at once: CO₂ per passenger-kilometre, cruise speed and approach speed. The evolutionary algorithm (NSGA-II) picks the next batch; a surrogate trained on the previous rounds guides the search; the candidates that survive are re-checked in 3D OpenFOAM before they enter the result."),
                 ("fig", ("img/portfolio/13-aircraft-render-pressure.jpg", "Skin pressure on one of the optimized wings", "Skin pressure (Cp) in 3D OpenFOAM, one of the 1,920 designs evaluated.")),
@@ -175,24 +175,24 @@ POSTS = [
         },
         body={
             "pt": [
-                ("p", "Incrustação não quebra o equipamento de uma vez: ela rouba eficiência até o processo sair da faixa. O que a operação quer é antecedência — e a pergunta difícil nunca é a previsão, é se o modelo merece ser ouvido."),
+                ("p", "Incrustação não quebra o equipamento de uma vez: ela rouba eficiência até o processo sair da faixa. O que a operação quer é antecedência, e a pergunta difícil nunca é a previsão, é se o modelo merece ser ouvido."),
                 ("h2", "Como o gêmeo foi validado"),
                 ("p", "O modelo (HX-201, um permutador com incrustação) foi ajustado <b>apenas com o histórico anterior à janela de validação</b>. Uma sonda redundante ficou fora do ajuste e serviu de juiz. A banda de incerteza também foi calibrada numa janela separada, então a cobertura relatada não é a do próprio treino."),
                 ("fig", ("img/twin.jpg", "Ativo industrial em 3D com painel de leitura ao vivo", "O ativo em 3D com a leitura viva ao lado: rotação, potência, empuxo e vento no instante consultado.")),
                 ("h2", "Os números"),
                 ("p", "<b>0,216 °C</b> de erro contra a sonda; <b>95,5%</b> de cobertura da banda na janela de validação; incrustação estimada em 0,001651 m²K/W contra 0,001637 verdadeiro; e o alarme disparando <b>2,6 horas antes</b> do cruzamento medido."),
                 ("h2", "O que a operação faz com isso"),
-                ("p", "Antecedência é tempo para planejar limpeza, negociar uma janela de parada ou ajustar carga. O gêmeo não decide nada: ele avisa — e diz com que erro está avisando."),
+                ("p", "Antecedência é tempo para planejar limpeza, negociar uma janela de parada ou ajustar carga. O gêmeo não decide nada: ele avisa, e diz com que erro está avisando."),
             ],
             "en": [
-                ("p", "Fouling does not break equipment all at once: it drains efficiency until the process drifts out of band. What operations wants is lead time — and the hard question is never the forecast, it is whether the model deserves to be heard."),
+                ("p", "Fouling does not break equipment all at once: it drains efficiency until the process drifts out of band. What operations wants is lead time, and the hard question is never the forecast, it is whether the model deserves to be heard."),
                 ("h2", "How the twin was validated"),
                 ("p", "The model (HX-201, a fouled exchanger) was fitted <b>only on the history before the validation window</b>. A redundant probe was kept out of the fit and served as judge. The uncertainty band was calibrated on a separate window too, so the reported coverage is not the model's own training score."),
                 ("fig", ("img/twin.jpg", "Industrial asset in 3D with a live reading panel", "The asset in 3D beside the live reading: rotation, power, thrust and wind at the moment queried.")),
                 ("h2", "The numbers"),
                 ("p", "<b>0.216 °C</b> of error against the probe; <b>95.5%</b> band coverage on the validation window; fouling estimated at 0.001651 m²K/W against a true 0.001637; and the alarm firing <b>2.6 hours before</b> the measured crossing."),
                 ("h2", "What operations does with it"),
-                ("p", "Lead time is time to plan a cleaning, negotiate a shutdown window or shift load. The twin decides nothing: it warns — and states the error it is warning with."),
+                ("p", "Lead time is time to plan a cleaning, negotiate a shutdown window or shift load. The twin decides nothing: it warns, and states the error it is warning with."),
             ],
         },
     ),
@@ -208,35 +208,35 @@ POSTS = [
             "en": "Erosion in a 90° bend: the numbers met the experiment",
         },
         lead={
-            "pt": "Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido — dentro do fator 2 que a indústria aceita.",
-            "en": "Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value — inside the factor-2 band industry accepts.",
+            "pt": "Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido, dentro do fator 2 que a indústria aceita.",
+            "en": "Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value, inside the factor-2 band industry accepts.",
         },
         metric={
             "pt": ("1,05–1,49×", "do ensaio aberto de Vieira et al. 2016"),
             "en": ("1.05–1.49×", "of the open experiment by Vieira et al. 2016"),
         },
         limits={
-            "pt": "O critério é o fator 2, não precisão de 1%. E resíduo estável não prova que o arrasto estabilizou — por isso a comparação é com o ensaio, não com o próprio solver.",
-            "en": "The criterion is the factor-2 band, not 1% precision. And flat residuals do not prove drag has settled — which is why the comparison is against the experiment, not against the solver itself.",
+            "pt": "O critério é o fator 2, não precisão de 1%. E resíduo estável não prova que o arrasto estabilizou, por isso a comparação é com o ensaio, não com o próprio solver.",
+            "en": "The criterion is the factor-2 band, not 1% precision. And flat residuals do not prove drag has settled, which is why the comparison is against the experiment, not against the solver itself.",
         },
         body={
             "pt": [
-                ("p", "Erosão não é um fenômeno para precisão de 1%: depende da distribuição de partículas, do material e do histórico de operação. A prática aceita um fator 2. O compromisso do projeto era ficar dentro dele — e dizer isso em voz alta, em vez de prometer uma precisão que o fenômeno não tem."),
+                ("p", "Erosão não é um fenômeno para precisão de 1%: depende da distribuição de partículas, do material e do histórico de operação. A prática aceita um fator 2. O compromisso do projeto era ficar dentro dele, e dizer isso em voz alta, em vez de prometer uma precisão que o fenômeno não tem."),
                 ("h2", "O que foi feito"),
                 ("p", "O pipeline CFD completo: geometria da tubulação, malha, OpenFOAM resolvendo o escoamento com partículas, modelo de erosão na parede e um substituto treinado para responder rápido em novas condições de operação."),
                 ("fig", ("img/erosao.jpg", "Mapa de erosão na parede de uma curva de 90°", "Mapa de erosão na parede (ensaio T3): tubulação inteira e o zoom na curva, com o pico na parede externa. Escala em mm/ano.")),
                 ("h2", "Os números"),
-                ("p", "<b>1,05 a 1,49 vez</b> a taxa medida no ensaio de Vieira et al. (2016). O substituto ficou em <b>1,0% de erro</b> na perda de carga, em pontos que não viu no treino. As 32 simulações do estudo — da geometria ao modelo treinado — levaram 23 minutos."),
+                ("p", "<b>1,05 a 1,49 vez</b> a taxa medida no ensaio de Vieira et al. (2016). O substituto ficou em <b>1,0% de erro</b> na perda de carga, em pontos que não viu no treino. As 32 simulações do estudo, da geometria ao modelo treinado, levaram 23 minutos."),
                 ("h2", "O que isso muda"),
                 ("p", "Com o substituto, variar diâmetro, raio de curva e vazão deixa de custar um dia por ponto. O CFD continua sendo a referência; o que muda é quantas perguntas dá para fazer antes de pagar o caso caro."),
             ],
             "en": [
-                ("p", "Erosion is not a phenomenon for 1% precision: it depends on the particle distribution, the material and the operating history. Practice accepts a factor of 2. The commitment on this project was to land inside that band — and to say so out loud, instead of promising precision the phenomenon does not have."),
+                ("p", "Erosion is not a phenomenon for 1% precision: it depends on the particle distribution, the material and the operating history. Practice accepts a factor of 2. The commitment on this project was to land inside that band, and to say so out loud, instead of promising precision the phenomenon does not have."),
                 ("h2", "What was done"),
                 ("p", "The full CFD pipeline: pipe geometry, mesh, OpenFOAM solving the particle-laden flow, a wall-erosion model, and a surrogate trained to answer quickly under new operating conditions."),
                 ("fig", ("img/erosao.jpg", "Wall erosion map on a 90° bend", "Wall erosion map (case T3): the whole pipe and the zoom into the bend, with the peak on the outer wall. Scale in mm/year.")),
                 ("h2", "The numbers"),
-                ("p", "<b>1.05 to 1.49 times</b> the rate measured in the Vieira et al. (2016) experiment. The surrogate came in at <b>1.0% error</b> on pressure drop, at points it never saw in training. The study's 32 simulations — from geometry to trained model — took 23 minutes."),
+                ("p", "<b>1.05 to 1.49 times</b> the rate measured in the Vieira et al. (2016) experiment. The surrogate came in at <b>1.0% error</b> on pressure drop, at points it never saw in training. The study's 32 simulations, from geometry to trained model, took 23 minutes."),
                 ("h2", "What it changes"),
                 ("p", "With the surrogate, varying diameter, bend radius and flow rate no longer costs a day per point. CFD stays the reference; what changes is how many questions you can ask before paying for the expensive case."),
             ],
@@ -269,25 +269,25 @@ POSTS = [
             "pt": [
                 ("p", "Quem projeta dissipador conhece a rotina: cada mudança de aleta é uma nova simulação 3D. Sete variantes viram uma semana; setenta viram o projeto inteiro."),
                 ("h2", "O que foi feito"),
-                ("p", "Sete geometrias de dissipador resolvidas em FEniCS/dolfinx 3D, com malha gerada em gmsh. Depois, um substituto treinado nessas simulações e comparado contra o solver <b>em pontos que não estavam no treino</b> — a referência é sempre externa ao modelo."),
-                ("fig", ("img/surrogate_speed_rerun.jpg", "Substituto contra FEA 3D: erro e ganho de tempo", "À esquerda, temperatura de junção: substituto contra FEA 3D, erro médio de 4,46% e máximo de 7,35%. À direita, o ganho de tempo por geometria — média de 227.059×.")),
+                ("p", "Sete geometrias de dissipador resolvidas em FEniCS/dolfinx 3D, com malha gerada em gmsh. Depois, um substituto treinado nessas simulações e comparado contra o solver <b>em pontos que não estavam no treino</b>, a referência é sempre externa ao modelo."),
+                ("fig", ("img/surrogate_speed_rerun.jpg", "Substituto contra FEA 3D: erro e ganho de tempo", "À esquerda, temperatura de junção: substituto contra FEA 3D, erro médio de 4,46% e máximo de 7,35%. À direita, o ganho de tempo por geometria, média de 227.059×.")),
                 ("h2", "Os números"),
                 ("p", "Cerca de <b>200 mil vezes mais rápido</b> (a média medida nas sete geometrias foi 227.059×, com o pior caso em 57.222×). Erro médio de <b>4,46%</b>, pior caso de <b>7,35%</b>. E a previsão é determinística: três rodadas, em dias diferentes, devolveram os mesmos números."),
                 ("video", ("videos/app1.mp4", "videos/app1.jpg", "O app de dimensionamento térmico rodando: a resposta sai enquanto você digita")),
                 ("h2", "O que isso muda"),
-                ("p", "Explorar o espaço de projeto passa a caber numa reunião. O solver continua sendo chamado — para validar a escolha, não para descobrir o ótimo."),
+                ("p", "Explorar o espaço de projeto passa a caber numa reunião. O solver continua sendo chamado, para validar a escolha, não para descobrir o ótimo."),
                 ("fig", ("img/results/bench_true_vs_pred.png", "Verdadeiro contra previsto", "Verdadeiro contra previsto: três modelos, a mesma condição de contorno.")),
             ],
             "en": [
                 ("p", "Anyone who designs heat sinks knows the routine: every change of fin is a new 3D simulation. Seven variants become a week; seventy become the whole project."),
                 ("h2", "What was done"),
-                ("p", "Seven heat-sink geometries solved in 3D FEniCS/dolfinx, with meshes built in gmsh. Then a surrogate trained on those simulations and compared against the solver <b>at points that were not in the training set</b> — the reference is always external to the model."),
-                ("fig", ("img/surrogate_speed_rerun.jpg", "Surrogate against 3D FEA: error and speed-up", "Left: junction temperature, surrogate against 3D FEA, mean error 4.46% and worst case 7.35%. Right: the time gained per geometry — a mean of 227,059×.")),
+                ("p", "Seven heat-sink geometries solved in 3D FEniCS/dolfinx, with meshes built in gmsh. Then a surrogate trained on those simulations and compared against the solver <b>at points that were not in the training set</b>, the reference is always external to the model."),
+                ("fig", ("img/surrogate_speed_rerun.jpg", "Surrogate against 3D FEA: error and speed-up", "Left: junction temperature, surrogate against 3D FEA, mean error 4.46% and worst case 7.35%. Right: the time gained per geometry, a mean of 227,059×.")),
                 ("h2", "The numbers"),
                 ("p", "Around <b>200,000 times faster</b> (the measured mean across the seven geometries was 227,059×, with the worst case at 57,222×). Mean error of <b>4.46%</b>, worst case <b>7.35%</b>. And the prediction is deterministic: three runs, on different days, returned the same numbers."),
                 ("video", ("videos/app1.mp4", "videos/app1.jpg", "The thermal sizing app running: the answer appears as you type")),
                 ("h2", "What it changes"),
-                ("p", "Exploring the design space now fits inside one meeting. The solver is still called — to validate the choice, not to discover the optimum."),
+                ("p", "Exploring the design space now fits inside one meeting. The solver is still called, to validate the choice, not to discover the optimum."),
                 ("fig", ("img/results/bench_true_vs_pred.png", "True against predicted", "True against predicted: three models, the same boundary condition.")),
             ],
         },
@@ -317,24 +317,24 @@ POSTS = [
         },
         body={
             "pt": [
-                ("p", "Um caso pode terminar com “finished” e estar errado. Sem apoio, a viga se desloca 1,8×10¹¹ mm e o solver não reclama. Com malha ruim, o campo sai colorido e sem significado. Nos dois casos, o erro só aparece quando alguém olha com cuidado — normalmente depois da fila."),
+                ("p", "Um caso pode terminar com “finished” e estar errado. Sem apoio, a viga se desloca 1,8×10¹¹ mm e o solver não reclama. Com malha ruim, o campo sai colorido e sem significado. Nos dois casos, o erro só aparece quando alguém olha com cuidado, normalmente depois da fila."),
                 ("h2", "O que foi feito"),
-                ("p", "Duas checagens antes da execução. A de <b>malha</b> lê OpenFOAM, Gmsh, VTK, Abaqus e STL e devolve as métricas de qualidade, um heatmap e os piores elementos — com os mesmos números do checkMesh. O <b>preflight</b> lê o caso e devolve PASS, WARNING ou FAIL, com o arquivo e a linha do problema."),
-                ("fig", ("img/eng/studio-report.webp", "Relatório de um job com as verificações e o status da evidência", "O relatório de uma execução: o gráfico, as verificações com valor e limite, e o status da evidência — aqui, “inconclusiva”, porque uma checagem não rodou.")),
+                ("p", "Duas checagens antes da execução. A de <b>malha</b> lê OpenFOAM, Gmsh, VTK, Abaqus e STL e devolve as métricas de qualidade, um heatmap e os piores elementos, com os mesmos números do checkMesh. O <b>preflight</b> lê o caso e devolve PASS, WARNING ou FAIL, com o arquivo e a linha do problema."),
+                ("fig", ("img/eng/studio-report.webp", "Relatório de um job com as verificações e o status da evidência", "O relatório de uma execução: o gráfico, as verificações com valor e limite, e o status da evidência, aqui, “inconclusiva”, porque uma checagem não rodou.")),
                 ("h2", "Os números"),
                 ("p", "As métricas de malha batem com o checkMesh do OpenFOAM. O caso da viga sem apoios é pego <b>antes da execução</b>, como FAIL, em vez de virar um resultado com cara de resultado."),
                 ("h2", "O que isso muda"),
-                ("p", "A fila deixa de ser o lugar onde o erro é descoberto. E o relatório mostra o que não foi checado: independência de malha, por exemplo, só existe se alguém fez o estudo de refinamento — então ela aparece como “não rodou”, não como aprovada."),
+                ("p", "A fila deixa de ser o lugar onde o erro é descoberto. E o relatório mostra o que não foi checado: independência de malha, por exemplo, só existe se alguém fez o estudo de refinamento, então ela aparece como “não rodou”, não como aprovada."),
             ],
             "en": [
-                ("p", "A case can finish with “finished” and still be wrong. Unsupported, the beam moves 1.8×10¹¹ mm and the solver does not complain. With a poor mesh, the field comes out colourful and meaningless. In both cases the mistake only surfaces when someone looks closely — usually after the queue."),
+                ("p", "A case can finish with “finished” and still be wrong. Unsupported, the beam moves 1.8×10¹¹ mm and the solver does not complain. With a poor mesh, the field comes out colourful and meaningless. In both cases the mistake only surfaces when someone looks closely, usually after the queue."),
                 ("h2", "What was done"),
-                ("p", "Two checks before execution. The <b>mesh</b> check reads OpenFOAM, Gmsh, VTK, Abaqus and STL and returns quality metrics, a heatmap and the worst elements — with the same numbers as checkMesh. <b>Preflight</b> reads the case and returns PASS, WARNING or FAIL, naming the file and the line."),
-                ("fig", ("img/eng/studio-report.webp", "A job report with its verifications and evidence status", "A run's report: the chart, the checks with value and limit, and the evidence status — here “inconclusive”, because one check did not run.")),
+                ("p", "Two checks before execution. The <b>mesh</b> check reads OpenFOAM, Gmsh, VTK, Abaqus and STL and returns quality metrics, a heatmap and the worst elements, with the same numbers as checkMesh. <b>Preflight</b> reads the case and returns PASS, WARNING or FAIL, naming the file and the line."),
+                ("fig", ("img/eng/studio-report.webp", "A job report with its verifications and evidence status", "A run's report: the chart, the checks with value and limit, and the evidence status, here “inconclusive”, because one check did not run.")),
                 ("h2", "The numbers"),
                 ("p", "The mesh metrics match OpenFOAM's checkMesh. The unsupported-beam case is caught <b>before execution</b>, as FAIL, instead of turning into a result that looks like a result."),
                 ("h2", "What it changes"),
-                ("p", "The queue stops being the place where mistakes are found. And the report shows what was not checked: mesh independence, for instance, only exists if someone ran the refinement study — so it appears as “did not run”, not as passed."),
+                ("p", "The queue stops being the place where mistakes are found. And the report shows what was not checked: mesh independence, for instance, only exists if someone ran the refinement study, so it appears as “did not run”, not as passed."),
             ],
         },
     ),
@@ -389,7 +389,7 @@ STRINGS = {
         "wa": "Falar com um engenheiro",
         "wa_msg": "Olá! Vim pelo site da PINNeAPPle Labs e tenho um problema de engenharia para discutir.",
         "cta_title": "Tem uma simulação lenta, cara ou difícil de verificar?",
-        "cta_lead": "Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.",
+        "cta_lead": "Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.",
         "cta_primary": "Falar com um engenheiro",
         "docs_nav": "Docs",
         "cta_short": "Falar com um engenheiro",
@@ -414,7 +414,7 @@ STRINGS = {
         "wa": "Talk to an engineer",
         "wa_msg": "Hello! I found PINNeAPPle Labs through the site and have an engineering problem to discuss.",
         "cta_title": "Got a simulation that is slow, expensive or hard to verify?",
-        "cta_lead": "Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.",
+        "cta_lead": "Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.",
         "cta_primary": "Talk to an engineer",
         "docs_nav": "Docs",
         "cta_short": "Talk to an engineer",
@@ -439,13 +439,13 @@ STRINGS = {
 META = {
     "home": {
         "pt": dict(
-            title="PINNeAPPle Labs — engenharia com a conta aberta",
+            title="PINNeAPPle Labs · engenharia com a conta aberta",
             desc="Resposta de engenharia em horas, não em semanas. O PINNeAPPle Engineering chega em 2027; hoje os casos já rodam com o time. Números medidos, erro declarado, relatório verificável.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="PINNeAPPle Labs — engineering with the working shown",
+            title="PINNeAPPle Labs · engineering with the working shown",
             desc="Engineering answers in hours, not weeks. PINNeAPPle Engineering arrives in 2027; today the cases run with our team. Measured numbers, stated error, verifiable report.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
@@ -453,13 +453,13 @@ META = {
     },
     "produto": {
         "pt": dict(
-            title="PINNeAPPle Engineering — lançamento em 2027",
+            title="PINNeAPPle Engineering · lançamento em 2027",
             desc="Você escreve o problema de engenharia em português. A plataforma diz se cobre, confere o que já foi provado, roda e devolve o resultado com relatório e evidência. Lançamento em 2027.",
             og="img/eng/studio-home.jpg",
             type="website",
         ),
         "en": dict(
-            title="PINNeAPPle Engineering — launching in 2027",
+            title="PINNeAPPle Engineering · launching in 2027",
             desc="You write the engineering problem in plain language. The platform says whether it covers it, checks what has been proven, runs it and returns the result with a report and evidence. Launching in 2027.",
             og="img/eng/studio-home.jpg",
             type="website",
@@ -467,13 +467,13 @@ META = {
     },
     "artigos": {
         "pt": dict(
-            title="Artigos — PINNeAPPle Labs",
+            title="Artigos · PINNeAPPle Labs",
             desc="Cada artigo é um experimento contado por inteiro: o que foi medido, contra o que foi comparado e onde ainda não chegamos.",
             og="img/surrogate_speed_rerun.jpg",
             type="website",
         ),
         "en": dict(
-            title="Articles — PINNeAPPle Labs",
+            title="Articles · PINNeAPPle Labs",
             desc="Every article is one experiment told in full: what was measured, what it was compared against, and where we are not there yet.",
             og="img/surrogate_speed_rerun.jpg",
             type="website",
@@ -481,13 +481,13 @@ META = {
     },
     "lib": {
         "pt": dict(
-            title="A biblioteca PINNeAPPle — PINNeAPPle Labs",
+            title="A biblioteca PINNeAPPle · PINNeAPPle Labs",
             desc="Arquitetura, quickstart e o split honesto do código aberto da plataforma PINNeAPPle: 31 módulos, 248 exemplos, Apache-2.0.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="The PINNeAPPle library — PINNeAPPle Labs",
+            title="The PINNeAPPle library · PINNeAPPle Labs",
             desc="Architecture, quickstart and the honest open-source split of the PINNeAPPle platform: 31 modules, 248 examples, Apache-2.0.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
@@ -500,7 +500,7 @@ def meta(lang: str, page: str) -> dict:
     if page.startswith("post:"):
         p = POST_BY_SLUG[page[5:]]
         return dict(
-            title=f"{p['title'][lang]} — PINNeAPPle Labs",
+            title=f"{p['title'][lang]} · PINNeAPPle Labs",
             desc=p["lead"][lang].replace("<b>", "").replace("</b>", ""),
             og=p["thumb"],
             type="article",
@@ -697,7 +697,7 @@ def vfig(src: str, poster: str, cap: str, root: str) -> str:
 
 
 def shot(src: str, alt: str, cap: str, root: str) -> str:
-    """An app screenshot inside a browser frame — it reads as a product, not as a render."""
+    """An app screenshot inside a browser frame: it reads as a product, not as a render."""
     return f"""<figure class="frame">
   <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Engineering · Studio</span></div>
   <img src="{root}{src}" alt="{alt}" loading="lazy" decoding="async" />
@@ -725,7 +725,7 @@ CAPS = {
          "em 1.920 asas: −13% de CO₂ por passageiro-quilômetro"),
         ("Verificação",
          "Conferir um resultado antes de decidir",
-         "O resultado é medido contra a física, o ensaio ou a norma — e não contra ele mesmo. O que não foi checado aparece como não checado.",
+         "O resultado é medido contra a física, o ensaio ou a norma, e não contra ele mesmo. O que não foi checado aparece como não checado.",
          "pegou resíduo 100× acima do limite num modelo já treinado"),
         ("CFD",
          "Rodar o caso completo, sem montar o caso",
@@ -751,7 +751,7 @@ CAPS = {
          "across 1,920 wings: −13% CO₂ per passenger-kilometre"),
         ("Verification",
          "Check a result before you decide",
-         "The result is measured against the physics, the experiment or the standard — never against itself. What was not checked shows as not checked.",
+         "The result is measured against the physics, the experiment or the standard, never against itself. What was not checked shows as not checked.",
          "caught a residual 100× over the limit on an already-trained model"),
         ("CFD",
          "Run the whole case, without building the case",
@@ -768,13 +768,13 @@ HOME = {
     "pt": dict(
         eyebrow="PINNeAPPle Labs · engenharia assistida por física",
         h1="Resposta de engenharia em horas, não em semanas.",
-        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa — e entrega o resultado com a conta aberta. O produto que faz isso sozinho, o <b>PINNeAPPle Engineering</b>, chega em 2027. Hoje, os casos rodam com o nosso time.",
+        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. O produto que faz isso sozinho, o <b>PINNeAPPle Engineering</b>, chega em 2027. Hoje, os casos rodam com o nosso time.",
         cta_secondary="Conhecer o PINNeAPPle Engineering",
         chips=["Em breve: PINNeAPPle Engineering", "Números medidos, nunca estimados", "Base de código aberto"],
         hero_cap="O Studio do PINNeAPPle Engineering: você escreve o que precisa e ele mostra o que já existe pronto para rodar.",
         problem_eyebrow="O problema",
         problem_h="Por que a simulação trava o projeto",
-        problem_p="Não é falta de software. É tempo, custo e — principalmente — confiança no número que sai.",
+        problem_p="Não é falta de software. É tempo, custo e, principalmente, confiança no número que sai.",
         problems=[
             ("O prazo", "Uma semana para montar o caso, outra para rodar, mais uma para conferir. Quando o resultado chega, a decisão já foi tomada no chute."),
             ("O custo", "Licença, máquina parada e especialista. Às vezes a simulação custa mais caro que a decisão que ela deveria sustentar."),
@@ -784,16 +784,16 @@ HOME = {
         product_h="PINNeAPPle Engineering",
         product_lead="A engenharia em texto: você escreve o que precisa, e a plataforma encontra uma ferramenta que já existe, confere se o seu caso está dentro do que aquela ferramenta já provou, roda e devolve o resultado com relatório e evidência.",
         product_points=[
-            "<b>Entende o pedido escrito</b> — sem nome de método e sem montar o caso.",
-            "<b>Diz na cara se cobre</b> — “dá”, “falta este dado”, “só em parte” ou “não cobre”.",
-            "<b>Só roda o que tem prova</b> — cada ferramenta é descoberta, testada ou verificada.",
-            "<b>Devolve o relatório junto</b> — o que rodou, o que não rodou e a origem de cada número.",
+            "<b>Entende o pedido escrito</b>, sem nome de método e sem montar o caso.",
+            "<b>Diz na cara se cobre</b>: “dá”, “falta este dado”, “só em parte” ou “não cobre”.",
+            "<b>Só roda o que tem prova</b>: cada ferramenta é descoberta, testada ou verificada.",
+            "<b>Devolve o relatório junto</b>: o que rodou, o que não rodou e a origem de cada número.",
         ],
-        product_cap="O relatório de uma execução: gráfico, verificações com valor e limite, e o status da evidência — aqui “inconclusiva”, porque uma checagem não rodou.",
+        product_cap="O relatório de uma execução: gráfico, verificações com valor e limite, e o status da evidência, aqui “inconclusiva”, porque uma checagem não rodou.",
         product_cta="Ver o produto completo",
         product_soon="Chega em 2027. Quem entrar na lista testa antes.",
         caps_eyebrow="O que dá para fazer",
-        caps_h="Seis coisas que a plataforma vai fazer — e que a base já faz hoje.",
+        caps_h="Seis coisas que a plataforma vai fazer, e que a base já faz hoje.",
         caps_p="Cada cartão traz um caso que já rodou, com o número medido. Os exemplos vêm da biblioteca aberta, não de uma promessa de roadmap.",
         how_eyebrow="Como funciona",
         how_h="Três passos, nenhum deles técnico",
@@ -826,7 +826,7 @@ HOME = {
         story_eyebrow="Quem faz",
         story_h="Uma regra só: se não tem número medido, não vai para a tela.",
         story_p=[
-            "A PINNeAPPle começou como uma biblioteca pessoal para não ter de confiar: cada resultado carrega a referência contra a qual foi conferido. Virou produto quando ficou claro que o problema não é o modelo — é a falta de prova.",
+            "A PINNeAPPle começou como uma biblioteca pessoal para não ter de confiar: cada resultado carrega a referência contra a qual foi conferido. Virou produto quando ficou claro que o problema não é o modelo, é a falta de prova.",
             "Dizer “não” faz parte. Num caso de mobilidade de rover, o método numérico clássico era mais rápido e mais exato que a rede; a recomendação foi o método clássico.",
         ],
         person_name="Yan Barros",
@@ -837,13 +837,13 @@ HOME = {
     "en": dict(
         eyebrow="PINNeAPPle Labs · physics-assisted engineering",
         h1="Engineering answers in hours, not weeks.",
-        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost — and deliver the result with the working shown. The product that does this on its own, <b>PINNeAPPle Engineering</b>, arrives in 2027. Today, the cases run with our team.",
+        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. The product that does this on its own, <b>PINNeAPPle Engineering</b>, arrives in 2027. Today, the cases run with our team.",
         cta_secondary="Meet PINNeAPPle Engineering",
         chips=["Arriving in 2027: PINNeAPPle Engineering", "Measured numbers, never estimates", "Open-source base"],
         hero_cap="The PINNeAPPle Engineering Studio: you write what you need and it shows what is already ready to run.",
         problem_eyebrow="The problem",
         problem_h="Why simulation holds the project up",
-        problem_p="It is not a lack of software. It is time, cost and — mostly — trust in the number that comes out.",
+        problem_p="It is not a lack of software. It is time, cost and, mostly, trust in the number that comes out.",
         problems=[
             ("The deadline", "A week to build the case, another to run it, another to check it. By the time the result lands, the decision was already made on a guess."),
             ("The cost", "Licence, idle machine and a specialist. Sometimes the simulation costs more than the decision it was meant to support."),
@@ -853,16 +853,16 @@ HOME = {
         product_h="PINNeAPPle Engineering",
         product_lead="Engineering in text: you write what you need, and the platform finds a tool that already exists, checks whether your case sits inside what that tool has already proven, runs it, and returns the result with a report and evidence.",
         product_points=[
-            "<b>It understands the written request</b> — no method name, no case to build.",
-            "<b>It says plainly whether it covers you</b> — “yes”, “this value is missing”, “partly” or “no”.",
-            "<b>It only runs what has proof</b> — every tool is discovered, tested or verified.",
-            "<b>It hands back the report</b> — what ran, what did not, and where each number came from.",
+            "<b>It understands the written request</b>, no method name, no case to build.",
+            "<b>It says plainly whether it covers you</b>: “yes”, “this value is missing”, “partly” or “no”.",
+            "<b>It only runs what has proof</b>: every tool is discovered, tested or verified.",
+            "<b>It hands back the report</b>: what ran, what did not, and where each number came from.",
         ],
-        product_cap="A run's report: the chart, the checks with value and limit, and the evidence status — here “inconclusive”, because one check did not run.",
+        product_cap="A run's report: the chart, the checks with value and limit, and the evidence status, here “inconclusive”, because one check did not run.",
         product_cta="See the full product",
         product_soon="Arrives in 2027. Those on the list test it first.",
         caps_eyebrow="What you can do",
-        caps_h="Six things the platform will do — and the base already does today.",
+        caps_h="Six things the platform will do, and the base already does today.",
         caps_p="Every card carries a case that has already run, with its measured number. The examples come from the open library, not from a roadmap promise.",
         how_eyebrow="How it works",
         how_h="Three steps, none of them technical",
@@ -895,7 +895,7 @@ HOME = {
         story_eyebrow="Who makes it",
         story_h="One rule: if it has no measured number, it does not go on screen.",
         story_p=[
-            "PINNeAPPle started as a personal library so its author would not have to take anything on trust: every result carries the reference it was checked against. It became a product when it was clear the problem is not the model — it is the lack of proof.",
+            "PINNeAPPle started as a personal library so its author would not have to take anything on trust: every result carries the reference it was checked against. It became a product when it was clear the problem is not the model, it is the lack of proof.",
             "Saying “no” is part of it. In one rover-mobility case the classical numerical method was faster and more accurate than the network; the recommendation was the classical method.",
         ],
         person_name="Yan Barros",
@@ -917,7 +917,7 @@ PRODUCT = {
         what_eyebrow="O que é",
         what_h="Uma plataforma que responde engenharia, não que desenha gráfico",
         what_p=[
-            "A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Engineering faz o caminho contrário: começa no pedido — escrito em português comum — e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.",
+            "A maioria das ferramentas de simulação entrega um campo colorido e deixa a interpretação com você. O Engineering faz o caminho contrário: começa no pedido, escrito em português comum, e termina num relatório que diz o que foi feito, o que foi conferido e o que ainda não foi provado.",
             "Por baixo está a biblioteca aberta da PINNeAPPle: cada ferramenta é uma função real, com assinatura, unidade, faixa de validade e o histórico de testes. A plataforma não inventa capacidade: ela encontra o que existe, confere se o seu caso cabe ali e executa em ambiente isolado.",
         ],
         counts=[
@@ -926,7 +926,7 @@ PRODUCT = {
             ("1.115", "verificadas contra uma referência"),
             ("66 de 92", "exemplos e reproduções que rodam no Studio"),
         ],
-        counts_note="Contagens lidas do Studio na versão atual — as mesmas que a tela de cobertura mostra, a partir do código e das execuções gravadas.",
+        counts_note="Contagens lidas do Studio na versão atual, as mesmas que a tela de cobertura mostra, a partir do código e das execuções gravadas.",
         flow_eyebrow="Do pedido ao relatório",
         flow_h="O caminho que o pedido percorre",
         flow_p="Quatro etapas entre a frase escrita e o relatório assinado. Nenhuma delas exige que você monte um caso de simulação.",
@@ -937,7 +937,7 @@ PRODUCT = {
             ("04", "Entrega resultado, evidência e relatório", "Com as verificações que rodaram, as que não rodaram, a versão do código, o tempo e a memória gastos e o hash de cada arquivo."),
         ],
         flow_shots=[
-            ("img/eng/studio-explore.webp", "Busca por dissipador de calor com aletas no Studio", "A busca por “dissipador de calor com aletas”: 167 resultados, cada um com o estado — executável, testada ou verificada."),
+            ("img/eng/studio-explore.webp", "Busca por dissipador de calor com aletas no Studio", "A busca por “dissipador de calor com aletas”: 167 resultados, e cada um diz se é executável, testada ou verificada."),
         ],
         caps_eyebrow="O que você vai poder fazer",
         caps_h="Seis trabalhos que hoje custam uma semana",
@@ -945,11 +945,11 @@ PRODUCT = {
         trust_eyebrow="Por que dá para confiar",
         trust_h="O que a plataforma faz para não te enganar",
         trust=[
-            "<b>Ela confere a validade antes de rodar</b> — se o seu caso está fora da faixa em que a ferramenta foi validada, o resultado não sai como se valesse.",
-            "<b>Ela não inventa capacidade</b> — o catálogo é gerado por introspecção do código real, com o estado de cada ferramenta: descoberta, testada ou verificada.",
-            "<b>O que não rodou aparece como não rodou</b> — uma checagem que não executou nunca conta como aprovada, e derruba a cobertura do resultado.",
-            "<b>A evidência fica arquivada</b> — versão, hardware, tempo, memória, logs e hash de cada arquivo, para reproduzir a execução.",
-            "<b>Existe um portão humano</b> — formulação e aprovação de modelo são decisões de engenharia, não da plataforma.",
+            "<b>Ela confere a validade antes de rodar</b>: se o seu caso está fora da faixa em que a ferramenta foi validada, o resultado não sai como se valesse.",
+            "<b>Ela não inventa capacidade</b>, porque o catálogo é gerado por introspecção do código real, com o estado de cada ferramenta: descoberta, testada ou verificada.",
+            "<b>O que não rodou aparece como não rodou</b>: uma checagem que não executou nunca conta como aprovada e derruba a cobertura do resultado.",
+            "<b>A evidência fica arquivada</b>: versão, hardware, tempo, memória, logs e hash de cada arquivo, para reproduzir a execução.",
+            "<b>Existe um portão humano</b>: formulação e aprovação de modelo são decisões de engenharia, não da plataforma.",
         ],
         io_eyebrow="Entra e sai",
         io_h="O que você entrega e o que você recebe",
@@ -974,11 +974,11 @@ PRODUCT = {
         shots_p="Nada de mockup: são capturas da aplicação em desenvolvimento, com os dados de uma execução real.",
         shots=[
             ("img/eng/studio-report.webp", "Relatório de uma execução com verificações e status de evidência", "O relatório de uma execução: gráfico, verificações com valor e limite, status da evidência e o bloco de reprodução."),
-            ("img/eng/studio-coverage.webp", "Tela de cobertura do Studio", "A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas — nunca estimado."),
+            ("img/eng/studio-coverage.webp", "Tela de cobertura do Studio", "A tela de cobertura: o que roda pelo Studio, contado a partir do código e das execuções gravadas, nunca estimado."),
         ],
         film_eyebrow="Veja rodando",
         film_h="Do pedido ao relatório, em 28 segundos",
-        film_p="Este vídeo é uma gravação da aplicação, com legenda: a busca em português, a escolha da ferramenta, a execução e a volta com as verificações. Nada foi encenado. A espera do solver foi cortada — o corte preto no meio do vídeo marca onde.",
+        film_p="Este vídeo é uma gravação da aplicação, com legenda: a busca em português, a escolha da ferramenta, a execução e a volta com as verificações. Nada foi encenado. A espera do solver foi cortada. O corte preto no meio do vídeo marca onde.",
         film=("videos/studio-pt.mp4", "videos/studio-pt.jpg", "Busca, ferramenta, execução, verificações e relatório: a aplicação respondendo um job de verdade. A espera do solver foi cortada."),
         videos_eyebrow="Mais dois apps da base",
         videos_h="O que já existe para além do Studio",
@@ -1012,7 +1012,7 @@ PRODUCT = {
         what_eyebrow="What it is",
         what_h="A platform that answers engineering, not one that draws plots",
         what_p=[
-            "Most simulation tools hand back a colourful field and leave the interpretation to you. Engineering goes the other way: it starts from the request — written in plain language — and ends in a report that says what was done, what was checked, and what has not been proven yet.",
+            "Most simulation tools hand back a colourful field and leave the interpretation to you. Engineering goes the other way: it starts from the request, written in plain language, and ends in a report that says what was done, what was checked, and what has not been proven yet.",
             "Underneath sits PINNeAPPle's open library: every tool is a real function, with a signature, units, a validity range and a test history. The platform does not invent capability: it finds what exists, checks whether your case fits, and runs it in an isolated environment.",
         ],
         counts=[
@@ -1021,7 +1021,7 @@ PRODUCT = {
             ("1,115", "verified against a reference"),
             ("66 of 92", "examples and reproductions that run in the Studio"),
         ],
-        counts_note="Counts read from the Studio in its current version — the same ones the coverage screen shows, taken from the code and the recorded runs.",
+        counts_note="Counts read from the Studio in its current version, the same ones the coverage screen shows, taken from the code and the recorded runs.",
         flow_eyebrow="From request to report",
         flow_h="The path a request takes",
         flow_p="Four stages between the written sentence and the signed report. None of them asks you to build a simulation case.",
@@ -1032,7 +1032,7 @@ PRODUCT = {
             ("04", "It returns result, evidence and report", "With the checks that ran, the ones that did not, the code version, the time and memory spent, and the hash of every file."),
         ],
         flow_shots=[
-            ("img/eng/studio-explore.webp", "Search for a finned heat sink in the Studio", "The search for “finned heat sink”: 167 results, each with its state — runnable, tested or verified."),
+            ("img/eng/studio-explore.webp", "Search for a finned heat sink in the Studio", "The search for “finned heat sink”: 167 results, and each one says whether it is runnable, tested or verified."),
         ],
         caps_eyebrow="What you will be able to do",
         caps_h="Six jobs that today cost a week",
@@ -1040,11 +1040,11 @@ PRODUCT = {
         trust_eyebrow="Why it can be trusted",
         trust_h="What the platform does so it does not fool you",
         trust=[
-            "<b>It checks validity before running</b> — if your case falls outside the range the tool was validated in, the result does not come out as if it held.",
-            "<b>It does not invent capability</b> — the catalogue is generated by introspecting the real code, with each tool's state: discovered, tested or verified.",
-            "<b>What did not run shows as did not run</b> — a check that never executed never counts as passed, and it pulls the result's coverage down.",
-            "<b>The evidence is filed</b> — version, hardware, time, memory, logs and the hash of every file, so the run can be reproduced.",
-            "<b>There is a human gate</b> — formulation and model approval are engineering decisions, not the platform's.",
+            "<b>It checks validity before running</b>: if your case falls outside the range the tool was validated in, the result does not come out as if it held.",
+            "<b>It does not invent capability</b>, because the catalogue is generated by introspecting the real code, with each tool's state: discovered, tested or verified.",
+            "<b>What did not run shows as did not run</b>: a check that never executed never counts as passed, and it pulls the result's coverage down.",
+            "<b>The evidence is filed</b>: version, hardware, time, memory, logs and the hash of every file, so the run can be reproduced.",
+            "<b>There is a human gate</b>: formulation and model approval are engineering decisions, not the platform's.",
         ],
         io_eyebrow="In and out",
         io_h="What you hand over and what you get back",
@@ -1069,11 +1069,11 @@ PRODUCT = {
         shots_p="No mockups: these are captures of the application under development, with data from a real run.",
         shots=[
             ("img/eng/studio-report.webp", "A run's report with verifications and evidence status", "A run's report: chart, checks with value and limit, evidence status and the reproduce block."),
-            ("img/eng/studio-coverage.webp", "The Studio coverage screen", "The coverage screen: what runs through the Studio, counted from the code and the recorded runs — never estimated."),
+            ("img/eng/studio-coverage.webp", "The Studio coverage screen", "The coverage screen: what runs through the Studio, counted from the code and the recorded runs, never estimated."),
         ],
         film_eyebrow="See it running",
         film_h="From request to report, in 27 seconds",
-        film_p="This is a recording of the application, with captions: the search, the choice of tool, the run, and the answer coming back with the checks. Nothing staged. The solver wait was cut out — the black cut in the middle marks where.",
+        film_p="This is a recording of the application, with captions: the search, the choice of tool, the run, and the answer coming back with the checks. Nothing staged. The solver wait was cut out. The black cut in the middle marks where.",
         film=("videos/studio-en.mp4", "videos/studio-en.jpg", "Search, tool, run, checks and report: the application answering a real job. The solver wait has been cut out."),
         videos_eyebrow="Two more apps from the base",
         videos_h="What already exists beyond the Studio",
@@ -1605,28 +1605,28 @@ LIB = {
     "pt": dict(
         eyebrow="A biblioteca",
         h1="Um pipeline, do PDE escrito à predição servida.",
-        lead="Cada camada é um pacote Python independente no PyPI — dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.",
+        lead="Cada camada é um pacote Python independente no PyPI: dá para usar só a parte que você precisa. Nenhuma camada esconde a de baixo: você vê a malha, o resíduo, a arquitetura e o erro.",
         stack_h="Arquitetura em camadas",
         why_bold="Por que isso importa",
-        why="a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI — aqui a referência é sempre externa ao treino.",
+        why="a mesma biblioteca que treina a rede é a que roda o solver de referência. Comparar o modelo com ele mesmo é o erro mais comum em Physics AI. Aqui a referência é sempre externa ao treino.",
         start_h="A equação entra como texto",
         start_p="Instalação com um comando, sem build. O mesmo pacote roda o problema, o treino, a comparação com o solver e o relatório.",
         gains_h="O que você ganha no primeiro dia",
         gains=[
-            "<b>Um ambiente reproduzível</b> — 248 exemplos com saída versionada, para comparar com o seu resultado.",
-            "<b>Benchmarks públicos</b> — SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.",
-            "<b>Interoperabilidade real</b> — OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.",
-            "<b>Padrões da indústria</b> — AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.",
+            "<b>Um ambiente reproduzível</b>: 248 exemplos com saída versionada, para comparar com o seu resultado.",
+            "<b>Benchmarks públicos</b>: SSQN Helmholtz, LBM vortex shedding, espaço de projeto LPM, latência e I/O.",
+            "<b>Interoperabilidade real</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD e glTF na mesma sessão.",
+            "<b>Padrões da indústria</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto e OPC UA para o que a planta já consome.",
         ],
         oss_h="A base é pública. A verificação também.",
-        oss_p="Apache-2.0, no PyPI, com releases versionadas. O que é aberto está aberto de verdade — e o que é produto está dito como produto.",
+        oss_p="Apache-2.0, no PyPI, com releases versionadas. O que é aberto está aberto de verdade, e o que é produto está dito como produto.",
         honest_bold="A separação honesta",
         honest="Os quatro repositórios acima são genuinamente abertos. Os produtos são entregues como engenharia, não como release de código aberto.",
         repos=[
             ("PINNeAPPle-Labs/PINNeAPPle", "O núcleo: PINN, FNO, DeepONet, GNN, solvers, geometria, UQ, gêmeos digitais e serving REST.", "★ 104 · forks 28 · Apache-2.0 · PyPI 0.7.0"),
             ("PINNeAPPle-Labs/pinnfactory", "Framework leve e independente para PINNs a partir de PDEs em SymPy, com autodiferenciação em PyTorch.", "★ 72 · Apache-2.0 · standalone"),
             ("PINNeAPPle-Labs/PINNeAPPle-Benchmark", "Benchmarks públicos e reprodutíveis: SSQN Helmholtz, LBM vortex shedding, LPM, latência, shard balance.", "reprodutível · gráficos versionados"),
-            ("PINNeAPPle-Labs/pinnaitor", "Framework agêntico de uso geral (ELM AI Agentic Framework), em estágio anterior — dito com clareza.", "★ 22 · MIT · estágio inicial"),
+            ("PINNeAPPle-Labs/pinnaitor", "Framework agêntico de uso geral (ELM AI Agentic Framework), em estágio anterior, dito com clareza.", "★ 22 · MIT · estágio inicial"),
         ],
         install="pip install pinneapple",
         docs_btn="Abrir a documentação",
@@ -1634,28 +1634,28 @@ LIB = {
     "en": dict(
         eyebrow="The library",
         h1="One pipeline, from the written PDE to the served prediction.",
-        lead="Every layer is an independent Python package on PyPI — use only the part you need. No layer hides the one below it: you see the mesh, the residual, the architecture and the error.",
+        lead="Every layer is an independent Python package on PyPI: use only the part you need. No layer hides the one below it: you see the mesh, the residual, the architecture and the error.",
         stack_h="Layered architecture",
         why_bold="Why this matters",
-        why="the same library that trains the network also runs the reference solver. Comparing a model against itself is the most common mistake in Physics AI — here the reference is always external to training.",
+        why="the same library that trains the network also runs the reference solver. Comparing a model against itself is the most common mistake in Physics AI. Here the reference is always external to training.",
         start_h="The equation goes in as text",
         start_p="One-command install, no build. The same package runs the problem, the training, the comparison against the solver and the report.",
         gains_h="What you get on day one",
         gains=[
-            "<b>A reproducible environment</b> — 248 examples with versioned output, to compare against your own result.",
-            "<b>Public benchmarks</b> — SSQN Helmholtz, LBM vortex shedding, LPM design space, latency and I/O.",
-            "<b>Real interoperability</b> — OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD and glTF in one session.",
-            "<b>Industry standards</b> — AAS, DTDL, NGSI-LD, Eclipse Ditto and OPC UA for what the plant already consumes.",
+            "<b>A reproducible environment</b>: 248 examples with versioned output, to compare against your own result.",
+            "<b>Public benchmarks</b>: SSQN Helmholtz, LBM vortex shedding, LPM design space, latency and I/O.",
+            "<b>Real interoperability</b>: OpenFOAM, CalculiX, FEniCS/dolfinx, Gmsh, VTK, STL, USD and glTF in one session.",
+            "<b>Industry standards</b>: AAS, DTDL, NGSI-LD, Eclipse Ditto and OPC UA for what the plant already consumes.",
         ],
         oss_h="The base is public. So is verification.",
-        oss_p="Apache-2.0, on PyPI, with versioned releases. What is open is genuinely open — and what is a product is called a product.",
+        oss_p="Apache-2.0, on PyPI, with versioned releases. What is open is genuinely open, and what is a product is called a product.",
         honest_bold="The honest split",
         honest="The four repositories above are genuinely open source. The products are delivered as engineering, not as an open-source release.",
         repos=[
             ("PINNeAPPle-Labs/PINNeAPPle", "The core: PINN, FNO, DeepONet, GNN, solvers, geometry, UQ, digital twins and REST serving.", "★ 104 · 28 forks · Apache-2.0 · PyPI 0.7.0"),
             ("PINNeAPPle-Labs/pinnfactory", "A lightweight, standalone framework for PINNs from PDEs in SymPy, with PyTorch autodiff.", "★ 72 · Apache-2.0 · standalone"),
             ("PINNeAPPle-Labs/PINNeAPPle-Benchmark", "Public, reproducible benchmarks: SSQN Helmholtz, LBM vortex shedding, LPM, latency, shard balance.", "reproducible · versioned plots"),
-            ("PINNeAPPle-Labs/pinnaitor", "A general-purpose agentic framework (ELM AI Agentic Framework), at an earlier stage — said plainly.", "★ 22 · MIT · early stage"),
+            ("PINNeAPPle-Labs/pinnaitor", "A general-purpose agentic framework (ELM AI Agentic Framework), at an earlier stage, said plainly.", "★ 22 · MIT · early stage"),
         ],
         install="pip install pinneapple",
         docs_btn="Open the documentation",

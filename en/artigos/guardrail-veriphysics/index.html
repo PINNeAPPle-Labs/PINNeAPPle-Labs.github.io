@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>What the training loss was hiding — PINNeAPPle Labs</title>
-<meta name="description" content="An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
+<title>What the training loss was hiding · PINNeAPPle Labs</title>
+<meta name="description" content="An already-trained model, with a healthy loss in the report, and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="What the training loss was hiding — PINNeAPPle Labs" />
-<meta property="og:description" content="An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
+<meta property="og:title" content="What the training loss was hiding · PINNeAPPle Labs" />
+<meta property="og:description" content="An already-trained model, with a healthy loss in the report, and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/verificacao.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
@@ -59,7 +59,7 @@
         <p class="post-tagline"><a href="../../../en/artigos/">← Articles</a></p>
         <p class="eyebrow">Verification</p>
         <h1>What the training loss was hiding</h1>
-        <p class="lead" style="max-width:62ch">An already-trained model, with a healthy loss in the report — and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product.</p>
+        <p class="lead" style="max-width:62ch">An already-trained model, with a healthy loss in the report, and a physics residual more than a hundred times over the limit. That is how the guardrail became part of the product.</p>
         <p class="post-meta">
           <span class="chip">2 October 2026</span>
           <span class="chip">6 min read</span>
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>A client arrived with an already-trained PINN model. The report showed what every report shows: a falling loss, a small error on the test points, a nice plot. The question was simple, and it is the one engineering always asks: can this be used in a design decision?</p><h2>What the guardrail looks at</h2><p>VeriPhysics does not look at the loss. It takes the trained model and measures what the loss does not: the residual of the equation the model is supposed to satisfy, the consistency of the boundary conditions, and the numerical convergence over the set of points where it was evaluated.</p><figure class="fig"><img src="../../../img/verificacao.jpg" alt="A VeriPhysics run with a score per check" loading="lazy" decoding="async" /><figcaption>A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run” — and they pull the coverage down, which is what the score alone hides.</figcaption></figure><h2>The number</h2><p>The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them — which is exactly where nobody looks.</p><p>Around the same time, another case came up on the structural side: an unsupported beam that finished with the message “Job finished” and a displacement of 1.8×10¹¹ mm. The run finished; the result did not exist. Preflight flags FAIL before execution, naming the file and the line.</p><figure class="fig vfig"><video src="../../../videos/app8.mp4" poster="../../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The preflight app pointing at what will fail, before the run"></video><figcaption>The preflight app pointing at what will fail, before the run</figcaption></figure><h2>Why it became a product</h2><p>A tool that only shows the good result pushes the decision onto trust. A tool that shows the check that did not run hands the decision back to engineering. The rule that stayed: <b>a check that did not run never counts as passed</b>, and the final score covers only what actually ran.</p>
+<p>A client arrived with an already-trained PINN model. The report showed what every report shows: a falling loss, a small error on the test points, a nice plot. The question was simple, and it is the one engineering always asks: can this be used in a design decision?</p><h2>What the guardrail looks at</h2><p>VeriPhysics does not look at the loss. It takes the trained model and measures what the loss does not: the residual of the equation the model is supposed to satisfy, the consistency of the boundary conditions, and the numerical convergence over the set of points where it was evaluated.</p><figure class="fig"><img src="../../../img/verificacao.jpg" alt="A VeriPhysics run with a score per check" loading="lazy" decoding="async" /><figcaption>A VeriPhysics run: 100/100 on the two checks that ran, coverage 0.50. The two that did not run show as “not run”, and they pull the coverage down, which is what the score alone hides.</figcaption></figure><h2>The number</h2><p>The residual came out <b>more than 100 times over</b> the accepted threshold, with a training loss that looked healthy. The model matched the points in the history and violated the physics between them, which is exactly where nobody looks.</p><p>Around the same time, another case came up on the structural side: an unsupported beam that finished with the message “Job finished” and a displacement of 1.8×10¹¹ mm. The run finished; the result did not exist. Preflight flags FAIL before execution, naming the file and the line.</p><figure class="fig vfig"><video src="../../../videos/app8.mp4" poster="../../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The preflight app pointing at what will fail, before the run"></video><figcaption>The preflight app pointing at what will fail, before the run</figcaption></figure><h2>Why it became a product</h2><p>A tool that only shows the good result pushes the decision onto trust. A tool that shows the check that did not run hands the decision back to engineering. The rule that stayed: <b>a check that did not run never counts as passed</b>, and the final score covers only what actually ran.</p>
         <div class="measure"><b>>100× residual</b><span>over the threshold, with a healthy training loss</span></div>
         <div class="note limits-up"><span><b>What was not proven:</b> The guardrail says the result cannot be used without an explanation; it does not say what the error is, and it does not replace a test. The client's model is confidential: what is published is how the check behaves, not the model.</span></div>
         <nav class="post-nav" aria-label="More articles"><span></span><a class="post-next" href="../../../en/artigos/asa-1920-projetos/">1,920 wings, three objectives and 13% less CO₂ →</a></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Bring your case</p>
         <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
-        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>

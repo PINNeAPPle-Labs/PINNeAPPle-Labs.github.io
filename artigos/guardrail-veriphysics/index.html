@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>O que a perda de treino escondeu — PINNeAPPle Labs</title>
-<meta name="description" content="Um modelo já treinado, com loss saudável no relatório — e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto." />
+<title>O que a perda de treino escondeu · PINNeAPPle Labs</title>
+<meta name="description" content="Um modelo já treinado, com loss saudável no relatório, e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/guardrail-veriphysics/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/guardrail-veriphysics/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="O que a perda de treino escondeu — PINNeAPPle Labs" />
-<meta property="og:description" content="Um modelo já treinado, com loss saudável no relatório — e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto." />
+<meta property="og:title" content="O que a perda de treino escondeu · PINNeAPPle Labs" />
+<meta property="og:description" content="Um modelo já treinado, com loss saudável no relatório, e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/verificacao.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
@@ -59,7 +59,7 @@
         <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
         <p class="eyebrow">Verificação</p>
         <h1>O que a perda de treino escondeu</h1>
-        <p class="lead" style="max-width:62ch">Um modelo já treinado, com loss saudável no relatório — e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto.</p>
+        <p class="lead" style="max-width:62ch">Um modelo já treinado, com loss saudável no relatório, e o resíduo da física mais de cem vezes acima do limite. Foi assim que o guardrail entrou no produto.</p>
         <p class="post-meta">
           <span class="chip">2 de outubro de 2026</span>
           <span class="chip">6 min de leitura</span>
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Um cliente chegou com um modelo de PINN já treinado. O relatório mostrava o que todo relatório mostra: loss caindo, erro pequeno nos pontos de teste, gráfico bonito. A pergunta era simples e é a mesma que a engenharia faz sempre: dá para usar isso numa decisão de projeto?</p><h2>O que o guardrail olha</h2><p>O VeriPhysics não olha a loss. Ele pega o modelo treinado e mede o que a loss não mede: o resíduo da equação que o modelo deveria satisfazer, a consistência das condições de contorno e a convergência numérica no conjunto de pontos onde ele foi avaliado.</p><figure class="fig"><img src="../../img/verificacao.jpg" alt="Run do VeriPhysics com nota por checagem" loading="lazy" decoding="async" /><figcaption>Um run do VeriPhysics: nota 100/100 nas duas checagens que rodaram, cobertura 0,50. As duas que não rodaram aparecem como “not run” — e derrubam a cobertura, que é o que a nota esconde.</figcaption></figure><h2>O número</h2><p>O resíduo ficou <b>mais de 100 vezes acima do limiar</b> aceito, com a loss de treino aparentemente saudável. O modelo acertava os pontos que estavam no histórico e violava a física entre eles — que é exatamente onde ninguém olha.</p><p>No mesmo período apareceu outro caso, esse de análise estrutural: uma viga sem apoios que terminou com a mensagem “Job finished” e deslocamento de 1,8×10¹¹ mm. O cálculo terminou; o resultado não existia. O preflight marca FAIL antes da execução, apontando o arquivo e a linha.</p><figure class="fig vfig"><video src="../../videos/app8.mp4" poster="../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O app de preflight apontando o que vai falhar, antes de rodar"></video><figcaption>O app de preflight apontando o que vai falhar, antes de rodar</figcaption></figure><h2>Por que isso virou produto</h2><p>Uma ferramenta que só mostra o resultado bonito empurra a decisão para a confiança. Uma ferramenta que mostra a checagem que não rodou devolve a decisão para a engenharia. A regra que ficou: <b>uma checagem que não rodou nunca conta como aprovada</b>, e a nota final é só o que rodou de fato.</p>
+<p>Um cliente chegou com um modelo de PINN já treinado. O relatório mostrava o que todo relatório mostra: loss caindo, erro pequeno nos pontos de teste, gráfico bonito. A pergunta era simples e é a mesma que a engenharia faz sempre: dá para usar isso numa decisão de projeto?</p><h2>O que o guardrail olha</h2><p>O VeriPhysics não olha a loss. Ele pega o modelo treinado e mede o que a loss não mede: o resíduo da equação que o modelo deveria satisfazer, a consistência das condições de contorno e a convergência numérica no conjunto de pontos onde ele foi avaliado.</p><figure class="fig"><img src="../../img/verificacao.jpg" alt="Run do VeriPhysics com nota por checagem" loading="lazy" decoding="async" /><figcaption>Um run do VeriPhysics: nota 100/100 nas duas checagens que rodaram, cobertura 0,50. As duas que não rodaram aparecem como “not run”, e derrubam a cobertura, que é o que a nota esconde.</figcaption></figure><h2>O número</h2><p>O resíduo ficou <b>mais de 100 vezes acima do limiar</b> aceito, com a loss de treino aparentemente saudável. O modelo acertava os pontos que estavam no histórico e violava a física entre eles, que é exatamente onde ninguém olha.</p><p>No mesmo período apareceu outro caso, esse de análise estrutural: uma viga sem apoios que terminou com a mensagem “Job finished” e deslocamento de 1,8×10¹¹ mm. O cálculo terminou; o resultado não existia. O preflight marca FAIL antes da execução, apontando o arquivo e a linha.</p><figure class="fig vfig"><video src="../../videos/app8.mp4" poster="../../videos/app8.jpg" muted loop playsinline preload="none" data-autoplay aria-label="O app de preflight apontando o que vai falhar, antes de rodar"></video><figcaption>O app de preflight apontando o que vai falhar, antes de rodar</figcaption></figure><h2>Por que isso virou produto</h2><p>Uma ferramenta que só mostra o resultado bonito empurra a decisão para a confiança. Uma ferramenta que mostra a checagem que não rodou devolve a decisão para a engenharia. A regra que ficou: <b>uma checagem que não rodou nunca conta como aprovada</b>, e a nota final é só o que rodou de fato.</p>
         <div class="measure"><b>resíduo >100×</b><span>acima do limiar, com a loss de treino saudável</span></div>
         <div class="note limits-up"><span><b>O que não foi provado:</b> O guardrail diz que o resultado não pode ser usado sem explicação; ele não diz qual é o erro, e não substitui um ensaio. O modelo do cliente é confidencial: o que está publicado é o comportamento da checagem, não o modelo.</span></div>
         <nav class="post-nav" aria-label="Mais artigos"><span></span><a class="post-next" href="../../artigos/asa-1920-projetos/">1.920 asas, três objetivos e 13% menos CO₂ →</a></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Traga o seu caso</p>
         <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
-        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>

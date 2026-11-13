@@ -12,8 +12,12 @@ What it does and why
 --------------------
 * resizes to 1366 px wide (the captures are already that width, retina ones are not),
 * crops the long full-page captures to the region that says something on a landing page,
-* writes WebP at quality 84 — a PNG of the job report is 300 KB, the WebP is 63 KB,
+* writes WebP at quality 84: a PNG of the job report is 300 KB, the WebP is 63 KB,
 * also writes `studio-home.jpg`, because link previews (Open Graph) want JPEG.
+
+The home capture is the dark theme: it goes in the hero, on a dark page, and the light
+one turned that whole column into a white block. It is also cropped just under the last
+row, because the full-page capture carries a band of empty space before the footer.
 
 Run it again whenever the app's screenshots change; commit the output with the HTML.
 """
@@ -28,8 +32,9 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SOURCE = ROOT.parent / "pinneapple-engineering-api" / "docs" / "screenshots"
 
 # (source file, output name, crop box or None, width)
+HOME_CROP = (0, 0, 1366, 916)  # content ends here; below it the capture is empty
 JOBS = [
-    ("studio/desktop-light-01-home.png", "studio-home.webp", None, 1366),
+    ("studio/desktop-dark-01-home.png", "studio-home.webp", HOME_CROP, 1366),
     ("studio/desktop-light-02-explore.png", "studio-explore.webp", None, 1366),
     ("studio/desktop-light-09-coverage.png", "studio-coverage.webp", None, 1366),
     # The report capture is a 2108 px tall PT|EN pair; the top holds the chart, the
@@ -37,7 +42,7 @@ JOBS = [
     ("studio/i18n-pt-en-job-report.png", "studio-report.webp", (0, 0, 1386, 1150), 1386),
 ]
 
-OG = ("studio/desktop-light-01-home.png", "studio-home.jpg", 1200)
+OG = ("studio/desktop-dark-01-home.png", "studio-home.jpg", 1200, HOME_CROP)
 
 
 def resize(im: Image.Image, width: int) -> Image.Image:
@@ -63,8 +68,11 @@ def main() -> int:
         im.save(out_dir / name, "WEBP", quality=84, method=6)
         print(f"{name:24} {im.width}x{im.height}  {(out_dir / name).stat().st_size // 1024} KB")
 
-    rel, name, width = OG
-    im = resize(Image.open(args.source / rel).convert("RGB"), width)
+    rel, name, width, crop = OG
+    im = Image.open(args.source / rel).convert("RGB")
+    if crop:
+        im = im.crop(crop)
+    im = resize(im, width)
     im.save(out_dir / name, "JPEG", quality=86, optimize=True, progressive=True)
     print(f"{name:24} {im.width}x{im.height}  {(out_dir / name).stat().st_size // 1024} KB")
     return 0

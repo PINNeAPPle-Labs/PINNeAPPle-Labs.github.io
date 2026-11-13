@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A falha que aparece antes de rodar — PINNeAPPle Labs</title>
+<title>A falha que aparece antes de rodar · PINNeAPPle Labs</title>
 <meta name="description" content="Boa parte do tempo perdido em simulação não é cálculo: é descobrir, depois de horas de fila, que a malha era ruim ou que o caso não tinha apoio. Duas checagens resolvem isso antes do play." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/" />
@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="A falha que aparece antes de rodar — PINNeAPPle Labs" />
+<meta property="og:title" content="A falha que aparece antes de rodar · PINNeAPPle Labs" />
 <meta property="og:description" content="Boa parte do tempo perdido em simulação não é cálculo: é descobrir, depois de horas de fila, que a malha era ruim ou que o caso não tinha apoio. Duas checagens resolvem isso antes do play." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/eng/studio-report.webp" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Um caso pode terminar com “finished” e estar errado. Sem apoio, a viga se desloca 1,8×10¹¹ mm e o solver não reclama. Com malha ruim, o campo sai colorido e sem significado. Nos dois casos, o erro só aparece quando alguém olha com cuidado — normalmente depois da fila.</p><h2>O que foi feito</h2><p>Duas checagens antes da execução. A de <b>malha</b> lê OpenFOAM, Gmsh, VTK, Abaqus e STL e devolve as métricas de qualidade, um heatmap e os piores elementos — com os mesmos números do checkMesh. O <b>preflight</b> lê o caso e devolve PASS, WARNING ou FAIL, com o arquivo e a linha do problema.</p><figure class="fig"><img src="../../img/eng/studio-report.webp" alt="Relatório de um job com as verificações e o status da evidência" loading="lazy" decoding="async" /><figcaption>O relatório de uma execução: o gráfico, as verificações com valor e limite, e o status da evidência — aqui, “inconclusiva”, porque uma checagem não rodou.</figcaption></figure><h2>Os números</h2><p>As métricas de malha batem com o checkMesh do OpenFOAM. O caso da viga sem apoios é pego <b>antes da execução</b>, como FAIL, em vez de virar um resultado com cara de resultado.</p><h2>O que isso muda</h2><p>A fila deixa de ser o lugar onde o erro é descoberto. E o relatório mostra o que não foi checado: independência de malha, por exemplo, só existe se alguém fez o estudo de refinamento — então ela aparece como “não rodou”, não como aprovada.</p>
+<p>Um caso pode terminar com “finished” e estar errado. Sem apoio, a viga se desloca 1,8×10¹¹ mm e o solver não reclama. Com malha ruim, o campo sai colorido e sem significado. Nos dois casos, o erro só aparece quando alguém olha com cuidado, normalmente depois da fila.</p><h2>O que foi feito</h2><p>Duas checagens antes da execução. A de <b>malha</b> lê OpenFOAM, Gmsh, VTK, Abaqus e STL e devolve as métricas de qualidade, um heatmap e os piores elementos, com os mesmos números do checkMesh. O <b>preflight</b> lê o caso e devolve PASS, WARNING ou FAIL, com o arquivo e a linha do problema.</p><figure class="fig"><img src="../../img/eng/studio-report.webp" alt="Relatório de um job com as verificações e o status da evidência" loading="lazy" decoding="async" /><figcaption>O relatório de uma execução: o gráfico, as verificações com valor e limite, e o status da evidência, aqui, “inconclusiva”, porque uma checagem não rodou.</figcaption></figure><h2>Os números</h2><p>As métricas de malha batem com o checkMesh do OpenFOAM. O caso da viga sem apoios é pego <b>antes da execução</b>, como FAIL, em vez de virar um resultado com cara de resultado.</p><h2>O que isso muda</h2><p>A fila deixa de ser o lugar onde o erro é descoberto. E o relatório mostra o que não foi checado: independência de malha, por exemplo, só existe se alguém fez o estudo de refinamento, então ela aparece como “não rodou”, não como aprovada.</p>
         <div class="measure"><b>idêntico ao checkMesh</b><span>métricas de malha conferidas contra o OpenFOAM</span></div>
         <div class="note limits-up"><span><b>O que não foi provado:</b> Malha boa não garante resultado bom, e preflight não substitui verificação de física. São o primeiro filtro, não o último.</span></div>
         <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/substituto-termico/">← Um dissipador que responde 200 mil vezes mais rápido</a><span></span></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Traga o seu caso</p>
         <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
-        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>

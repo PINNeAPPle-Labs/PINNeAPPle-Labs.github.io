@@ -4,7 +4,7 @@
     python3 tools/record_studio.py pt
     python3 tools/record_studio.py en
 
-The videos in `videos/studio-*.mp4` are produced by this script — nothing is mocked
+The videos in `videos/studio-*.mp4` are produced by this script, nothing is mocked
 or re-enacted, so a screen the site shows is a screen the application renders.
 
 It needs the app running and an API key:
@@ -318,8 +318,8 @@ def encode(lang: str, raw: Path, stamps: dict[str, float]) -> None:
     # A: to a second into the progress bar, so the click is seen and the
     #    "running" caption has time to arrive.
     a_end = min(stamps["click"] + 2.9, stamps["results"] - 1.0)
-    # B: from just after the results rendered — by then the caption has already
-    #    changed to the checks — to the end card.
+    # B: from just after the results rendered, by then the caption has already
+    #    changed to the checks, to the end card.
     b_start = stamps["results"] + 0.35
 
     mp4 = OUT / f"studio-{lang}.mp4"

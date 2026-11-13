@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Erosion in a 90° bend: the numbers met the experiment — PINNeAPPle Labs</title>
-<meta name="description" content="Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value — inside the factor-2 band industry accepts." />
+<title>Erosion in a 90° bend: the numbers met the experiment · PINNeAPPle Labs</title>
+<meta name="description" content="Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value, inside the factor-2 band industry accepts." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Erosion in a 90° bend: the numbers met the experiment — PINNeAPPle Labs" />
-<meta property="og:description" content="Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value — inside the factor-2 band industry accepts." />
+<meta property="og:title" content="Erosion in a 90° bend: the numbers met the experiment · PINNeAPPle Labs" />
+<meta property="og:description" content="Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value, inside the factor-2 band industry accepts." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/erosao.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
@@ -59,7 +59,7 @@
         <p class="post-tagline"><a href="../../../en/artigos/">← Articles</a></p>
         <p class="eyebrow">CFD</p>
         <h1>Erosion in a 90° bend: the numbers met the experiment</h1>
-        <p class="lead" style="max-width:62ch">Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value — inside the factor-2 band industry accepts.</p>
+        <p class="lead" style="max-width:62ch">Sand-laden air at 15 m/s, a 90° bend and a published experiment to compare against. The result landed between 1.05 and 1.49 times the measured value, inside the factor-2 band industry accepts.</p>
         <p class="post-meta">
           <span class="chip">28 August 2026</span>
           <span class="chip">5 min read</span>
@@ -69,9 +69,9 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Erosion is not a phenomenon for 1% precision: it depends on the particle distribution, the material and the operating history. Practice accepts a factor of 2. The commitment on this project was to land inside that band — and to say so out loud, instead of promising precision the phenomenon does not have.</p><h2>What was done</h2><p>The full CFD pipeline: pipe geometry, mesh, OpenFOAM solving the particle-laden flow, a wall-erosion model, and a surrogate trained to answer quickly under new operating conditions.</p><figure class="fig"><img src="../../../img/erosao.jpg" alt="Wall erosion map on a 90° bend" loading="lazy" decoding="async" /><figcaption>Wall erosion map (case T3): the whole pipe and the zoom into the bend, with the peak on the outer wall. Scale in mm/year.</figcaption></figure><h2>The numbers</h2><p><b>1.05 to 1.49 times</b> the rate measured in the Vieira et al. (2016) experiment. The surrogate came in at <b>1.0% error</b> on pressure drop, at points it never saw in training. The study's 32 simulations — from geometry to trained model — took 23 minutes.</p><h2>What it changes</h2><p>With the surrogate, varying diameter, bend radius and flow rate no longer costs a day per point. CFD stays the reference; what changes is how many questions you can ask before paying for the expensive case.</p>
+<p>Erosion is not a phenomenon for 1% precision: it depends on the particle distribution, the material and the operating history. Practice accepts a factor of 2. The commitment on this project was to land inside that band, and to say so out loud, instead of promising precision the phenomenon does not have.</p><h2>What was done</h2><p>The full CFD pipeline: pipe geometry, mesh, OpenFOAM solving the particle-laden flow, a wall-erosion model, and a surrogate trained to answer quickly under new operating conditions.</p><figure class="fig"><img src="../../../img/erosao.jpg" alt="Wall erosion map on a 90° bend" loading="lazy" decoding="async" /><figcaption>Wall erosion map (case T3): the whole pipe and the zoom into the bend, with the peak on the outer wall. Scale in mm/year.</figcaption></figure><h2>The numbers</h2><p><b>1.05 to 1.49 times</b> the rate measured in the Vieira et al. (2016) experiment. The surrogate came in at <b>1.0% error</b> on pressure drop, at points it never saw in training. The study's 32 simulations, from geometry to trained model, took 23 minutes.</p><h2>What it changes</h2><p>With the surrogate, varying diameter, bend radius and flow rate no longer costs a day per point. CFD stays the reference; what changes is how many questions you can ask before paying for the expensive case.</p>
         <div class="measure"><b>1.05–1.49×</b><span>of the open experiment by Vieira et al. 2016</span></div>
-        <div class="note limits-up"><span><b>What was not proven:</b> The criterion is the factor-2 band, not 1% precision. And flat residuals do not prove drag has settled — which is why the comparison is against the experiment, not against the solver itself.</span></div>
+        <div class="note limits-up"><span><b>What was not proven:</b> The criterion is the factor-2 band, not 1% precision. And flat residuals do not prove drag has settled, which is why the comparison is against the experiment, not against the solver itself.</span></div>
         <nav class="post-nav" aria-label="More articles"><a class="post-prev" href="../../../en/artigos/gemeo-hx201/">← The twin that warned 2.6 hours ahead</a><a class="post-next" href="../../../en/artigos/substituto-termico/">A heat sink that answers 200,000 times faster →</a></nav>
       </div>
     </div>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Bring your case</p>
         <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
-        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>

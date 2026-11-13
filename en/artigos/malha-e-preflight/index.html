@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The failure that shows up before the run — PINNeAPPle Labs</title>
+<title>The failure that shows up before the run · PINNeAPPle Labs</title>
 <meta name="description" content="Most of the time lost in simulation is not compute: it is finding out, hours into the queue, that the mesh was poor or the case had no support. Two checks settle that before you press play." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/" />
@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="The failure that shows up before the run — PINNeAPPle Labs" />
+<meta property="og:title" content="The failure that shows up before the run · PINNeAPPle Labs" />
 <meta property="og:description" content="Most of the time lost in simulation is not compute: it is finding out, hours into the queue, that the mesh was poor or the case had no support. Two checks settle that before you press play." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/eng/studio-report.webp" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +69,7 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>A case can finish with “finished” and still be wrong. Unsupported, the beam moves 1.8×10¹¹ mm and the solver does not complain. With a poor mesh, the field comes out colourful and meaningless. In both cases the mistake only surfaces when someone looks closely — usually after the queue.</p><h2>What was done</h2><p>Two checks before execution. The <b>mesh</b> check reads OpenFOAM, Gmsh, VTK, Abaqus and STL and returns quality metrics, a heatmap and the worst elements — with the same numbers as checkMesh. <b>Preflight</b> reads the case and returns PASS, WARNING or FAIL, naming the file and the line.</p><figure class="fig"><img src="../../../img/eng/studio-report.webp" alt="A job report with its verifications and evidence status" loading="lazy" decoding="async" /><figcaption>A run's report: the chart, the checks with value and limit, and the evidence status — here “inconclusive”, because one check did not run.</figcaption></figure><h2>The numbers</h2><p>The mesh metrics match OpenFOAM's checkMesh. The unsupported-beam case is caught <b>before execution</b>, as FAIL, instead of turning into a result that looks like a result.</p><h2>What it changes</h2><p>The queue stops being the place where mistakes are found. And the report shows what was not checked: mesh independence, for instance, only exists if someone ran the refinement study — so it appears as “did not run”, not as passed.</p>
+<p>A case can finish with “finished” and still be wrong. Unsupported, the beam moves 1.8×10¹¹ mm and the solver does not complain. With a poor mesh, the field comes out colourful and meaningless. In both cases the mistake only surfaces when someone looks closely, usually after the queue.</p><h2>What was done</h2><p>Two checks before execution. The <b>mesh</b> check reads OpenFOAM, Gmsh, VTK, Abaqus and STL and returns quality metrics, a heatmap and the worst elements, with the same numbers as checkMesh. <b>Preflight</b> reads the case and returns PASS, WARNING or FAIL, naming the file and the line.</p><figure class="fig"><img src="../../../img/eng/studio-report.webp" alt="A job report with its verifications and evidence status" loading="lazy" decoding="async" /><figcaption>A run's report: the chart, the checks with value and limit, and the evidence status, here “inconclusive”, because one check did not run.</figcaption></figure><h2>The numbers</h2><p>The mesh metrics match OpenFOAM's checkMesh. The unsupported-beam case is caught <b>before execution</b>, as FAIL, instead of turning into a result that looks like a result.</p><h2>What it changes</h2><p>The queue stops being the place where mistakes are found. And the report shows what was not checked: mesh independence, for instance, only exists if someone ran the refinement study, so it appears as “did not run”, not as passed.</p>
         <div class="measure"><b>identical to checkMesh</b><span>mesh metrics checked against OpenFOAM</span></div>
         <div class="note limits-up"><span><b>What was not proven:</b> A good mesh does not guarantee a good result, and preflight does not replace physics verification. These are the first filter, not the last.</span></div>
         <nav class="post-nav" aria-label="More articles"><a class="post-prev" href="../../../en/artigos/substituto-termico/">← A heat sink that answers 200,000 times faster</a><span></span></nav>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Bring your case</p>
         <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
-        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion — or we tell you the classical method does it better.</p>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>

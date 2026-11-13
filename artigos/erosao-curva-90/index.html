@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Erosão numa curva de 90°: a conta bateu com o ensaio — PINNeAPPle Labs</title>
-<meta name="description" content="Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido — dentro do fator 2 que a indústria aceita." />
+<title>Erosão numa curva de 90°: a conta bateu com o ensaio · PINNeAPPle Labs</title>
+<meta name="description" content="Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido, dentro do fator 2 que a indústria aceita." />
 <meta name="theme-color" content="#070a10" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/erosao-curva-90/" />
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/erosao-curva-90/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Erosão numa curva de 90°: a conta bateu com o ensaio — PINNeAPPle Labs" />
-<meta property="og:description" content="Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido — dentro do fator 2 que a indústria aceita." />
+<meta property="og:title" content="Erosão numa curva de 90°: a conta bateu com o ensaio · PINNeAPPle Labs" />
+<meta property="og:description" content="Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido, dentro do fator 2 que a indústria aceita." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/erosao.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
@@ -59,7 +59,7 @@
         <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
         <p class="eyebrow">CFD</p>
         <h1>Erosão numa curva de 90°: a conta bateu com o ensaio</h1>
-        <p class="lead" style="max-width:62ch">Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido — dentro do fator 2 que a indústria aceita.</p>
+        <p class="lead" style="max-width:62ch">Ar com areia a 15 m/s, uma curva de 90° e um ensaio publicado para comparar. O resultado ficou entre 1,05 e 1,49 vez o medido, dentro do fator 2 que a indústria aceita.</p>
         <p class="post-meta">
           <span class="chip">28 de agosto de 2026</span>
           <span class="chip">5 min de leitura</span>
@@ -69,9 +69,9 @@
 
     <div class="wrap post-body">
       <div class="prose">
-<p>Erosão não é um fenômeno para precisão de 1%: depende da distribuição de partículas, do material e do histórico de operação. A prática aceita um fator 2. O compromisso do projeto era ficar dentro dele — e dizer isso em voz alta, em vez de prometer uma precisão que o fenômeno não tem.</p><h2>O que foi feito</h2><p>O pipeline CFD completo: geometria da tubulação, malha, OpenFOAM resolvendo o escoamento com partículas, modelo de erosão na parede e um substituto treinado para responder rápido em novas condições de operação.</p><figure class="fig"><img src="../../img/erosao.jpg" alt="Mapa de erosão na parede de uma curva de 90°" loading="lazy" decoding="async" /><figcaption>Mapa de erosão na parede (ensaio T3): tubulação inteira e o zoom na curva, com o pico na parede externa. Escala em mm/ano.</figcaption></figure><h2>Os números</h2><p><b>1,05 a 1,49 vez</b> a taxa medida no ensaio de Vieira et al. (2016). O substituto ficou em <b>1,0% de erro</b> na perda de carga, em pontos que não viu no treino. As 32 simulações do estudo — da geometria ao modelo treinado — levaram 23 minutos.</p><h2>O que isso muda</h2><p>Com o substituto, variar diâmetro, raio de curva e vazão deixa de custar um dia por ponto. O CFD continua sendo a referência; o que muda é quantas perguntas dá para fazer antes de pagar o caso caro.</p>
+<p>Erosão não é um fenômeno para precisão de 1%: depende da distribuição de partículas, do material e do histórico de operação. A prática aceita um fator 2. O compromisso do projeto era ficar dentro dele, e dizer isso em voz alta, em vez de prometer uma precisão que o fenômeno não tem.</p><h2>O que foi feito</h2><p>O pipeline CFD completo: geometria da tubulação, malha, OpenFOAM resolvendo o escoamento com partículas, modelo de erosão na parede e um substituto treinado para responder rápido em novas condições de operação.</p><figure class="fig"><img src="../../img/erosao.jpg" alt="Mapa de erosão na parede de uma curva de 90°" loading="lazy" decoding="async" /><figcaption>Mapa de erosão na parede (ensaio T3): tubulação inteira e o zoom na curva, com o pico na parede externa. Escala em mm/ano.</figcaption></figure><h2>Os números</h2><p><b>1,05 a 1,49 vez</b> a taxa medida no ensaio de Vieira et al. (2016). O substituto ficou em <b>1,0% de erro</b> na perda de carga, em pontos que não viu no treino. As 32 simulações do estudo, da geometria ao modelo treinado, levaram 23 minutos.</p><h2>O que isso muda</h2><p>Com o substituto, variar diâmetro, raio de curva e vazão deixa de custar um dia por ponto. O CFD continua sendo a referência; o que muda é quantas perguntas dá para fazer antes de pagar o caso caro.</p>
         <div class="measure"><b>1,05–1,49×</b><span>do ensaio aberto de Vieira et al. 2016</span></div>
-        <div class="note limits-up"><span><b>O que não foi provado:</b> O critério é o fator 2, não precisão de 1%. E resíduo estável não prova que o arrasto estabilizou — por isso a comparação é com o ensaio, não com o próprio solver.</span></div>
+        <div class="note limits-up"><span><b>O que não foi provado:</b> O critério é o fator 2, não precisão de 1%. E resíduo estável não prova que o arrasto estabilizou, por isso a comparação é com o ensaio, não com o próprio solver.</span></div>
         <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/gemeo-hx201/">← O gêmeo que avisou 2,6 horas antes</a><a class="post-next" href="../../artigos/substituto-termico/">Um dissipador que responde 200 mil vezes mais rápido →</a></nav>
       </div>
     </div>
@@ -81,7 +81,7 @@
       <div>
         <p class="eyebrow">Traga o seu caso</p>
         <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
-        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável — ou dizemos que o método clássico resolve melhor.</p>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
