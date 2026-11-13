@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>28 modelos para o El Niño, um protocolo, e o que perdeu · PINNeAPPle Labs</title>
+<meta name="description" content="Cinco famílias de modelo, do AR à PINN, com os mesmos dados, a mesma janela e a mesma régua de significância. A 24 meses de antecedência ganha um oscilador de poucos parâmetros, e duas redes grandes não superam a persistência." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/el-nino-28-modelos/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="28 modelos para o El Niño, um protocolo, e o que perdeu · PINNeAPPle Labs" />
+<meta property="og:description" content="Cinco famílias de modelo, do AR à PINN, com os mesmos dados, a mesma janela e a mesma régua de significância. A 24 meses de antecedência ganha um oscilador de poucos parâmetros, e duas redes grandes não superam a persistência." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/exp/nino-barreira.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../../">Início</a>
+      <a href="../../studio/">O produto</a>
+      <a href="../../artigos/" aria-current="page">Artigos</a>
+      <a href="../../lib/">A lib</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../en/artigos/el-nino-28-modelos/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article>
+    <header class="post-head">
+      <div class="wrap">
+        <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
+        <p class="eyebrow">Clima</p>
+        <h1>28 modelos para o El Niño, um protocolo, e o que perdeu</h1>
+        <p class="lead" style="max-width:62ch">Cinco famílias de modelo, do AR à PINN, com os mesmos dados, a mesma janela e a mesma régua de significância. A 24 meses de antecedência ganha um oscilador de poucos parâmetros, e duas redes grandes não superam a persistência.</p>
+        <p class="post-meta">
+          <span class="chip">13 de novembro de 2026</span>
+          <span class="chip">7 min de leitura</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap post-body">
+      <div class="prose">
+<p>Previsão climática tem um problema de comparação: cada trabalho usa uma métrica, uma janela e uma linha de base. O experimento iguala tudo isso, coloca 28 modelos de cinco famílias na mesma régua e publica o ranking inteiro, inclusive as posições incômodas.</p><h2>O protocolo</h2><p>Os dados são OISST v2.1, com as fontes guardadas com o SHA-256 de cada arquivo, mais as sondagens de termoclina e o estresse do ERA5. Todo modelo é avaliado na mesma janela de validação, com correlação de anomalia, habilidade de RMSE contra persistência e contra climatologia, e teste de significância com correção de Holm. Os modelos probabilísticos levam também CRPS, cobertura de 95% e desvio do PIT.</p><h2>O resultado que importa</h2><p>A 24 meses, o <b>oscilador recarregado sazonal</b>, um modelo físico de 15 parâmetros, chega a <b>0,42</b> de correlação de anomalia, contra 0,33 do AR e 0,34 do oscilador recarregado simples. A 6 meses, ele fica em 0,63 contra 0,43 do AR. A climatologia, por definição, fica em zero.</p><p>Só dois modelos bateram o melhor baseline de cada horizonte com significância estatística, e só no começo: a CNN, com 561 mil parâmetros, no horizonte 1, e o ensemble híbrido nos horizontes 1, 2 e 3. Fora dessa faixa, a diferença some dentro do ruído.</p><figure class="fig"><img src="../../img/exp/nino-habilidade.webp" alt="Habilidade de cada modelo por horizonte de previsão" loading="lazy" decoding="async" /><figcaption>Habilidade por horizonte para as cinco famílias. É no cruzamento das curvas, e não no topo da tabela, que a escolha de método se decide.</figcaption></figure><h2>O que perdeu, e está publicado</h2><p>As PINNs não saíram melhor por serem PINNs. A PINN construída em cima do próprio oscilador recarregado (6 parâmetros, 91 s de ajuste) tem correlação de <b>−0,69</b> no horizonte 3, enquanto o oscilador do qual ela herda a física, com os mesmos 6 parâmetros, fica em 0,80. A versão com fechamento aprendido também colapsa: −0,71 no mesmo horizonte.</p><p>A perda com resíduo físico (0,51 no horizonte 6) e a PINN de extrapolação (0,54) ficam no meio da tabela, à frente da persistência e atrás do oscilador físico. É o tipo de resultado que só aparece quando a comparação é feita na mesma régua.</p><figure class="fig"><img src="../../img/exp/nino-barreira.png" alt="A barreira de previsibilidade da primavera" loading="lazy" decoding="async" /><figcaption>A barreira de previsibilidade da primavera: a habilidade cai quando a previsão atravessa a estação, e é ali que a diferença entre os modelos se abre.</figcaption></figure><h2>A física antes do modelo</h2><p>Antes de comparar modelos, o solver foi comparado com a solução analítica: a onda de Kelvin viaja a <b>2,689 m/s</b> contra 2,7 m/s da teoria, a resposta estacionária de Gill converge para a solução analítica com erro L2 de 1,5×10⁻³ em 72 pontos de longitude e 5×10⁻⁵ em 576, e o período do oscilador recarregado bate com a teoria em todas as cinco resoluções testadas.</p><h2>Como ler o ranking</h2><p>O ranking não elege o modelo mais moderno. Ele mostra onde a física barata ganha, onde a rede grande só empata e onde o método caro piora o resultado, que é o que permite escolher com orçamento e não com entusiasmo.</p>
+        <div class="measure"><b>0,42</b><span>de correlação de anomalia a 24 meses com o oscilador recarregado sazonal, contra 0,33 do AR e 0 da climatologia</span></div>
+        <div class="note limits-up"><span><b>O que não foi provado:</b> A avaliação é retrospectiva, em OISST v2.1 com splits fixos, e não é uma previsão operacional. A régua é a correlação de anomalia e a habilidade de RMSE contra persistência e climatologia, com significância controlada por Holm; nos horizontes em que nenhum modelo bate o melhor baseline, o artigo diz que não bateu.</span></div>
+        <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/ferramentas-de-dinamica/">← Cinco ferramentas, cinco referências independentes</a><a class="post-next" href="../../artigos/rover-aprende-solo/">O rover que aprendeu o solo pelas próprias rodas →</a></nav>
+      </div>
+    </div>
+  </article>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../../">Início</a></li>
+          <li><a href="../../studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../artigos/">Artigos</a></li>
+          <li><a href="../../lib/">A lib</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar com um engenheiro</a></li>
+          <li><a href="../../en/artigos/el-nino-28-modelos/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar com um engenheiro">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar com um engenheiro</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

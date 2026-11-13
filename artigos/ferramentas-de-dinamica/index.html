@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cinco ferramentas, cinco referências independentes · PINNeAPPle Labs</title>
+<meta name="description" content="Primeira passagem, espectro de Koopman, sensores escolhidos por informação de Fisher, análise dimensional e indicadores de alerta. Cada um conferido contra uma resposta que não veio do modelo." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/ferramentas-de-dinamica/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Cinco ferramentas, cinco referências independentes · PINNeAPPle Labs" />
+<meta property="og:description" content="Primeira passagem, espectro de Koopman, sensores escolhidos por informação de Fisher, análise dimensional e indicadores de alerta. Cada um conferido contra uma resposta que não veio do modelo." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/exp/dinamica-thumb.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../../">Início</a>
+      <a href="../../studio/">O produto</a>
+      <a href="../../artigos/" aria-current="page">Artigos</a>
+      <a href="../../lib/">A lib</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../en/artigos/ferramentas-de-dinamica/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article>
+    <header class="post-head">
+      <div class="wrap">
+        <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
+        <p class="eyebrow">Sistemas dinâmicos</p>
+        <h1>Cinco ferramentas, cinco referências independentes</h1>
+        <p class="lead" style="max-width:62ch">Primeira passagem, espectro de Koopman, sensores escolhidos por informação de Fisher, análise dimensional e indicadores de alerta. Cada um conferido contra uma resposta que não veio do modelo.</p>
+        <p class="post-meta">
+          <span class="chip">13 de novembro de 2026</span>
+          <span class="chip">6 min de leitura</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap post-body">
+      <div class="prose">
+<p>Ferramenta de análise é fácil de vender e difícil de auditar: o gráfico fica bonito e ninguém pergunta contra o que ele foi conferido. O experimento pega cinco ferramentas do kit e coloca cada uma contra uma referência que não é o próprio modelo.</p><h2>Primeira passagem: PINN contra Monte Carlo contra a exata</h2><p>Na equação do calor 1D, a PINN resolve a primeira passagem com erro máximo de <b>5,6×10⁻⁴</b> contra a solução analítica. O Monte Carlo, com 20 mil caminhos Euler-Maruyama, fica em 4,4×10⁻³, oito vezes pior. O tempo médio restrito até 2,0 fecha em 0,87247 na PINN, contra 0,872465 exato e 0,87515 ± 4,7×10⁻³ no Monte Carlo. A PINN leva 104 s de solver; o Monte Carlo, o tempo dos 20 mil caminhos.</p><figure class="fig"><img src="../../img/exp/dinamica-passagem.webp" alt="Sobrevivência da primeira passagem, PINN e Monte Carlo" loading="lazy" decoding="async" /><figcaption>Sobrevivência da primeira passagem: a PINN por cima da curva exata, e a banda do Monte Carlo em volta dela.</figcaption></figure><h2>Koopman: as taxas de decaimento saem do espectro</h2><p>Rodando DMD de posto 3 nos retratos da PINN, as taxas de decaimento dos três modos saem com erro relativo de 0,6%, 0,5% e 1,0% contra os autovalores exatos −D(kπ)². O controle com os mesmos retratos gerados pela solução exata dá erro zero, como tem que dar, e o resíduo do ResDMD nos três autopares fica em 9,7×10⁻⁴.</p><p>O detalhe honesto: o posto escolhido pelo critério de Gavish-Donoho nos retratos da PINN é 22, e não 3. Ou seja, o espectro é recuperável desde que o analista saiba quantos modos existem, e é isso que o artigo reporta em vez de esconder.</p><figure class="fig"><img src="../../img/exp/dinamica-koopman.webp" alt="Autovalores recuperados por DMD a partir dos retratos da PINN" loading="lazy" decoding="async" /><figcaption>Autovalores recuperados por DMD a partir dos retratos da PINN, contra os exatos. O que está em jogo não é a curva, é o número.</figcaption></figure><h2>Onde medir importa 45%</h2><p>Escolhendo quando medir por informação de Fisher, os quatro tempos ótimos são 0, 0, 2,025 e 2,025, em 401 pontos da grade. O desvio-padrão do difusor que sai do limitante de Cramér-Rao é 0,00102, e o empírico de 500 ajustes é 0,00102. Amostrando de forma uniforme, os mesmos dois números vão para 0,00149 e 0,00146: <b>45% pior</b> pelo mesmo número de medidas.</p><h2>Análise dimensional e alerta precoce</h2><p>Com seis grandezas e posto 3, Buckingham pi reduz o problema a três grupos, e o colapso das curvas vai de 1,68 de dispersão relativa para <b>8×10⁻⁵</b>, com p=0,002 num controle de permutação (999 reatribuições). Nos indicadores de alerta precoce, a variância e a autocorrelação de janela móvel sobem antes da sela (tau de Kendall 0,94 e 0,91, p de 0,005 e 0,01) e não sobem no controle estável (tau −0,22, p=0,55).</p><p>E o caso que separa os dois indicadores: um sistema estável com ruído crescendo levanta a variância (0,97, p=0,005) sem levantar a autocorrelação (0,38, p=0,27). Um indicador sozinho teria dado alarme falso, e é por isso que o kit mede os dois.</p><figure class="fig"><img src="../../img/exp/dinamica-alerta.webp" alt="Variância e autocorrelação de janela móvel, sela e controle" loading="lazy" decoding="async" /><figcaption>Variância e autocorrelação de janela móvel: a sela e o controle estável em cima, e o caso de ruído crescente embaixo, onde só um dos dois indicadores dispara.</figcaption></figure><h2>O que isso vale</h2><p>Cinco ferramentas que medem o que prometem, cada uma com a referência ao lado e o erro declarado. É menos vistoso que uma arquitetura nova, e é o que permite usar qualquer uma delas numa decisão.</p>
+        <div class="measure"><b>5,6×10⁻⁴</b><span>de erro máximo na primeira passagem da PINN, contra 4,4×10⁻³ do Monte Carlo</span></div>
+        <div class="note limits-up"><span><b>O que não foi provado:</b> Cada ferramenta é conferida no problema em que a resposta exata existe: equação do calor 1D, oscilador com dois modos, sela. É isso que limita a conclusão, e o experimento não afirma acerto fora desses casos, só que o método está implementado certo e mede o que promete.</span></div>
+        <nav class="post-nav" aria-label="Mais artigos"><a class="post-prev" href="../../artigos/gemeo-no-unity/">← O mesmo campo, do solver ao motor de jogo</a><a class="post-next" href="../../artigos/el-nino-28-modelos/">28 modelos para o El Niño, um protocolo, e o que perdeu →</a></nav>
+      </div>
+    </div>
+  </article>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../../">Início</a></li>
+          <li><a href="../../studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../artigos/">Artigos</a></li>
+          <li><a href="../../lib/">A lib</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar com um engenheiro</a></li>
+          <li><a href="../../en/artigos/ferramentas-de-dinamica/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar com um engenheiro">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar com um engenheiro</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

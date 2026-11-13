@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>O FNO acerta o campo e é reprovado na física · PINNeAPPle Labs</title>
+<meta name="description" content="Uma placa fria com 50 layouts, um FNO de 1,18 milhão de parâmetros treinado em 133 s e 1,7% de erro contra a solução de volumes finitos. E o cartão de confiança dizendo não." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/artigos/fno-placa-fria/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/fno-placa-fria/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/fno-placa-fria/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/fno-placa-fria/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="O FNO acerta o campo e é reprovado na física · PINNeAPPle Labs" />
+<meta property="og:description" content="Uma placa fria com 50 layouts, um FNO de 1,18 milhão de parâmetros treinado em 133 s e 1,7% de erro contra a solução de volumes finitos. E o cartão de confiança dizendo não." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/exp/fno-checagens.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../../">Início</a>
+      <a href="../../studio/">O produto</a>
+      <a href="../../artigos/" aria-current="page">Artigos</a>
+      <a href="../../lib/">A lib</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../en/artigos/fno-placa-fria/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article>
+    <header class="post-head">
+      <div class="wrap">
+        <p class="post-tagline"><a href="../../artigos/">← Artigos</a></p>
+        <p class="eyebrow">Transferência de calor</p>
+        <h1>O FNO acerta o campo e é reprovado na física</h1>
+        <p class="lead" style="max-width:62ch">Uma placa fria com 50 layouts, um FNO de 1,18 milhão de parâmetros treinado em 133 s e 1,7% de erro contra a solução de volumes finitos. E o cartão de confiança dizendo não.</p>
+        <p class="post-meta">
+          <span class="chip">13 de novembro de 2026</span>
+          <span class="chip">5 min de leitura</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap post-body">
+      <div class="prose">
+<p>Trocar o solver por uma rede neural é fácil de demonstrar e difícil de defender: o campo parece certo, e ninguém sabe dizer se está. O experimento monta o caso em que essa pergunta pode ser respondida com número: a placa fria do exemplo da NVIDIA Omniverse, com o FNO da própria biblioteca no lugar do FNO do PhysicsNeMo.</p><h2>O experimento</h2><p>50 layouts de placa, com a fonte e a geometria variando, resolvidos por volumes finitos para gerar referência. O FNO2d tem 1,18 milhão de parâmetros, largura 32, 12 modos e 4 camadas, e treina em 133 s (2.700 passos) até a perda final de 0,0063.</p><h2>Os números</h2><p>Erro relativo L2 de <b>1,7%</b> nos 50 layouts mantidos fora do treino, com o ponto quente errando no máximo <b>0,24 K</b>. A inferência leva 1,59 ms por layout, contra 2,39 ms do solver de volumes finitos, ou seja, 1,5 vez mais rápida, e não mil vezes.</p><figure class="fig"><img src="../../img/exp/fno-campos.webp" alt="Campo de temperatura previsto e de referência em quatro layouts" loading="lazy" decoding="async" /><figcaption>Quatro layouts: previsto, referência e a diferença. A olho nu o campo está certo, e é exatamente por isso que a checagem precisa ser numérica.</figcaption></figure><h2>O cartão diz não</h2><p>A decisão saiu <b>REJECT</b>. O resíduo de PDE, com o limitante de energia certificado, ficou em <b>0,164</b> contra o limite de 0,1, e o limitante de erro L2 em 0,247 contra 0,05. O balanço de fluxo na fronteira deu 5,4% contra 2% de tolerância. Passaram a condição de contorno (1,6% contra 2%) e a positividade (0,16% contra 1%), que são as duas mais fáceis.</p><p>O erro de referência, 2,5%, passou com folga. É essa a lição: acertar o campo de referência e satisfazer a equação são duas coisas diferentes, e a segunda é a que decide se o resultado pode entrar num projeto.</p><figure class="fig"><img src="../../img/exp/fno-checagens.webp" alt="As sete checagens do cartão de confiança" loading="lazy" decoding="async" /><figcaption>As sete checagens, com valor, limite e veredito. Duas passam com folga, três reprovam, e a de aplicabilidade sinaliza 4 dos 50 layouts fora do envelope de treino.</figcaption></figure><h2>Como ler o resultado</h2><p>O FNO é um substituto rápido e fiel ao solver que o gerou, e isso já vale para exploração de projeto. O que ele não é, neste treino, é uma solução da equação: 2.700 passos não bastaram para fechar o resíduo. Publicar as duas leituras juntas é o que permite usar o modelo onde ele serve e não usá-lo onde não serve.</p>
+        <div class="measure"><b>0,164</b><span>de resíduo de PDE contra o limite de 0,1, com o erro de referência em 1,7%</span></div>
+        <div class="note limits-up"><span><b>O que não foi provado:</b> A rede é avaliada em 50 layouts mantidos fora do treino, mas 4 deles têm coeficiente fora do envelope de treino, e o cartão registra isso. O alvo é a solução de volumes finitos do próprio exemplo, não um ensaio: o que está medido é fidelidade ao solver e consistência com a equação, não acerto contra bancada.</span></div>
+        <nav class="post-nav" aria-label="Mais artigos"><span></span><a class="post-next" href="../../artigos/gemeo-no-unity/">O mesmo campo, do solver ao motor de jogo →</a></nav>
+      </div>
+    </div>
+  </article>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener">Falar com um engenheiro</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../../">Início</a></li>
+          <li><a href="../../studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../artigos/">Artigos</a></li>
+          <li><a href="../../lib/">A lib</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar com um engenheiro</a></li>
+          <li><a href="../../en/artigos/fno-placa-fria/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20PINNeAPPle%20Labs%20e%20tenho%20um%20problema%20de%20engenharia%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar com um engenheiro">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar com um engenheiro</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

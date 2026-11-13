@@ -50,6 +50,90 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pinneapple-labs.github.io/artigos/fno-placa-fria/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/fno-placa-fria/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/fno-placa-fria/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/fno-placa-fria/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/fno-placa-fria/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/fno-placa-fria/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/gemeo-no-unity/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/gemeo-no-unity/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/gemeo-no-unity/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/gemeo-no-unity/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/gemeo-no-unity/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/gemeo-no-unity/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/ferramentas-de-dinamica/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/ferramentas-de-dinamica/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/ferramentas-de-dinamica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/ferramentas-de-dinamica/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/el-nino-28-modelos/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/el-nino-28-modelos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/el-nino-28-modelos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/el-nino-28-modelos/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/rover-aprende-solo/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/rover-aprende-solo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/rover-aprende-solo/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/rover-aprende-solo/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/rover-aprende-solo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/rover-aprende-solo/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/construcoes-de-bloco/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/construcoes-de-bloco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/construcoes-de-bloco/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/construcoes-de-bloco/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/construcoes-de-bloco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/construcoes-de-bloco/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/artigos/motor-prius-dois-solvers/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/motor-prius-dois-solvers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/motor-prius-dois-solvers/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/artigos/motor-prius-dois-solvers/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/motor-prius-dois-solvers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/motor-prius-dois-solvers/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://pinneapple-labs.github.io/artigos/aerodinamica-autonoma/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/aerodinamica-autonoma/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/aerodinamica-autonoma/"/>

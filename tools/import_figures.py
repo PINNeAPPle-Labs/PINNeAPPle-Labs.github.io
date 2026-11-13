@@ -41,6 +41,32 @@ FIGS = [
     ("sports/figures/ball_holdout_landing.png", "futebol-pouso"),
     ("sports/figures/ball_flights_3d.png", "futebol-voo"),
     ("sports/figures/pc_reliability.png", "futebol-controle"),
+    # ferramentas de dinâmica
+    ("dynamics_toolkit/figures/early_warning.png", "dinamica-thumb"),
+    ("dynamics_toolkit/figures/first_passage.png", "dinamica-passagem"),
+    ("dynamics_toolkit/figures/koopman.png", "dinamica-koopman"),
+    ("dynamics_toolkit/figures/early_warning.png", "dinamica-alerta"),
+    # Unity / OpenUSD
+    ("unity/media/05_blender_still.png", "unity-thumb"),
+    ("unity/media/05_blender_still.png", "unity-espuleta"),
+    # placa fria com FNO
+    ("fno_coldplate/results/fields.png", "fno-campos"),
+    ("fno_coldplate/results/checks.png", "fno-checagens"),
+    # El Niño
+    ("enso_forecasting/figures/plumes.png", "nino-plumas"),
+    ("enso_forecasting/figures/skill_vs_lead.png", "nino-habilidade"),
+    ("enso_forecasting/figures/spring_barrier.png", "nino-barreira"),
+    # rover lunar
+    ("autolab_rover/results/traverse.png", "rover-rotas"),
+    ("autolab_rover/results/site_map.png", "rover-mapa"),
+    ("autolab_rover/results/soil_learning.png", "rover-solo"),
+    # construções de bloco
+    ("bricks/_out/best_cantilever_cycles.png", "blocos-thumb"),
+    ("bricks/_out/best_cantilever_cycles.png", "blocos-balanco"),
+    ("bricks/_out/comparison.png", "blocos-comparacao"),
+    # eletromagnetismo aplicado
+    ("electrodynamics/results/10_pmsm_field.png", "motor-campo"),
+    ("electrodynamics/results/14_prius_getdp_crosscheck.png", "motor-getdp"),
     # CO2 supercrítico
     ("potential_co2/figures/identities_all_properties.png", "co2-identidades"),
     ("potential_co2/figures/errors_all_properties.png", "co2-erros"),

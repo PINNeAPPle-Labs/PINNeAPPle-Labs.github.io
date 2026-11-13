@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The rover that learned the soil from its own wheels · PINNeAPPle Labs</title>
+<meta name="description" content="A mission in plain language, a route from the orbital map and a stall in the sand. The rover measured the slip, rebuilt the soil model, replanned and arrived, with half the slip and a tenth of the sinkage." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/artigos/rover-aprende-solo/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/rover-aprende-solo/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/rover-aprende-solo/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/artigos/rover-aprende-solo/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The rover that learned the soil from its own wheels · PINNeAPPle Labs" />
+<meta property="og:description" content="A mission in plain language, a route from the orbital map and a stall in the sand. The rover measured the slip, rebuilt the soil model, replanned and arrived, with half the slip and a tenth of the sinkage." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/exp/rover-rotas.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../../fonts.css" />
+<link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../../en/">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../../en/">Home</a>
+      <a href="../../../en/studio/">The product</a>
+      <a href="../../../en/artigos/" aria-current="page">Articles</a>
+      <a href="../../../en/lib/">The library</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../../artigos/rover-aprende-solo/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <article>
+    <header class="post-head">
+      <div class="wrap">
+        <p class="post-tagline"><a href="../../../en/artigos/">← Articles</a></p>
+        <p class="eyebrow">Robotics</p>
+        <h1>The rover that learned the soil from its own wheels</h1>
+        <p class="lead" style="max-width:62ch">A mission in plain language, a route from the orbital map and a stall in the sand. The rover measured the slip, rebuilt the soil model, replanned and arrived, with half the slip and a tenth of the sinkage.</p>
+        <p class="post-meta">
+          <span class="chip">13 November 2026</span>
+          <span class="chip">6 min read</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap post-body">
+      <div class="prose">
+<p>The mission, written in plain language, asks for a traverse to a sampling point. The direct plan, drawn from the orbital map, is 12.9 m long. It stalls a third of the way in, with 42% slip and 319 mm of sinkage: sand, not compact soil.</p><h2>The loop</h2><p>The platform runs the mission in the multibody simulator, sees the wheel spin, treats what it found as regolith, learns the soil parameters from the slip itself with an iterated Kalman filter, rebuilds the risk map and replans. None of that is handed in from outside: the only new signal is what happened at the wheels.</p><figure class="fig"><img src="../../../img/exp/rover-mapa.webp" alt="True soil, risk from the orbital map, and risk after learning the soil" loading="lazy" decoding="async" /><figcaption>Three panels: the true soil, which the planner cannot see; the risk the orbital map suggested; and the risk after learning the soil. The direct route stalled at the red mark, the replanned one arrived.</figcaption></figure><h2>The numbers</h2><p>Route A, direct: 12.93 m, 2,958 J, maximum slip 0.42, maximum sinkage <b>319 mm</b>, and the learned belief saying 100% of the route sat above the slip limit. Route B, replanned: 28.56 m, 2,869 J, slip 0.21, sinkage <b>30.7 mm</b> and zero risk.</p><p>The longer route used 3% less energy. It covered 2.2 times the distance, with half the slip and a tenth of the sinkage, which is the point: in soft soil the cost is not the kilometre, it is the wheel spin.</p><figure class="fig"><img src="../../../img/exp/rover-rotas.webp" alt="Slip, sinkage, energy and elevation on both routes" loading="lazy" decoding="async" /><figcaption>Slip, sinkage, accumulated energy and elevation along both routes. The red one climbs in sinkage and stops; the green one keeps slip below the mission limit for the whole traverse.</figcaption></figure><h2>What was learned, and with what error</h2><p>Against the true soil of the synthetic site, the final belief landed at 0.072 error in log₁₀ k_phi (1.14 posterior standard deviations), 0.057 in n0 (1.02) and 0.0145 in n1 (0.29). The error is small and, more importantly, consistent with the uncertainty the filter itself declares.</p><figure class="fig"><img src="../../../img/exp/rover-solo.webp" alt="Soil learning along the traverse" loading="lazy" decoding="async" /><figcaption>Learning along the traverse: the posterior narrows, the true value stays inside the band, and the planner starts to use what it learned.</figcaption></figure><figure class="fig vfig"><video src="../../../videos/rover-traverse.mp4" poster="../../../videos/rover-traverse.jpg" muted loop playsinline preload="none" data-autoplay aria-label="The traverse in the multibody simulator, with the front wheel sinking into the sand before the replan"></video><figcaption>The traverse in the multibody simulator, with the front wheel sinking into the sand before the replan</figcaption></figure><h2>Why this is the product</h2><p>The difference between a plan and a good plan is what gets learned on the way. Here the way teaches, the plan changes, and the report states what was learned and with what error, which is what lets an engineer accept or refuse the decision.</p>
+        <div class="measure"><b>30.7 mm</b><span>maximum sinkage on the replanned route, against 319 mm on the direct one</span></div>
+        <div class="note limits-up"><span><b>What was not proven:</b> The site is synthetic, so the true soil is known: the comparison is honest, but it is not field data. The rover is a test-vehicle model, and the learning assumes the wheel model (k_phi, n0, n1) covers the terrain it meets. Outside the simulated site, the article claims nothing.</span></div>
+        <nav class="post-nav" aria-label="More articles"><a class="post-prev" href="../../../en/artigos/el-nino-28-modelos/">← 28 El Niño models, one protocol, and what lost</a><a class="post-next" href="../../../en/artigos/construcoes-de-bloco/">Three brick builds, with physics as the judge →</a></nav>
+      </div>
+    </div>
+  </article>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener">Talk to an engineer</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../../en/">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../../en/">Home</a></li>
+          <li><a href="../../../en/studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../../en/artigos/">Articles</a></li>
+          <li><a href="../../../en/lib/">The library</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk to an engineer</a></li>
+          <li><a href="../../../artigos/rover-aprende-solo/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20PINNeAPPle%20Labs%20through%20the%20site%20and%20have%20an%20engineering%20problem%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk to an engineer">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk to an engineer</span>
+</a>
+
+<script src="../../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
