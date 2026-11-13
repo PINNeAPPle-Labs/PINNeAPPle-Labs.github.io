@@ -3,9 +3,9 @@
 Landing site for **PINNeAPPle Labs**, open-source Physics AI with verification as part of the
 product. Served at <https://pinneapple-labs.github.io/>.
 
-A commercial home, the product page for **PINNeAPPle Studio** (with a "coming soon" badge),
-an articles section with one post per experiment, and the library page, in two languages,
-generated from one script.
+A single home page that carries the commercial pitch and, in the middle of it, the
+**PINNeAPPle Studio** product story (with a "coming soon" badge), an articles section with one
+post per experiment, and the library page, in two languages, generated from one script.
 
 ## Build
 
@@ -17,13 +17,15 @@ That writes:
 
 | path | page |
 |---|---|
-| `index.html` | home (pt-BR) |
+| `index.html` | home (pt-BR): the whole story, product sections included, from `#apresentacao` to `#historia` |
 | `en/index.html` | home (English) |
-| `studio/index.html` · `en/studio/` | PINNeAPPle Studio, the product, coming soon |
 | `artigos/index.html` · `en/artigos/` | article index, newest first |
 | `artigos/<slug>/index.html` · `en/artigos/<slug>/` | one post per experiment, from the `POSTS` list |
 | `lib/index.html` · `en/lib/` | architecture, quickstart, open-source split |
-| `engineering/`, `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs to `/studio/`, `/artigos/` and `/#historia`; the old URLs keep working |
+| `studio/`, `engineering/`, `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs, in that order, to `/#produto`, `/#produto`, `/artigos/` and `/#historia`; the old URLs keep working |
+
+There is one page plus the article index and the lib page: the old product page was merged
+into the home, so the product is a section (`#produto`) of it, not a tab of its own.
 
 `build.py` also regenerates `sitemap.xml`. Commit the generated HTML along with the script:
 GitHub Pages serves the files as they are, there is no build step on the server.
@@ -37,7 +39,7 @@ GitHub Pages serves the files as they are, there is no build step on the server.
 | `app.js` | nav toggle, copy-to-clipboard, code tabs, scroll reveal, section spy, lazy video playback |
 | `fonts.css`, `fonts/` | self-hosted Archivo + JetBrains Mono (latin subset, OFL) |
 | `img/` | product and capability stills; `img/results/` holds real result plots; `img/exp/` holds the figures each article shows, straight from the example that produced them |
-| `videos/` | hero clip, two base-app recordings, the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`) and the `reel-*.mp4` clips the product page scrolls through; all ship `preload="none"` and only load and play when visible |
+| `videos/` | hero clip, two base-app recordings, the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`) and the `reel-*.mp4` clips the product section scrolls through; all ship `preload="none"` and only load and play when visible |
 | `tools/` | `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
 | `Dockerfile` | nginx image serving the tree, for a self-hosted deploy |
 
@@ -49,7 +51,8 @@ build overwrites them.
 Two things sit at the top of `build.py` because they are used from every page:
 
 * `WHATSAPP`: digits only; feeds the floating button, the hero CTA and the closing band;
-* `NAV` / `PAGES`: a new page is one entry in each, plus a `page_*` builder;
+* `NAV` / `PAGES`: a new page is one entry in each, plus a `page_*` builder. `produto_sections()`
+  is the exception: it has no `PAGES` entry, because it is rendered inside the home;
 * `POSTS`: the articles. One dict per post (slug, date, tag, figures and the body blocks in both
   languages) is enough: the index card, the post page, the sitemap entry and the home teaser are
   all generated from it.
@@ -62,7 +65,7 @@ The talk on the home page is a `button.yt` with a `data-id`: `app.js` swaps it f
 `youtube-nocookie` iframe on click, so nothing is requested from YouTube until someone asks for it.
 The poster is local (`img/simr.jpg`), so the section renders without the network too.
 
-The `reel-*.mp4` clips on the product page come straight from the examples (`dashboard_replay.mp4`
+The `reel-*.mp4` clips in the product section come straight from the examples (`dashboard_replay.mp4`
 cropped to the dashboard, `evolution_cantilever.mp4`, `traverse.mp4`, `04_surrogate_turntable.mp4`,
 `enso_1997_98_slab.mp4`); the list lives in `REEL` in `build.py`.
 
@@ -104,8 +107,8 @@ Apps Script: abra <https://script.google.com>, cole o arquivo, rode
 planilha de respostas e imprime o link curto de cada idioma.
 
 Enquanto um idioma não tiver link, **nada é renderizado nele**: nem o item de menu, nem a
-faixa `#pre-acesso` que aparece na home e na página do produto. É de propósito, um botão que
-leva a lugar nenhum é pior que botão nenhum.
+faixa `#pre-acesso` que aparece na home (hoje a única página que a tem, no fim do produto).
+É de propósito, um botão que leva a lugar nenhum é pior que botão nenhum.
 
 O formulário é externo, então o site continua estático: nenhum backend, nenhum cookie,
 nada carregado do Google antes de a pessoa clicar.
