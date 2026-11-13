@@ -85,6 +85,39 @@ in the page itself, then cuts the solver wait out and encodes the MP4. Keeping t
 the repo is the point, a screen the site shows is a screen the application renders, and it
 can be recorded again.
 
+## Pré-acesso (Google Forms)
+
+A chamada de pré-acesso ao Studio é um link do Google Forms guardado numa constante:
+
+```python
+# build.py, no topo
+PREACCESS_FORM = "https://forms.gle/xxxxxxxx"
+```
+
+Enquanto ela estiver vazia, **nada é renderizado**: nem o item de menu, nem a faixa
+`#pre-acesso` que aparece na home e na página do produto. É de propósito, um botão que leva
+a lugar nenhum é pior que botão nenhum.
+
+O formulário é externo, então o site continua estático: nenhum backend, nenhum cookie,
+nada carregado do Google antes de a pessoa clicar.
+
+Formulário recomendado (curto, seis perguntas, todas com motivo):
+
+| pergunta | tipo | obrigatória | por quê |
+|---|---|---|---|
+| Nome | resposta curta | sim | saber com quem falar |
+| E-mail | resposta curta, validação de e-mail | sim | é por aqui que o convite sai |
+| Empresa | resposta curta | sim | separa profissional de curioso |
+| Área de atuação | múltipla escolha | sim | prioriza quem tem dor parecida |
+| Que problema você quer resolver primeiro? | parágrafo | não | a resposta mais valiosa do formulário |
+| Time de engenharia | múltipla escolha (1–5, 6–20, 21+) | não | dimensiona o plano |
+
+Ajustes no Google Forms: coletar e-mail automaticamente, mensagem de confirmação dizendo
+que o convite sai em 2027 por ordem de inscrição, notificação por e-mail a cada resposta e
+respostas ligadas a uma planilha. Para saber se o clique veio do site em português ou em
+inglês, use o preenchimento prévio (`?usp=pp_url&entry.XXXXXX=pt`) na constante — dois links,
+um por idioma, ou um campo oculto.
+
 ## Deploying
 
 GitHub Pages serves `main` at the root. `.nojekyll` is present so nothing gets filtered.

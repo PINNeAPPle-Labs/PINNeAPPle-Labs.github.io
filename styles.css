@@ -865,3 +865,16 @@ ul.ticks li::before {
   background: linear-gradient(to top, rgba(7, 10, 16, 0.9), transparent);
 }
 .yt iframe, iframe.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; display: block; }
+
+/* early access: a quieter band than the "bring your case" one, so the two do not fight */
+.pre-band { padding-block: 0; background: var(--ink-2); border-top: 1px solid var(--line); }
+.pre-inner {
+  display: grid; grid-template-columns: 1.35fr 1fr; gap: 2.5rem; align-items: center;
+  padding-block: clamp(2.2rem, 4vw, 3.2rem);
+}
+.pre-inner h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0.35rem 0 0.8rem; max-width: 22ch; }
+.pre-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+.pre-note { font-size: 0.82rem; color: var(--text-mute); max-width: 42ch; margin: 0; }
+nav.main a.pre { color: var(--gold); }
+nav.main a.pre:hover { color: var(--gold-hi); }
+@media (max-width: 860px) { .pre-inner { grid-template-columns: 1fr; gap: 1.6rem; } }

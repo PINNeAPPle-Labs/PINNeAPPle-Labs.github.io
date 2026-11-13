@@ -37,6 +37,10 @@ GITHUB = "https://github.com/PINNeAPPle-Labs/PINNeAPPle"
 PYPI = "https://pypi.org/project/pinneapple/"
 DOCS = "https://pinneapple-labs.github.io/PINNeAPPle/"
 CHANGELOG = f"{GITHUB}/blob/main/CHANGELOG.md"
+# Early-access sign-up. Paste the Google Forms link here (the "Enviar"/"Send" link,
+# the one ending in /viewform). While it is empty the site renders no button at all,
+# because a call to action that leads nowhere is worse than no call to action.
+PREACCESS_FORM = ""
 
 LANGUAGES = {
     "pt": {"code": "pt-BR", "dir": "", "label": "PT", "other": "en", "other_label": "EN"},
@@ -1000,6 +1004,12 @@ STRINGS = {
         "min_read": "min de leitura",
         "soon": "Em breve · 2027",
         "all_articles": "Ver todos os artigos",
+        "pre_nav": "Pré-acesso",
+        "pre_eyebrow": "Pré-acesso",
+        "pre_title": "Entre na lista do PINNeAPPle Studio",
+        "pre_lead": "O Studio abre em 2027, em prévia fechada. Quem entra na lista recebe o convite antes, na ordem de inscrição, e ajuda a decidir o que entra primeiro.",
+        "pre_btn": "Quero pré-acesso",
+        "pre_note": "O e-mail serve só para o convite do pré-acesso. Sem spam, e dá para sair em um clique.",
     },
     "en": {
         "skip": "Skip to content",
@@ -1025,6 +1035,12 @@ STRINGS = {
         "min_read": "min read",
         "soon": "Coming soon · 2027",
         "all_articles": "See all articles",
+        "pre_nav": "Early access",
+        "pre_eyebrow": "Early access",
+        "pre_title": "Get on the PINNeAPPle Studio list",
+        "pre_lead": "The Studio opens in 2027, in a closed preview. Whoever joins the list gets the invite first, in sign-up order, and helps decide what ships first.",
+        "pre_btn": "Get early access",
+        "pre_note": "The e-mail is used for the early-access invite only. No spam, and one click to leave.",
     },
 }
 
@@ -1159,6 +1175,9 @@ def header(lang: str, page: str, root: str) -> str:
     # The documentation lives outside this repo, on the platform's own site.
     links += (f'\n      <a href="{DOCS}" target="_blank" rel="noopener">'
               f'{STRINGS[lang]["docs_nav"]} ↗</a>')
+    if PREACCESS_FORM:
+        links += (f'\n      <a class="pre" href="{PREACCESS_FORM}" target="_blank" rel="noopener">'
+                  f'{STRINGS[lang]["pre_nav"]} ↗</a>')
     other_page = nav_page if not page.startswith("post:") else page
     return f"""<header class="site">
   <div class="bar">
@@ -1254,6 +1273,28 @@ def wa_button(lang: str, cls: str = "btn btn-primary", label: str | None = None)
     return (f'<a class="{cls}" href="https://wa.me/{WHATSAPP}?text={_q(S["wa_msg"])}" '
             f'target="_blank" rel="noopener">{text}</a>')
 
+
+def pre_band(lang: str, root: str) -> str:
+    """The early-access call to action. Empty until PREACCESS_FORM is set."""
+    if not PREACCESS_FORM:
+        return ""
+    S = STRINGS[lang]
+    return f"""  <section class="pre-band" id="pre-acesso">
+    <div class="wrap pre-inner">
+      <div>
+        <p class="eyebrow">{S['pre_eyebrow']}</p>
+        <h2>{S['pre_title']}</h2>
+        <p class="lead" style="max-width:52ch">{S['pre_lead']}</p>
+      </div>
+      <div class="pre-actions">
+        <a class="btn btn-primary" href="{PREACCESS_FORM}" target="_blank" rel="noopener">
+          {S['pre_btn']} <span aria-hidden="true">↗</span>
+        </a>
+        <p class="pre-note">{S['pre_note']}</p>
+      </div>
+    </div>
+  </section>
+"""
 
 def cta_band(lang: str, root: str) -> str:
     S = STRINGS[lang]
@@ -1960,6 +2001,7 @@ def page_home(lang: str) -> str:
   </section>
 """)
 
+    parts.append(pre_band(lang, root))
     parts.append(cta_band(lang, root))
     parts.append("</main>")
     parts.append(footer(lang, "home", root))
@@ -2136,6 +2178,7 @@ def page_produto(lang: str) -> str:
     </div>
   </section>
 """,
+        pre_band(lang, root),
         cta_band(lang, root),
         "</main>",
         footer(lang, page, root),
