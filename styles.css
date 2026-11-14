@@ -516,7 +516,7 @@ footer.site { padding-block: 4rem 3rem; border-top: 1px solid var(--line); backg
 .foot-base a { color: var(--text-mute); }
 
 /* ---------- reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.reveal { opacity: 1; transform: none; transition: none; }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
