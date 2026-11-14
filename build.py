@@ -1115,6 +1115,7 @@ PAGES = {
     "artigos": "artigos",
     "sucessos": "casos-de-sucesso",
     "lib": "lib",
+    "demo": "demo",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
@@ -1145,9 +1146,9 @@ def up(lang: str, page: str) -> str:
 # ---------------------------------------------------------------------------
 
 NAV = {
-    "pt": [("home", "Início"), ("studio", "Studio"), ("relatorios", "Relatórios"),
+    "pt": [("home", "Início"), ("studio", "Studio"), ("demo", "Demo 3D"), ("relatorios", "Relatórios"),
            ("artigos", "Artigos"), ("lib", "A lib")],
-    "en": [("home", "Home"), ("studio", "Studio"), ("relatorios", "Reports"),
+    "en": [("home", "Home"), ("studio", "Studio"), ("demo", "3-D demo"), ("relatorios", "Reports"),
            ("artigos", "Articles"), ("lib", "The library")],
 }
 
@@ -2425,6 +2426,26 @@ for _key, _seg in SEGMENTS.items():
 
 # The Studio is its own page now; it keeps the product metadata.
 META["studio"] = META["produto"]
+
+# The 3-D demo is a page the library generates (pp.viz.cinematic_page), not one build.py renders: it lives in
+# demo/ and en/demo/ with its own scene.glb and vendor/, and this entry only gives it metadata and a place in the
+# navigation and the sitemap.
+META["demo"] = {
+    "pt": dict(
+        title="Demo 3D: uma aeronave com o Cp do OpenFOAM · PINNeAPPle Labs",
+        desc="Uma aeronave classe A320 com o coeficiente de pressão de uma rodada de OpenFOAM sobre a pele, girando "
+             "conforme você rola a página.",
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+    "en": dict(
+        title="3-D demo: an aircraft with its OpenFOAM Cp · PINNeAPPle Labs",
+        desc="An A320-class aircraft with the pressure coefficient of an OpenFOAM run on its skin, turning as you "
+             "scroll.",
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+}
 
 META["relatorios"] = {
     "pt": dict(
