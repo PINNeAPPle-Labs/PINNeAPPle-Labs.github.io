@@ -1607,7 +1607,7 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'erosao')}">{SEGLABELS[lang]['erosao']}</a></li>
           <li><a href="{root}{url(lang, 'trocadores')}">{SEGLABELS[lang]['trocadores']}</a></li>
           <li><a href="{root}{url(lang, 'valvulas')}">{SEGLABELS[lang]['valvulas']}</a></li>
-          <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_success']}</a></li>
+          <li><a href="#consultoria">{S['lbl_success']}</a></li>
           <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
           <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
@@ -1827,32 +1827,32 @@ HOME = {
     "pt": dict(
         eyebrow="Physics AI · Open Source · Engenharia e Ciência",
         h1="A próxima geração da engenharia será construída com Physics AI.",
-        lead="Uma plataforma aberta para transformar conhecimento físico em modelos inteligentes, simulações aceleradas e sistemas capazes de compreender, prever e otimizar o mundo real — com verificação física e limites de validade explícitos.",
+        lead="Unimos física, simulação numérica e inteligência artificial para desenvolver tecnologias abertas, acelerar a pesquisa científica e criar soluções de engenharia para desafios reais da indústria.",
         cta_primary="Explorar a plataforma",
-        cta_secondary="Conhecer as aplicações",
-        chips=["Modelos físicos e IA", "Simulação e surrogates", "Verificação e gêmeos digitais"],
-        hero_img="img/erosao-card.webp",
-        hero_alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm/ano",
-        hero_fig_b="Curva de 90°",
-        hero_fig_s="1,05–1,49× o ensaio · Vieira et al. 2016",
+        cta_secondary="Discutir um projeto",
+        chips=["Plataforma aberta", "Consultoria de engenharia", "Pesquisa aplicada"],
+        hero_img="img/portfolio/13-aircraft-render-pressure.jpg",
+        hero_alt="Visualização de pressão em uma asa: exemplo de otimização e modelagem física",
+        hero_fig_b="Physics AI em ação",
+        hero_fig_s="Modelagem, otimização e validação",
         problem_eyebrow="O problema",
-        problem_h="Por que a simulação trava o projeto",
-        problem_p="Não é falta de software. É tempo, custo e, principalmente, confiança no número que sai.",
+        problem_h="A física explica o mundo. A inteligência artificial amplia o que podemos fazer com ela.",
+        problem_p="Simulações permitem compreender fenômenos complexos, mas podem exigir muito tempo, computação e conhecimento especializado. Physics AI amplia essas capacidades, desde que seus resultados sejam verificáveis.",
         problems=[
-            ("O prazo", "Uma semana para montar o caso, outra para rodar, mais uma para conferir. Quando o resultado chega, a decisão já foi tomada no chute."),
-            ("O custo", "Licença, máquina parada e especialista. Às vezes a simulação custa mais caro que a decisão que ela deveria sustentar."),
-            ("A confiança", "O resultado sai colorido e bonito, e ninguém sabe se está certo. Sem uma referência externa, o número vira opinião."),
+            ("Custo computacional", "Surrogate models e operadores neurais podem acelerar análises, quando apropriados e validados."),
+            ("Complexidade de desenvolvimento", "Pipelines integrados conectam dados, simulação, treinamento e implantação."),
+            ("Confiabilidade física", "Verificação, validação, rastreabilidade e limites de aplicação explícitos."),
         ],
-        entrega_eyebrow="A oferta",
-        entrega_h="O que você recebe, e quando",
-        entrega_p="O preço é sob orçamento: sai do escopo. Estudos ficam entre 4 e 10 semanas, e o escopo e o valor fecham por escrito antes de qualquer conta.",
+        entrega_eyebrow="Consultoria",
+        entrega_h="Consultoria e projetos personalizados",
+        entrega_p="Além da plataforma aberta, desenvolvemos soluções de Physics AI sob medida. Começamos pelo problema físico, definimos escopo e critérios de sucesso, e avaliamos a abordagem mais adequada.",
         entrega=[
-            ("O escopo", "Geometria de entrada, o que vai ser medido, o critério de sucesso e o que fica fora. Fechado por escrito, com prazo e preço, antes de começar."),
-            ("O prazo", "De 4 a 10 semanas, conforme o estudo. A data vem junto com o orçamento, não depois dele: se o caso pedir mais, você sabe antes de contratar."),
-            ("O relatório", "O número, a verificação contra ensaio publicado ou solver de referência, o erro declarado e as checagens que não rodaram."),
+            ("Diagnóstico e escopo", "Entendemos o desafio, os dados disponíveis, as restrições e as métricas de sucesso."),
+            ("Desenvolvimento e integração", "Combinamos simulação, IA e ferramentas de engenharia em um pipeline reproduzível."),
+            ("Validação e entrega", "Documentamos evidências, incertezas, limites de uso e resultados do projeto."),
         ],
-        entrega_note_b="O que não fazemos:",
-        entrega_note="ensaio experimental, projeto mecânico completo nem laudo de conformidade legal. E quando o método clássico resolve melhor e mais barato, a resposta é essa, por escrito.",
+        entrega_note_b="Escopo personalizado:",
+        entrega_note="O escopo, o prazo e o investimento são definidos conforme cada projeto. Serviços de ensaio, laudos legais ou projeto mecânico completo não estão incluídos automaticamente.",
         seg_eyebrow="O que a gente resolve",
         seg_h="Três problemas que chegam aqui com nome e sobrenome",
         seg_p="Cada um já teve um estudo publicado, com o número medido contra uma referência externa. Se o seu caso é parecido, o caminho existe.",
@@ -1931,32 +1931,32 @@ HOME = {
     "en": dict(
         eyebrow="Physics AI · Open Source · Engineering and Science",
         h1="The next generation of engineering will be built with Physics AI.",
-        lead="An open platform to turn physical knowledge into intelligent models, accelerated simulations, and systems that understand, predict, and optimize the real world — with physics verification and explicit validity limits.",
+        lead="We combine physics, numerical simulation, and artificial intelligence to build open technologies, accelerate scientific research, and deliver engineering solutions for real industrial challenges.",
         cta_primary="Explore the platform",
-        cta_secondary="Explore applications",
-        chips=["Physics-based AI models", "Simulation and surrogates", "Verification and digital twins"],
-        hero_img="img/erosao-card.webp",
-        hero_alt="Wall erosion map on a 90° bend, rate in mm/year",
-        hero_fig_b="90° bend",
-        hero_fig_s="1.05–1.49× the experiment · Vieira et al. 2016",
+        cta_secondary="Discuss a project",
+        chips=["Open platform", "Engineering consulting", "Applied research"],
+        hero_img="img/portfolio/13-aircraft-render-pressure.jpg",
+        hero_alt="Pressure visualization on an aircraft wing: an example of physics-based optimization",
+        hero_fig_b="Physics AI in action",
+        hero_fig_s="Modeling, optimization and validation",
         problem_eyebrow="The problem",
-        problem_h="Why simulation holds the project up",
-        problem_p="It is not a lack of software. It is time, cost and, mostly, trust in the number that comes out.",
+        problem_h="Physics explains the world. Artificial intelligence expands what we can do with it.",
+        problem_p="Simulation helps us understand complex phenomena, but can demand significant time, computing resources, and specialist expertise. Physics AI extends those capabilities when its results can be verified.",
         problems=[
-            ("The deadline", "A week to build the case, another to run it, another to check it. By the time the result lands, the decision was already made on a guess."),
-            ("The cost", "Licence, idle machine and a specialist. Sometimes the simulation costs more than the decision it was meant to support."),
-            ("The trust", "The result comes out colourful and pretty, and nobody knows whether it is right. Without an external reference, the number is just an opinion."),
+            ("Computational cost", "Surrogate models and neural operators can accelerate analysis when appropriate and validated."),
+            ("Development complexity", "Integrated pipelines connect data, simulation, training, and deployment."),
+            ("Physics reliability", "Verification, validation, traceability, and explicit validity limits."),
         ],
-        entrega_eyebrow="The offer",
-        entrega_h="What you get, and when",
-        entrega_p="Price is by quote: it comes out of the scope. Studies run 4 to 10 weeks, and scope and quote close in writing before any of the work.",
+        entrega_eyebrow="Consulting",
+        entrega_h="Consulting and custom engineering projects",
+        entrega_p="Beyond the open platform, we develop tailored Physics AI solutions. We start with the physical problem, define scope and success criteria, and evaluate the most suitable approach.",
         entrega=[
-            ("The scope", "Input geometry, what will be measured, the success criterion and what sits outside it. Closed in writing, with deadline and price, before we start."),
-            ("The deadline", "4 to 10 weeks, depending on the study. The date comes with the quote, not after it: if the case needs more, you know before you commit."),
-            ("The report", "The number, the check against a published experiment or a reference solver, the stated error and the checks that did not run."),
+            ("Discovery and scope", "We clarify the challenge, available data, constraints, and success metrics."),
+            ("Development and integration", "We combine simulation, AI, and engineering tools in a reproducible pipeline."),
+            ("Validation and delivery", "We document evidence, uncertainty, limits of use, and project results."),
         ],
-        entrega_note_b="What we do not do:",
-        entrega_note="experimental testing, full mechanical design or a legal compliance certificate. And when the classical method does it better and cheaper, that is the answer, in writing.",
+        entrega_note_b="Custom scope:",
+        entrega_note="Scope, timeline, and budget are defined for each project. Experimental testing, legal certification, and full mechanical design are not automatically included.",
         seg_eyebrow="What we solve",
         seg_h="Three problems that arrive here with a name and a surname",
         seg_p="Each one already has a published study, with the number measured against an external reference. If your case looks like one of them, the path exists.",
@@ -2637,7 +2637,7 @@ def page_home(lang: str) -> str:
           <a class="btn btn-primary" href="{GITHUB}" target="_blank" rel="noopener">{C['cta_primary']}</a>
           <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{C['cta_secondary']} →</a>
         </div>
-        <p class="hero-note">{ "Conheça a plataforma open source, explore os experimentos e veja como a verificação física acompanha cada resultado." if lang == "pt" else "Explore the open-source platform, its experiments, and how physics verification supports each result." }</p>
+        <p class="hero-note">{ "Da pesquisa à aplicação industrial: explore a tecnologia aberta ou converse conosco sobre um projeto personalizado." if lang == "pt" else "From research to industrial applications: explore the open technology or discuss a custom project with us." }</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>
@@ -2654,6 +2654,18 @@ def page_home(lang: str) -> str:
         f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
         for t, b in C["problems"]
     )
+    pillar_cards = "".join(f'<article class="problem-card"><h3>{h}</h3><p>{p}</p></article>' for h,p in ([
+        ("Plataforma aberta", "Ferramentas, modelos e pipelines para simulação, treinamento, inferência e verificação física."),
+        ("Consultoria e projetos", "Soluções personalizadas para problemas industriais, da modelagem física à implantação."),
+        ("Pesquisa e desenvolvimento", "Novos métodos, benchmarks, modelos físicos e colaboração científica."),
+        ("Aplicações reais", "CFD, estruturas, energia, otimização, modelos substitutos e gêmeos digitais."),
+    ] if lang == "pt" else [
+        ("Open platform", "Tools, models, and pipelines for simulation, training, inference, and physics verification."),
+        ("Consulting and projects", "Custom industrial solutions, from physical modeling to deployment."),
+        ("Research and development", "New methods, benchmarks, physics models, and scientific collaboration."),
+        ("Real-world applications", "CFD, structures, energy, optimization, surrogates, and digital twins."),
+    ]))
+    parts.append(f"""\n  <section id="o-que-fazemos" class="tight"><div class="wrap"><div class="section-head split"><div><p class="eyebrow">{'O que fazemos' if lang == 'pt' else 'What we do'}</p><h2>{'Da pesquisa científica à engenharia aplicada.' if lang == 'pt' else 'From scientific research to applied engineering.'}</h2></div><p>{'O PINNeAPPle Labs conecta desenvolvimento tecnológico, pesquisa e consultoria para tornar Physics AI acessível e aplicável em diferentes áreas da ciência e engenharia.' if lang == 'pt' else 'PINNeAPPle Labs brings together technology development, research, and consulting to make Physics AI accessible and useful across science and engineering.'}</p></div><div class="problem-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">{pillar_cards}</div></div></section>\n""")
     parts.append(f"""
   <section id="problema" class="alt tight">
     <div class="wrap">
@@ -2671,7 +2683,7 @@ def page_home(lang: str) -> str:
         for t, b in C["entrega"]
     )
     parts.append(f"""
-  <section id="entrega" class="tight">
+  <section id="consultoria" class="tight">
     <div class="wrap">
       <div class="section-head split reveal">
         <div><p class="eyebrow">{C['entrega_eyebrow']}</p><h2>{C['entrega_h']}</h2></div>
