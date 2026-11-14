@@ -1609,7 +1609,7 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'valvulas')}">{SEGLABELS[lang]['valvulas']}</a></li>
           <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_success']}</a></li>
           <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
-          <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
+          <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
         </ul>
       </div>
@@ -1825,12 +1825,12 @@ CAPS = {
 
 HOME = {
     "pt": dict(
-        eyebrow="Estudo de CFD com verificação · indústria brasileira",
+        eyebrow="Physics AI · Open Source · Engenharia e Ciência",
         h1="A próxima geração da engenharia será construída com Physics AI.",
         lead="Uma plataforma aberta para transformar conhecimento físico em modelos inteligentes, simulações aceleradas e sistemas capazes de compreender, prever e otimizar o mundo real — com verificação física e limites de validade explícitos.",
         cta_primary="Explorar a plataforma",
         cta_secondary="Conhecer as aplicações",
-        chips=["Tubulação, trocadores e otimização de forma", "Entrega em 4 a 10 semanas", "Número verificado contra ensaio"],
+        chips=["Modelos físicos e IA", "Simulação e surrogates", "Verificação e gêmeos digitais"],
         hero_img="img/erosao-card.webp",
         hero_alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm/ano",
         hero_fig_b="Curva de 90°",
@@ -1929,12 +1929,12 @@ HOME = {
         story_cta="Conhecer a base aberta",
     ),
     "en": dict(
-        eyebrow="Verified CFD studies · industrial engineering",
+        eyebrow="Physics AI · Open Source · Engineering and Science",
         h1="The next generation of engineering will be built with Physics AI.",
         lead="An open platform to turn physical knowledge into intelligent models, accelerated simulations, and systems that understand, predict, and optimize the real world — with physics verification and explicit validity limits.",
         cta_primary="Explore the platform",
         cta_secondary="Explore applications",
-        chips=["Piping, exchangers and shape optimization", "Delivered in 4 to 10 weeks", "Number checked against an experiment"],
+        chips=["Physics-based AI models", "Simulation and surrogates", "Verification and digital twins"],
         hero_img="img/erosao-card.webp",
         hero_alt="Wall erosion map on a 90° bend, rate in mm/year",
         hero_fig_b="90° bend",
@@ -2637,7 +2637,7 @@ def page_home(lang: str) -> str:
           <a class="btn btn-primary" href="{GITHUB}" target="_blank" rel="noopener">{C['cta_primary']}</a>
           <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{C['cta_secondary']} →</a>
         </div>
-        <p class="hero-note">{S['hero_note']}</p>
+        <p class="hero-note">{ "Conheça a plataforma open source, explore os experimentos e veja como a verificação física acompanha cada resultado." if lang == "pt" else "Explore the open-source platform, its experiments, and how physics verification supports each result." }</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>
