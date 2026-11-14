@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>HX-201 digital twin — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
+    <h1>HX-201 digital twin<br />a fouled heat exchanger</h1>
+    <p class="sub">An accuracy contract signed before operation — and what happened when the fouling showed up.</p>
+    <div class="numbers"><div class="num"><b>0.216 °C</b><span>of RMSE against the held-out probe</span></div><div class="num"><b>95.5%</b><span>band coverage, calibrated outside training</span></div><div class="num"><b>2.6 h</b><span>of alarm lead time, with the forecast error</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/twin.jpg" alt="Digital twin of an asset in 3D with a live reading panel" />
+    <div class="meta" style="margin-top:6mm">Document TW-201 · version 1.0 · 2026<br />Synthetic demonstration history: not a plant commissioning record<br />Reference: probe TT-105, held out of the filter<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · HX-201 exchanger twin</span><span>1 · the request</span></div>
+  <p class="lead">A shell-and-tube exchanger loses efficiency to fouling. Operations does not want a forecast: it wants to know <b>how much time it has</b> before the downstream load stops closing.</p>
+  <p>The risk of a twin is not getting the forecast wrong — it is being heard without deserving it. So the study starts with a contract written before any data: the metrics, the ranges and the limits the model must meet in order to exist.</p>
+  <h3>What was contracted</h3>
+  <ul><li>Model <span class="mono">exchanger-ntu 1.0</span>, with a declared accuracy floor of 1 °C.</li><li>Acceptance gates: RMSE ≤ 2.5% of span, bias ≤ 1%, coverage ≥ 90%, alarm lead ≥ 1 h.</li><li>A redundant probe (TT-105) that never enters the filter: it is the judge.</li><li>Validity range declared in the contract: T from 80 to 110 °C and ṁ from 0.5 to 2.0 kg/s.</li></ul>
+  <div class="callout"><b>Order matters.</b> The contract is signed before the first filter step. A metric chosen after seeing the result is not a metric: it is an excuse.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · HX-201 exchanger twin</span><span>2 · the contract</span></div>
+  <h3>Predicted fields and process limits</h3>
+  <table><tr><th style="width:34%">Field</th><th>Range</th><th>Process limit</th></tr><tr><td>T_ho (hot outlet)</td><td>35–75 °C</td><td>alarm above 60.0 °C</td></tr><tr><td>T_co (cold outlet)</td><td>45–75 °C</td><td>alarm below 57.8 °C</td></tr><tr><td>R_f (fouling)</td><td>0–0.0025 m²K/W</td><td>no engineering limit declared</td></tr></table>
+  <h3>Sensors</h3>
+  <table><tr><th style="width:34%">Role</th><th>Sensors</th><th>Use</th></tr><tr><td>Inputs (operating point)</td><td>TT-101, TT-102, FT-101, FT-102</td><td>drive the model</td></tr><tr><td>Assimilated</td><td>TT-103, TT-104</td><td>enter the filter, noise 0.15 °C</td></tr><tr><td>Held out</td><td>TT-105</td><td>only compares; never enters the filter</td></tr></table>
+  <h3>Acceptance gates</h3>
+  <table><tr><th style="width:30%">Gate</th><th style="width:28%">Criterion</th><th>Why</th></tr><tr><td>RMSE</td><td>≤ 2.5% of the 40 °C span</td><td>≈ 1 °C, the model's own accuracy floor</td></tr><tr><td>Bias</td><td>≤ 1%</td><td>systematic error cannot hide in the mean</td></tr><tr><td>Band coverage</td><td>≥ 90%</td><td>the band has to contain what happens</td></tr><tr><td>Alarm lead</td><td>≥ 3,600 s</td><td>a warning that arrives late is not a warning</td></tr></table>
+  <div class="callout cyan"><b>Validity range:</b> T from 80 to 110 °C and ṁ from 0.5 to 2.0 kg/s. Outside it the twin promises nothing — and the report says so instead of extrapolating quietly.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · HX-201 exchanger twin</span><span>3 · the result</span></div>
+  <p class="lead">852 steps, 255,300 s (70.9 h) in the validation window. Metrics are computed only on the part that was not used to calibrate the band.</p>
+  <div class="kpi-row"><div class="kpi"><b>0.216 °C</b><span>RMSE against the held-out probe</span></div><div class="kpi"><b>0.168 °C</b><span>mean absolute error</span></div><div class="kpi"><b>0.432 °C</b><span>p95 of absolute error</span></div><div class="kpi"><b>−0.010 °C</b><span>bias</span></div></div>
+  <table><tr><th style="width:30%">Gate</th><th>Criterion</th><th>Achieved</th><th>Status</th></tr><tr><td>RMSE</td><td>≤ 2.5% of span</td><td>0.54% of span</td><td><span class="verdict v-ok">passes</span></td></tr><tr><td>Bias</td><td>≤ 1%</td><td>−0.026% of span</td><td><span class="verdict v-ok">passes</span></td></tr><tr><td>Coverage</td><td>≥ 90%</td><td>95.5%</td><td><span class="verdict v-ok">passes</span></td></tr><tr><td>Alarm lead</td><td>≥ 3,600 s</td><td>9,300 s</td><td><span class="verdict v-ok">passes</span></td></tr></table>
+  <p>Fouling estimated at the end of the window was <b>0.001652 m²K/W</b>, against 0.001637 in the scenario's true value — 0.9% apart. It is the variable operations cannot measure and that the twin starts estimating.</p>
+  <div class="callout"><b>The judge is external.</b> Probe TT-105 stayed out of the filter for the whole commissioning. The metric shown here is the distance between the model and a measurement it never saw.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · HX-201 exchanger twin</span><span>4 · the band, the alarm and what is not proven</span></div>
+  <p>The uncertainty band is not a prediction interval: it is a state band, calibrated once on a separate window (the first 127,500 s) and then scored on the rest. The scale applied was ×1.336; without it, the raw ensemble band would cover 86.4% — below the 90% gate.</p>
+  <p>That is stated in the report, not hidden: a band that only works after being scaled is a scaled band, and the reader needs to know that to decide what to do with it.</p>
+  <h3>The alarm</h3>
+  <table><tr><th style="width:36%">Indicator</th><th style="width:28%">Value</th><th>Reading</th></tr><tr><td>Alarm lead</td><td>9,300 s (2.6 h)</td><td>time between the warning and the limit crossing</td></tr><tr><td>Crossing forecast error</td><td>3,900 s (1.1 h)</td><td>distance between the predicted and the measured instant</td></tr><tr><td>Where the lead comes from</td><td>linear extrapolation of the latent state</td><td>it grows with any change of regime</td></tr></table>
+  <div class="callout cyan"><b>House rule.</b> Lead time without a stated error is a guess with a clock. The number operations uses is the pair: 2.6 h of warning, with 1.1 h of error on the crossing.</div>
+  <h3>What is not proven</h3>
+  <table><tr><th style="width:30%">Item</th><th>What the report says</th></tr><tr><td>The band is a state band</td><td>not a prediction interval for a change of regime</td></tr><tr><td>Commissioned inside the declared range only</td><td>outside T 80–110 °C or ṁ 0.5–2.0 kg/s, no claim</td></tr><tr><td>First 12 frames</td><td>assimilated, but excluded from the metrics</td></tr><tr><td>No lead time for R_f</td><td>no engineering limit was declared for fouling</td></tr><tr><td>Synthetic history</td><td>a demonstration; not a plant commissioning record</td></tr><tr><td>No re-fit</td><td>this is the twin as shipped, not a model retrained later</td></tr></table>
+  <div class="callout"><b>Why publish a twin's limits.</b> Because its value is being auditable: a model that declares where it does not hold can be used; one that does not, cannot.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · HX-201 exchanger twin</span><span>5 · conclusion</span></div>
+  <div class="kpi-row"><div class="kpi"><b>95.5%</b><span>band coverage</span></div><div class="kpi"><b>0.216 °C</b><span>RMSE against the probe</span></div><div class="kpi"><b>2.6 h</b><span>of alarm lead</span></div><div class="kpi"><b>0.001652</b><span>m²K/W estimated fouling</span></div></div>
+  <h3>What operations does with it</h3>
+  <p>Lead time is time to plan a cleaning, negotiate a shutdown window or shift load. The twin decides nothing: it warns, and states the error it is warning with.</p>
+  <h3>What this study does not decide</h3>
+  <p>The economic moment of the shutdown, the cleaning vendor and the cost of lost head. It delivers the fouling estimate and the warning window; the rest is an operations decision.</p>
+  <h3>Provenance</h3>
+  <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Accuracy contract</td><td><span class="mono">PINNeAPPle/apps/twin_ops/spec_hx201.yaml</span></td></tr><tr><td>Commissioning evidence</td><td><span class="mono">twin_evidence_hx201.json</span> · spec 6b86712f52ed2644</td></tr><tr><td>Preconditions</td><td>11 preflight checks, 11 passed</td></tr><tr><td>Public article</td><td><span class="mono">pinneapple-labs.github.io/artigos/gemeo-hx201/</span></td></tr></table>
+  <div class="callout cyan"><b>This is an example report,</b> on a synthetic demonstration history. A twin for your plant follows the same structure: contract first, held-out probe as judge, and the same limits page.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+</section>
+
+</body>
+</html>

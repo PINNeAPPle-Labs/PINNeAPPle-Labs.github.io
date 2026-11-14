@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Estudo de erosão em curva de 90° — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
+    <h1>Erosão em curva de 90°<br />ar com areia a 15 m/s</h1>
+    <p class="sub">Onde a parede erode, a que taxa, em quanto tempo — e por que este número pode ser usado numa decisão.</p>
+    <div class="numbers"><div class="num"><b>1,05–1,49×</b><span>do ensaio publicado, dentro do fator 2 que a prática aceita</span></div><div class="num"><b>50,6°</b><span>de pico calculado, contra 45° medido</span></div><div class="num"><b>32 casos</b><span>do CAD ao modelo treinado, em 22,6 min</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/erosao-card.webp" alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm por ano" />
+    <div class="meta" style="margin-top:6mm">Documento ERC-04 · versão 1.0 · 2026<br />Caso de demonstração (geometria e condições públicas, sem dado de cliente)<br />Ensaio de referência: Vieira et al. (2016), dados abertos<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>1 · o pedido</span></div>
+  <p class="lead">Uma curva de 90° de 50 mm transporta ar com areia. A pergunta não era “quanto erode”: era <b>quando a parede chega na espessura mínima</b> e <b>se trocar o raio da curva muda a resposta o suficiente para justificar a obra</b>.</p>
+  <h3>Escopo contratado</h3>
+  <table><tr><th style="width:38%">Entregável</th><th>O que contém</th></tr><tr><td>Mapa de erosão</td><td>Taxa na parede (mm/ano) em toda a geometria, com a posição do pico</td></tr><tr><td>Vida útil</td><td>Anos até a espessura mínima, para o ponto crítico</td></tr><tr><td>Verificação</td><td>Comparação com ensaio publicado e escolha do modelo de erosão justificada</td></tr><tr><td>Modelo substituto</td><td>Resposta em segundos para novas vazões e raios de curva</td></tr><tr><td>Limites</td><td>O que não está provado e o que precisa de ensaio</td></tr></table>
+  <h3>Fora do escopo</h3>
+  <p>Projeto mecânico do tubo, seleção de material, inspeção em campo, ensaio experimental. O estudo entrega o número e a prova; a decisão de engenharia e a compra continuam do lado de quem contrata.</p>
+  <div class="callout"><b>Como ler este documento.</b> Cada número aparece com a referência contra a qual foi conferido — ensaio publicado, solver independente ou estudo de malha. Números sem referência não entram no relatório: ficam na seção de limites, como pergunta aberta.</div>
+  <h3>Premissas que mudam a resposta</h3>
+  <ul><li>A taxa de areia é a do cenário informado; um pico de partículas muda o resultado mais que a malha.</li><li>A parede é aço-carbono; outro material muda o coeficiente de erosão, não a distribuição de impactos.</li><li>O escoamento é permanente no ponto de operação avaliado; regime transitório (partidas, golpe) não está coberto.</li></ul>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>2 · dados de entrada</span></div>
+  <p>Este é o formulário do caso de demonstração — no estudo de um cliente, estes campos vêm do CAD, da ficha de processo e do histórico de operação.</p>
+  <table><tr><th style="width:16%">Item</th><th style="width:46%">Valor</th><th>Origem</th></tr><tr><td>Geometria</td><td><span class="mono">curva 90°, D = 50 mm</span></td><td>10·D a montante e 20·D a jusante</td></tr><tr><td>Fluido</td><td><span class="mono">ar a 20 °C · ρ = 1,204 kg/m³ · µ = 1,825·10⁻⁵ Pa·s</span></td><td>catálogo de fluidos</td></tr><tr><td>Partículas</td><td><span class="mono">quartzo · ρp = 2.650 kg/m³ · dp = 150 µm</span></td><td>Fs = 0,53 · ṁp = 10⁻⁴ kg/s</td></tr><tr><td>Parede</td><td><span class="mono">aço-carbono · 7.800 kg/m³ · HB 150</span></td><td>espessura 5 → 2 mm · 8.760 h/ano</td></tr><tr><td>Ponto de referência</td><td><span class="mono">U = 20 m/s · R/D = 1,5</span></td><td>caso base do mapa e do estudo de malha</td></tr><tr><td>Campanha</td><td><span class="mono">32 pontos · Sobol</span></td><td>U de 10 a 30 m/s · R/D de 1,5 a 5</td></tr></table>
+  <div class="callout cyan"><b>Regra do estudo:</b> a faixa de validade é declarada antes de rodar. Fora de U = 10–30 m/s ou de R/D = 1,5–5, o modelo substituto avisa que está extrapolando — e o número perde a garantia.</div>
+  <h3>Como o método foi montado</h3>
+  <table><tr><th style="width:30%">Etapa</th><th>Escolha</th></tr><tr><td>Malha</td><td>Hexaédrica gerada por script (<span class="mono">classy_blocks</span>), 10.400 células, y⁺ alvo 50, <span class="mono">checkMesh</span> aprovado</td></tr><tr><td>Escoamento</td><td><span class="mono">simpleFoam</span>, k-ω SST, 109 iterações até convergir, balanço de massa 3,5·10⁻⁶</td></tr><tr><td>Partículas</td><td><span class="mono">icoUncoupledKinematicParcelFoam</span>, 2.000 parcelas (4.000 no teste estatístico)</td></tr><tr><td>Erosão</td><td>Modelo de impacto DNV-RP-O501 aplicado aos impactos na parede; E/CRC e Finnie como checagem</td></tr><tr><td>Convergência do caso</td><td>26 s de parede em 4 núcleos · 14 a 17 mil impactos na parede</td></tr></table>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>3 · verificação</span></div>
+  <p class="lead">Antes de reportar uma taxa de erosão, o modelo foi obrigado a reproduzir um ensaio que ele nunca viu: a curva de Vieira et al. (2016), D = 76,2 mm, R/D = 1,5, areia de 150 µm, em três velocidades.</p>
+  <table><tr><th>Ensaio</th><th>U (m/s)</th><th>Medido (mm/ano)</th><th>Calculado (mm/ano)</th><th>Razão</th><th>Fator 2</th></tr><tr><td>T1</td><td>11</td><td>6,5</td><td>6,8</td><td>1,05×</td><td><span class="verdict v-ok">aprovado</span></td></tr><tr><td>T3</td><td>15</td><td>13,2</td><td>16,9</td><td>1,28×</td><td><span class="verdict v-ok">aprovado</span></td></tr><tr><td>T5</td><td>23</td><td>36,2</td><td>53,8</td><td>1,49×</td><td><span class="verdict v-ok">aprovado</span></td></tr><tr><td>posição do pico</td><td>—</td><td>45°</td><td>50,6°</td><td>+5,6°</td><td><span class="verdict v-ok">aprovado</span></td></tr></table>
+  <p><small>Areia de 150 µm nos três ensaios. Razões e posições calculadas com o modelo de impacto da DNV-RP-O501, na malha do estudo. Medidos: Khan et al. (2023); posição do pico: Khan et al. (2022).</small></p>
+  <div class="callout"><b>Por que isto importa.</b> Erosão não é fenômeno para precisão de 1%: depende da distribuição de partículas, do material e do histórico. A prática de projeto aceita um fator 2. O compromisso é ficar dentro da faixa <b>e dizer em que ponto dela</b>.</div>
+  <h3>Os outros modelos foram testados e reprovados</h3>
+  <table><tr><th style="width:34%">Modelo de erosão</th><th style="width:26%">Contra os três ensaios</th><th>Leitura</th></tr><tr><td>DNV-RP-O501 (impacto)</td><td>1,05–1,49×</td><td><span class="verdict v-ok">adotado</span> dentro do fator 2 nos três</td></tr><tr><td>E/CRC</td><td>1,98–2,5× acima</td><td><span class="verdict v-fail">reprovado</span> sai da faixa nos três</td></tr><tr><td>Finnie</td><td>~28× acima</td><td><span class="verdict v-fail">reprovado</span> ordem de grandeza errada</td></tr><tr><td>Fórmula fechada DNV §8.4 (sem CFD)</td><td>97–100× abaixo em 2 de 3</td><td><span class="verdict v-fail">reprovado</span> depende do fator G, que varia de 0,02 a 1</td></tr></table>
+  <div class="callout cyan"><b>O que ainda não está provado.</b> As constantes de erosão dos três modelos vêm de fonte secundária (o ensaio original é pago). A verificação acima é a melhor evidência disponível hoje, declarada como tal — não como validação definitiva.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>4 · resultado</span></div>
+  <h3>Primeiro o ensaio, resolvido: T3, 15 m/s</h3>
+  <figure><img src="../../img/erosao.jpg" alt="Mapa de erosão na parede no ensaio T3: tubulação inteira e zoom na curva, com o pico na parede externa logo após a entrada da curva. Escala em mm/ano." /><figcaption>Mapa de erosão na parede no ensaio T3: tubulação inteira e zoom na curva, com o pico na parede externa logo após a entrada da curva. Escala em mm/ano.</figcaption></figure>
+  <p>O máximo não está no meio da curva: está na parede externa, 50,6° depois da entrada (o ensaio mede 45°). É esse ponto que a inspeção precisa medir primeiro — e é ele que define a vida útil do resto da linha.</p>
+  <h3>Depois o caso de projeto: U = 20 m/s, R/D = 1,5</h3>
+  <table><tr><th style="width:40%">Modelo de erosão</th><th>Taxa máxima (mm/ano)</th><th>Vida útil 5 → 2 mm</th></tr><tr><td>DNV-RP-O501 (adotado)</td><td>1,47</td><td>2,0 anos</td></tr><tr><td>E/CRC</td><td>2,83</td><td>1,1 anos</td></tr><tr><td>Finnie (checagem cruzada)</td><td>23,8</td><td>0,13 ano</td></tr><tr><td>Fórmula fechada DNV §8.4 (sem CFD)</td><td>0,037</td><td>81 anos</td></tr></table>
+  <div class="callout"><b>O que a decisão precisa saber:</b> com o modelo verificado, a vida útil projetada é de <b>2 anos</b> no ponto crítico. A fórmula fechada sem CFD diria 81 anos para a mesma geometria. A diferença não é precisão: é a decisão entre “troca programada” e “nenhuma ação”.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>5 · modelo substituto</span></div>
+  <p class="lead">Trinta e dois casos cobrindo U de 10 a 30 m/s e R/D de 1,5 a 5 foram resolvidos em CFD e usados para treinar um modelo que responde em segundos. Os 32 terminaram sem rejeição, em 22,6 min de parede (1,94 h de CPU).</p>
+  <table><tr><th style="width:32%">Indicador</th><th>Referência sem IA</th><th>Validação</th><th>Teste</th><th>Fora da faixa</th></tr><tr><td>Perda de carga (ΔP)</td><td>Darcy + Colebrook</td><td>0,7%</td><td>1,0%</td><td>0,4%</td></tr><tr><td>Taxa máxima de erosão</td><td>DNV §8.4</td><td>15,7%</td><td>10,6%</td><td>19,7%</td></tr></table>
+  <p><small>Erro relativo médio. O intervalo de confiança por bootstrap não foi calculado: há 9 pontos de teste e fora da faixa, e o critério exige no mínimo 10.</small></p>
+  <h3>Para que serve, na prática</h3>
+  <ul><li>Variar diâmetro, raio de curva e vazão deixa de custar um dia por ponto.</li><li>A vida útil deixa de ser um número único e passa a ser uma curva contra a vazão.</li><li>Fora da faixa de treino, o modelo avisa que está extrapolando, com o erro medido de 19,7%.</li></ul>
+  <div class="callout cyan"><b>O que o substituto não faz:</b> substituir o ensaio. Ele reproduz o CFD dentro da faixa treinada — se o CFD estiver errado para o seu caso, o substituto erra junto, mais rápido.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>6 · limites</span></div>
+  <p class="lead">Esta seção existe porque um número sem os seus limites é uma opinião com casas decimais. Tudo o que não passou por referência externa está aqui.</p>
+  <table><tr><th style="width:30%">Item</th><th style="width:22%">Estado</th><th>Consequência prática</th></tr><tr><td>Malha da campanha</td><td><span class="verdict v-fail">grossa</span></td><td>10.400 células: ~30% acima no ΔP e ~40% abaixo na erosão, contra o valor extrapolado da malha fina</td></tr><tr><td>Convergência de malha (GCI)</td><td><span class="verdict v-fail">fora da meta</span></td><td>ΔP com GCI de 6,8–12,6% na malha fina (meta 5%); a erosão só converge no ponto de referência (2,9%)</td></tr><tr><td>Constantes de erosão</td><td><span class="verdict v-fail">fonte secundária</span></td><td>DNV, E/CRC e Finnie vêm de literatura secundária; o ensaio original é pago</td></tr><tr><td>Campos enviados à verificação</td><td><span class="verdict v-fail">6 provas não rodaram</span></td><td>11 a favor, 0 contra, 65% de cobertura</td></tr><tr><td>Interpolação do substituto</td><td><span class="verdict v-ok">medida</span></td><td>1,0% no ΔP e 10,6% na erosão, em pontos fora do treino</td></tr><tr><td>Extrapolação do substituto</td><td><span class="verdict v-fail">avisada, não garantida</span></td><td>fora de U 10–30 m/s ou R/D 1,5–5, o erro sobe (19,7%)</td></tr></table>
+  <div class="callout"><b>Regra da casa.</b> Resultado com malha grossa vale como demonstração do pipeline, não como número de cliente. Este documento é público justamente por isso.</div>
+  <h3>O que faria este número subir de patamar</h3>
+  <ul><li>Campanha na malha fina, com GCI dentro de 5% também para a erosão.</li><li>Ensaio próprio, ou a compra do ensaio original, para trocar as constantes secundárias.</li><li>Envio dos campos completos para a verificação, fechando as seis provas que não rodaram.</li></ul>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>6</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosão em curva de 90°</span><span>7 · conclusão</span></div>
+  <div class="kpi-row"><div class="kpi"><b>1,47</b><span>mm/ano no ponto crítico</span></div><div class="kpi"><b>2,0</b><span>anos até 5 → 2 mm</span></div><div class="kpi"><b>50,6°</b><span>posição do pico na curva</span></div><div class="kpi"><b>1,0%</b><span>erro do substituto no ΔP</span></div></div>
+  <h3>Recomendação</h3>
+  <p>Inspecionar a parede externa logo após a entrada da curva, não o meio dela. Com a taxa verificada e a espessura mínima adotada, a janela de troca programada é de dois anos — e o substituto permite testar, em segundos, se aumentar o raio compra mais tempo que trocar o material.</p>
+  <h3>O que este estudo não decide</h3>
+  <p>Qual material comprar, qual fornecedor escolher, quando parar a planta. Ele entrega a taxa, a posição e o erro; a decisão econômica usa esses números junto com custo de parada e preço do tubo.</p>
+  <h3>Proveniência</h3>
+  <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Ensaio de referência</td><td>Vieira et al. (2016), E/CRC Tulsa · tabela aberta em Khan et al. (2023), <i>Eng. Proc.</i> 45:28</td></tr><tr><td>Posição do pico medida</td><td>Khan et al. (2022), <i>Materials</i> 15:3721</td></tr><tr><td>Artigo público do estudo</td><td><span class="mono">pinneapple-labs.github.io/artigos/erosao-curva-90/</span></td></tr><tr><td>Código e caso</td><td><span class="mono">github.com/PINNeAPPle-Labs/PINNeAPPle-CFD · casos/cfd04-curva-areia</span></td></tr></table>
+  <div class="callout cyan"><b>Este é um relatório de exemplo,</b> montado sobre um caso de demonstração com geometria e condições públicas. Um estudo para a sua planta segue a mesma estrutura, com a mesma seção de limites.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>7</span></div>
+</section>
+
+</body>
+</html>

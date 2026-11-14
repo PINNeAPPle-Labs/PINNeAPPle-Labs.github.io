@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Corpo de Ahmed: arrasto, malha e o que o RANS não vê — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
+    <h1>Corpo de Ahmed<br />arrasto, malha e o que o RANS não vê</h1>
+    <p class="sub">Um benchmark de 1984, quatro malhas, 48 simulações e um substituto — com o erro de modelo separado do erro de malha.</p>
+    <div class="numbers"><div class="num"><b>1,1%</b><span>de GCI na malha fina, com ordem observada 4,26</span></div><div class="num"><b>+4,3% · −4,7%</b><span>de CD a 25°, nas malhas L1 e L2</span></div><div class="num"><b>48 de 48</b><span>casos de DOE rodados no OpenFOAM</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/exp/aero-autonoma-wake.webp" alt="Esteira do corpo de Ahmed: vorticidade longitudinal no melhor caso da campanha" />
+    <div class="meta" style="margin-top:6mm">Documento AER-01 · versão 1.0 · 2026<br />Caso aberto: Ahmed, Ramm &amp; Faltin (1984)<br />OpenFOAM v1912 · gmsh 4.12 · meio modelo, estrada móvel, RANS k-ω SST<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>1 · o caso</span></div>
+  <p class="lead">O corpo de Ahmed é o benchmark mais usado de aerodinâmica automotiva: uma geometria simples, com uma traseira inclinada cujo ângulo decide o arrasto. Ele foi adotado porque publicado, medido e difícil — o escoamento separa, e é aí que os modelos erram.</p>
+  <table><tr><th style="width:22%">Item</th><th>Valor</th></tr><tr><td>Geometria</td><td>1,044 × 0,389 × 0,288 m · raios frontais de 0,1 m · rampa traseira de 0,222 m, sem estais</td></tr><tr><td>Modelo</td><td>meio modelo, estrada móvel, RANS estacionário k-ω SST com funções de parede, 5 camadas de prisma</td></tr><tr><td>Variáveis</td><td>slant de 0 a 40° · altura livre de 30 a 80 mm · velocidade de 20 a 60 m/s</td></tr><tr><td>CAD</td><td>B-rep OpenCASCADE via gmsh, reimportado do STL: fechado, simétrico a 1,0 mm, volume 0,10993 m³ contra 0,10959 paramétrico</td></tr></table>
+  <p>O CFD no corpo do CAD, na condição de referência (25°, 50 mm, 60 m/s), deu <b>CD 0,3004</b> contra 0,2966 do corpo paramétrico — 1,3% de diferença só por passar pelo CAD e de volta. É a primeira incerteza do estudo, e ela aparece antes da primeira simulação.</p>
+  <div class="callout"><b>A pergunta do estudo.</b> Não era “qual é o CD”: era <b>quanto do erro é malha e quanto é modelo</b> — porque as duas coisas pedem decisões opostas. Malha se refina; modelo se troca.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>2 · malha e convergência</span></div>
+  <p>Quatro malhas, razão de refino constante de √2, mesma condição de referência e 1.000 iterações.</p>
+  <table><tr><th style="width:22%">Malha</th><th style="width:18%">Células</th><th>CD</th><th>Checagem da execução</th></tr><tr><td>L0</td><td>84.223</td><td>0,2890</td><td><span class="verdict v-fail">rejeitada (balanço de massa)</span></td></tr><tr><td>L1 (campanha)</td><td>207.080</td><td>0,2966</td><td><span class="verdict v-mid">revisão (resíduos)</span></td></tr><tr><td>L2</td><td>534.472</td><td>0,2707</td><td><span class="verdict v-mid">revisão (resíduos)</span></td></tr><tr><td>L3</td><td>1.398.073</td><td>0,2640</td><td><span class="verdict v-mid">revisão (resíduos)</span></td></tr></table>
+  <p>L0–L1–L2 converge de forma oscilatória; L1–L2–L3 converge monotonicamente, com ordem observada <b>4,26</b> e valor de Richardson <b>0,2617</b>. O GCI na L3 é de <b>1,1%</b>.</p>
+  <div class="callout"><b>Leia a ordem com desconfiança.</b> 4,26 está acima da ordem formal do esquema (2), o que faz do GCI um <b>limite inferior</b> da incerteza numérica — não uma estimativa exata. Dizer isso é parte do resultado.</div>
+  <p>A malha da campanha (L1) ficou <b>13,3% acima</b> do valor de Richardson. Ela foi mantida por custo: 7,5 min contra 19 min na L2 e 107 min na L3, em 4 núcleos. Esse 13% é a incerteza numérica de todo substituto treinado na campanha.</p>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>3 · validação contra o ensaio</span></div>
+  <p>O ensaio de Ahmed, Ramm e Faltin (1984) a 60 m/s, nas duas malhas medidas.</p>
+  <table><tr><th style="width:14%">Slant</th><th>Medido</th><th>L1</th><th>L2</th></tr><tr><td>0°</td><td>0,250</td><td>0,2693 (+7,7%)</td><td>0,2547 (+1,9%)</td></tr><tr><td>12,5°</td><td>0,230</td><td>0,2557 (+11,2%)</td><td>0,2399 (+4,3%)</td></tr><tr><td>25°</td><td>0,285</td><td>0,2973 (+4,3%)</td><td>0,2715 (−4,7%)</td></tr><tr><td>30°</td><td>0,378</td><td>0,3378 (−10,6%)</td><td>0,3184 (−15,8%)</td></tr><tr><td>35°</td><td>0,260</td><td>0,3835 (+47,5%)</td><td>0,4079 (+56,9%)</td></tr><tr><td>40°</td><td>0,250</td><td>0,3005 (+20,2%)</td><td>0,3958 (+58,3%)</td></tr></table>
+  <p>Abaixo do ângulo crítico, refinar a malha aproxima o CFD da medição — o comportamento que se espera de um erro numérico. É esse trecho que sustenta o resto do estudo.</p>
+  <div class="callout cyan"><b>Onde a validação para de valer.</b> De 30° para cima, refinar piora: o erro cresce de 10,6% para 15,8% e de 47,5% para 56,9%. Isso não é ruído de malha — é o modelo.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>4 · o erro que é do modelo</span></div>
+  <p>O RANS estacionário com k-ω SST mantém o escoamento da rampa colado além de 30°, quando o ensaio mostra separação. O resultado é o pico de arrasto deslocado de 30° para 35–40°.</p>
+  <p>É um erro de <b>física do modelo</b>, e a consequência prática é direta: nenhuma quantidade de malha conserta, e nenhum substituto treinado nesses casos aprende o comportamento real — ele aprende o viés do solver, com fidelidade.</p>
+  <div class="callout"><b>O que isso custa ao projeto.</b> A escolha de geometria de traseira vive justamente na região de 25° a 35°. Um estudo que só reporta “CD = 0,32” nessa faixa está dando um número com erro de modelo de até 57% — e sem dizer.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>5 · substituto e sensibilidade</span></div>
+  <p>Quarenta e oito geometrias por amostragem latina hipercúbica maximin (discrepância centrada de 0,0039 contra 0,0141 de desenhos aleatórios do mesmo tamanho); 48 de 48 rodaram. O conjunto final tem 54 casos: 28 de treino, 6 de validação, 10 de teste e 10 de extrapolação (todo caso com slant acima de 34°).</p>
+  <table><tr><th style="width:20%">Alvo</th><th style="width:20%">Família escolhida</th><th>Erro no teste</th><th>Cobertura no teste</th><th>Erro na extrapolação</th></tr><tr><td>CD</td><td>GP</td><td>0,42%</td><td>1,0</td><td>5,2%</td></tr><tr><td>CL</td><td>GP</td><td>2,0%</td><td>0,9</td><td>18,4%</td></tr><tr><td>Cp (campo)</td><td>POD-GP</td><td>9,9%</td><td>0,89</td><td>20,0%</td></tr></table>
+  <p><small>Erro relativo para CD e CL; L2 relativo médio para o campo de Cp. O split de teste e o de extrapolação são medidos uma vez, depois da escolha do modelo.</small></p>
+  <p>Índices de Sobol na região de treino: em CD, o slant explica <b>0,96</b> da variância, a altura livre 0,05 e a velocidade 0,01. Para o arrasto de atrito a ordem se inverte (0,09 / 0,04 / 0,93): são dois fenômenos, com duas dependências.</p>
+  <div class="callout cyan"><b>A extrapolação avisa.</b> Acima de 34° de slant, a cobertura dos intervalos cai para 0,6–0,8: o modelo não é para ser usado ali, e o gêmeo diz isso na tela em vez de responder.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>AER-01 · corpo de Ahmed</span><span>6 · limites e conclusão</span></div>
+  <div class="kpi-row"><div class="kpi"><b>1,1%</b><span>de GCI na malha L3</span></div><div class="kpi"><b>13,3%</b><span>de incerteza da malha da campanha</span></div><div class="kpi"><b>57%</b><span>de erro de modelo a 35°</span></div><div class="kpi"><b>0,42%</b><span>de erro do substituto de CD no teste</span></div></div>
+  <h3>O que este estudo não resolve</h3>
+  <ul><li>RANS estacionário não captura a separação instável da rampa acima de 30°; para isso é preciso URANS ou LES.</li><li>A incerteza da malha da campanha (13,3%) está embutida em todo substituto treinado nela.</li><li>O modelo de atrito falha a checagem física “cai com Re” e foi descartado — não por erro, por física.</li><li>y⁺ dentro da faixa das funções de parede foi exigido em toda execução; fora dela, o resultado não é comparável.</li></ul>
+  <h3>Proveniência</h3>
+  <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Ensaio de referência</td><td>Ahmed, Ramm &amp; Faltin (1984)</td></tr><tr><td>Caso completo</td><td><span class="mono">PINNeAPPle/examples/end_to_end/ahmed_body</span></td></tr><tr><td>Dados e evidências</td><td><span class="mono">results/dataset · results/evidence.zip</span> (com SHA-256 de cada fonte)</td></tr><tr><td>Artigo público</td><td><span class="mono">pinneapple-labs.github.io/artigos/aerodinamica-autonoma/</span></td></tr></table>
+  <div class="callout cyan"><b>Este é um relatório de exemplo,</b> sobre um benchmark público. Um estudo para o seu corpo segue a mesma estrutura: malha com GCI, validação contra ensaio, o erro de modelo separado do numérico — e a página do que não está provado.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>6</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Surface-PM machine: torque by two routes — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
+    <h1>Surface-PM machine<br />torque computed by two routes</h1>
+    <p class="sub">The same torque by Maxwell stress and by co-energy — and the rotor topology optimization that only counts when the two agree.</p>
+    <div class="numbers"><div class="num"><b>0.09%</b><span>between Maxwell and co-energy at the design point</span></div><div class="num"><b>16.70 Nm</b><span>of torque at γ = 0° in the 4-pole machine</span></div><div class="num"><b>4.6·10⁻⁸</b><span>maximum error in the gradient check</span></div></div>
+  </div>
+  <div>
+    
+    <div class="meta" style="margin-top:6mm">Document ELE-01 · version 1.0 · 2026<br />Demonstration case: dimensions, materials and coefficients illustrative<br />2-D A_z FEM · two independent torque routes<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ELE-01 · 4-pole SPM machine</span><span>1 · what was computed</span></div>
+  <p class="lead">A surface-mounted permanent-magnet machine in 2-D: cogging, torque against current angle, back-EMF and losses. Torque is computed twice, by independent routes, and both are printed side by side.</p>
+  <table><tr><th style="width:32%">Quantity</th><th>Value</th></tr><tr><td>Poles / slots</td><td>2 pole pairs · 24 slots</td></tr><tr><td>Axial length · airgap</td><td>50 mm · 1 mm</td></tr><tr><td>Magnet</td><td>Br = 1.2 T, surface mounted</td></tr><tr><td>Angular discretisation</td><td>360 positions · 2-D A_z FEM</td></tr><tr><td>Cost</td><td>about 2 min per run</td></tr></table>
+  <div class="callout"><b>Why two routes.</b> Maxwell stress and co-energy use different arithmetic on the same field. If they agree, the field is resolved enough for torque; if they diverge, the cause is usually the mesh or the angular discretisation — and the number should not ship.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ELE-01 · 4-pole SPM machine</span><span>2 · torque by both routes</span></div>
+  <table><tr><th style="width:26%">Point</th><th>Maxwell (Nm)</th><th>Co-energy (Nm)</th><th>Difference</th></tr><tr><td>γ = −30°</td><td>14.7285</td><td>14.7452</td><td>0.11%</td></tr><tr><td>γ = 0° (design)</td><td>16.6967</td><td>16.7113</td><td>0.087%</td></tr><tr><td>γ = +30°</td><td>14.2502</td><td>14.2537</td><td>0.024%</td></tr></table>
+  <p>At the design point the two routes sit <b>0.087%</b> apart — far below anything a design decision can resolve.</p>
+  <p>At low-torque points the relative disagreement grows: at cogging instants it reaches <b>2.6%</b> (0.3391 against 0.3302 Nm). Not a contradiction: the same absolute difference weighs more on a small number, which is why the check must also be read in absolute terms.</p>
+  <div class="callout cyan"><b>House rule.</b> Two independent routes do not prove the result is right — they prove it is consistent. The proof against reality is still a bench test, and this report has none.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ELE-01 · 4-pole SPM machine</span><span>3 · cogging, back-EMF and losses</span></div>
+  <table><tr><th style="width:34%">Quantity</th><th style="width:30%">Value</th><th>Note</th></tr><tr><td>Cogging peak-to-peak</td><td>0.7447 Nm</td><td>period of 15° (360/24 slots)</td></tr><tr><td>Mean torque at 1,500 rpm</td><td>16.05 Nm</td><td>operating point evaluated</td></tr><tr><td>Magnet flux (peak)</td><td>0.1871 Wb</td><td>per phase</td></tr><tr><td>Back-EMF at 1,500 rpm</td><td>51.66 V peak · 40.36 V RMS</td><td>sinusoidal</td></tr><tr><td>Stator iron loss</td><td>9.70 W</td><td>at 50 Hz</td></tr><tr><td>Rotor iron loss</td><td>0.021 W</td><td>essentially zero</td></tr><tr><td>Magnet eddy currents</td><td>0.172 W</td><td>at 50 Hz</td></tr></table>
+  <p>Cogging of 0.74 Nm peak-to-peak against 16.7 Nm rated is 4.5% ripple — the number that decides whether the machine needs skew or a fractional slot pitch.</p>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ELE-01 · 4-pole SPM machine</span><span>4 · rotor topology optimization</span></div>
+  <p>On the same formulation, a topology optimization of the reluctance rotor: 1,410 design variables over 5,640 elements, gradient checked by finite differences with a maximum relative error of <b>4.6·10⁻⁸</b>.</p>
+  <table><tr><th style="width:38%">Result</th><th>Value</th></tr><tr><td>Solid rotor (reference)</td><td>≈ 0 Nm (−2.4·10⁻¹¹)</td></tr><tr><td>Optimized rotor, linear model</td><td>38.10 Nm mean torque</td></tr><tr><td>Optimized rotor, nonlinear model</td><td>13.44 Nm mean torque</td></tr><tr><td>Co-energy torque at 5°</td><td>47.07 Nm</td></tr><tr><td>Iterations · time</td><td>120 · 215 s</td></tr><tr><td>Volume fraction</td><td>0.500</td></tr></table>
+  <div class="callout"><b>The difference that changes the decision.</b> The same design delivers <b>38.1 Nm</b> in the linear model and <b>13.4 Nm</b> with saturation — a factor of 2.8. The linear number is useful for exploring the design space; it is not a machine number.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ELE-01 · 4-pole SPM machine</span><span>5 · limits and conclusion</span></div>
+  <table><tr><th style="width:26%">Item</th><th>What the report says</th></tr><tr><td>Dimensions and materials</td><td>illustrative; this is not a commercial machine</td></tr><tr><td>2-D FEM</td><td>no end effects, skew or eccentricity</td></tr><tr><td>Saturation</td><td>only in the nonlinear model; the linear one overshoots torque by 2.8×</td></tr><tr><td>Thermal</td><td>out of scope: losses are computed, not coupled</td></tr><tr><td>Cogging</td><td>from one set of rotor positions, not a fine sweep</td></tr><tr><td>Validation</td><td>no bench test; the check is between two numerical routes</td></tr></table>
+  <div class="callout cyan"><b>Why publish a case without a test.</b> Because internal consistency is verifiable and useful: a design that fails the Maxwell × co-energy check has a problem before it reaches the bench. What this report does not do is call consistency validation.</div>
+  <div class="kpi-row"><div class="kpi"><b>0.087%</b><span>between the two torque routes</span></div><div class="kpi"><b>4.5%</b><span>of cogging ripple</span></div><div class="kpi"><b>38.1 Nm</b><span>optimized rotor (linear)</span></div><div class="kpi"><b>13.4 Nm</b><span>same rotor, with saturation</span></div></div>
+  <h3>What can be decided with this study</h3>
+  <p>Comparing rotor topologies, choosing the current point and sizing the magnet, with the consistency check in place. To buy or certify a machine, a bench test and thermal are still missing.</p>
+  <h3>Provenance</h3>
+  <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Full result</td><td><span class="mono">PINNeAPPle/examples/motor_magnetics/results/spm_summary.json</span></td></tr><tr><td>Script</td><td><span class="mono">examples/motor_magnetics/01_spm_cogging_and_torque.py</span></td></tr><tr><td>Rotor optimization</td><td><span class="mono">examples/topology_optimization/results/reluctance_rotor_summary.json</span></td></tr></table>
+  <div class="callout cyan"><b>This is an example report,</b> on demonstration data. A study for your machine follows the same structure: two torque routes, the difference between them published, and the page of what was not validated.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+</section>
+
+</body>
+</html>

@@ -46,6 +46,163 @@ PREACCESS_FORM = {
     "en": "https://forms.gle/3F3n132d35N1hWyd6",
 }
 
+# The offer, in one place: the deadline band and the floor price are the only
+# numbers a visitor needs before asking for a quote. Change them here.
+OFERTA = {
+    "pt": {
+        "prazo": "4 a 10 semanas",
+        "linha": ("Estudos ficam entre 4 e 10 semanas, conforme o escopo. O orçamento é fechado a partir da "
+                  "geometria, do fluido e da pergunta — antes de qualquer conta."),
+        "eyebrow": "Prazo e preço",
+        "h": "Escopo, prazo e orçamento antes de qualquer conta",
+    },
+    "en": {
+        "prazo": "4 to 10 weeks",
+        "linha": ("Studies run 4 to 10 weeks, depending on the scope. The quote is closed from the geometry, "
+                  "the fluid and the question — before any of the work."),
+        "eyebrow": "Deadline and price",
+        "h": "Scope, deadline and quote before any of the work",
+    },
+}
+
+# The public example reports, one per case, built by `tools/build_relatorios.py`.
+# Each segment page links its own; the home offer links the first one.
+REPORT_FILES = {
+    "estudo-erosao-curva-90": {
+        "pt": "relatorios/estudo-erosao-curva-90-pt.pdf",
+        "en": "relatorios/estudo-erosao-curva-90-en.pdf",
+    },
+    "gemeo-hx201": {
+        "pt": "relatorios/gemeo-hx201-pt.pdf",
+        "en": "relatorios/gemeo-hx201-en.pdf",
+    },
+    "valvula-globo": {
+        "pt": "relatorios/valvula-globo-pt.pdf",
+        "en": "relatorios/valvula-globo-en.pdf",
+    },
+    "aero-ahmed-body": {
+        "pt": "relatorios/aero-ahmed-body-pt.pdf",
+        "en": "relatorios/aero-ahmed-body-en.pdf",
+    },
+    "motor-spm": {
+        "pt": "relatorios/motor-spm-pt.pdf",
+        "en": "relatorios/motor-spm-en.pdf",
+    },
+    "topologia-estrutural": {
+        "pt": "relatorios/topologia-estrutural-pt.pdf",
+        "en": "relatorios/topologia-estrutural-en.pdf",
+    },
+    "el-nino-modelos": {
+        "pt": "relatorios/el-nino-modelos-pt.pdf",
+        "en": "relatorios/el-nino-modelos-en.pdf",
+    },
+}
+REPORT_LABEL = {
+    "pt": "Relatório de exemplo (PDF)",
+    "en": "Example report (PDF)",
+}
+
+# The report library, grouped by area: the page at /relatorios/ lists every one.
+# Items are `(slug, title, one line of what the report proves)`.
+REPORTS_INDEX = {
+    "pt": {
+        "eyebrow": "Relatórios de exemplo",
+        "h1": "Sete relatórios,<br />sete áreas de engenharia",
+        "lead": ("Cada relatório abaixo é um estudo real de um caso do repositório, em português e em inglês. "
+                 "Todos seguem a mesma estrutura: o que foi pedido, o método, a verificação contra ensaio ou "
+                 "contra uma segunda rota de cálculo, e a página do que <b>não</b> ficou provado."),
+        "note": ("São exemplos públicos, e três deles usam dados de demonstração (máquina, estrutura e clima). "
+                 "O que se copia deles é a estrutura de verificação, não o número."),
+        "area_lbl": "Área",
+        "areas": [
+            ("Óleo, gás e tubulação",
+             "Escoamento com partículas e com gás compressível: os dois casos em que o número precisa vir com a incerteza.",
+             [("estudo-erosao-curva-90", "Erosão em curva de 90°",
+               "Areia em curva de tubulação contra o ensaio de Vieira et al. (2016): taxa de erosão e onde o modelo deixa de valer."),
+              ("valvula-globo", "Válvula globo em gás compressível",
+               "Vazão e queda de pressão em regime bloqueado, com a malha como causa declarada do que não convergiu.")]),
+            ("Térmico e troca de calor",
+             "Um trocador com histórico: o que o modelo acerta e o que só o dado de campo mostra.",
+             [("gemeo-hx201", "Gêmeo digital de um trocador HX-201",
+               "Coeficientes, incrustação e o desvio entre o previsto e o medido em cada campanha de limpeza.")]),
+            ("Aerodinâmica",
+             "Corpo de Ahmed, ponta a ponta: malha, validação, substituto e o erro que é do modelo.",
+             [("aero-ahmed-body", "Corpo de Ahmed: arrasto e malha",
+               "Quatro malhas com GCI, validação em seis ângulos de rampa e o ponto em que refinar piora o resultado.")]),
+            ("Mecânica estrutural",
+             "Otimização topológica medida no que importa: gradiente checado, volume respeitado e cinza contado.",
+             [("topologia-estrutural", "Projeção, gradiente e o cinza",
+               "MBB e cantilever em quatro execuções: 18,6% de compliance com projeção, ao custo de 3,6× iterações.")]),
+            ("Eletromagnetismo",
+             "Torque calculado por duas rotas independentes — e o que a discordância entre elas denuncia.",
+             [("motor-spm", "Máquina síncrona de ímãs",
+               "Maxwell contra coenergia a 0,087% no projeto, cogging, FCEM, perdas e a topologia do rotor com saturação.")]),
+            ("Clima e geociências",
+             "Trinta configurações sob um protocolo só, com teste de significância e o resultado ruim publicado.",
+             [("el-nino-modelos", "El Niño em 30 configurações",
+               "ACC 0,95 em h = 1, três configurações significativas em h = 6 e um PINN com ACC −0,69 em h = 3.")]),
+        ],
+        "how_eyebrow": "Estrutura",
+        "how_h": "O que todo relatório tem",
+        "how": [
+            "O escopo fechado no começo: geometria, fluido, condição de contorno e a pergunta.",
+            "A verificação explícita: ensaio de referência, segunda rota de cálculo ou checagem de gradiente.",
+            "O número com a incerteza ao lado — nunca o número sozinho.",
+            "Uma página de limites dizendo o que o estudo não resolve.",
+            "A proveniência: o arquivo do repositório de onde cada número saiu.",
+        ],
+        "cta_h": "Quer um relatório assim para o seu caso?",
+    },
+    "en": {
+        "eyebrow": "Example reports",
+        "h1": "Seven reports,<br />seven engineering areas",
+        "lead": ("Every report below is a real study of a case in the repository, in Portuguese and in English. "
+                 "They all follow the same structure: what was asked, the method, the check against an experiment "
+                 "or a second computation route, and the page of what was <b>not</b> proven."),
+        "note": ("These are public examples, and three of them use demonstration data (machine, structure and climate). "
+                 "What to copy from them is the verification structure, not the number."),
+        "area_lbl": "Area",
+        "areas": [
+            ("Oil, gas and piping",
+             "Particle-laden and compressible flow: the two cases where the number has to come with its uncertainty.",
+             [("estudo-erosao-curva-90", "Erosion in a 90° bend",
+               "Sand in a pipe bend against the Vieira et al. (2016) experiment: erosion rate and where the model stops holding."),
+              ("valvula-globo", "Globe valve in compressible gas",
+               "Flow rate and pressure drop in the choked regime, with the mesh named as the cause of what did not converge.")]),
+            ("Thermal and heat transfer",
+             "An exchanger with a history: what the model gets right and what only field data shows.",
+             [("gemeo-hx201", "Digital twin of an HX-201 exchanger",
+               "Coefficients, fouling and the gap between predicted and measured across cleaning campaigns.")]),
+            ("Aerodynamics",
+             "Ahmed body, end to end: mesh, validation, surrogate and the error that belongs to the model.",
+             [("aero-ahmed-body", "Ahmed body: drag and mesh",
+               "Four meshes with GCI, validation at six slant angles and the point where refining makes it worse.")]),
+            ("Structural mechanics",
+             "Topology optimization measured on what matters: gradient checked, volume respected, grey counted.",
+             [("topologia-estrutural", "Projection, gradient and the grey",
+               "MBB and cantilever in four runs: 18.6% of compliance with projection, at 3.6× the iterations.")]),
+            ("Electromagnetics",
+             "Torque computed by two independent routes — and what their disagreement exposes.",
+             [("motor-spm", "Surface-PM machine",
+               "Maxwell against co-energy to 0.087% at the design point, cogging, back-EMF, losses and rotor topology with saturation.")]),
+            ("Climate and geosciences",
+             "Thirty configurations under one protocol, with a significance test and the bad result published.",
+             [("el-nino-modelos", "El Niño in 30 configurations",
+               "ACC 0.95 at h = 1, three significant configurations at h = 6 and a PINN at ACC −0.69 at h = 3.")]),
+        ],
+        "how_eyebrow": "Structure",
+        "how_h": "What every report has",
+        "how": [
+            "The scope closed at the start: geometry, fluid, boundary condition and the question.",
+            "The explicit check: a reference experiment, a second computation route or a gradient check.",
+            "The number with its uncertainty beside it — never the number alone.",
+            "A limits page saying what the study does not solve.",
+            "Provenance: the repository file each number came from.",
+        ],
+        "cta_h": "Want a report like this for your case?",
+    },
+}
+
 LANGUAGES = {
     "pt": {"code": "pt-BR", "dir": "", "label": "PT", "other": "en", "other_label": "EN"},
     "en": {"code": "en", "dir": "en", "label": "EN", "other": "pt", "other_label": "PT"},
@@ -273,7 +430,7 @@ POSTS = [
                 ("h2", "O que perdeu, e está publicado"),
                 ("p", "As PINNs não saíram melhor por serem PINNs. A PINN construída em cima do próprio oscilador recarregado (6 parâmetros, 91 s de ajuste) tem correlação de <b>−0,69</b> no horizonte 3, enquanto o oscilador do qual ela herda a física, com os mesmos 6 parâmetros, fica em 0,80. A versão com fechamento aprendido também colapsa: −0,71 no mesmo horizonte."),
                 ("p", "A perda com resíduo físico (0,51 no horizonte 6) e a PINN de extrapolação (0,54) ficam no meio da tabela, à frente da persistência e atrás do oscilador físico. É o tipo de resultado que só aparece quando a comparação é feita na mesma régua."),
-                ("fig", ("img/exp/nino-barreira.png", "A barreira de previsibilidade da primavera", "A barreira de previsibilidade da primavera: a habilidade cai quando a previsão atravessa a estação, e é ali que a diferença entre os modelos se abre.")),
+                ("fig", ("img/exp/nino-barreira.webp", "A barreira de previsibilidade da primavera", "A barreira de previsibilidade da primavera: a habilidade cai quando a previsão atravessa a estação, e é ali que a diferença entre os modelos se abre.")),
                 ("h2", "A física antes do modelo"),
                 ("p", "Antes de comparar modelos, o solver foi comparado com a solução analítica: a onda de Kelvin viaja a <b>2,689 m/s</b> contra 2,7 m/s da teoria, a resposta estacionária de Gill converge para a solução analítica com erro L2 de 1,5×10⁻³ em 72 pontos de longitude e 5×10⁻⁵ em 576, e o período do oscilador recarregado bate com a teoria em todas as cinco resoluções testadas."),
                 ("h2", "Como ler o ranking"),
@@ -290,7 +447,7 @@ POSTS = [
                 ("h2", "What lost, and is published"),
                 ("p", "The PINNs did not come out better for being PINNs. The PINN built on top of the recharge oscillator itself (6 parameters, 91 s to fit) scores <b>−0.69</b> correlation at lead 3, while the oscillator it inherits its physics from, with the same 6 parameters, sits at 0.80. The version with a learned closure collapses too: −0.71 at the same lead."),
                 ("p", "The physics-loss model (0.51 at lead 6) and the extrapolation PINN (0.54) land mid-table, ahead of persistence and behind the physical oscillator. That is the kind of result that only shows up when the comparison is made on the same yardstick."),
-                ("fig", ("img/exp/nino-barreira.png", "The spring predictability barrier", "The spring predictability barrier: skill drops when the forecast crosses the season, and that is where the gap between models opens.")),
+                ("fig", ("img/exp/nino-barreira.webp", "The spring predictability barrier", "The spring predictability barrier: skill drops when the forecast crosses the season, and that is where the gap between models opens.")),
                 ("h2", "Physics before the model"),
                 ("p", "Before comparing models, the solver was compared with the analytical solution: the Kelvin wave travels at <b>2.689 m/s</b> against 2.7 m/s from theory, the steady Gill response converges to the analytical solution with an L2 error of 1.5×10⁻³ at 72 longitude points and 5×10⁻⁵ at 576, and the recharge-oscillator period matches theory at all five resolutions tested."),
                 ("h2", "How to read the ranking"),
@@ -948,6 +1105,11 @@ POST_BY_SLUG = {p["slug"]: p for p in POSTS}
 
 PAGES = {
     "home": "",
+    "studio": "studio",
+    "erosao": "erosao-em-tubulacao",
+    "trocadores": "trocadores-e-termico",
+    "valvulas": "valvulas-e-maquinas",
+    "relatorios": "relatorios",
     "artigos": "artigos",
     "lib": "lib",
 }
@@ -978,18 +1140,34 @@ def up(lang: str, page: str) -> str:
 # ---------------------------------------------------------------------------
 
 NAV = {
-    "pt": [("home", "Início"), ("artigos", "Artigos"), ("lib", "A lib")],
-    "en": [("home", "Home"), ("artigos", "Articles"), ("lib", "The library")],
+    "pt": [("home", "Início"), ("studio", "Studio"), ("relatorios", "Relatórios"),
+           ("artigos", "Artigos"), ("lib", "A lib")],
+    "en": [("home", "Home"), ("studio", "Studio"), ("relatorios", "Reports"),
+           ("artigos", "Articles"), ("lib", "The library")],
+}
+
+# Short labels for the footer and the cross-links between segment pages.
+SEGLABELS = {
+    "pt": {
+        "erosao": "Erosão em tubulação",
+        "trocadores": "Trocadores e térmico",
+        "valvulas": "Válvulas e máquinas",
+    },
+    "en": {
+        "erosao": "Erosion in piping",
+        "trocadores": "Exchangers and thermal",
+        "valvulas": "Valves and machinery",
+    },
 }
 
 STRINGS = {
     "pt": {
         "skip": "Pular para o conteúdo",
         "wa": "Falar com um engenheiro",
-        "wa_msg": "Olá! Vim pelo site da PINNeAPPle Labs e tenho um problema de engenharia para discutir.",
+        "wa_msg": "Olá! Vim pelo site e queria um orçamento: tenho um caso de simulação para discutir.",
         "cta_title": "Tem uma simulação lenta, cara ou difícil de verificar?",
         "cta_lead": "Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.",
-        "cta_primary": "Falar com um engenheiro",
+        "cta_primary": "Pedir orçamento",
         "docs_nav": "Docs",
         "cta_short": "Falar com um engenheiro",
         "cta_secondary": "Começar pelo código",
@@ -1002,6 +1180,7 @@ STRINGS = {
         "lbl_products": "Início",
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Artigos",
+        "lbl_reports": "Relatórios de exemplo",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
         "min_read": "min de leitura",
@@ -1013,16 +1192,16 @@ STRINGS = {
         "pre_lead": "O Studio abre em 2027, em prévia fechada. Quem entra na lista recebe o convite antes, na ordem de inscrição, e ajuda a decidir o que entra primeiro.",
         "pre_btn": "Quero pré-acesso",
         "pre_note": "O e-mail serve só para o convite do pré-acesso. Sem spam, e dá para sair em um clique.",
-        "hero_note": "O primeiro botão abre o WhatsApp com o texto pronto. O pré-acesso são três perguntas, e o convite sai em 2027.",
+        "hero_note": "O primeiro botão abre o WhatsApp com o texto pronto. O segundo mostra o que sai no fim de um estudo.",
         "prod_note": "O primeiro botão abre o formulário de pré-acesso: três perguntas, e o convite sai em 2027. O segundo abre o WhatsApp com o texto pronto.",
     },
     "en": {
         "skip": "Skip to content",
         "wa": "Talk to an engineer",
-        "wa_msg": "Hello! I found PINNeAPPle Labs through the site and have an engineering problem to discuss.",
+        "wa_msg": "Hello! I found the PINNeAPPle Labs site and would like a quote: I have a simulation case to discuss.",
         "cta_title": "Got a simulation that is slow, expensive or hard to verify?",
         "cta_lead": "Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.",
-        "cta_primary": "Talk to an engineer",
+        "cta_primary": "Request a quote",
         "docs_nav": "Docs",
         "cta_short": "Talk to an engineer",
         "cta_secondary": "Start from the code",
@@ -1035,6 +1214,7 @@ STRINGS = {
         "lbl_products": "Home",
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Articles",
+        "lbl_reports": "Example reports",
         "lbl_lib": "The library",
         "read_more": "Read the article",
         "min_read": "min read",
@@ -1046,7 +1226,7 @@ STRINGS = {
         "pre_lead": "The Studio opens in 2027, in a closed preview. Whoever joins the list gets the invite first, in sign-up order, and helps decide what ships first.",
         "pre_btn": "Get early access",
         "pre_note": "The e-mail is used for the early-access invite only. No spam, and one click to leave.",
-        "hero_note": "The first button opens WhatsApp with the message ready. Early access is three questions, and the invite goes out in 2027.",
+        "hero_note": "The first button opens WhatsApp with the message ready. The second shows what comes out of a study.",
         "prod_note": "The first button opens the early-access form: three questions, and the invite goes out in 2027. The second opens WhatsApp with the message ready.",
     },
 }
@@ -1054,14 +1234,14 @@ STRINGS = {
 META = {
     "home": {
         "pt": dict(
-            title="PINNeAPPle Labs · engenharia com a conta aberta",
-            desc="Resposta de engenharia em horas, não em semanas. O PINNeAPPle Studio chega em 2027; hoje os casos já rodam com o time. Números medidos, erro declarado, relatório verificável.",
+            title="Estudo de CFD com escopo, prazo e erro declarados · PINNeAPPle Labs",
+            desc="Estudo de simulação para indústria: você manda a geometria e a pergunta, recebe o escopo com prazo de 4 a 10 semanas e o preço definido a partir dele, e um relatório com o número verificado contra ensaio e o erro declarado.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="PINNeAPPle Labs · engineering with the working shown",
-            desc="Engineering answers in hours, not weeks. PINNeAPPle Studio arrives in 2027; today the cases run with our team. Measured numbers, stated error, verifiable report.",
+            title="CFD studies with scope, deadline and error stated · PINNeAPPle Labs",
+            desc="Simulation studies for industry: you send the geometry and the question, you get the scope with a 4 to 10 week deadline and the price set from it, and a report with the number checked against an experiment and the error stated.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
@@ -1109,6 +1289,7 @@ META = {
         ),
     },
 }
+
 
 
 def meta(lang: str, page: str) -> dict:
@@ -1184,7 +1365,7 @@ def header(lang: str, page: str, root: str) -> str:
               f'{STRINGS[lang]["docs_nav"]} ↗</a>')
     form = PREACCESS_FORM.get(lang, "")
     if form:
-        links += (f'\n      <a class="pre" href="{form}" target="_blank" rel="noopener">'
+        links += (f'\n      <a class="pre" href="{root}{url(lang, "studio") or ""}#pre-acesso">'
                   f'{STRINGS[lang]["pre_nav"]} ↗</a>')
     other_page = nav_page if not page.startswith("post:") else page
     return f"""<header class="site">
@@ -1200,7 +1381,7 @@ def header(lang: str, page: str, root: str) -> str:
 
     <div class="bar-cta">
       <a class="chip" href="{root}{url(_other(lang), other_page)}" hreflang="{LANGUAGES[_other(lang)]['code']}">{L['other_label']}</a>
-      <a class="btn btn-primary btn-sm" href="https://wa.me/{WHATSAPP}?text={_q(STRINGS[lang]['wa_msg'])}" target="_blank" rel="noopener">{STRINGS[lang]['wa']}</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/{WHATSAPP}?text={_q(STRINGS[lang]['wa_msg'])}" target="_blank" rel="noopener">{STRINGS[lang]['cta_primary']}</a>
     </div>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
@@ -1228,8 +1409,11 @@ def footer(lang: str, page: str, root: str) -> str:
       <div>
         <h4>{S['foot_platform']}</h4>
         <ul>
-          <li><a href="{root}{url(lang, 'home') or ''}">{S['lbl_products']}</a></li>
-          <li><a href="{root}#produto">{S['lbl_product']}</a></li>
+          <li><a href="{root}{url(lang, 'studio')}">{S['lbl_product']}</a></li>
+          <li><a href="{root}{url(lang, 'erosao')}">{SEGLABELS[lang]['erosao']}</a></li>
+          <li><a href="{root}{url(lang, 'trocadores')}">{SEGLABELS[lang]['trocadores']}</a></li>
+          <li><a href="{root}{url(lang, 'valvulas')}">{SEGLABELS[lang]['valvulas']}</a></li>
+          <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
           <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
         </ul>
@@ -1304,14 +1488,6 @@ def pre_band(lang: str, root: str) -> str:
     </div>
   </section>
 """
-
-def pre_button(lang: str, cls: str = "btn btn-ghost") -> str:
-    """The early-access button, or nothing when that language has no form yet."""
-    form = PREACCESS_FORM.get(lang, "")
-    if not form:
-        return ""
-    return (f'<a class="{cls}" href="{form}" target="_blank" rel="noopener">'
-            f'{STRINGS[lang]["pre_btn"]} <span aria-hidden="true">↗</span></a>')
 
 def cta_band(lang: str, root: str) -> str:
     S = STRINGS[lang]
@@ -1393,15 +1569,6 @@ def vfig(src: str, poster: str, cap: str, root: str) -> str:
             f'<figcaption>{cap}</figcaption></figure>')
 
 
-def shot(src: str, alt: str, cap: str, root: str) -> str:
-    """An app screenshot inside a browser frame: it reads as a product, not as a render."""
-    return f"""<figure class="frame">
-  <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Studio</span></div>
-  <img src="{root}{src}" alt="{alt}" loading="lazy" decoding="async" />
-  <figcaption>{cap}</figcaption>
-</figure>"""
-
-
 # ---------------------------------------------------------------------------
 # Content shared by the home page and the product page
 # ---------------------------------------------------------------------------
@@ -1463,12 +1630,16 @@ CAPS = {
 
 HOME = {
     "pt": dict(
-        eyebrow="PINNeAPPle Labs · engenharia assistida por física",
-        h1="Resposta de engenharia em horas, não em semanas.",
-        lead="Você descreve o problema. A gente diz se dá para resolver, qual método usar e quanto custa, e entrega o resultado com a conta aberta. Hoje os casos rodam com o nosso time; o <b>PINNeAPPle Studio</b>, que faz isso sozinho, chega em 2027 e já tem lista de pré-acesso.",
-        cta_secondary="Conhecer o PINNeAPPle Studio",
-        chips=["CFD, térmico, estrutural, eletromagnetismo", "Números medidos, nunca estimados", "Base de código aberto"],
-        hero_cap="O PINNeAPPle Studio: você escreve o que precisa e ele mostra o que já existe pronto para rodar.",
+        eyebrow="Estudo de CFD com verificação · indústria brasileira",
+        h1="O estudo de simulação que a sua decisão precisa.",
+        lead="Com escopo, prazo e erro declarados: você manda a geometria e a pergunta — vazão, perda de carga, temperatura ou desgaste — e recebe o escopo com prazo e preço definidos a partir dele. No fim, o relatório com o número, a verificação contra ensaio ou solver de referência e o que ficou fora.",
+        cta_primary="Pedir orçamento",
+        cta_secondary="Ver o que você recebe",
+        chips=["Tubulação, trocadores e otimização de forma", "Entrega em 4 a 10 semanas", "Número verificado contra ensaio"],
+        hero_img="img/erosao-card.webp",
+        hero_alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm/ano",
+        hero_fig_b="Curva de 90°",
+        hero_fig_s="1,05–1,49× o ensaio · Vieira et al. 2016",
         problem_eyebrow="O problema",
         problem_h="Por que a simulação trava o projeto",
         problem_p="Não é falta de software. É tempo, custo e, principalmente, confiança no número que sai.",
@@ -1477,6 +1648,26 @@ HOME = {
             ("O custo", "Licença, máquina parada e especialista. Às vezes a simulação custa mais caro que a decisão que ela deveria sustentar."),
             ("A confiança", "O resultado sai colorido e bonito, e ninguém sabe se está certo. Sem uma referência externa, o número vira opinião."),
         ],
+        entrega_eyebrow="A oferta",
+        entrega_h="O que você recebe, e quando",
+        entrega_p="O preço é sob orçamento: sai do escopo. Estudos ficam entre 4 e 10 semanas, e o escopo e o valor fecham por escrito antes de qualquer conta.",
+        entrega=[
+            ("O escopo", "Geometria de entrada, o que vai ser medido, o critério de sucesso e o que fica fora. Fechado por escrito, com prazo e preço, antes de começar."),
+            ("O prazo", "De 4 a 10 semanas, conforme o estudo. A data vem junto com o orçamento, não depois dele: se o caso pedir mais, você sabe antes de contratar."),
+            ("O relatório", "O número, a verificação contra ensaio publicado ou solver de referência, o erro declarado e as checagens que não rodaram."),
+        ],
+        entrega_note_b="O que não fazemos:",
+        entrega_note="ensaio experimental, projeto mecânico completo nem laudo de conformidade legal. E quando o método clássico resolve melhor e mais barato, a resposta é essa, por escrito.",
+        seg_eyebrow="O que a gente resolve",
+        seg_h="Três problemas que chegam aqui com nome e sobrenome",
+        seg_p="Cada um já teve um estudo publicado, com o número medido contra uma referência externa. Se o seu caso é parecido, o caminho existe.",
+        segs=[
+            ("Erosão e desgaste em tubulação", "Onde a parede vai furar, a que taxa em mm/ano e em quanto tempo — na sua geometria, no seu material e no seu ponto de operação.", "erosao", "erosao-curva-90"),
+            ("Trocadores de calor e térmico", "Se o trocador dá conta com a incrustação, quanto tempo até sair da faixa e onde o calor não dissipa, com a incerteza declarada.", "trocadores", "gemeo-hx201"),
+            ("Válvulas e máquinas de fluxo", "A válvula, o bocal ou o orifício no seu ponto de operação: vazão, perda de carga e o regime que o catálogo do fornecedor não cobre.", "valvulas", "motor-prius-dois-solvers"),
+        ],
+        seg_link="Ver o estudo",
+        seg_more="Ver o segmento",
         product_eyebrow="O produto",
         product_h="PINNeAPPle Studio",
         product_lead="A engenharia em texto: você escreve o que precisa, e a plataforma encontra uma ferramenta que já existe, confere se o seu caso está dentro do que aquela ferramenta já provou, roda e devolve o resultado com relatório e evidência.",
@@ -1543,12 +1734,16 @@ HOME = {
         story_cta="Conhecer a base aberta",
     ),
     "en": dict(
-        eyebrow="PINNeAPPle Labs · physics-assisted engineering",
-        h1="Engineering answers in hours, not weeks.",
-        lead="You describe the problem. We say whether it can be solved, with which method, and at what cost, and deliver the result with the working shown. Today the cases run with our team; <b>PINNeAPPle Studio</b>, which does it on its own, arrives in 2027 and already has an early-access list.",
-        cta_secondary="Meet PINNeAPPle Studio",
-        chips=["CFD, thermal, structural, electromagnetics", "Measured numbers, never estimates", "Open-source base"],
-        hero_cap="The PINNeAPPle Studio: you write what you need and it shows what is already ready to run.",
+        eyebrow="Verified CFD studies · industrial engineering",
+        h1="The simulation study your decision needs.",
+        lead="With scope, deadline and error stated: you send the geometry and the question — flow, pressure drop, temperature or wear — and get the scope with the deadline and price set from it. At the end, the report with the number, the check against an experiment or a reference solver, and what fell outside.",
+        cta_primary="Request a quote",
+        cta_secondary="See what you get",
+        chips=["Piping, exchangers and shape optimization", "Delivered in 4 to 10 weeks", "Number checked against an experiment"],
+        hero_img="img/erosao-card.webp",
+        hero_alt="Wall erosion map on a 90° bend, rate in mm/year",
+        hero_fig_b="90° bend",
+        hero_fig_s="1.05–1.49× the experiment · Vieira et al. 2016",
         problem_eyebrow="The problem",
         problem_h="Why simulation holds the project up",
         problem_p="It is not a lack of software. It is time, cost and, mostly, trust in the number that comes out.",
@@ -1557,6 +1752,26 @@ HOME = {
             ("The cost", "Licence, idle machine and a specialist. Sometimes the simulation costs more than the decision it was meant to support."),
             ("The trust", "The result comes out colourful and pretty, and nobody knows whether it is right. Without an external reference, the number is just an opinion."),
         ],
+        entrega_eyebrow="The offer",
+        entrega_h="What you get, and when",
+        entrega_p="Price is by quote: it comes out of the scope. Studies run 4 to 10 weeks, and scope and quote close in writing before any of the work.",
+        entrega=[
+            ("The scope", "Input geometry, what will be measured, the success criterion and what sits outside it. Closed in writing, with deadline and price, before we start."),
+            ("The deadline", "4 to 10 weeks, depending on the study. The date comes with the quote, not after it: if the case needs more, you know before you commit."),
+            ("The report", "The number, the check against a published experiment or a reference solver, the stated error and the checks that did not run."),
+        ],
+        entrega_note_b="What we do not do:",
+        entrega_note="experimental testing, full mechanical design or a legal compliance certificate. And when the classical method does it better and cheaper, that is the answer, in writing.",
+        seg_eyebrow="What we solve",
+        seg_h="Three problems that arrive here with a name and a surname",
+        seg_p="Each one already has a published study, with the number measured against an external reference. If your case looks like one of them, the path exists.",
+        segs=[
+            ("Erosion and wear in piping", "Where the wall will fail, at what rate in mm/year and in how long — on your geometry, your material and your operating point.", "erosao", "erosao-curva-90"),
+            ("Heat exchangers and thermal", "Whether the exchanger still copes with the fouling, how long until it leaves the band and where the heat does not dissipate, with the uncertainty stated.", "trocadores", "gemeo-hx201"),
+            ("Valves and flow machinery", "The valve, nozzle or orifice at your operating point: flow rate, pressure drop and the regime the vendor catalogue does not cover.", "valvulas", "motor-prius-dois-solvers"),
+        ],
+        seg_link="Read the study",
+        seg_more="See the segment",
         product_eyebrow="The product",
         product_h="PINNeAPPle Studio",
         product_lead="Studio in plain text: you write what you need, and the platform finds a tool that already exists, checks whether your case sits inside what that tool has already proven, runs it, and returns the result with a report and evidence.",
@@ -1827,6 +2042,383 @@ ARTICLES = {
 }
 
 # ---------------------------------------------------------------------------
+# Segment pages: one per problem the studio solves, not one per industry.
+#
+# A buyer searches by object and phenomenon — "erosão em tubulação", "simulador
+# de trocador de calor", "vazão em válvula" — never by industry. Every claim on
+# these pages points at a study that is already public on this site.
+# ---------------------------------------------------------------------------
+
+SEGUI = {
+    "pt": {
+        "pain_eyebrow": "Onde dói",
+        "pain_h": "O problema como ele chega aqui",
+        "io_eyebrow": "Entra e sai",
+        "io_h": "O que a gente precisa e o que você recebe",
+        "io_in": "Entra",
+        "io_out": "Sai",
+        "proof_eyebrow": "A prova",
+        "proof_h": "O número, com a referência na frente",
+        "more": "Outras provas",
+        "study": "Ler o estudo completo",
+        "others_eyebrow": "Outros segmentos",
+        "others_h": "O mesmo rigor, outro fenômeno",
+        "io_note": "Sem estes dados o estudo não começa; com eles, o número sai com a faixa de validade declarada.",
+        "pdf": REPORT_LABEL["pt"],
+    },
+    "en": {
+        "pain_eyebrow": "Where it hurts",
+        "pain_h": "The problem as it arrives here",
+        "io_eyebrow": "In and out",
+        "io_h": "What we need and what you get",
+        "io_in": "In",
+        "io_out": "Out",
+        "proof_eyebrow": "The proof",
+        "proof_h": "The number, with the reference up front",
+        "more": "More proof",
+        "study": "Read the full study",
+        "others_eyebrow": "Other segments",
+        "others_h": "The same rigour, another phenomenon",
+        "io_note": "Without these the study does not start; with them, the number comes with its validity range stated.",
+        "pdf": REPORT_LABEL["en"],
+    },
+}
+
+SEGMENTS = {
+    "erosao": {
+        "slug": "erosao-em-tubulacao",
+        "pt": dict(
+            meta_title="Erosão em tubulação: onde vai furar e em quanto tempo · PINNeAPPle Labs",
+            meta_desc=("Estudo de erosão em tubos e curvas, verificado contra ensaio publicado: taxa em mm/ano, "
+                       "posição do pico e vida útil. Prazo de 4 a 10 semanas, orçamento a partir do escopo."),
+            eyebrow="Erosão e desgaste · tubulação",
+            h1="Onde a sua tubulação vai furar — e em quanto tempo.",
+            lead=("Estudo de erosão em tubos, curvas, reduções e manifolds: taxa na parede em mm/ano, posição do pico "
+                  "e vida útil até a espessura mínima, conferidos contra ensaio publicado."),
+            chips=["Curva, redução, T e manifold", "Verificado contra ensaio", "Entrega em 4 a 10 semanas"],
+            pains=[
+                ("A parada não programada", "Erosão não aparece na inspeção de rotina até furar. Quando aparece, a linha já está fora e a parada não é mais planejada."),
+                ("O material comprado “por segurança”", "Aumentar espessura ou trocar por liga resolve — e custa. Sem a taxa, o dimensionamento vira uma aposta para o lado caro."),
+                ("A fórmula de bolso que erra por 100×", "A fórmula fechada da norma, sem CFD, ficou 97 a 100 vezes abaixo do ensaio em dois dos três casos que verificamos."),
+            ],
+            pains_p="Três dores que trazem um estudo de erosão até aqui — e que o número resolve ou delimita.",
+            hero_fig="img/erosao-card.webp",
+            inputs=[
+                "Geometria: CAD, STEP ou desenho com diâmetro, raio de curva e trechos",
+                "Fluido: vazão, pressão e temperatura de operação",
+                "Partículas: tamanho, densidade, forma e concentração (ou taxa de areia medida)",
+                "Material e dureza da parede; espessura inicial e mínima admissível",
+                "Histórico: horas de operação por ano e paradas",
+            ],
+            outputs=[
+                "Mapa de erosão na parede, em mm/ano, na sua geometria",
+                "Posição e valor do pico — onde medir espessura primeiro",
+                "Vida útil até a espessura mínima, com a faixa de incerteza",
+                "Sensibilidade a vazão, raio de curva e material",
+                "Relatório com a verificação contra ensaio e a seção de limites",
+            ],
+            stats=[
+                ("1,05–1,49×", "do ensaio de Vieira et al. (2016)", "dentro do fator 2 nos três pontos"),
+                ("50,6°", "de pico calculado, contra 45° medido", "posição do ponto crítico"),
+                ("~100×", "é o erro da fórmula fechada sem CFD", "em 2 dos 3 ensaios"),
+                ("22,6 min", "para 32 casos, do CAD ao modelo treinado", "1,94 h de CPU"),
+            ],
+            fig="img/erosao.jpg",
+            fig_alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm por ano",
+            fig_b="Estudo aberto, curva de 90°",
+            fig_s="pico na parede externa",
+            fig_cap=("Mapa de erosão do estudo aberto: tubulação inteira e zoom na curva, com o pico na parede externa "
+                     "logo após a entrada da curva. Escala em mm/ano."),
+            post="erosao-curva-90",
+            report="estudo-erosao-curva-90",
+            extras=[
+                ("Estudo de malha: onde o número converge", "Três níveis e três pontos: o ΔP converge com GCI de 6,8–12,6% na malha fina; a erosão só converge no ponto de referência (2,9%). Onde não converge, está declarado.", "post", "erosao-curva-90"),
+                ("A checagem que não rodou não conta", "No mapa de provas do mesmo estudo: 11 verificações a favor, 0 contra e 6 que não rodaram — 65% de cobertura, declarada no relatório.", "post", "guardrail-veriphysics"),
+            ],
+        ),
+        "en": dict(
+            meta_title="Erosion in piping: where it will fail and how soon · PINNeAPPle Labs",
+            meta_desc=("Erosion study for pipes and bends, checked against a published experiment: rate in mm/year, "
+                       "peak position and service life. 4 to 10 weeks, quoted from the scope."),
+            eyebrow="Erosion and wear · piping",
+            h1="Where your piping will fail — and how soon.",
+            lead=("An erosion study for pipes, bends, reducers and manifolds: wall rate in mm/year, peak position and "
+                  "service life down to the minimum thickness, checked against a published experiment."),
+            chips=["Bend, reducer, tee and manifold", "Checked against an experiment", "Delivered in 4 to 10 weeks"],
+            pains=[
+                ("The unplanned shutdown", "Erosion does not show up in routine inspection until it breaks through. By then the line is out and the shutdown is no longer planned."),
+                ("The material bought “to be safe”", "A thicker wall or a different alloy works — and costs. Without the rate, sizing becomes a bet on the expensive side."),
+                ("The rule of thumb that is off by 100×", "The standard's closed-form formula, without CFD, came out 97 to 100 times below the experiment in two of the three cases we checked."),
+            ],
+            pains_p="Three pains that bring an erosion study here — and that the number either settles or bounds.",
+            hero_fig="img/erosao-card.webp",
+            inputs=[
+                "Geometry: CAD, STEP or a drawing with diameter, bend radius and runs",
+                "Fluid: flow rate, pressure and operating temperature",
+                "Particles: size, density, shape and concentration (or measured sand rate)",
+                "Wall material and hardness; initial and minimum allowable thickness",
+                "History: operating hours per year and shutdowns",
+            ],
+            outputs=[
+                "Wall erosion map, in mm/year, on your geometry",
+                "Peak position and value — where to measure thickness first",
+                "Service life down to the minimum thickness, with its uncertainty band",
+                "Sensitivity to flow rate, bend radius and material",
+                "Report with the experiment check and the limits section",
+            ],
+            stats=[
+                ("1.05–1.49×", "of the Vieira et al. (2016) experiment", "inside the factor-2 band at all three points"),
+                ("50.6°", "computed peak, against 45° measured", "position of the critical point"),
+                ("~100×", "is the error of the closed form without CFD", "in 2 of the 3 experiments"),
+                ("22.6 min", "for 32 cases, from CAD to trained model", "1.94 CPU-hours"),
+            ],
+            fig="img/erosao.jpg",
+            fig_alt="Wall erosion map on a 90° bend, rate in mm/year",
+            fig_b="Open study, 90° bend",
+            fig_s="peak on the outer wall",
+            fig_cap=("Erosion map from the open study: the whole pipe and the zoom into the bend, with the peak on the "
+                     "outer wall just after the bend entry. Scale in mm/year."),
+            post="erosao-curva-90",
+            report="estudo-erosao-curva-90",
+            extras=[
+                ("Mesh study: where the number converges", "Three levels, three points: ΔP converges at 6.8–12.6% GCI on the fine mesh; erosion converges only at the reference point (2.9%). Where it does not, the report says so.", "post", "erosao-curva-90"),
+                ("A check that did not run does not count", "In the same study's proof map: 11 checks for, 0 against and 6 that did not run — 65% coverage, stated in the report.", "post", "guardrail-veriphysics"),
+            ],
+        ),
+    },
+    "trocadores": {
+        "slug": "trocadores-e-termico",
+        "pt": dict(
+            meta_title="Trocadores de calor e simulação térmica · PINNeAPPle Labs",
+            meta_desc=("Estudo térmico de trocadores, dissipadores e painéis: temperatura no ponto crítico, margem até "
+                       "o limite e tempo até a incrustação tirar o processo da faixa. Prazo de 4 a 10 semanas."),
+            eyebrow="Trocadores de calor e térmico",
+            h1="O trocador sujo antes de virar parada de planta.",
+            lead=("Estudo térmico de trocadores, dissipadores e painéis: temperatura no ponto crítico, margem até o "
+                  "limite e quanto tempo a incrustação leva para tirar o processo da faixa — com a incerteza declarada."),
+            chips=["Trocadores, dissipadores e painéis", "Erro medido e declarado", "Entrega em 4 a 10 semanas"],
+            pains=[
+                ("A margem que ninguém sabe quanto sobrou", "O projeto foi feito com folga. Ninguém sabe quanto dela já foi consumida pela incrustação."),
+                ("A temperatura que só aparece na parada", "Quando a leitura sai da faixa, a janela de limpeza já passou e a decisão vira emergência."),
+                ("A bancada que custa mais que a decisão", "Montar ensaio térmico para cada geometria custa caro e chega tarde, quando o projeto já foi fechado."),
+            ],
+            pains_p="Três dores que trazem um estudo térmico até aqui — e o que o número muda na decisão.",
+            inputs=[
+                "Geometria do trocador, dissipador ou painel (CAD, STEP ou desenho cotado)",
+                "Fluidos, vazões e temperaturas de entrada dos dois lados",
+                "Propriedades do material e condutividade das interfaces",
+                "Para o gêmeo: histórico de operação (temperaturas, vazões, limpezas)",
+                "Limite de operação: temperatura máxima e margem que a planta exige",
+            ],
+            outputs=[
+                "Campo de temperatura e a temperatura no ponto crítico",
+                "Margem até o limite de operação, com a banda de incerteza",
+                "Coeficiente global e incrustação estimada (no gêmeo)",
+                "Tempo estimado até sair da faixa, com a antecedência do alarme",
+                "Relatório com a verificação e a seção de limites",
+            ],
+            stats=[
+                ("0,216 °C", "de erro contra sonda redundante", "gêmeo em operação, janela separada"),
+                ("95,5%", "de cobertura da banda de incerteza", "calibrada fora do treino"),
+                ("2,6 h", "de antecedência no alarme", "com o erro da previsão declarado"),
+                ("4,46%", "de erro médio do substituto térmico", "pior caso 7,35%, na faixa treinada"),
+            ],
+            fig="img/twin.jpg",
+            fig_alt="Gêmeo digital de um ativo em 3D com painel de leitura ao vivo",
+            fig_b="Gêmeo em operação",
+            fig_s="0,216 °C de erro · alarme 2,6 h antes",
+            fig_cap=("O ativo em 3D com a leitura viva ao lado — o formato do gêmeo que acompanha o trocador em operação."),
+            post="gemeo-hx201",
+            report="gemeo-hx201",
+            extras=[
+                ("Um dissipador que responde 200 mil vezes mais rápido", "Sete geometrias, um solver 3D e um substituto com 4,46% de erro médio (7,35% no pior caso), dentro da faixa treinada.", "post", "substituto-termico"),
+                ("O campo certo, a física reprovada", "Um FNO com 1,7% de erro contra volumes finitos e resíduo de PDE de 0,164 contra o limite de 0,1: o cartão de confiança disse não, e o artigo mostra por quê.", "post", "fno-placa-fria"),
+            ],
+        ),
+        "en": dict(
+            meta_title="Heat exchangers and thermal simulation · PINNeAPPle Labs",
+            meta_desc=("Thermal study for exchangers, heat sinks and panels: temperature at the critical point, margin "
+                       "to the limit and time until fouling takes the process out of band. 4 to 10 weeks."),
+            eyebrow="Heat exchangers and thermal",
+            h1="The fouled exchanger before it becomes a plant shutdown.",
+            lead=("A thermal study for exchangers, heat sinks and panels: temperature at the critical point, margin to "
+                  "the limit and how long fouling takes to push the process out of band — with the uncertainty stated."),
+            chips=["Exchangers, heat sinks and panels", "Measured and stated error", "Delivered in 4 to 10 weeks"],
+            pains=[
+                ("The margin nobody can size", "The design was built with slack. Nobody knows how much of it the fouling has already eaten."),
+                ("The temperature that only shows up at shutdown", "By the time the reading leaves the band, the cleaning window has passed and the decision is an emergency."),
+                ("The bench that costs more than the decision", "Building a thermal test for every geometry is expensive and late, arriving after the design is closed."),
+            ],
+            pains_p="Three pains that bring a thermal study here — and what the number changes in the decision.",
+            inputs=[
+                "Exchanger, heat sink or panel geometry (CAD, STEP or a dimensioned drawing)",
+                "Fluids, flow rates and inlet temperatures on both sides",
+                "Material properties and interface conductivity",
+                "For the twin: operating history (temperatures, flow rates, cleanings)",
+                "Operating limit: maximum temperature and the margin the plant requires",
+            ],
+            outputs=[
+                "Temperature field and the temperature at the critical point",
+                "Margin to the operating limit, with its uncertainty band",
+                "Overall coefficient and estimated fouling (in the twin)",
+                "Estimated time to leave the band, with the alarm lead time",
+                "Report with the verification and the limits section",
+            ],
+            stats=[
+                ("0.216 °C", "of error against a redundant probe", "twin in operation, separate window"),
+                ("95.5%", "band coverage", "calibrated outside training"),
+                ("2.6 h", "of alarm lead time", "with the forecast error stated"),
+                ("4.46%", "mean error of the thermal surrogate", "7.35% worst case, inside the trained range"),
+            ],
+            fig="img/twin.jpg",
+            fig_alt="Digital twin of an asset in 3D with a live reading panel",
+            fig_b="Twin in operation",
+            fig_s="0.216 °C of error · alarm 2.6 h ahead",
+            fig_cap=("The asset in 3D with the live reading beside it — the shape of the twin that follows the exchanger in operation."),
+            post="gemeo-hx201",
+            report="gemeo-hx201",
+            extras=[
+                ("A heat sink that answers 200,000 times faster", "Seven geometries, one 3D solver and a surrogate at 4.46% mean error (7.35% worst case), inside the trained range.", "post", "substituto-termico"),
+                ("The right field, the physics rejected", "An FNO at 1.7% error against finite volumes and a PDE residual of 0.164 against the 0.1 limit: the trust card said no, and the article shows why.", "post", "fno-placa-fria"),
+            ],
+        ),
+    },
+    "valvulas": {
+        "slug": "valvulas-e-maquinas",
+        "pt": dict(
+            meta_title="Válvulas, bocais e máquinas de fluxo · PINNeAPPle Labs",
+            meta_desc=("Estudo de escoamento compressível em válvulas, bocais e orifícios: vazão, perda de carga, "
+                       "campos de pressão e a checagem que recusa o caso quando o regime não é o do projeto."),
+            eyebrow="Válvulas e máquinas de fluxo",
+            h1="A sua válvula opera na faixa que o catálogo promete?",
+            lead=("Escoamento compressível em válvulas, bocais e orifícios: vazão, perda de carga, campos de pressão e "
+                  "temperatura — e a checagem que recusa o caso quando o regime não é o que o projeto supõe."),
+            chips=["Válvula, bocal, orifício", "Gás em alta queda de pressão", "Entrega em 4 a 10 semanas"],
+            pains=[
+                ("O catálogo dá a faixa, não o seu ponto", "A curva do fornecedor vale para água ou ar padrão. No seu gás, na sua pressão, o regime é outro."),
+                ("O regime sônico que ninguém confere", "Com gás em alta queda de pressão, metade dos casos trava no gargalo. Sem essa conta, o resultado do solver sai bonito e errado."),
+                ("A otimização que começa na bancada", "Testar cinco geometrias em ensaio custa meses. A ordem certa é filtrar no computador e ensaiar só a vencedora."),
+            ],
+            pains_p="Três dores que trazem um estudo de escoamento até aqui — e o que o número decide.",
+            inputs=[
+                "Geometria da válvula, bocal, orifício ou passagem (CAD/STEP), com curso e abertura",
+                "Fluido e equação de estado (gás real, quando é o caso)",
+                "Pressão e temperatura de entrada e de saída; vazão esperada",
+                "Material e rugosidade das paredes",
+                "O que a decisão precisa: vazão, perda de carga, força, ruído ou forma",
+            ],
+            outputs=[
+                "Vazão mássica e coeficiente de descarga na abertura avaliada",
+                "Perda de carga e campos de pressão, temperatura e Mach",
+                "Checagem de travessia acústica: aviso quando o caso não é representável",
+                "Malha com qualidade medida (não-ortogonalidade e checkMesh) registrada",
+                "Relatório com a verificação e a seção de limites",
+            ],
+            stats=[
+                ("0,19%", "de diferença entre dois solvers independentes", "benchmark público do motor Prius"),
+                ("90 mil", "de células na malha hexa-dominante", "não-ortogonalidade média 10,7°"),
+                ("671 s", "para o caso completo, com verificação", "válvula globo, gás em 80 → 60 bar"),
+                ("3", "geometrias cobertas pelo mesmo pipeline", "válvula, orifício e bocal"),
+            ],
+            fig="img/exp/motor-campo.webp",
+            fig_alt="Campo magnético no quarto de máquina do motor do Prius",
+            fig_b="Motor Prius, dois solvers",
+            fig_s="0,19% de diferença",
+            fig_cap=("Do benchmark aberto do motor Prius: o mesmo caso resolvido por dois solvers independentes, com 0,19% de diferença."),
+            post="motor-prius-dois-solvers",
+            report="valvula-globo",
+            extras=[
+                ("Válvula globo, 80 → 60 bar em metano", "Caso completo em tempo físico: 2,042 kg/s, Mach 0,525 e ΔT de −7,15 K, com 5 checagens aprovadas e as 3 abertas declaradas no relatório.", "pdf", "valvula-globo"),
+                ("Dois solvers, 0,19% de diferença", "O mesmo caso do motor Prius resolvido por dois solvers independentes — a checagem cruzada que sustenta o resto do pipeline.", "post", "motor-prius-dois-solvers"),
+            ],
+        ),
+        "en": dict(
+            meta_title="Valves, nozzles and flow machinery · PINNeAPPle Labs",
+            meta_desc=("Compressible flow study for valves, nozzles and orifices: flow rate, pressure drop, pressure "
+                       "fields and the check that refuses the case when the regime is not the design one."),
+            eyebrow="Valves and flow machinery",
+            h1="Does your valve operate in the range the catalogue promises?",
+            lead=("Compressible flow in valves, nozzles and orifices: flow rate, pressure drop, pressure and temperature "
+                  "fields — and the check that refuses the case when the regime is not what the design assumes."),
+            chips=["Valve, nozzle, orifice", "Gas at high pressure drop", "Delivered in 4 to 10 weeks"],
+            pains=[
+                ("The catalogue gives the range, not your point", "The vendor curve holds for water or standard air. In your gas, at your pressure, the regime is another one."),
+                ("The sonic regime nobody checks", "With gas at a high pressure drop, half the cases choke. Without that check, the solver result comes out pretty and wrong."),
+                ("Optimization that starts on the bench", "Testing five geometries experimentally costs months. The right order is to filter on the computer and test only the winner."),
+            ],
+            pains_p="Three pains that bring a flow study here — and what the number decides.",
+            inputs=[
+                "Valve, nozzle, orifice or passage geometry (CAD/STEP), with stroke and opening",
+                "Fluid and equation of state (real gas, where that is the case)",
+                "Inlet and outlet pressure and temperature; expected flow rate",
+                "Wall material and roughness",
+                "What the decision needs: flow rate, pressure drop, force, noise or shape",
+            ],
+            outputs=[
+                "Mass flow and discharge coefficient at the evaluated opening",
+                "Pressure drop and pressure, temperature and Mach fields",
+                "Acoustic crossing check: a warning when the case is not representable",
+                "Mesh quality measured and recorded (non-orthogonality and checkMesh)",
+                "Report with the verification and the limits section",
+            ],
+            stats=[
+                ("0.19%", "between two independent solvers", "public Prius motor benchmark"),
+                ("90k", "cells in the hex-dominant mesh", "10.7° mean non-orthogonality"),
+                ("671 s", "for the full case, verification included", "globe valve, gas at 80 → 60 bar"),
+                ("3", "geometries covered by the same pipeline", "valve, orifice and nozzle"),
+            ],
+            fig="img/exp/motor-campo.webp",
+            fig_alt="Magnetic field in the quarter machine of the Prius motor",
+            fig_b="Prius motor, two solvers",
+            fig_s="0.19% apart",
+            fig_cap=("From the open Prius motor benchmark: the same case solved by two independent solvers, 0.19% apart."),
+            post="motor-prius-dois-solvers",
+            report="valvula-globo",
+            extras=[
+                ("Globe valve, 80 → 60 bar in methane", "Full case in physical time: 2.042 kg/s, Mach 0.525 and −7.15 K, with 5 checks passed and the 3 open ones stated in the report.", "pdf", "valvula-globo"),
+                ("Two solvers, 0.19% apart", "The same Prius motor case solved by two independent solvers — the cross-check the rest of the pipeline stands on.", "post", "motor-prius-dois-solvers"),
+            ],
+        ),
+    },
+}
+
+
+# One META entry per segment page, built from the SEGMENTS table so the two cannot drift.
+for _key, _seg in SEGMENTS.items():
+    META[_key] = {
+        lang: dict(
+            title=_seg[lang]["meta_title"],
+            desc=_seg[lang]["meta_desc"],
+            og=_seg[lang]["fig"],
+            type="website",
+        )
+        for lang in LANGUAGES
+    }
+
+# The Studio is its own page now; it keeps the product metadata.
+META["studio"] = META["produto"]
+
+META["relatorios"] = {
+    "pt": dict(
+        title="Relatórios de exemplo por área · PINNeAPPle Labs",
+        desc=("Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, "
+              "aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — "
+              "cada um com a sua verificação e a sua página de limites."),
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+    "en": dict(
+        title="Example reports by area · PINNeAPPle Labs",
+        desc=("Seven study reports, one per area: erosion in piping, gas valve, heat exchanger, Ahmed-body "
+              "aerodynamics, topology optimization, surface-PM machine and El Niño forecasting — each with its "
+              "own verification and its own limits page."),
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+}
+
+
+# ---------------------------------------------------------------------------
 # Page: home
 # ---------------------------------------------------------------------------
 
@@ -1846,31 +2438,18 @@ def page_home(lang: str) -> str:
         <h1>{C['h1']}</h1>
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
-          {wa_button(lang)}
-          {pre_button(lang) or f'<a class="btn btn-ghost" href="{root}#produto">{C["cta_secondary"]} →</a>'}
+          {wa_button(lang, label=C['cta_primary'])}
+          <a class="btn btn-ghost" href="#entrega">{C['cta_secondary']} →</a>
         </div>
         <p class="hero-note">{S['hero_note']}</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>
-        {shot('img/eng/studio-home.webp', C['hero_cap'], C['hero_cap'], root)}
+        <figure class="hero-media">
+          <img src="{root}{C['hero_img']}" alt="{C['hero_alt']}" fetchpriority="high" decoding="async" />
+          <figcaption><b>{C['hero_fig_b']}</b><span>{C['hero_fig_s']}</span></figcaption>
+        </figure>
       </div>
-    </div>
-  </section>
-""")
-
-    parts.append(f"""
-  <section id="apresentacao" class="tight">
-    <div class="wrap">
-      <div class="section-head split reveal">
-        <div><p class="eyebrow">{C['show_eyebrow']}</p><h2>{C['show_h']}</h2></div>
-        <p>{C['show_p']}</p>
-      </div>
-      <button class="yt reveal" data-id="bTRafLSKADk" aria-label="{C['show_play']}">
-        <img src="{root}img/simr.jpg" alt="{C['show_cap']}" loading="lazy" decoding="async" />
-        <span class="yt-play" aria-hidden="true"></span>
-        <span class="yt-cap">{C['show_cap']}</span>
-      </button>
     </div>
   </section>
 """)
@@ -1891,7 +2470,23 @@ def page_home(lang: str) -> str:
   </section>
 """)
 
-    parts.append(produto_sections(lang, root))
+    entrega = "".join(
+        f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
+        for t, b in C["entrega"]
+    )
+    parts.append(f"""
+  <section id="entrega" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['entrega_eyebrow']}</p><h2>{C['entrega_h']}</h2></div>
+        <p>{C['entrega_p']}</p>
+      </div>
+      <div class="problem-grid reveal">{entrega}</div>
+      <div class="note reveal"><span><b>{C['entrega_note_b']}</b> {C['entrega_note']}</span></div>
+      <p class="section-cta reveal">{wa_button(lang, label=C['cta_primary'])} {report_button(lang, root)}</p>
+    </div>
+  </section>
+""")
 
     stats = "".join(
         f'    <div class="stat-cell" role="listitem"><div class="n{" cyan" if i % 2 else ""}">{n}</div>'
@@ -1915,6 +2510,41 @@ def page_home(lang: str) -> str:
       </div>
       <div class="result-grid reveal">
 {proofs}      </div>
+      <p class="section-cta reveal"><a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']} →</a></p>
+    </div>
+  </section>
+""")
+
+    segs = "".join(
+        f'<article class="problem-card reveal"><h3><a href="{root}{url(lang, key)}">{t}</a></h3><p>{b}</p>'
+        f'<p class="src-note"><a href="{root}{url(lang, key)}">{C["seg_more"]} →</a> · '
+        f'<a href="{root}{url(lang, "post:" + post)}">{C["seg_link"]}</a></p></article>'
+        for t, b, key, post in C["segs"]
+    )
+    parts.append(f"""
+  <section id="segmentos" class="alt tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['seg_eyebrow']}</p><h2>{C['seg_h']}</h2></div>
+        <p>{C['seg_p']}</p>
+      </div>
+      <div class="problem-grid reveal">{segs}</div>
+      <p class="section-cta reveal"><a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{S['all_articles']} →</a></p>
+    </div>
+  </section>
+""")
+
+    parts.append(f"""
+  <section id="produto" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['product_eyebrow']} · 2027</p><h2>{C['product_h']}</h2></div>
+        <p>{C['product_lead']}</p>
+      </div>
+      <p class="section-cta reveal" style="border:0;padding-top:0">
+        <a class="btn btn-ghost" href="{root}{url(lang, 'studio')}">{C['product_cta']} →</a>
+        <a class="btn btn-quiet" href="{root}{url(lang, 'studio')}#pre-acesso">{S['pre_btn']} ↗</a>
+      </p>
     </div>
   </section>
 """)
@@ -1964,7 +2594,6 @@ def page_home(lang: str) -> str:
   </section>
 """)
 
-    parts.append(pre_band(lang, root))
     parts.append(cta_band(lang, root))
     parts.append("</main>")
     parts.append(footer(lang, "home", root))
@@ -2121,6 +2750,241 @@ def produto_sections(lang: str, root: str) -> str:
     </div>
   </section>
 """
+
+
+# ---------------------------------------------------------------------------
+# Pages: segment and product
+# ---------------------------------------------------------------------------
+
+
+def oferta_section(lang: str, root: str, extra: str = "") -> str:
+    """Scope, deadline and price — the same block on the home and on every segment page."""
+    C = HOME[lang]
+    O = OFERTA[lang]
+    cards = "".join(
+        f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
+        for t, b in C["entrega"]
+    )
+    return f"""  <section id="oferta" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{O['eyebrow']}</p><h2>{O['h']}</h2></div>
+        <p>{O['linha']}</p>
+      </div>
+      <div class="problem-grid reveal">{cards}</div>
+      <div class="note reveal"><span><b>{C['entrega_note_b']}</b> {C['entrega_note']}</span></div>
+      <p class="section-cta reveal">{wa_button(lang, label=C['cta_primary'])} {extra}</p>
+    </div>
+  </section>
+"""
+
+
+def report_button(lang: str, root: str, slug: str = "estudo-erosao-curva-90",
+                  cls: str = "btn btn-ghost") -> str:
+    """The public example report, the closest thing to seeing the deliverable."""
+    return (f'<a class="{cls}" href="{root}{REPORT_FILES[slug][lang]}" target="_blank" rel="noopener">'
+            f'{REPORT_LABEL[lang]} ↗</a>')
+
+
+def page_segment(lang: str, key: str) -> str:
+    """One problem, one page: the object the buyer searches for, its proof, its offer."""
+    root = up(lang, key)
+    S = STRINGS[lang]
+    U = SEGUI[lang]
+    O = OFERTA[lang]
+    C = SEGMENTS[key][lang]
+
+    parts = [head(lang, key, root), header(lang, key, root), '<main id="main">']
+
+    chips = "".join(f'<span class="chip">{c}</span>' for c in C["chips"])
+    if C.get("report"):
+        second = report_button(lang, root, C["report"])
+    else:
+        second = (f'<a class="btn btn-ghost" href="{root}{url(lang, "post:" + C["post"])}">'
+                  f'{U["study"]} →</a>')
+    parts.append(f"""
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">{C['eyebrow']}</p>
+        <h1>{C['h1']}</h1>
+        <p class="lead">{C['lead']}</p>
+        <div class="hero-actions">
+          {wa_button(lang, label=HOME[lang]['cta_primary'])}
+          {second}
+        </div>
+        <p class="hero-note">{O['linha']}</p>
+        <div class="hero-meta">{chips}</div>
+      </div>
+      <div>
+        <figure class="hero-media">
+          <img src="{root}{C.get('hero_fig', C['fig'])}" alt="{C['fig_alt']}" />
+          <figcaption><b>{C['fig_b']}</b><span>{C['fig_s']}</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+""")
+
+    pains = "".join(
+        f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
+        for t, b in C["pains"]
+    )
+    parts.append(f"""
+  <section id="dor" class="alt tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{U['pain_eyebrow']}</p><h2>{U['pain_h']}</h2></div>
+        <p>{C['pains_p']}</p>
+      </div>
+      <div class="problem-grid reveal">{pains}</div>
+    </div>
+  </section>
+""")
+
+    ins = "".join(f"<li>{t}</li>" for t in C["inputs"])
+    outs = "".join(f"<li>{t}</li>" for t in C["outputs"])
+    parts.append(f"""
+  <section id="entra-sai" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{U['io_eyebrow']}</p><h2>{U['io_h']}</h2></div>
+        <p>{U['io_note']}</p>
+      </div>
+      <div class="io-grid reveal">
+        <div class="io-col"><h3>{U['io_in']}</h3><ul class="ticks">{ins}</ul></div>
+        <div class="io-col"><h3>{U['io_out']}</h3><ul class="ticks">{outs}</ul></div>
+      </div>
+    </div>
+  </section>
+""")
+
+    stats = "".join(
+        f'<div class="exist-cell"><b>{n}</b><span>{l} · {s}</span></div>'
+        for n, l, s in C["stats"]
+    )
+    extra_cards = []
+    for title, body, kind, ref in C.get("extras", []):
+        if kind == "pdf":
+            href = root + REPORT_FILES[ref][lang]
+            label = REPORT_LABEL[lang]
+        else:
+            href = root + url(lang, "post:" + ref)
+            label = SEGUI[lang]["study"]
+        extra_cards.append(
+            f'<article class="problem-card reveal"><h3>{title}</h3><p>{body}</p>'
+            f'<p class="src-note"><a href="{href}">{label} →</a></p></article>'
+        )
+    extras = (f'<h3 class="reveal" style="margin-top:2.6rem">{SEGUI[lang]["more"]}</h3>'
+              f'<div class="problem-grid reveal">{"".join(extra_cards)}</div>') if extra_cards else ""
+    parts.append(f"""
+  <section id="prova" class="alt tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{U['proof_eyebrow']}</p><h2>{U['proof_h']}</h2></div>
+        <p>{C['fig_cap']}</p>
+      </div>
+      <div class="exist-grid reveal">{stats}</div>
+      <figure class="fig reveal">
+        <img src="{root}{C['fig']}" alt="{C['fig_alt']}" loading="lazy" decoding="async" />
+        <figcaption>{C['fig_cap']}</figcaption>
+      </figure>
+      {extras}
+      <p class="section-cta reveal">
+        <a class="btn btn-ghost" href="{root}{url(lang, "post:" + C["post"])}">{U['study']} →</a>
+        {report_button(lang, root, C.get("report", "estudo-erosao-curva-90"), "btn btn-quiet")}
+        <a class="btn btn-quiet" href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']} →</a>
+      </p>
+    </div>
+  </section>
+""")
+
+    parts.append(oferta_section(lang, root, report_button(lang, root, C.get("report", "estudo-erosao-curva-90"))))
+
+    others = "".join(
+        f'<a class="btn btn-ghost" href="{root}{url(lang, k)}">{SEGLABELS[lang][k]} →</a>'
+        for k in SEGMENTS
+        if k != key
+    )
+    parts.append(f"""
+  <section id="outros" class="tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">{U['others_eyebrow']}</p>
+        <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">{U['others_h']}</h2>
+      </div>
+      <p class="section-cta reveal" style="border:0;padding-top:0">{others}</p>
+    </div>
+  </section>
+""")
+
+    parts.append(cta_band(lang, root))
+    parts.append("</main>")
+    parts.append(footer(lang, key, root))
+    return "".join(parts)
+
+
+def apresentacao_section(lang: str, root: str) -> str:
+    """The SIMR talk: the whole product in one recording, proof rather than a promise."""
+    C = HOME[lang]
+    return f"""  <section id="apresentacao" class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['show_eyebrow']}</p><h2>{C['show_h']}</h2></div>
+        <p>{C['show_p']}</p>
+      </div>
+      <button class="yt reveal" data-id="bTRafLSKADk" aria-label="{C['show_play']}">
+        <img src="{root}img/simr.jpg" alt="{C['show_cap']}" loading="lazy" decoding="async" />
+        <span class="yt-play" aria-hidden="true"></span>
+        <span class="yt-cap">{C['show_cap']}</span>
+      </button>
+    </div>
+  </section>
+"""
+
+
+def page_studio(lang: str) -> str:
+    """The product, on its own address, with the early-access list as its conversion."""
+    root = up(lang, "studio")
+    S = STRINGS[lang]
+    C = PRODUCT[lang]
+    M = META["studio"][lang]
+    form = PREACCESS_FORM.get(lang, "")
+    chips = "".join(f'<span class="chip">{c}</span>' for c in C["chips"])
+    primary = (f'<a class="btn btn-primary" href="{form}" target="_blank" rel="noopener">'
+               f'{S["pre_btn"]} <span aria-hidden="true">↗</span></a>') if form else wa_button(lang)
+
+    parts = [head(lang, "studio", root), header(lang, "studio", root), '<main id="main">']
+    parts.append(f"""
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">{C['eyebrow']}</p>
+        <h1>PINNeAPPle Studio</h1>
+        <p class="lead">{M['desc']}</p>
+        <div class="hero-actions">
+          {primary}
+          <a class="btn btn-ghost" href="#fluxo">{'Como funciona' if lang == 'pt' else 'How it works'} →</a>
+        </div>
+        <p class="hero-note">{S['prod_note']}</p>
+        <div class="hero-meta">{chips}</div>
+      </div>
+      <div>
+        <figure class="frame">
+          <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>PINNeAPPle Studio</span></div>
+          <img src="{root}img/eng/studio-home.webp" alt="{C['hero_cap']}" fetchpriority="high" decoding="async" />
+          <figcaption>{C['hero_cap']}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+""")
+    parts.append(produto_sections(lang, root))
+    parts.append(apresentacao_section(lang, root))
+    parts.append(pre_band(lang, root))
+    parts.append("</main>")
+    parts.append(footer(lang, "studio", root))
+    return "".join(parts)
 
 
 # ---------------------------------------------------------------------------
@@ -2341,6 +3205,63 @@ CODE_EN = CODE.replace("o coeficiente h que ninguém mede, a partir de alguns te
                .replace("medicoes", "readings")
 
 
+def page_relatorios(lang: str) -> str:
+    """The report library: every example report, grouped by the area of engineering."""
+    root = up(lang, "relatorios")
+    C = REPORTS_INDEX[lang]
+    label = REPORT_LABEL[lang]
+    parts = [head(lang, "relatorios", root), header(lang, "relatorios", root), '<main id="main">']
+
+    parts.append(f"""
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{C['eyebrow']}</p>
+      <h1>{C['h1']}</h1>
+      <p class="lead" style="max-width:64ch">{C['lead']}</p>
+      <p class="hero-note" style="max-width:64ch">{C['note']}</p>
+    </div>
+  </section>
+""")
+
+    sections = []
+    for i, (area, blurb, items) in enumerate(C["areas"]):
+        cards = "".join(
+            f'<article class="problem-card reveal"><h3>{title}</h3><p>{body}</p>'
+            f'<p class="src-note"><a href="{root}{REPORT_FILES[slug][lang]}" target="_blank" '
+            f'rel="noopener">{label} ↗</a></p></article>'
+            for slug, title, body in items
+        )
+        sections.append(f"""
+  <section class="{'alt ' if i % 2 else ''}tight" id="area-{i + 1}">
+    <div class="wrap area-row">
+      <div class="reveal">
+        <p class="eyebrow">{C['area_lbl']} {i + 1:02d}</p>
+        <h2>{area}</h2>
+        <p class="area-blurb">{blurb}</p>
+      </div>
+      <div class="problem-grid reveal">{cards}</div>
+    </div>
+  </section>
+""")
+
+    how = "".join(f"<li>{h}</li>" for h in C["how"])
+    parts.append("".join(sections))
+    parts.append(f"""
+  <section class="tight">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{C['how_eyebrow']}</p><h2>{C['how_h']}</h2></div>
+      </div>
+      <ul class="ticks reveal">{how}</ul>
+    </div>
+  </section>
+""")
+    parts.append(cta_band(lang, root))
+    parts.append("</main>")
+    parts.append(footer(lang, "relatorios", root))
+    return "".join(parts)
+
+
 def page_lib(lang: str) -> str:
     root = up(lang, "lib")
     C = LIB[lang]
@@ -2433,16 +3354,17 @@ def page_lib(lang: str) -> str:
 
 BUILDERS = {
     "home": page_home,
+    "studio": page_studio,
+    "erosao": lambda lang: page_segment(lang, "erosao"),
+    "trocadores": lambda lang: page_segment(lang, "trocadores"),
+    "valvulas": lambda lang: page_segment(lang, "valvulas"),
+    "relatorios": page_relatorios,
     "artigos": page_artigos,
     "lib": page_lib,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
 REDIRECTS = {
-    "studio": {
-        "pt": ("/#produto", "Ir para o produto"),
-        "en": ("/en/#produto", "Go to the product"),
-    },
     "engineering": {
         "pt": ("/studio/", "Ver o produto"),
         "en": ("/en/studio/", "See the product"),

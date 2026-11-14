@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>El Niño: thirty configurations under one protocol — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
+    <h1>El Niño<br />thirty configurations, one protocol</h1>
+    <p class="sub">Physical, data-driven, physics-informed and hybrid models scored with the same metric, the same windows and the same significance test.</p>
+    <div class="numbers"><div class="num"><b>0.95</b><span>of ACC at h = 1 for the best model</span></div><div class="num"><b>3</b><span>configurations with a significant gain over the best baseline</span></div><div class="num"><b>−0.69</b><span>of ACC for the state-estimator PINN at h = 3</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/exp/nino-plumas.webp" alt="Niño 3.4 index forecasts for 1997/98, 2015/16 and 2023/24, with 90% intervals" />
+    <div class="meta" style="margin-top:6mm">Document GEO-01 · version 1.0 · 2026<br />Open data: OISST v2.1, WOD, ERA5 (cache with the SHA-256 of every file)<br />One protocol: ACC, skill against persistence and the best baseline, Holm<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>GEO-01 · El Niño forecasting</span><span>1 · the question</span></div>
+  <p class="lead">Forecasting El Niño is the classic test of physical-system prediction: an irregular cycle, an ocean coupled to the atmosphere and a spring barrier where every model's skill drops. It is also where “my model is better” is usually said without a protocol.</p>
+  <p>This study puts thirty configurations on the same bench: statistical baselines, data-driven models, physical models, physics-informed and hybrid. They all see the same windows, are scored at the same horizons and go through the same significance test.</p>
+  <table><tr><th style="width:22%">Horizon</th><th>What changes</th></tr><tr><td>h = 1 to 3 months</td><td>persistence and climatology are still strong; differences between models are small</td></tr><tr><td>h = 6 months</td><td>crosses the spring barrier: this is where the protocol separates</td></tr><tr><td>h = 12 to 24 months</td><td>almost everyone loses skill; whoever still gains, gains little</td></tr></table>
+  <div class="callout"><b>The bench rule.</b> No model picks the metric, the window or the baseline. Reporting “ACC 0.95” without saying against what, at which horizon and with what significance reports nothing.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>GEO-01 · El Niño forecasting</span><span>2 · the protocol</span></div>
+  <table><tr><th style="width:26%">Item</th><th>Definition</th></tr><tr><td>Data</td><td>OISST v2.1, WOD and ERA5; every file enters with its SHA-256 registered</td></tr><tr><td>Primary metric</td><td>ACC (anomaly correlation) per horizon</td></tr><tr><td>Skills</td><td>against persistence and against the best baseline at each horizon</td></tr><tr><td>Significance</td><td>Holm test on the differences, not on the mean</td></tr><tr><td>Uncertainty</td><td>90% interval coverage and PIT deviation</td></tr></table>
+  <p>The four families enter with representatives chosen on validation, not on test — the test set is measured once, after selection.</p>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>GEO-01 · El Niño forecasting</span><span>3 · the result</span></div>
+  <table><tr><th style="width:30%">Configuration</th><th style="width:16%">Family</th><th>ACC h=1</th><th>ACC h=3</th><th>ACC h=6</th><th>ACC h=12</th><th>Significant</th></tr><tr><td>persistence</td><td>baseline</td><td>0.93</td><td>0.73</td><td>0.36</td><td>0.01</td><td>—</td></tr><tr><td>arima</td><td>baseline</td><td>0.93</td><td>0.76</td><td>0.42</td><td>0.02</td><td>no</td></tr><tr><td>cnn</td><td>data</td><td>0.95</td><td>0.87</td><td>0.70</td><td>0.26</td><td>h = 1</td></tr><tr><td>pretrained cnn</td><td>data+physics</td><td>0.95</td><td>0.85</td><td>0.66</td><td>0.30</td><td>h = 1, 2, 3</td></tr><tr><td>multiplicative seasonal ro</td><td>physical</td><td>0.95</td><td>0.84</td><td>0.63</td><td>0.30</td><td>no</td></tr><tr><td>ensemble</td><td>hybrid</td><td>0.95</td><td>0.84</td><td>0.58</td><td>0.20</td><td>h = 1, 2, 3</td></tr><tr><td>pinn_ro (state estimator)</td><td>data+physics</td><td>0.94</td><td>−0.69</td><td>−0.35</td><td>−0.01</td><td>no</td></tr><tr><td>climatology</td><td>baseline</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>—</td></tr></table>
+  <p>At h = 1 almost everything ties near 0.95: at that horizon persistence is already good and the gap between models is noise. At h = 6 the separation appears — and only <b>three</b> configurations beat the best baseline significantly.</p>
+  <div class="callout cyan"><b>The result nobody likes to publish.</b> The PINN with a state estimator (<span class="mono">pinn_ro</span>) drops to ACC <b>−0.69</b> at h = 3: worse than the period mean itself. It is in the report because it was on the bench.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>GEO-01 · El Niño forecasting</span><span>4 · the families</span></div>
+  <table><tr><th style="width:16%">Family</th><th style="width:22%">Representative</th><th>CRPS skill vs climatology (h = 1, 3, 6)</th><th>Mean coverage</th><th>PIT deviation</th></tr><tr><td>baseline</td><td>arima</td><td>0.64 · 0.32 · 0.06</td><td>0.94</td><td>0.20</td></tr><tr><td>data</td><td>cnn</td><td>0.69 · 0.45 · 0.09</td><td>0.98</td><td>0.28</td></tr><tr><td>physical</td><td>seasonal ro</td><td>0.67 · 0.44 · 0.20</td><td>0.88</td><td>0.17</td></tr><tr><td>hybrid</td><td>ensemble</td><td>0.68 · 0.45 · 0.19</td><td>0.95</td><td>0.12</td></tr><tr><td>data+physics</td><td>gbm with physical features</td><td>0.64 · 0.28 · −0.08</td><td>0.92</td><td>0.23</td></tr></table>
+  <p>The data model's 0.98 coverage looks excellent until you read the 0.28 PIT: the intervals are too wide. The hybrid at 0.12 PIT is the best calibrated in the set — and it is not the one with the highest ACC.</p>
+  <div class="callout"><b>Two questions, not one.</b> “Which is more accurate” and “which knows how much it errs” do not have the same winner. Choosing a model by ACC chooses half the answer.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>GEO-01 · El Niño forecasting</span><span>5 · limits and conclusion</span></div>
+  <table><tr><th style="width:26%">Item</th><th>What the report says</th></tr><tr><td>Spring barrier</td><td>measured separately; it is where skill drops for everyone</td></tr><tr><td>Long horizon</td><td>beyond 12 months the gain is small and vanishes in several configurations</td></tr><tr><td>Data</td><td>OISST, WOD and ERA5 with SHA-256; outside those sources the protocol does not hold</td></tr><tr><td>Model selection</td><td>done on validation; test and extrapolation never enter the choice</td></tr><tr><td>PINNs</td><td>two state-estimator variants fail visibly — stated</td></tr><tr><td>Application</td><td>index forecasting, not regional impact (rain, crops, power)</td></tr></table>
+  <div class="callout cyan"><b>What this study does not do.</b> It does not forecast rain or crops: it forecasts the El Niño index. Going from the index to regional impact is another study, with other data and other errors.</div>
+  <div class="kpi-row"><div class="kpi"><b>0.95</b><span>of ACC at h = 1</span></div><div class="kpi"><b>3</b><span>significant configurations</span></div><div class="kpi"><b>0.20</b><span>of ACC at h = 6 for the cnn</span></div><div class="kpi"><b>0.12</b><span>of PIT deviation for the ensemble</span></div></div>
+  <h3>What can be decided</h3>
+  <p>Which family to use at each horizon, with what uncertainty and with what real gain over what already exists. At h = 1 the answer is “use the cheapest”; at h = 6, only three configurations hold up.</p>
+  <h3>Provenance</h3>
+  <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Full table</td><td><span class="mono">PINNeAPPle/examples/enso_forecasting/results/tables.md</span></td></tr><tr><td>Study</td><td><span class="mono">results/study.json · phase.json · spring_barrier.json</span></td></tr><tr><td>Data</td><td>OISST v2.1, WOD, ERA5 — with SHA-256 in the cache</td></tr><tr><td>Public article</td><td><span class="mono">pinneapple-labs.github.io/artigos/el-nino-28-modelos/</span></td></tr></table>
+  <div class="callout cyan"><b>This is an example report,</b> on open data and a reproducible protocol. A study for your system follows the same structure: an explicit baseline, a significance test and the page of what was not predicted.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+</section>
+
+</body>
+</html>

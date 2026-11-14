@@ -3,7 +3,8 @@
 Landing site for **PINNeAPPle Labs**, open-source Physics AI with verification as part of the
 product. Served at <https://pinneapple-labs.github.io/>.
 
-A single home page that carries the commercial pitch and, in the middle of it, the
+A single home page that carries the commercial pitch — the study we deliver, its scope,
+deadline and price rule — then the proof, the three problems it solves, and the
 **PINNeAPPle Studio** product story (with a "coming soon" badge), an articles section with one
 post per experiment, and the library page, in two languages, generated from one script.
 
@@ -17,15 +18,46 @@ That writes:
 
 | path | page |
 |---|---|
-| `index.html` | home (pt-BR): the whole story, product sections included, from `#apresentacao` to `#historia` |
+| `index.html` | home (pt-BR): the offer (`#problema` → `#entrega`), the proof (`#resultados` → `#segmentos`), a product teaser and the history |
 | `en/index.html` | home (English) |
+| `erosao-em-tubulacao/` · `trocadores-e-termico/` · `valvulas-e-maquinas/` (+ `en/`) | the segment pages, one per problem, from the `SEGMENTS` table |
+| `studio/index.html` · `en/studio/` | the product story and the early-access list |
+| `relatorios/index.html` · `en/relatorios/` | the report library, one row per area, from `REPORTS_INDEX` |
 | `artigos/index.html` · `en/artigos/` | article index, newest first |
 | `artigos/<slug>/index.html` · `en/artigos/<slug>/` | one post per experiment, from the `POSTS` list |
 | `lib/index.html` · `en/lib/` | architecture, quickstart, open-source split |
-| `studio/`, `engineering/`, `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs, in that order, to `/#produto`, `/#produto`, `/artigos/` and `/#historia`; the old URLs keep working |
+| `engineering/`, `casos-de-uso/`, `historia/` (+ `en/`) | redirect stubs, in that order, to `/studio/`, `/artigos/` and `/#historia`; the old URLs keep working |
 
-There is one page plus the article index and the lib page: the old product page was merged
-into the home, so the product is a section (`#produto`) of it, not a tab of its own.
+The structure follows the buyer, not the company: the home sells the study, three segment
+pages carry the object the buyer actually searches for (erosion in piping, exchangers,
+valves), and the Studio — which ships in 2027 — lives on its own address with the
+early-access list as its only conversion.
+
+The example reports are one script, one table per case, two languages:
+
+```bash
+python3 tools/build_relatorios.py            # every report, pt + en
+python3 tools/build_relatorios.py valvula-globo
+```
+
+It writes the A4 HTML to `relatorios/src/` and prints the PDF with the local Chrome, so the
+type and the colours match the site. Every number in a report comes from a case that already
+exists in the repository, and each report carries its own limits page:
+
+| report | area | source case |
+|---|---|---|
+| `estudo-erosao-curva-90` | oil, gas and piping | `PINNeAPPle-CFD/casos/cfd04-curva-areia` |
+| `valvula-globo` | oil, gas and piping | `PINNeAPPle-CFD/casos/cfd08-valvula-globo` |
+| `gemeo-hx201` | thermal | `PINNeAPPle/apps/twin_ops` |
+| `aero-ahmed-body` | aerodynamics | `PINNeAPPle/examples/end_to_end/ahmed_body` |
+| `topologia-estrutural` | structural | `PINNeAPPle/examples/topology_optimization` |
+| `motor-spm` | electromagnetics | `PINNeAPPle/examples/motor_magnetics` |
+| `el-nino-modelos` | climate | `PINNeAPPle/examples/enso_forecasting` |
+
+The three in `tools/relatorios_areas.py` live in their own module so `build_relatorios.py`
+stays readable; it imports them and the build is the same. `REPORTS_INDEX` in `build.py` is
+what the `/relatorios/` page reads, so a new report is one `REPORT_FILES` entry, one
+`REPORTS_INDEX` item and one dict in the module.
 
 `build.py` also regenerates `sitemap.xml`. Commit the generated HTML along with the script:
 GitHub Pages serves the files as they are, there is no build step on the server.
@@ -40,7 +72,8 @@ GitHub Pages serves the files as they are, there is no build step on the server.
 | `fonts.css`, `fonts/` | self-hosted Archivo + JetBrains Mono (latin subset, OFL) |
 | `img/` | product and capability stills; `img/results/` holds real result plots; `img/exp/` holds the figures each article shows, straight from the example that produced them |
 | `videos/` | hero clip, two base-app recordings, the two Studio tours (`studio-pt.mp4`, `studio-en.mp4`) and the `reel-*.mp4` clips the product section scrolls through; all ship `preload="none"` and only load and play when visible |
-| `tools/` | `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
+| `tools/` | `build_relatorios.py` + `relatorios_areas.py` (the reports), `import_shots.py` (screenshots from the app repo), `capture_shots.py` (captures them from the running app), `record_studio.py` (the Studio tours) and `import_figures.py` (article figures out of `../PINNeAPPle/examples`) |
+| `relatorios/` | the public example reports, one per case and per language — seven cases, each `-pt.pdf` and `-en.pdf`; the A4 sources live in `relatorios/src/` |
 | `tools/linkedin/pre-acesso-2027/` | the early-access LinkedIn post (`post.md`) and the cards that go with it: `card.html` is the source, `render.py` writes `card.png`/`card.jpg` (pt) and `card-en.png`/`card-en.jpg` (en), 1200x1200 |
 | `Dockerfile` | nginx image serving the tree, for a self-hosted deploy |
 

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Erosion study in a 90° bend — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
+    <h1>Erosion in a 90° bend<br />sand-laden air at 15 m/s</h1>
+    <p class="sub">Where the wall erodes, at what rate, in how long — and why this number can carry a decision.</p>
+    <div class="numbers"><div class="num"><b>1.05–1.49×</b><span>of the published experiment, inside the factor-2 band practice accepts</span></div><div class="num"><b>50.6°</b><span>computed peak, against 45° measured</span></div><div class="num"><b>32 cases</b><span>from CAD to trained model, in 22.6 min</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/erosao-card.webp" alt="Wall erosion map on a 90° bend, rate in mm/year" />
+    <div class="meta" style="margin-top:6mm">Document ERC-04 · version 1.0 · 2026<br />Demonstration case (public geometry and conditions, no client data)<br />Reference experiment: Vieira et al. (2016), open data<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>1 · the request</span></div>
+  <p class="lead">A 50 mm 90° bend carries sand-laden air. The question was not “how much erodes”: it was <b>when the wall reaches the minimum thickness</b> and <b>whether changing the bend radius moves the answer enough to justify the work</b>.</p>
+  <h3>Contracted scope</h3>
+  <table><tr><th style="width:38%">Deliverable</th><th>What it contains</th></tr><tr><td>Erosion map</td><td>Wall rate (mm/year) across the geometry, with the peak position</td></tr><tr><td>Service life</td><td>Years to the minimum thickness, at the critical point</td></tr><tr><td>Verification</td><td>Comparison with a published experiment, and the choice of erosion model justified</td></tr><tr><td>Surrogate model</td><td>Answers in seconds for new flow rates and bend radii</td></tr><tr><td>Limits</td><td>What is not proven and what needs a test</td></tr></table>
+  <h3>Out of scope</h3>
+  <p>Mechanical design of the pipe, material selection, field inspection, experimental testing. The study delivers the number and the proof; the engineering decision and the purchase stay with whoever hires us.</p>
+  <div class="callout"><b>How to read this document.</b> Every number appears with the reference it was checked against — a published experiment, an independent solver or a mesh study. Numbers without a reference do not enter the report: they stay on the limits page, as an open question.</div>
+  <h3>Assumptions that move the answer</h3>
+  <ul><li>The sand rate is the one in the scenario; a particle surge moves the result more than the mesh.</li><li>The wall is carbon steel; another material changes the erosion coefficient, not the impact distribution.</li><li>The flow is steady at the evaluated operating point; transients (starts, water hammer) are not covered.</li></ul>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>2 · input data</span></div>
+  <p>This is the demonstration case form — in a client study these fields come from the CAD, the process sheet and the operating history.</p>
+  <table><tr><th style="width:16%">Item</th><th style="width:46%">Value</th><th>Source</th></tr><tr><td>Geometry</td><td><span class="mono">90° bend, D = 50 mm</span></td><td>10·D upstream and 20·D downstream</td></tr><tr><td>Fluid</td><td><span class="mono">air at 20 °C · ρ = 1.204 kg/m³ · µ = 1.825·10⁻⁵ Pa·s</span></td><td>fluid catalogue</td></tr><tr><td>Particles</td><td><span class="mono">quartz · ρp = 2,650 kg/m³ · dp = 150 µm</span></td><td>Fs = 0.53 · ṁp = 10⁻⁴ kg/s</td></tr><tr><td>Wall</td><td><span class="mono">carbon steel · 7,800 kg/m³ · HB 150</span></td><td>5 → 2 mm · 8,760 h/year</td></tr><tr><td>Reference point</td><td><span class="mono">U = 20 m/s · R/D = 1.5</span></td><td>base case for the map and the mesh study</td></tr><tr><td>Campaign</td><td><span class="mono">32 points · Sobol</span></td><td>U from 10 to 30 m/s · R/D from 1.5 to 5</td></tr></table>
+  <div class="callout cyan"><b>Study rule:</b> the validity range is declared before the run. Outside U = 10–30 m/s or R/D = 1.5–5 the surrogate says it is extrapolating — and the number loses its guarantee.</div>
+  <h3>How the method was built</h3>
+  <table><tr><th style="width:30%">Step</th><th>Choice</th></tr><tr><td>Mesh</td><td>Hexahedral, script-generated (<span class="mono">classy_blocks</span>), 10,400 cells, y⁺ target 50, <span class="mono">checkMesh</span> passed</td></tr><tr><td>Flow</td><td><span class="mono">simpleFoam</span>, k-ω SST, 109 iterations to converge, mass balance 3.5·10⁻⁶</td></tr><tr><td>Particles</td><td><span class="mono">icoUncoupledKinematicParcelFoam</span>, 2,000 parcels (4,000 in the statistical test)</td></tr><tr><td>Erosion</td><td>DNV-RP-O501 impact model applied to the wall impacts; E/CRC and Finnie as cross-checks</td></tr><tr><td>Case convergence</td><td>26 s wall-clock on 4 cores · 14 to 17 thousand wall impacts</td></tr></table>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>3 · verification</span></div>
+  <p class="lead">Before reporting an erosion rate, the model had to reproduce an experiment it had never seen: the Vieira et al. (2016) bend, D = 76.2 mm, R/D = 1.5, 150 µm sand, at three velocities.</p>
+  <table><tr><th>Test</th><th>U (m/s)</th><th>Measured (mm/year)</th><th>Computed (mm/year)</th><th>Ratio</th><th>Factor 2</th></tr><tr><td>T1</td><td>11</td><td>6.5</td><td>6.8</td><td>1.05×</td><td><span class="verdict v-ok">passed</span></td></tr><tr><td>T3</td><td>15</td><td>13.2</td><td>16.9</td><td>1.28×</td><td><span class="verdict v-ok">passed</span></td></tr><tr><td>T5</td><td>23</td><td>36.2</td><td>53.8</td><td>1.49×</td><td><span class="verdict v-ok">passed</span></td></tr><tr><td>peak position</td><td>—</td><td>45°</td><td>50.6°</td><td>+5.6°</td><td><span class="verdict v-ok">passed</span></td></tr></table>
+  <p><small>150 µm sand in all three tests. Ratios and positions computed with the DNV-RP-O501 impact model, on the study mesh. Measured: Khan et al. (2023); peak position: Khan et al. (2022).</small></p>
+  <div class="callout"><b>Why this matters.</b> Erosion is not a 1%-precision phenomenon: it depends on the particle distribution, the material and the operating history. Design practice accepts a factor of 2. The commitment is to land inside the band <b>and say where in the band</b>.</div>
+  <h3>The other models were tested and rejected</h3>
+  <table><tr><th style="width:34%">Erosion model</th><th style="width:26%">Against the three tests</th><th>Reading</th></tr><tr><td>DNV-RP-O501 (impact)</td><td>1.05–1.49×</td><td><span class="verdict v-ok">adopted</span> inside factor 2 at all three</td></tr><tr><td>E/CRC</td><td>1.98–2.5× above</td><td><span class="verdict v-fail">rejected</span> leaves the band at all three</td></tr><tr><td>Finnie</td><td>~28× above</td><td><span class="verdict v-fail">rejected</span> wrong order of magnitude</td></tr><tr><td>DNV §8.4 closed form (no CFD)</td><td>97–100× below in 2 of 3</td><td><span class="verdict v-fail">rejected</span> depends on factor G, which ranges 0.02 to 1</td></tr></table>
+  <div class="callout cyan"><b>What is not proven yet.</b> The erosion constants of all three models come from secondary sources (the original experiment is paywalled). The verification above is the best evidence available today, declared as such — not as definitive validation.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>4 · result</span></div>
+  <h3>First the experiment, solved: T3, 15 m/s</h3>
+  <figure><img src="../../img/erosao.jpg" alt="Wall erosion map for test T3: the whole pipe and the zoom into the bend, with the peak on the outer wall just after the bend entry. Scale in mm/year." /><figcaption>Wall erosion map for test T3: the whole pipe and the zoom into the bend, with the peak on the outer wall just after the bend entry. Scale in mm/year.</figcaption></figure>
+  <p>The maximum is not in the middle of the bend: it is on the outer wall, 50.6° after the entry (the experiment measures 45°). That is the point inspection must measure first — and the one that sets the life of the rest of the line.</p>
+  <h3>Then the design case: U = 20 m/s, R/D = 1.5</h3>
+  <table><tr><th style="width:40%">Erosion model</th><th>Peak rate (mm/year)</th><th>Life 5 → 2 mm</th></tr><tr><td>DNV-RP-O501 (adopted)</td><td>1.47</td><td>2.0 years</td></tr><tr><td>E/CRC</td><td>2.83</td><td>1.1 years</td></tr><tr><td>Finnie (cross-check)</td><td>23.8</td><td>0.13 year</td></tr><tr><td>DNV §8.4 closed form (no CFD)</td><td>0.037</td><td>81 years</td></tr></table>
+  <div class="callout"><b>What the decision needs to know:</b> with the verified model, projected life is <b>2 years</b> at the critical point. The closed form without CFD would say 81 years for the same geometry. The difference is not precision: it is the choice between “planned replacement” and “no action”.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>5 · surrogate model</span></div>
+  <p class="lead">Thirty-two cases covering U from 10 to 30 m/s and R/D from 1.5 to 5 were solved in CFD and used to train a model that answers in seconds. All 32 finished without rejection, in 22.6 min wall-clock (1.94 CPU-hours).</p>
+  <table><tr><th style="width:32%">Indicator</th><th>Reference without AI</th><th>Validation</th><th>Test</th><th>Out of range</th></tr><tr><td>Pressure drop (ΔP)</td><td>Darcy + Colebrook</td><td>0.7%</td><td>1.0%</td><td>0.4%</td></tr><tr><td>Peak erosion rate</td><td>DNV §8.4</td><td>15.7%</td><td>10.6%</td><td>19.7%</td></tr></table>
+  <p><small>Mean relative error. The bootstrap confidence interval was not computed: there are 9 test and out-of-range points, and the criterion requires at least 10.</small></p>
+  <h3>What it is for</h3>
+  <ul><li>Varying diameter, bend radius and flow rate no longer costs a day per point.</li><li>Service life stops being a single number and becomes a curve against flow rate.</li><li>Outside the training range the model says it is extrapolating, with the measured 19.7% error.</li></ul>
+  <div class="callout cyan"><b>What the surrogate does not do:</b> replace the experiment. It reproduces the CFD inside the trained range — if the CFD is wrong for your case, the surrogate is wrong with it, faster.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>6 · limits</span></div>
+  <p class="lead">This page exists because a number without its limits is an opinion with decimal places. Everything that did not pass an external reference is here.</p>
+  <table><tr><th style="width:30%">Item</th><th style="width:22%">State</th><th>Practical consequence</th></tr><tr><td>Campaign mesh</td><td><span class="verdict v-fail">coarse</span></td><td>10,400 cells: ~30% high on ΔP and ~40% low on erosion, against the extrapolated fine-mesh value</td></tr><tr><td>Mesh convergence (GCI)</td><td><span class="verdict v-fail">off target</span></td><td>ΔP at 6.8–12.6% GCI on the fine mesh (target 5%); erosion converges only at the reference point (2.9%)</td></tr><tr><td>Erosion constants</td><td><span class="verdict v-fail">secondary source</span></td><td>DNV, E/CRC and Finnie come from secondary literature; the original experiment is paywalled</td></tr><tr><td>Fields sent to verification</td><td><span class="verdict v-fail">6 checks did not run</span></td><td>11 for, 0 against, 65% coverage</td></tr><tr><td>Surrogate interpolation</td><td><span class="verdict v-ok">measured</span></td><td>1.0% on ΔP and 10.6% on erosion, at points held out of training</td></tr><tr><td>Surrogate extrapolation</td><td><span class="verdict v-fail">warned, not guaranteed</span></td><td>outside U 10–30 m/s or R/D 1.5–5 the error rises (19.7%)</td></tr></table>
+  <div class="callout"><b>House rule.</b> A coarse-mesh result counts as a demonstration of the pipeline, not as a client number. This document is public for exactly that reason.</div>
+  <h3>What would take this number up a level</h3>
+  <ul><li>Campaign on the fine mesh, with GCI inside 5% for erosion as well.</li><li>Our own test, or buying the original experiment, to replace the secondary constants.</li><li>Sending the full fields to verification, closing the six checks that did not run.</li></ul>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>6</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>ERC-04 · erosion in a 90° bend</span><span>7 · conclusion</span></div>
+  <div class="kpi-row"><div class="kpi"><b>1.47</b><span>mm/year at the critical point</span></div><div class="kpi"><b>2.0</b><span>years to 5 → 2 mm</span></div><div class="kpi"><b>50.6°</b><span>peak position in the bend</span></div><div class="kpi"><b>1.0%</b><span>surrogate error on ΔP</span></div></div>
+  <h3>Recommendation</h3>
+  <p>Inspect the outer wall just after the bend entry, not the middle of the bend. With the verified rate and the adopted minimum thickness, the planned-replacement window is two years — and the surrogate lets you test, in seconds, whether a larger radius buys more time than a material change.</p>
+  <h3>What this study does not decide</h3>
+  <p>Which material to buy, which supplier to pick, when to stop the plant. It delivers the rate, the position and the error; the economic decision uses those numbers together with downtime cost and pipe price.</p>
+  <h3>Provenance</h3>
+  <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Reference experiment</td><td>Vieira et al. (2016), E/CRC Tulsa · open table in Khan et al. (2023), <i>Eng. Proc.</i> 45:28</td></tr><tr><td>Measured peak position</td><td>Khan et al. (2022), <i>Materials</i> 15:3721</td></tr><tr><td>Public article of the study</td><td><span class="mono">pinneapple-labs.github.io/artigos/erosao-curva-90/</span></td></tr><tr><td>Code and case</td><td><span class="mono">github.com/PINNeAPPle-Labs/PINNeAPPle-CFD · casos/cfd04-curva-areia</span></td></tr></table>
+  <div class="callout cyan"><b>This is an example report,</b> built on a demonstration case with public geometry and conditions. A study for your plant follows the same structure, with the same limits page.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>7</span></div>
+</section>
+
+</body>
+</html>

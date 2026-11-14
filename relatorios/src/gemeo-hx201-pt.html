@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Gêmeo digital HX-201 — PINNeAPPle Labs</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+  :root {
+    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
+    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ok: #1f7a4d; --fail: #b03a3a;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm 16mm; position: relative; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); padding-bottom: 3mm; margin-bottom: 8mm; }
+  .runfoot { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  h1 { font-size: 12pt; margin: 0 0 5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 0 0 4mm; letter-spacing: -0.015em; }
+  h3 { font-size: 10.5pt; margin: 7mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  .lead { font-size: 11.5pt; color: var(--dim); line-height: 1.5; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 0 0 3mm; }
+  small { font-size: 8pt; color: var(--mute); }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .cover { display: flex; flex-direction: column; justify-content: space-between; height: 297mm; }
+  .cover .top { border-bottom: 3px solid var(--gold); padding-bottom: 6mm; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-weight: 700; font-size: 12pt; letter-spacing: -0.02em; }
+  .brand span.labs { font-weight: 400; color: var(--dim); }
+  .cover h1 { font-size: 28pt; line-height: 1.1; margin: 10mm 0 3mm; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 12pt; color: var(--dim); max-width: 130mm; }
+  .cover .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 8mm; }
+  .num { border-top: 2px solid var(--ink); padding-top: 3mm; }
+  .num b { display: block; font-size: 21pt; letter-spacing: -0.03em; }
+  .num span { font-size: 8.5pt; color: var(--dim); }
+  .cover img { width: 100%; max-height: 86mm; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 2mm; margin-top: 8mm; }
+  .cover .meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: var(--mute); line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+  td.n { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .callout { border-left: 3px solid var(--gold); background: var(--gold-bg); padding: 4mm 5mm; margin: 0 0 5mm; font-size: 9.5pt; }
+  .callout.cyan { border-color: var(--cyan); background: var(--cyan-bg); }
+  .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
+  .v-ok { background: #e3f4ea; color: var(--ok); }
+  .v-fail { background: #f8e6e6; color: var(--fail); }
+  .v-mid { background: #fdf3dc; color: var(--gold); }
+  ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1.2mm; }
+  figure { margin: 0 0 4mm; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--mute); margin-top: 2mm; line-height: 1.6; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 0 0 5mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 2mm; padding: 3.5mm; }
+  .kpi b { display: block; font-size: 15pt; letter-spacing: -0.02em; }
+  .kpi span { font-size: 8pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="top">
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
+    <h1>Gêmeo digital HX-201<br />permutador com incrustação</h1>
+    <p class="sub">Um contrato de acurácia assinado antes da operação — e o que aconteceu quando a incrustação apareceu.</p>
+    <div class="numbers"><div class="num"><b>0,216 °C</b><span>de RMSE contra a sonda reservada</span></div><div class="num"><b>95,5%</b><span>de cobertura da banda, calibrada fora do treino</span></div><div class="num"><b>2,6 h</b><span>de antecedência no alarme, com o erro da previsão</span></div></div>
+  </div>
+  <div>
+    <img src="../../img/twin.jpg" alt="Gêmeo digital de um ativo em 3D com painel de leitura ao vivo" />
+    <div class="meta" style="margin-top:6mm">Documento TW-201 · versão 1.0 · 2026<br />Histórico sintético de demonstração: não é registro de comissionamento de planta<br />Referência: sonda TT-105, reservada e fora do filtro<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · gêmeo do permutador HX-201</span><span>1 · o pedido</span></div>
+  <p class="lead">Um permutador casco-e-tubo perde eficiência com incrustação. A operação não quer previsão: quer saber <b>quanto tempo tem</b> até a carga a jusante não fechar.</p>
+  <p>O risco de um gêmeo não é errar a previsão — é ser ouvido sem merecer. Por isso o estudo começa por um contrato escrito antes de qualquer dado: as métricas, as faixas e os limites que o modelo precisa cumprir para existir.</p>
+  <h3>O que foi contratado</h3>
+  <ul><li>Modelo <span class="mono">exchanger-ntu 1.0</span>, com piso de acurácia declarado de 1 °C.</li><li>Gates de aceitação: RMSE ≤ 2,5% do span, viés ≤ 1%, cobertura ≥ 90%, antecedência de alarme ≥ 1 h.</li><li>Uma sonda redundante (TT-105) que nunca entra no filtro: ela é o juiz.</li><li>Faixa de validade declarada em contrato: T de 80 a 110 °C e ṁ de 0,5 a 2,0 kg/s.</li></ul>
+  <div class="callout"><b>A ordem importa.</b> O contrato é assinado antes do primeiro passo do filtro. Métrica escolhida depois de ver o resultado não é métrica: é desculpa.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · gêmeo do permutador HX-201</span><span>2 · o contrato</span></div>
+  <h3>Grandezas previstas e limites de processo</h3>
+  <table><tr><th style="width:34%">Grandeza</th><th>Faixa</th><th>Limite de processo</th></tr><tr><td>T_ho (saída quente)</td><td>35–75 °C</td><td>alarme acima de 60,0 °C</td></tr><tr><td>T_co (saída fria)</td><td>45–75 °C</td><td>alarme abaixo de 57,8 °C</td></tr><tr><td>R_f (incrustação)</td><td>0–0,0025 m²K/W</td><td>sem limite de engenharia declarado</td></tr></table>
+  <h3>Sensores</h3>
+  <table><tr><th style="width:34%">Papel</th><th>Sensores</th><th>Uso</th></tr><tr><td>Entradas (ponto de operação)</td><td>TT-101, TT-102, FT-101, FT-102</td><td>movem o modelo</td></tr><tr><td>Assimilados</td><td>TT-103, TT-104</td><td>entram no filtro, ruído 0,15 °C</td></tr><tr><td>Reservado</td><td>TT-105</td><td>só compara; nunca entra no filtro</td></tr></table>
+  <h3>Gates de aceitação</h3>
+  <table><tr><th style="width:30%">Gate</th><th style="width:28%">Critério</th><th>Por quê</th></tr><tr><td>RMSE</td><td>≤ 2,5% do span de 40 °C</td><td>≈ 1 °C, o mesmo piso de acurácia do modelo</td></tr><tr><td>Viés</td><td>≤ 1%</td><td>erro sistemático não pode se esconder na média</td></tr><tr><td>Cobertura da banda</td><td>≥ 90%</td><td>a banda tem de conter o que acontece</td></tr><tr><td>Antecedência do alarme</td><td>≥ 3.600 s</td><td>aviso inútil não é aviso</td></tr></table>
+  <div class="callout cyan"><b>Faixa de validade:</b> T de 80 a 110 °C e ṁ de 0,5 a 2,0 kg/s. Fora dela o gêmeo não promete nada — e o relatório diz isso em vez de extrapolar em silêncio.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · gêmeo do permutador HX-201</span><span>3 · o resultado</span></div>
+  <p class="lead">852 passos, 255.300 s (70,9 h) na janela de validação. As métricas são calculadas só na parte que não foi usada para calibrar a banda.</p>
+  <div class="kpi-row"><div class="kpi"><b>0,216 °C</b><span>RMSE contra a sonda reservada</span></div><div class="kpi"><b>0,168 °C</b><span>erro absoluto médio</span></div><div class="kpi"><b>0,432 °C</b><span>p95 do erro absoluto</span></div><div class="kpi"><b>−0,010 °C</b><span>viés</span></div></div>
+  <table><tr><th style="width:30%">Gate</th><th>Critério</th><th>Obtido</th><th>Situação</th></tr><tr><td>RMSE</td><td>≤ 2,5% do span</td><td>0,54% do span</td><td><span class="verdict v-ok">passa</span></td></tr><tr><td>Viés</td><td>≤ 1%</td><td>−0,026% do span</td><td><span class="verdict v-ok">passa</span></td></tr><tr><td>Cobertura</td><td>≥ 90%</td><td>95,5%</td><td><span class="verdict v-ok">passa</span></td></tr><tr><td>Antecedência do alarme</td><td>≥ 3.600 s</td><td>9.300 s</td><td><span class="verdict v-ok">passa</span></td></tr></table>
+  <p>A incrustação estimada ao fim da janela foi de <b>0,001652 m²K/W</b>, contra 0,001637 do valor verdadeiro do cenário — 0,9% de diferença. É a variável que a operação não mede e que o gêmeo passa a estimar.</p>
+  <div class="callout"><b>O juiz é externo.</b> A sonda TT-105 ficou fora do filtro durante todo o comissionamento. A métrica que aparece aqui é a distância entre o modelo e uma medição que ele nunca viu.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · gêmeo do permutador HX-201</span><span>4 · a banda, o alarme e o que não está provado</span></div>
+  <p>A banda de incerteza não é um intervalo de previsão: é uma banda de estado, e foi calibrada uma única vez numa janela separada (os primeiros 127.500 s), depois avaliada no resto. A escala aplicada foi ×1,336; sem ela, a banda bruta do ensemble cobriria 86,4% — abaixo do gate de 90%.</p>
+  <p>Isso está declarado no relatório, não escondido: uma banda que só funciona depois de ajustada é uma banda ajustada, e quem lê precisa saber disso para decidir o que fazer com ela.</p>
+  <h3>O alarme</h3>
+  <table><tr><th style="width:36%">Indicador</th><th style="width:28%">Valor</th><th>Leitura</th></tr><tr><td>Antecedência do alarme</td><td>9.300 s (2,6 h)</td><td>tempo entre o aviso e o cruzamento do limite</td></tr><tr><td>Erro da previsão do cruzamento</td><td>3.900 s (1,1 h)</td><td>distância entre o instante previsto e o medido</td></tr><tr><td>Origem da antecedência</td><td>extrapolação linear do estado latente</td><td>cresce com qualquer mudança de regime</td></tr></table>
+  <div class="callout cyan"><b>Regra da casa.</b> Antecedência sem erro declarado é chute com relógio. O número que a operação usa é o par: 2,6 h de aviso, com 1,1 h de erro na hora do cruzamento.</div>
+  <h3>O que não está provado</h3>
+  <table><tr><th style="width:30%">Item</th><th>O que o relatório diz</th></tr><tr><td>A banda é de estado</td><td>não é intervalo de previsão para mudança de regime</td></tr><tr><td>Comissionado só na faixa declarada</td><td>fora de T 80–110 °C ou ṁ 0,5–2,0 kg/s, nenhuma promessa</td></tr><tr><td>Primeiros 12 quadros</td><td>assimilados, mas excluídos das métricas</td></tr><tr><td>Sem antecedência para R_f</td><td>nenhum limite de engenharia foi declarado para a incrustação</td></tr><tr><td>Histórico sintético</td><td>demonstração; não é registro de comissionamento de planta</td></tr><tr><td>Sem reajuste</td><td>é o gêmeo como foi entregue, não um modelo retreinado depois</td></tr></table>
+  <div class="callout"><b>Por que publicar os limites de um gêmeo.</b> Porque o valor dele é justamente ser auditable: um modelo que declara onde não vale pode ser usado; um que não declara não pode.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span>TW-201 · gêmeo do permutador HX-201</span><span>5 · conclusão</span></div>
+  <div class="kpi-row"><div class="kpi"><b>95,5%</b><span>cobertura da banda</span></div><div class="kpi"><b>0,216 °C</b><span>RMSE contra a sonda</span></div><div class="kpi"><b>2,6 h</b><span>de antecedência no alarme</span></div><div class="kpi"><b>0,001652</b><span>m²K/W de incrustação estimada</span></div></div>
+  <h3>O que a operação faz com isso</h3>
+  <p>Antecedência é tempo para planejar limpeza, negociar uma janela de parada ou ajustar carga. O gêmeo não decide nada: ele avisa, e diz com que erro está avisando.</p>
+  <h3>O que este estudo não decide</h3>
+  <p>O momento econômico da parada, o fornecedor da limpeza e o custo da perda de carga. Ele entrega a estimativa de incrustação e a janela de aviso; o resto é decisão de operação.</p>
+  <h3>Proveniência</h3>
+  <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Contrato de acurácia</td><td><span class="mono">PINNeAPPle/apps/twin_ops/spec_hx201.yaml</span></td></tr><tr><td>Evidência do comissionamento</td><td><span class="mono">twin_evidence_hx201.json</span> · spec 6b86712f52ed2644</td></tr><tr><td>Pré-condições</td><td>11 verificações de preflight, 11 aprovadas</td></tr><tr><td>Artigo público</td><td><span class="mono">pinneapple-labs.github.io/artigos/gemeo-hx201/</span></td></tr></table>
+  <div class="callout cyan"><b>Este é um relatório de exemplo,</b> com histórico sintético de demonstração. Um gêmeo para a sua planta segue a mesma estrutura: contrato antes, sonda reservada como juiz e a mesma página de limites.</div>
+  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+</section>
+
+</body>
+</html>
