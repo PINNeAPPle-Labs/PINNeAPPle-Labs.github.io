@@ -2654,18 +2654,17 @@ def page_home(lang: str) -> str:
         f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
         for t, b in C["problems"]
     )
-    pillar_cards = "".join(f'<article class="problem-card"><h3>{h}</h3><p>{p}</p></article>' for h,p in ([
-        ("Plataforma aberta", "Ferramentas, modelos e pipelines para simulação, treinamento, inferência e verificação física."),
-        ("Consultoria e projetos", "Soluções personalizadas para problemas industriais, da modelagem física à implantação."),
-        ("Pesquisa e desenvolvimento", "Novos métodos, benchmarks, modelos físicos e colaboração científica."),
-        ("Aplicações reais", "CFD, estruturas, energia, otimização, modelos substitutos e gêmeos digitais."),
+    product_cards = [
+        ("01 · Consultoria em Physics AI", "Projetos personalizados de engenharia, simulação, surrogate models, otimização e integração industrial. Do diagnóstico à validação e entrega.", "#consultoria", "Conhecer a consultoria"),
+        ("02 · PINNeAPPle Studio", "Ambiente de software para estruturar problemas físicos, executar fluxos de modelagem e simulação e acompanhar verificações e evidências.", f"{root}{url(lang, 'studio')}", "Conhecer o Studio"),
     ] if lang == "pt" else [
-        ("Open platform", "Tools, models, and pipelines for simulation, training, inference, and physics verification."),
-        ("Consulting and projects", "Custom industrial solutions, from physical modeling to deployment."),
-        ("Research and development", "New methods, benchmarks, physics models, and scientific collaboration."),
-        ("Real-world applications", "CFD, structures, energy, optimization, surrogates, and digital twins."),
-    ]))
-    parts.append(f"""\n  <section id="o-que-fazemos" class="tight"><div class="wrap"><div class="section-head split"><div><p class="eyebrow">{'O que fazemos' if lang == 'pt' else 'What we do'}</p><h2>{'Da pesquisa científica à engenharia aplicada.' if lang == 'pt' else 'From scientific research to applied engineering.'}</h2></div><p>{'O PINNeAPPle Labs conecta desenvolvimento tecnológico, pesquisa e consultoria para tornar Physics AI acessível e aplicável em diferentes áreas da ciência e engenharia.' if lang == 'pt' else 'PINNeAPPle Labs brings together technology development, research, and consulting to make Physics AI accessible and useful across science and engineering.'}</p></div><div class="problem-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">{pillar_cards}</div></div></section>\n""")
+        ("01 · Physics AI Consulting", "Custom engineering, simulation, surrogate modeling, optimization, and industrial integration projects. From discovery through validation and delivery.", "#consultoria", "Explore consulting"),
+        ("02 · PINNeAPPle Studio", "A software environment for defining physics problems, running modeling and simulation workflows, and tracking verification and evidence.", f"{root}{url(lang, 'studio')}", "Explore Studio"),
+    ]
+    product_cards_html = "".join(f'<article class="problem-card"><h3>{h}</h3><p>{p}</p><p><a class="btn btn-ghost" href="{link}">{cta} →</a></p></article>' for h, p, link, cta in product_cards)
+    parts.append(f"""
+  <section id="produtos" class="tight"><div class="wrap"><div class="section-head split"><div><p class="eyebrow">{'Produtos' if lang == 'pt' else 'Products'}</p><h2>{'Nossos produtos' if lang == 'pt' else 'Our products'}</h2></div><p>{'Duas formas de levar Physics AI ao seu projeto: desenvolvimento personalizado com nossa equipe ou uso do PINNeAPPle Studio.' if lang == 'pt' else 'Two ways to apply Physics AI to your project: custom development with our team or the PINNeAPPle Studio software.'}</p></div><div class="problem-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{product_cards_html}</div><p class="hero-note">{'Escolha entre um projeto desenvolvido conosco ou a experiência de software do Studio.' if lang == 'pt' else 'Choose a project developed with our team or the Studio software experience.'}</p></div></section>
+""")
     parts.append(f"""
   <section id="problema" class="alt tight">
     <div class="wrap">
