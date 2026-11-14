@@ -1,0 +1,57 @@
+{
+ "title": "A320 em cruzeiro",
+ "scene": "scene.glb",
+ "field": {
+  "name": "cp",
+  "label": "Coeficiente de pressão Cp (OpenFOAM)",
+  "cmap": "jet",
+  "range": [
+   -1.4135251784056884,
+   0.9473333746081355
+  ]
+ },
+ "sections": [
+  {
+   "kicker": "PINNeAPPle Labs",
+   "title": "O que o ar faz com uma asa",
+   "body": "Uma aeronave classe A320, com o coeficiente de pressão de uma rodada de OpenFOAM sobre a pele."
+  },
+  {
+   "kicker": "O resultado",
+   "title": "Cp na pele",
+   "body": "Azul onde o escoamento acelera, vermelho onde ele para. A mesma escala do relatório."
+  },
+  {
+   "kicker": "A verificação",
+   "title": "O número sai com o erro declarado",
+   "body": "Cada estudo é checado contra referência antes de virar relatório."
+  },
+  {
+   "kicker": "O Studio",
+   "title": "Da geometria ao relatório",
+   "body": "Geometria, malha, solver e a página que o cliente abre no navegador."
+  }
+ ],
+ "beats": [
+  [
+   -2.1,
+   0.24,
+   3.7
+  ],
+  [
+   -0.95,
+   0.4,
+   3.1
+  ],
+  [
+   0.3,
+   0.2,
+   2.8
+  ],
+  [
+   1.45,
+   0.55,
+   3.4
+  ]
+ ]
+}

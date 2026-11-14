@@ -1,0 +1,57 @@
+{
+ "title": "A320 in cruise",
+ "scene": "../../demo/scene.glb",
+ "field": {
+  "name": "cp",
+  "label": "Pressure coefficient Cp (OpenFOAM)",
+  "cmap": "jet",
+  "range": [
+   -1.4135251784056884,
+   0.9473333746081355
+  ]
+ },
+ "sections": [
+  {
+   "kicker": "PINNeAPPle Labs",
+   "title": "What the air does to a wing",
+   "body": "An A320-class aircraft with the pressure coefficient of an OpenFOAM run on its skin."
+  },
+  {
+   "kicker": "The result",
+   "title": "Cp on the skin",
+   "body": "Blue where the flow speeds up, red where it stops. The same scale as the report."
+  },
+  {
+   "kicker": "Verification",
+   "title": "The number ships with its declared error",
+   "body": "Every study is checked against a reference before it becomes a report."
+  },
+  {
+   "kicker": "The Studio",
+   "title": "From geometry to report",
+   "body": "Geometry, mesh, solver and the page the client opens in a browser."
+  }
+ ],
+ "beats": [
+  [
+   -2.1,
+   0.24,
+   3.7
+  ],
+  [
+   -0.95,
+   0.4,
+   3.1
+  ],
+  [
+   0.3,
+   0.2,
+   2.8
+  ],
+  [
+   1.45,
+   0.55,
+   3.4
+  ]
+ ]
+}

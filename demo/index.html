@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A320 em cruzeiro</title>
+<style>
+  :root { --ink: #eef2f6; --dim: #8f9aa6; --bg: #070a10; --accent: #3dd6c4; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         -webkit-font-smoothing: antialiased; }
+  #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+  .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+              background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(3,5,9,.72) 100%); }
+  .scrim { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+           background: linear-gradient(100deg, rgba(4,7,12,.80) 0%, rgba(4,7,12,.28) 30%,
+                       rgba(4,7,12,.04) 50%, rgba(4,7,12,0) 62%); }
+  .bar { position: fixed; z-index: 3; inset: 0 0 auto 0; display: flex; justify-content: space-between;
+         align-items: center; padding: 18px clamp(16px, 4vw, 40px); font-size: 13px; letter-spacing: .12em;
+         text-transform: uppercase; color: var(--dim); }
+  .bar a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(143,154,166,.35); padding-bottom: 2px; }
+  .bar a:hover { color: var(--accent); border-color: var(--accent); }
+  main { position: relative; z-index: 2; }
+  .beat { min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+          padding: 0 clamp(20px, 7vw, 120px); max-width: 720px; opacity: 0; transform: translateY(14px);
+          transition: opacity .5s ease, transform .5s ease; }
+  .beat.on { opacity: 1; transform: none; }
+  .kicker { margin: 0 0 10px; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(34px, 7vw, 76px); line-height: .98; margin: 0 0 18px; letter-spacing: -.03em; }
+  h2 { font-size: clamp(26px, 4.4vw, 48px); line-height: 1.04; margin: 0 0 14px; letter-spacing: -.02em; }
+  .body { margin: 0; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.6; color: #c3ccd6; max-width: 46ch; }
+  #hud { position: fixed; z-index: 3; right: clamp(16px, 4vw, 40px); bottom: clamp(18px, 4vw, 40px);
+         width: 210px; font-size: 11px; letter-spacing: .06em; color: var(--dim); text-align: right; }
+  #hud .hud-title { margin: 0 0 2px; color: var(--ink); font-size: 12px; letter-spacing: .02em; }
+  #hud .hud-field { margin: 0 0 7px; }
+  #hud .cmap { height: 8px; border-radius: 2px; border: 1px solid rgba(255,255,255,.14); }
+  #hud .range { display: flex; justify-content: space-between; margin-top: 4px; }
+  #boot { position: fixed; z-index: 4; inset: 0; display: grid; place-items: center; background: var(--bg);
+          color: var(--dim); font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+          transition: opacity .6s ease; }
+  body.ready #boot { opacity: 0; pointer-events: none; }
+  .no-webgl #stage { display: none; }
+  .no-webgl body, body.no-webgl { background: var(--bg); }
+  .no-webgl #boot { opacity: 0; }
+  .no-webgl main { padding-bottom: 40vh; }
+  .no-webgl .beat { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .beat { transition: none; }
+  }
+  body { font-family: "Archivo", system-ui, sans-serif; }
+  h1, h2 { font-family: "Archivo", system-ui, sans-serif; }
+  .kicker, #hud, .bar { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  :root { --accent: #3dd6c4; }
+</style>
+<link rel="stylesheet" href="../fonts.css" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<meta name="description" content="Uma aeronave classe A320 com o coeficiente de pressão de uma rodada de OpenFOAM, em 3-D no navegador." />
+<script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div class="vignette"></div>
+<div class="scrim"></div>
+<div class="bar"><span>PINNeAPPle Labs</span><a href="../">&larr; site</a></div>
+<div id="hud"><p class="hud-title">A320 em cruzeiro</p><p class="hud-field">Coeficiente de pressão Cp (OpenFOAM)</p><div class="cmap" style="background:linear-gradient(to right, rgb(0, 0, 143) 0.0%, rgb(0, 0, 203) 6.7%, rgb(0, 8, 255) 13.3%, rgb(0, 77, 255) 20.0%, rgb(0, 144, 255) 26.7%, rgb(0, 212, 255) 33.3%, rgb(26, 255, 229) 40.0%, rgb(94, 255, 162) 46.7%, rgb(162, 255, 94) 53.3%, rgb(229, 255, 26) 60.0%, rgb(255, 213, 0) 66.7%, rgb(255, 145, 0) 73.3%, rgb(255, 76, 0) 80.0%, rgb(255, 8, 0) 86.7%, rgb(196, 0, 0) 93.3%, rgb(128, 0, 0) 100.0%)"></div><div class="range"><span>-1.414</span><span>0.9473</span></div></div>
+<div id="boot">carregando</div>
+<main>
+<section class="beat hero" data-i="0"><p class="kicker">PINNeAPPle Labs</p><h1>O que o ar faz com uma asa</h1><p class="body">Uma aeronave classe A320, com o coeficiente de pressão de uma rodada de OpenFOAM sobre a pele.</p></section>
+<section class="beat" data-i="1"><p class="kicker">O resultado</p><h2>Cp na pele</h2><p class="body">Azul onde o escoamento acelera, vermelho onde ele para. A mesma escala do relatório.</p></section>
+<section class="beat" data-i="2"><p class="kicker">A verificação</p><h2>O número sai com o erro declarado</h2><p class="body">Cada estudo é checado contra referência antes de virar relatório.</p></section>
+<section class="beat" data-i="3"><p class="kicker">O Studio</p><h2>Da geometria ao relatório</h2><p class="body">Geometria, malha, solver e a página que o cliente abre no navegador.</p></section>
+</main>
+<script type="module">
+
+import * as THREE from 'three';
+import { GLTFLoader } from './vendor/three/loaders/GLTFLoader.js';
+
+const CFG = {"title": "A320 em cruzeiro", "scene": "scene.glb", "field": {"name": "cp", "label": "Coeficiente de pressão Cp (OpenFOAM)", "cmap": "jet", "range": [-1.4135251784056884, 0.9473333746081355]}, "sections": [{"kicker": "PINNeAPPle Labs", "title": "O que o ar faz com uma asa", "body": "Uma aeronave classe A320, com o coeficiente de pressão de uma rodada de OpenFOAM sobre a pele."}, {"kicker": "O resultado", "title": "Cp na pele", "body": "Azul onde o escoamento acelera, vermelho onde ele para. A mesma escala do relatório."}, {"kicker": "A verificação", "title": "O número sai com o erro declarado", "body": "Cada estudo é checado contra referência antes de virar relatório."}, {"kicker": "O Studio", "title": "Da geometria ao relatório", "body": "Geometria, malha, solver e a página que o cliente abre no navegador."}], "beats": [[-2.1, 0.24, 3.7], [-0.95, 0.4, 3.1], [0.3, 0.2, 2.8], [1.45, 0.55, 3.4]]};
+const canvas = document.getElementById('stage');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const smooth = (t) => t * t * (3 - 2 * t);
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+} catch (err) {
+  document.body.classList.add('no-webgl');
+  document.body.classList.add('ready');
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setSize(innerWidth, innerHeight, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.12;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070a10);
+const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 0.01, 1000);
+
+scene.add(new THREE.HemisphereLight(0x93d4ff, 0x04070c, 1.05));
+const key = new THREE.DirectionalLight(0xffffff, 2.7); key.position.set(1.3, 1.9, 1.0); scene.add(key);
+const rim = new THREE.DirectionalLight(0x3dd6c4, 1.7); rim.position.set(-1.5, 0.6, -1.3); scene.add(rim);
+const fill = new THREE.DirectionalLight(0xff8a5b, 0.75); fill.position.set(-0.7, -0.5, 1.1); scene.add(fill);
+
+const pivot = new THREE.Group();
+scene.add(pivot);
+
+let radius = 1, loaded = false;
+const target = new THREE.Vector3();
+const wanted = new THREE.Vector3();
+const clock = new THREE.Clock();
+
+new GLTFLoader().load(CFG.scene || 'scene.glb', (gltf) => {
+  const root = gltf.scene;
+  root.traverse((o) => {
+    if (!o.isMesh) return;
+    const coloured = !!o.geometry.getAttribute('color');
+    const m = new THREE.MeshStandardMaterial({
+      vertexColors: coloured,
+      color: coloured ? 0xffffff : 0x8d949c,
+      metalness: coloured ? 0.05 : 0.4,
+      roughness: coloured ? 0.4 : 0.5,
+    });
+    if (coloured) {
+      // a little self-illumination from the vertex colours: the low end of the scale still reads on a black stage
+      m.onBeforeCompile = (shader) => {
+        shader.fragmentShader = shader.fragmentShader.replace(
+          '#include <emissivemap_fragment>',
+          '#include <emissivemap_fragment>\n\ttotalEmissiveRadiance += vColor.rgb * 0.22;'
+        );
+      };
+    }
+    o.material = m;
+  });
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3());
+  const centre = box.getCenter(new THREE.Vector3());
+  radius = Math.max(size.x, size.y, size.z) * 0.5 || 1;
+  root.position.sub(centre);
+  pivot.add(root);
+  scene.fog = new THREE.FogExp2(0x070a10, 0.12 / radius);
+  camera.near = radius / 200;
+  camera.far = radius * 80;
+  camera.updateProjectionMatrix();
+  loaded = true;
+  snap();                       // land on the current beat instead of flying in from the origin
+  document.body.classList.add('ready');
+}, undefined, (err) => {
+  console.error(err);
+  document.body.classList.add('no-webgl', 'ready');
+});
+
+function place(az, el, d) {
+  return new THREE.Vector3(
+    Math.cos(el) * Math.cos(az),
+    Math.sin(el),
+    Math.cos(el) * Math.sin(az)
+  ).multiplyScalar(d * radius);
+}
+
+function progress() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  return max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+}
+
+const caps = [...document.querySelectorAll('.beat')];
+
+function beatAt(t) {
+  const beats = CFG.beats;
+  const n = beats.length - 1;
+  const u = n > 0 ? clamp(t, 0, 1) * n : 0;
+  const i = Math.min(Math.max(0, n - 1), Math.floor(u));
+  const f = n > 0 ? smooth(u - i) : 0;
+  const a = beats[i], b = beats[Math.min(n, i + 1)];
+  return {
+    u: u,
+    az: a[0] + (b[0] - a[0]) * f,
+    el: a[1] + (b[1] - a[1]) * f,
+    d: a[2] + (b[2] - a[2]) * f,
+  };
+}
+
+function snap() {
+  const b = beatAt(progress());
+  camera.position.copy(place(b.az, b.el, b.d));
+  camera.lookAt(0, 0, 0);
+}
+
+function update() {
+  if (!loaded) return;
+  const b = beatAt(progress());
+  const u = b.u;
+  const drift = reduced ? 0 : Math.sin(clock.elapsedTime * 0.22) * 0.035;
+  wanted.copy(place(b.az + drift, b.el, b.d));
+  camera.position.lerp(wanted, reduced ? 1 : 0.09);
+  target.set(0, 0, 0);
+  camera.lookAt(target);
+  const nearest = Math.round(clamp(u, 0, caps.length - 1));
+  caps.forEach((c, k) => c.classList.toggle('on', k === nearest));
+}
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight, false);
+});
+
+renderer.setAnimationLoop(() => {
+  update();
+  renderer.render(scene, camera);
+});
+
+</script>
+</body>
+</html>
