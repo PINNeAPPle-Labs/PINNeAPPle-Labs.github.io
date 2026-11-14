@@ -86,6 +86,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pinneapple-labs.github.io/lib/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/lib/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/lib/"/>
@@ -288,5 +300,77 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/malha-e-preflight/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/malha-e-preflight/"/>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/erosao-tubulacao/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/erosao-tubulacao/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/erosao-tubulacao/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/erosao-tubulacao/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/erosao-tubulacao/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/erosao-tubulacao/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/dissipador-227-mil/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/dissipador-227-mil/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/dissipador-227-mil/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/dissipador-227-mil/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/dissipador-227-mil/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/dissipador-227-mil/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/oceano-sete-dias/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/oceano-sete-dias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/oceano-sete-dias/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/oceano-sete-dias/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/oceano-sete-dias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/oceano-sete-dias/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/gemeo-canal-termico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/gemeo-canal-termico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/gemeo-canal-termico/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/gemeo-canal-termico/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/gemeo-canal-termico/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/gemeo-canal-termico/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/camera-compacta/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/camera-compacta/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/camera-compacta/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/casos-de-sucesso/text2part/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/text2part/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/text2part/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/casos-de-sucesso/text2part/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/text2part/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/text2part/"/>
+    <priority>0.8</priority>
   </url>
 </urlset>

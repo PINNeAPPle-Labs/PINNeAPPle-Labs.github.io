@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Where the pipeline will fail, and when · PINNeAPPle Labs</title>
+<meta name="description" content="Sand erosion in a 90° bend: real CFD, validated against a published experiment, plus an AI model that answers in milliseconds." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/erosao-tubulacao/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/erosao-tubulacao/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/erosao-tubulacao/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/casos-de-sucesso/erosao-tubulacao/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Where the pipeline will fail, and when · PINNeAPPle Labs" />
+<meta property="og:description" content="Sand erosion in a 90° bend: real CFD, validated against a published experiment, plus an AI model that answers in milliseconds." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/casos/cfd04_mapa_erosao.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../../fonts.css" />
+<link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../../en/">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../../en/">Home</a>
+      <a href="../../../en/studio/">Studio</a>
+      <a href="../../../en/relatorios/">Reports</a>
+      <a href="../../../en/artigos/">Articles</a>
+      <a href="../../../en/lib/">The library</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+      <a class="pre" href="../../../en/studio/#pre-acesso">Early access ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../../casos-de-sucesso/erosao-tubulacao/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener">Request a quote</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow"><a href="../../../en/casos-de-sucesso/">Success stories</a> · Case · oil and gas</p>
+      <h1>Where the pipeline will fail, and when</h1>
+      <p class="lead" style="max-width:60ch">Sand erosion in a 90° bend: real CFD, validated against a published experiment, plus an AI model that answers in milliseconds.</p>
+      <p style="margin-top:1.4rem"><span class="badge ok">Validated</span></p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap cs">
+      <dl class="cs-meta"><dt>Application</dt><dd>90° bend in a solids conveying line — PINNeAPPle-CFD platform</dd><dt>Sector</dt><dd>Oil and gas, mining, pneumatic conveying</dd><dt>Topic</dt><dd>CFD, surrogate model, independent verification</dd><dt>Stack</dt><dd>OpenFOAM (flow + particles), DNV RP-O501 erosion model, PINNeAPPle</dd><dt>Reference</dt><dd>Published experiment, Vieira et al. (2016): air with 150 µm sand</dd></dl>
+      <div class="cs-stats"><div class="cs-stat"><b>1.05–1.49×</b><span>simulated ÷ measured erosion across the three tests (acceptance criterion: factor 2)</span></div><div class="cs-stat"><b>1.0%</b><span>AI error on pressure drop, on cases outside training</span></div><div class="cs-stat"><b>10.6%</b><span>AI error on erosion rate (19.7% outside the training range)</span></div><div class="cs-stat"><b>US$0.06</b><span>CPU cost of one campaign: 32 simulations in 23 minutes</span></div></div>
+      <div class="cs-sec"><h2>Objective</h2><p>Solid particles wear bends and fittings until the wall fails. The hand formulas the industry uses to estimate how much and where a pipeline will wear can be off by orders of magnitude, and a traditional CFD study takes weeks and needs a dedicated specialist. This case set out to answer two questions with the same artefact: where the wall fails first, and how often that answer can be recomputed when the flow rate changes.</p></div>
+      <div class="cs-sec"><h2>Key results</h2><ol class="cs-list"><li><b>The simulation landed between 1.05× and 1.49× the erosion measured in the lab</b>, inside the factor-2 acceptance criterion. The hand formula, applied to the same case, came out about 100× below the measurement.</li><li><b>The AI trained on the campaign reproduces pressure drop to 1.0% error</b> on configurations it never saw, and erosion rate to 10.6% inside the training range — 19.7% outside it.</li><li><b>A full campaign costs 1.9 CPU-hours</b>: 32 simulations in 23 minutes, about US$0.06. That is what makes it viable to redo the map every time the flow rate changes.</li></ol></div>
+      <div class="cs-sec"><h2>The problem: the hand formula is not conservative, it is unpredictable</h2><p>Erosion damage is governed by impact angle and by the local particle velocity. In a 90° bend the peak sits on the outer wall, just past the inlet — a region a few centimetres wide that carries most of the damage. Hand estimates treat the bend as a whole and lose exactly that concentration.</p><p>The industry standard for this kind of calculation is DNV RP-O501, which requires a resolved flow field. In other words: to know where the wall will fail, you have to solve the flow, not estimate it.</p><figure class="cs-fig"><img src="../../../img/casos/cfd04_validacao_vieira.png" alt="Peak erosion rate: measured in the lab × simulated (DNV and E/CRC models) × hand formula. Log scale — this is " loading="lazy" decoding="async" /><figcaption>Peak erosion rate: measured in the lab × simulated (DNV and E/CRC models) × hand formula. Log scale — this is the three orders of magnitude the hand formula loses.</figcaption></figure><figure class="cs-fig"><img src="../../../img/casos/cfd04_mapa_erosao.png" alt="Wall erosion map computed by the simulation. The peak sits on the outer wall just past the bend inlet — the re" loading="lazy" decoding="async" /><figcaption>Wall erosion map computed by the simulation. The peak sits on the outer wall just past the bend inlet — the region a hand estimate cannot resolve.</figcaption></figure></div><div class="cs-sec"><h2>A guided flow, from the problem to the erosion map</h2><p>The platform takes the problem in steps — geometry (a standard part or the client's CAD in STL, STEP or IGES), mesh level, fluid and particles — builds the mesh, runs OpenFOAM with particle tracking and an erosion model, runs the campaign and trains a model on the results.</p><p>Every number ships with an evidence map: what was simulated, what was learned, what it was checked against, and what is still pending.</p></div><div class="cs-sec"><h2>The surrogate, checked against the simulation and not against itself</h2><p>The AI model is trained on the campaign and then tested on configurations that were not in it. The panel below shows the test cases with a 95% confidence interval; in orange, the ones outside the training range, where the error rises from 10.6% to 19.7%.</p><figure class="cs-fig"><img src="../../../img/casos/cfd04_paridade_ia_cfd.png" alt="AI model × full simulation, on cases the AI never saw, with a 95% confidence interval. In orange, cases outsid" loading="lazy" decoding="async" /><figcaption>AI model × full simulation, on cases the AI never saw, with a 95% confidence interval. In orange, cases outside the training range.</figcaption></figure></div>
+      <blockquote class="cs-quote"><p>“The erosion model constants come from a secondary source, so the platform flags erosion as PRELIMINARY. What is proven is the comparison: the simulation lands inside the experiment's factor 2; the hand formula does not.”</p><footer>Experiment record · PINNeAPPle-CFD</footer></blockquote>
+      <aside class="cs-limits"><h2>What this case does not prove yet</h2><p>The erosion model constants come from a secondary source. That is why the platform flags the erosion result as <b>PRELIMINARY</b> rather than a design value.</p><p>The campaign used a coarse mesh: pressure drop converges, but mesh uncertainty on the fine mesh came out at <b>GCI 6.8–12.6%</b> against a 5% target, and erosion only converged at one of the three points studied. The fine-mesh campaign is running.</p><p>Validation covers <b>air with 150 µm sand in one 90° bend</b>. Other fluids, particle sizes and geometries need their own validation — the evidence map marks each one pending until it exists.</p></aside>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Other cases</p></div>
+      <div class="grid-3 reveal"><a class="cs-card" href="../../../en/casos-de-sucesso/dissipador-227-mil/"><span class="k">Power electronics and thermal optimization</span><h3>A trained surrogate answers 227,000 times faster than the 3D simulation</h3><span class="n">227,059×</span></a><a class="cs-card" href="../../../en/casos-de-sucesso/oceano-sete-dias/"><span class="k">Fisheries, climate, offshore energy and insurance</span><h3>Seven days of lead time for sea surface temperature</h3><span class="n">0.93 °C</span></a></div>
+      <p class="section-cta reveal">
+        <a class="btn btn-primary" href="../../../en/casos-de-sucesso/">See every success story →</a>
+        <a class="btn btn-ghost" href="../../../en/relatorios/">See the reports →</a>
+      </p>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener">Request a quote</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../../en/">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../../en/studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../../en/erosao-em-tubulacao/">Erosion in piping</a></li>
+          <li><a href="../../../en/trocadores-e-termico/">Exchangers and thermal</a></li>
+          <li><a href="../../../en/valvulas-e-maquinas/">Valves and machinery</a></li>
+          <li><a href="../../../en/casos-de-sucesso/">Success stories</a></li>
+          <li><a href="../../../en/relatorios/">Example reports</a></li>
+          <li><a href="../../../en/artigos/">Articles</a></li>
+          <li><a href="../../../en/lib/">The library</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk to an engineer</a></li>
+          <li><a href="../../../casos-de-sucesso/erosao-tubulacao/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk to an engineer">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk to an engineer</span>
+</a>
+
+<script src="../../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

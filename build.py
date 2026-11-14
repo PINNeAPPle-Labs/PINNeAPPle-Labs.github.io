@@ -24,6 +24,8 @@ import shutil
 import urllib.parse
 from pathlib import Path
 
+import casos_sucesso as CS
+
 ROOT = Path(__file__).resolve().parent
 
 # ---------------------------------------------------------------------------
@@ -1111,10 +1113,13 @@ PAGES = {
     "valvulas": "valvulas-e-maquinas",
     "relatorios": "relatorios",
     "artigos": "artigos",
+    "sucessos": "casos-de-sucesso",
     "lib": "lib",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
+for _case in CS.CASES:
+    PAGES[f"caso:{_case['slug']}"] = f"casos-de-sucesso/{_case['slug']}"
 
 
 def url(lang: str, page: str) -> str:
@@ -1181,6 +1186,7 @@ STRINGS = {
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Artigos",
         "lbl_reports": "Relatórios de exemplo",
+        "lbl_success": "Casos de sucesso",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
         "min_read": "min de leitura",
@@ -1215,6 +1221,7 @@ STRINGS = {
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Articles",
         "lbl_reports": "Example reports",
+        "lbl_success": "Success stories",
         "lbl_lib": "The library",
         "read_more": "Read the article",
         "min_read": "min read",
@@ -1260,6 +1267,20 @@ META = {
             type="website",
         ),
     },
+    "sucessos": {
+        "pt": dict(
+            title="Casos de sucesso · PINNeAPPle Labs",
+            desc="Seis casos de engenharia, cada número conferido contra uma referência independente — e o que cada um ainda não prova.",
+            og="img/casos/cfd04_mapa_erosao.png",
+            type="website",
+        ),
+        "en": dict(
+            title="Success stories · PINNeAPPle Labs",
+            desc="Six engineering cases, every number checked against an independent reference — and what each one still does not prove.",
+            og="img/casos/cfd04_mapa_erosao.png",
+            type="website",
+        ),
+    },
     "artigos": {
         "pt": dict(
             title="Artigos · PINNeAPPle Labs",
@@ -1293,6 +1314,12 @@ META = {
 
 
 def meta(lang: str, page: str) -> dict:
+    if page.startswith("caso:"):
+        slug = page[5:]
+        case = next(c for c in CS.CASES if c["slug"] == slug)
+        C = case[lang]
+        return dict(title=f'{C["h1"]} · PINNeAPPle Labs', desc=C["deck"][:180],
+                    og="img/casos/" + C.get("og", "cfd04_mapa_erosao.png"), type="article")
     if page.startswith("post:"):
         p = POST_BY_SLUG[page[5:]]
         return dict(
@@ -1413,6 +1440,7 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'erosao')}">{SEGLABELS[lang]['erosao']}</a></li>
           <li><a href="{root}{url(lang, 'trocadores')}">{SEGLABELS[lang]['trocadores']}</a></li>
           <li><a href="{root}{url(lang, 'valvulas')}">{SEGLABELS[lang]['valvulas']}</a></li>
+          <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_success']}</a></li>
           <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
           <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
@@ -2427,6 +2455,7 @@ def page_home(lang: str) -> str:
     root = up(lang, "home")
     S = STRINGS[lang]
     C = HOME[lang]
+    SH = SUCCESS_HOME[lang]
     parts = [head(lang, "home", root), header(lang, "home", root), '<main id="main">']
 
     chips = "".join(f'<span class="chip">{c}</span>' for c in C["chips"])
@@ -2510,7 +2539,14 @@ def page_home(lang: str) -> str:
       </div>
       <div class="result-grid reveal">
 {proofs}      </div>
-      <p class="section-cta reveal"><a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']} →</a></p>
+      <div class="reveal" style="margin-top:3.4rem">
+        <p class="eyebrow">{SH['eyebrow']}</p>
+        <div class="grid-4">{success_highlights(lang, root)}</div>
+      </div>
+      <p class="section-cta reveal">
+        <a class="btn btn-primary" href="{root}{url(lang, 'sucessos')}">{SH['btn']} →</a>
+        <a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']} →</a>
+      </p>
     </div>
   </section>
 """)
@@ -3352,6 +3388,210 @@ def page_lib(lang: str) -> str:
 # Output
 # ---------------------------------------------------------------------------
 
+
+# ---------------------------------------------------------------------------
+# Page: success stories — customer-story format
+# ---------------------------------------------------------------------------
+
+SUCCESS = {
+    "pt": dict(
+        objective="Objetivo",
+        results="Principais resultados",
+        notproven="O que este caso ainda não prova",
+        others="Outros casos",
+        back="Casos de sucesso",
+        hub_cta="Ver todos os casos de sucesso",
+        hub_cta2="Ver os relatórios",
+    ),
+    "en": dict(
+        objective="Objective",
+        results="Key results",
+        notproven="What this case does not prove yet",
+        others="Other cases",
+        back="Success stories",
+        hub_cta="See every success story",
+        hub_cta2="See the reports",
+    ),
+}
+
+SUCCESS_HOME = {
+    "pt": dict(
+        eyebrow="Casos de sucesso",
+        h="Seis casos, cada número conferido contra uma referência independente.",
+        btn="Ver os casos de sucesso",
+    ),
+    "en": dict(
+        eyebrow="Success stories",
+        h="Six cases, every number checked against an independent reference.",
+        btn="See the success stories",
+    ),
+}
+
+
+def _plain(markup: str) -> str:
+    import re
+    return re.sub(r"<[^>]+>", "", markup)
+
+
+def success_highlights(lang: str, root: str) -> str:
+    """The four single-metric cards, shared by the hub and the home page."""
+    return "".join(
+        f'<a class="cs-hi" href="{root}{url(lang, "caso:" + slug)}">'
+        f'<b>{value if lang == "pt" else value_en}</b>'
+        f'<span>{desc if lang == "pt" else desc_en}</span>'
+        f'<em>{who if lang == "pt" else who_en}</em></a>'
+        for slug, value, value_en, _i, desc, desc_en, who, who_en in CS.HIGHLIGHTS
+    )
+
+
+def page_sucessos(lang: str) -> str:
+    root = up(lang, "sucessos")
+    H = CS.HUB[lang]
+    S = SUCCESS[lang]
+
+    cards = ""
+    for case in CS.CASES:
+        C = case[lang]
+        cards += (
+            f'<a class="cs-card" href="{root}{url(lang, "caso:" + case["slug"])}">'
+            f'<span class="k">{C["eyebrow"]} · {C["evidence"][1]}</span>'
+            f'<h3>{C["h1"]}</h3>'
+            f'<p>{C["short"]}</p>'
+            f'<span class="n">{C["key"]}</span></a>'
+        )
+
+    more = "".join(
+        f'<div class="cs-row"><span>{t}</span><b>{v}</b></div>'
+        for t, v in CS.MORE[lang]
+    )
+
+    return "".join([
+        head(lang, "sucessos", root), header(lang, "sucessos", root),
+        f"""<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{H['eyebrow']}</p>
+      <h1>{H['h1']}</h1>
+      <p class="lead" style="max-width:66ch">{H['lead']}</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">{H['hi_k']}</p><h2>{H['highlights_h']}</h2></div>
+      <div class="grid-4 reveal">{success_highlights(lang, root)}</div>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">{H['cases_k']}</p><h2>{H['cases_h']}</h2></div>
+      <div class="grid-3 reveal">{cards}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div><p class="eyebrow">{H['more_k']}</p><h2>{H['more_h']}</h2></div>
+        <p>{H['more_p']}</p>
+      </div>
+      <div class="cs-rows reveal">{more}</div>
+
+      <h3 style="margin-top:3.6rem">{H['legend_h']}</h3>
+      <div class="cs-legend reveal">
+        <div><span class="badge ok">{H['legend_val'][0]}</span><p>{H['legend_val'][1]}</p></div>
+        <div><span class="badge warn">{H['legend_poc'][0]}</span><p>{H['legend_poc'][1]}</p></div>
+      </div>
+
+      <p class="section-cta reveal">
+        {wa_button(lang)}
+        <a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{H['table_link']} →</a>
+      </p>
+      <div class="note reveal"><span>{H['cta']}</span></div>
+    </div>
+  </section>
+""",
+        cta_band(lang, root),
+        "</main>",
+        footer(lang, "sucessos", root),
+    ])
+
+
+def page_sucesso(lang: str, slug: str) -> str:
+    case = next(c for c in CS.CASES if c["slug"] == slug)
+    C = case[lang]
+    S = SUCCESS[lang]
+    page = "caso:" + slug
+    root = up(lang, page)
+
+    meta_rows = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in C["meta"])
+    stats = "".join(
+        f'<div class="cs-stat"><b>{v}</b><span>{l}</span></div>' for v, l in C["stats"]
+    )
+    takeaways = "".join(f"<li>{t}</li>" for t in C["takeaways"])
+
+    body = ""
+    for sec in C["sections"]:
+        paras = "".join(f"<p>{p}</p>" for p in sec["body"])
+        figs = "".join(
+            f'<figure class="cs-fig"><img src="{root}img/casos/{src}" alt="{_plain(cap)[:110]}" '
+            f'loading="lazy" decoding="async" /><figcaption>{cap}</figcaption></figure>'
+            for src, cap in sec.get("figs", [])
+        )
+        body += f'<div class="cs-sec"><h2>{sec["h"]}</h2>{paras}{figs}</div>'
+
+    limits = "".join(f"<p>{p}</p>" for p in C["limits"])
+    others = [c for c in CS.CASES if c["slug"] != slug][:2]
+    related = "".join(
+        f'<a class="cs-card" href="{root}{url(lang, "caso:" + o["slug"])}">'
+        f'<span class="k">{o[lang]["eyebrow"]}</span>'
+        f'<h3>{o[lang]["h1"]}</h3>'
+        f'<span class="n">{o[lang]["key"]}</span></a>'
+        for o in others
+    )
+
+    return "".join([
+        head(lang, page, root), header(lang, page, root),
+        f"""<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow"><a href="{root}{url(lang, 'sucessos')}">{S['back']}</a> · {C['crumb']}</p>
+      <h1>{C['h1']}</h1>
+      <p class="lead" style="max-width:60ch">{C['deck']}</p>
+      <p style="margin-top:1.4rem"><span class="badge {C['evidence'][0]}">{C['evidence'][1]}</span></p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap cs">
+      <dl class="cs-meta">{meta_rows}</dl>
+      <div class="cs-stats">{stats}</div>
+      <div class="cs-sec"><h2>{S['objective']}</h2><p>{C['objective']}</p></div>
+      <div class="cs-sec"><h2>{S['results']}</h2><ol class="cs-list">{takeaways}</ol></div>
+      {body}
+      <blockquote class="cs-quote"><p>“{C['quote'][0]}”</p><footer>{C['quote'][1]}</footer></blockquote>
+      <aside class="cs-limits"><h2>{S['notproven']}</h2>{limits}</aside>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">{S['others']}</p></div>
+      <div class="grid-3 reveal">{related}</div>
+      <p class="section-cta reveal">
+        <a class="btn btn-primary" href="{root}{url(lang, 'sucessos')}">{S['hub_cta']} →</a>
+        <a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{S['hub_cta2']} →</a>
+      </p>
+    </div>
+  </section>
+""",
+        cta_band(lang, root),
+        "</main>",
+        footer(lang, page, root),
+    ])
+
+
 BUILDERS = {
     "home": page_home,
     "studio": page_studio,
@@ -3360,6 +3600,7 @@ BUILDERS = {
     "valvulas": lambda lang: page_segment(lang, "valvulas"),
     "relatorios": page_relatorios,
     "artigos": page_artigos,
+    "sucessos": page_sucessos,
     "lib": page_lib,
 }
 
@@ -3416,6 +3657,14 @@ def build() -> list[str]:
             out = ROOT / rel / "index.html"
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page_post(lang, post["slug"]), encoding="utf-8")
+            written.append(str(out.relative_to(ROOT)))
+
+    for case in CS.CASES:
+        for lang in LANGUAGES:
+            rel = url(lang, "caso:" + case["slug"])
+            out = ROOT / rel / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(page_sucesso(lang, case["slug"]), encoding="utf-8")
             written.append(str(out.relative_to(ROOT)))
 
     # The old addresses keep working: same URL, new destination.

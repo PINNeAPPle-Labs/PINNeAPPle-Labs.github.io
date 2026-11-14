@@ -895,3 +895,152 @@ nav.main a.pre:hover { color: var(--gold-hi); }
 
 /* the line under the two hero buttons: what happens when you click each one */
 .hero-note { margin: 0.9rem 0 0; font-size: 0.8rem; color: var(--text-mute); max-width: 44ch; }
+
+/* ---------------------------------------------------------------------------
+   Success stories — customer-story format (problem, number, reference, limit)
+   --------------------------------------------------------------------------- */
+
+/* a narrower measure for case running text, inside the normal .wrap gutter */
+.wrap.cs { max-width: var(--maxw); }
+/* the case body keeps the page's left edge and a readable measure */
+.wrap.cs > .cs-meta,
+.wrap.cs > .cs-stats,
+.wrap.cs > .cs-sec,
+.wrap.cs > .cs-quote,
+.wrap.cs > .cs-limits { max-width: 46rem; }
+
+/* the four headline numbers on the home page and the hub */
+.cs-hi {
+  display: block; padding: 1.4rem 1.3rem 1.45rem; min-width: 0;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px;
+  text-decoration: none; transition: border-color .16s ease, transform .16s ease;
+}
+.cs-hi:hover { border-color: var(--gold-dk); transform: translateY(-2px); }
+.cs-hi b {
+  display: block; font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 1.85rem); line-height: 1; letter-spacing: -.03em;
+  color: var(--gold); font-variant-numeric: tabular-nums; margin-bottom: .65rem;
+}
+.cs-hi span { display: block; font-size: .88rem; line-height: 1.45; color: var(--text-dim); }
+.cs-hi em {
+  display: block; margin-top: .8rem; font-style: normal;
+  font-family: var(--f-mono); font-size: .64rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-mute);
+}
+
+/* a case in the grid */
+.cs-card {
+  display: block; min-width: 0; padding: 1.5rem 1.4rem;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px;
+  text-decoration: none; color: inherit; transition: border-color .16s ease, transform .16s ease;
+}
+.cs-card:hover { border-color: var(--gold-dk); transform: translateY(-2px); }
+.cs-card .k {
+  display: block; font-family: var(--f-mono); font-size: .64rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-mute); margin-bottom: .7rem;
+}
+.cs-card h3 {
+  font-family: var(--f-display); font-weight: 700; font-size: 1.12rem;
+  line-height: 1.3; letter-spacing: -.015em; margin-bottom: .6rem;
+}
+.cs-card p { font-size: .9rem; line-height: 1.5; color: var(--text-dim); margin-bottom: .9rem; }
+.cs-card .n {
+  font-family: var(--f-mono); font-size: .86rem; color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* the smaller published results */
+.cs-rows { border-top: 1px solid var(--line); }
+.cs-row {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between;
+  align-items: baseline; padding: .85rem 0; border-bottom: 1px solid var(--line-soft);
+}
+.cs-row span { min-width: 0; font-size: .95rem; }
+.cs-row b {
+  font-family: var(--f-mono); font-size: .82rem; font-weight: 500;
+  color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* evidence legend */
+.cs-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; margin-top: 1rem; }
+.cs-legend div { min-width: 0; }
+.cs-legend p { font-size: .88rem; color: var(--text-dim); margin-top: .55rem; }
+@media (max-width: 640px) { .cs-legend { grid-template-columns: 1fr; } }
+
+/* the metadata table, in the customer-story sense */
+.cs-meta {
+  display: grid; grid-template-columns: 9.5rem 1fr; margin: 0;
+  border-top: 1px solid var(--line); font-size: .93rem;
+}
+.cs-meta dt, .cs-meta dd { margin: 0; padding: .72rem 0; border-bottom: 1px solid var(--line-soft); min-width: 0; }
+.cs-meta dt {
+  font-family: var(--f-mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-mute); padding-top: .95rem;
+}
+.cs-meta dd { color: var(--text); }
+@media (max-width: 560px) {
+  .cs-meta { grid-template-columns: 1fr; }
+  .cs-meta dt { padding-bottom: 0; border-bottom: 0; }
+  .cs-meta dd { padding-top: .25rem; }
+}
+
+/* the numbers under the header */
+.cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2.4rem; border-top: 1px solid var(--line); }
+.cs-stat { padding: 1.15rem 1.2rem 1.3rem 0; border-bottom: 1px solid var(--line-soft); min-width: 0; }
+.cs-stat b {
+  display: block; font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem); line-height: 1.1; letter-spacing: -.02em;
+  color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.cs-stat span { display: block; margin-top: .45rem; font-size: .8rem; line-height: 1.4; color: var(--text-dim); }
+@media (max-width: 760px) { .cs-stats { grid-template-columns: 1fr 1fr; } }
+
+/* body sections */
+.cs-sec { margin-top: 3.2rem; padding-block: 0; }
+.cs-sec h2 {
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 1.55rem); line-height: 1.25; letter-spacing: -.018em;
+  margin-bottom: 1rem;
+}
+.cs-sec p { color: var(--text-dim); }
+.cs-sec p b, .cs-sec p strong { color: var(--text); }
+.cs-list { margin: 0; padding-left: 1.2rem; }
+.cs-list li { margin-bottom: .85rem; color: var(--text-dim); }
+.cs-list li b { color: var(--text); font-weight: 600; }
+.cs-list li::marker { color: var(--gold); font-family: var(--f-mono); font-size: .85em; }
+
+/* figures: the plots are white-background paper, so they keep a light plate */
+.cs-fig { margin: 2rem 0 0; }
+.cs-fig img {
+  display: block; width: 100%; height: auto; background: #fff;
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.cs-fig figcaption {
+  margin-top: .65rem; font-family: var(--f-mono);
+  font-size: .72rem; line-height: 1.55; color: var(--text-mute);
+}
+
+/* the pull quote — the experiment record, not a client testimonial */
+.cs-quote { margin: 3rem 0 0; padding-left: 1.4rem; border-left: 2px solid var(--gold-dk); }
+.cs-quote p {
+  font-family: var(--f-display); font-weight: 500;
+  font-size: clamp(1.08rem, 2.2vw, 1.28rem); line-height: 1.45; letter-spacing: -.012em;
+  color: var(--text); margin-bottom: .9rem;
+}
+.cs-quote footer {
+  font-family: var(--f-mono); font-size: .66rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-mute);
+}
+
+/* what the case does not prove */
+.cs-limits {
+  margin-top: 3rem; padding: 1.5rem 1.5rem 1.6rem;
+  background: var(--ink-3); border: 1px solid var(--line); border-radius: 10px;
+}
+.cs-limits h2 {
+  font-family: var(--f-mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--warn); margin-bottom: 1rem;
+}
+.cs-limits p { font-size: .93rem; color: var(--text-dim); margin-bottom: .8rem; }
+.cs-limits p:last-child { margin-bottom: 0; }
+.cs-limits b { color: var(--text); font-weight: 600; }

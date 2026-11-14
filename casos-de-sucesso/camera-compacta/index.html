@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Antes de propor um substituto, medimos o solver · PINNeAPPle Labs</title>
+<meta name="description" content="Seiscentas e trinta configurações de um refletor de câmara compacta resolvidas duas vezes, nas mesmas condições e métricas — para saber o que cada fidelidade custa e onde ela erra." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/camera-compacta/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/casos-de-sucesso/camera-compacta/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Antes de propor um substituto, medimos o solver · PINNeAPPle Labs" />
+<meta property="og:description" content="Seiscentas e trinta configurações de um refletor de câmara compacta resolvidas duas vezes, nas mesmas condições e métricas — para saber o que cada fidelidade custa e onde ela erra." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/casos/cfd04_mapa_erosao.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../../">Início</a>
+      <a href="../../studio/">Studio</a>
+      <a href="../../relatorios/">Relatórios</a>
+      <a href="../../artigos/">Artigos</a>
+      <a href="../../lib/">A lib</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+      <a class="pre" href="../../studio/#pre-acesso">Pré-acesso ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../en/casos-de-sucesso/camera-compacta/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20queria%20um%20or%C3%A7amento%3A%20tenho%20um%20caso%20de%20simula%C3%A7%C3%A3o%20para%20discutir." target="_blank" rel="noopener">Pedir orçamento</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow"><a href="../../casos-de-sucesso/">Casos de sucesso</a> · Caso · antenas e RF</p>
+      <h1>Antes de propor um substituto, medimos o solver</h1>
+      <p class="lead" style="max-width:60ch">Seiscentas e trinta configurações de um refletor de câmara compacta resolvidas duas vezes, nas mesmas condições e métricas — para saber o que cada fidelidade custa e onde ela erra.</p>
+      <p style="margin-top:1.4rem"><span class="badge ok">Validado</span></p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap cs">
+      <dl class="cs-meta"><dt>Aplicação</dt><dd>Refletor de câmara compacta para medição de antenas (zona quieta)</dd><dt>Setor</dt><dd>Antenas, RF, instrumentação de medição</dd><dt>Tema</dt><dd>Duas fidelidades, correção aprendida, orçamento de solves</dd><dt>Pilha</dt><dd>Modelo 2-D do refletor, física óptica (PO), solve de equação integral</dd><dt>Referência</dt><dd>Série analítica de cilindro condutor, reproduzida com 0,6–0,9% de erro</dd></dl>
+      <div class="cs-stats"><div class="cs-stat"><b>768×</b><span>custo estimado do solve direto em 3-D contra a física óptica: 4,3 h contra 20 s por projeto</span></div><div class="cs-stat"><b>98%</b><span>do melhor projeto alcançado com 12 solves caros, contra 81% gastando os mesmos 12 às cegas</span></div><div class="cs-stat"><b>0,6–0,9%</b><span>erro do solve direto contra a série exata (a física óptica erra 500–780% no mesmo teste)</span></div><div class="cs-stat"><b>630</b><span>configurações resolvidas duas vezes, nas mesmas condições e métricas</span></div></div>
+      <div class="cs-sec"><h2>Objetivo</h2><p>Otimizar o refletor de uma câmara compacta — a peça que define o tamanho da zona quieta onde a antena é medida — pede centenas de configurações. A física óptica é barata e aproximada; o solve exato é caro. Sem medir os dois lado a lado, qualquer proposta de substituto ou de multi-fidelidade é suposição: não se sabe quanto custa cada lado nem onde o barato erra.</p></div>
+      <div class="cs-sec"><h2>Principais resultados</h2><ol class="cs-list"><li><b>Em 3-D o solve direto custa cerca de 768× a física óptica</b> — 20 segundos contra aproximadamente 4,3 horas por projeto. O substituto não é preferência, é necessidade.</li><li><b>Ordenar pelo modelo barato já leva a 94% do melhor projeto</b> com 12 solves caros; combinar as duas fidelidades chega a 97–98% com o mesmo orçamento, contra 81% de uma busca cega.</li><li><b>A física óptica só é útil onde se sabe quanto ela erra.</b> Contra a série exata do cilindro, ela erra 500–780%; o solve direto erra 0,6–0,9%.</li></ol></div>
+      <div class="cs-sec"><h2>Duas fidelidades, as mesmas métricas</h2><p>As 630 configurações — tamanho do refletor, iluminação e 18 perfis de borda — foram resolvidas pelos dois métodos, com as mesmas métricas de saída. A diferença entre eles virou um modelo aprendido, e não um fator de correção escolhido a dedo.</p><p>O passo anterior é a verificação de cada solver: o solve direto reproduz a série analítica de um cilindro condutor com 0,6–0,9% de erro. Sem essa âncora, não haveria como saber qual dos dois está certo.</p></div><div class="cs-sec"><h2>O que a correção aprendida remove — e o que ela não transfere</h2><p>A correção reduz o erro da física óptica por indicador dentro da família de bordas ensaiada. Com um perfil de borda inteiro mantido fora do treino, sobram 17–20% nas grandezas de amplitude e nada em ripple, fase e largura útil: a transferência tem limite, e o limite é medível.</p><figure class="cs-fig"><img src="../../img/casos/compact_range_validacao.jpg" alt="Esquerda: quanto do erro da física óptica a correção aprendida remove, por indicador — e o que sobra quando um" loading="lazy" decoding="async" /><figcaption>Esquerda: quanto do erro da física óptica a correção aprendida remove, por indicador — e o que sobra quando um perfil de borda inteiro fica fora do treino. Direita: fração do melhor projeto alcançada pelas quatro estratégias com o mesmo orçamento de solves caros.</figcaption></figure></div><div class="cs-sec"><h2>Quanto custa cada lado</h2><p>O custo do solve direto em 3-D não foi medido diretamente: vem do custo medido de uma única aplicação do operador integral denso, 391 segundos na malha de produção, repetida 40 vezes por solve. A regra que fecha a conta com o solve do cliente é direta: para um solve direto de T segundos, divida T por 391 para saber quantas aplicações do operador cabem no mesmo tempo.</p></div>
+      <blockquote class="cs-quote"><p>“Nenhuma proposta de substituto deveria existir antes de medir os dois lados na mesma bancada. O valor não estava em prever melhor, estava em saber quanto cada método erra e quanto custa.”</p><footer>Registro do experimento · refletor de câmara compacta</footer></blockquote>
+      <aside class="cs-limits"><h2>O que este caso ainda não prova</h2><p>O modelo é <b>2-D</b>: as métricas são relativas (taper, ripple, largura útil), não o diâmetro de zona quieta 3-D.</p><p>O solve direto em 3-D <b>não foi implementado</b> para este estudo. O fator de 768× é uma estimativa a partir do custo medido de uma aplicação do operador, não um tempo de relógio de um solve completo.</p><p>A correção aprendida transfere dentro da família de bordas ensaiada. Com um perfil fora dela, sobra erro em amplitude e o ganho em ripple, fase e largura útil desaparece.</p><p>No mapa de tamanho × iluminação, a física óptica erra a escolha vencedora em 162 mm na largura útil.</p></aside>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Outros casos</p></div>
+      <div class="grid-3 reveal"><a class="cs-card" href="../../casos-de-sucesso/erosao-tubulacao/"><span class="k">Óleo, gás, mineração e transporte pneumático</span><h3>Onde e quando a tubulação vai furar</h3><span class="n">1,05–1,49×</span></a><a class="cs-card" href="../../casos-de-sucesso/dissipador-227-mil/"><span class="k">Eletrônica de potência e otimização térmica</span><h3>Substituto treinado responde 227 mil vezes mais rápido que a simulação 3D</h3><span class="n">227.059×</span></a></div>
+      <p class="section-cta reveal">
+        <a class="btn btn-primary" href="../../casos-de-sucesso/">Ver todos os casos de sucesso →</a>
+        <a class="btn btn-ghost" href="../../relatorios/">Ver os relatórios →</a>
+      </p>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Traga o seu caso</p>
+        <h2>Tem uma simulação lenta, cara ou difícil de verificar?</h2>
+        <p class="lead" style="max-width:52ch">Mande o caso. Respondemos com um escopo fechado e uma métrica de sucesso mensurável, ou dizemos que o método clássico resolve melhor.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20queria%20um%20or%C3%A7amento%3A%20tenho%20um%20caso%20de%20simula%C3%A7%C3%A3o%20para%20discutir." target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Começar pelo código</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../../studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../erosao-em-tubulacao/">Erosão em tubulação</a></li>
+          <li><a href="../../trocadores-e-termico/">Trocadores e térmico</a></li>
+          <li><a href="../../valvulas-e-maquinas/">Válvulas e máquinas</a></li>
+          <li><a href="../../casos-de-sucesso/">Casos de sucesso</a></li>
+          <li><a href="../../relatorios/">Relatórios de exemplo</a></li>
+          <li><a href="../../artigos/">Artigos</a></li>
+          <li><a href="../../lib/">A lib</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar com um engenheiro</a></li>
+          <li><a href="../../en/casos-de-sucesso/camera-compacta/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20queria%20um%20or%C3%A7amento%3A%20tenho%20um%20caso%20de%20simula%C3%A7%C3%A3o%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar com um engenheiro">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar com um engenheiro</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
