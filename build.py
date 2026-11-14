@@ -1826,10 +1826,10 @@ CAPS = {
 HOME = {
     "pt": dict(
         eyebrow="Estudo de CFD com verificação · indústria brasileira",
-        h1="O estudo de simulação que a sua decisão precisa.",
-        lead="Com escopo, prazo e erro declarados: você manda a geometria e a pergunta — vazão, perda de carga, temperatura ou desgaste — e recebe o escopo com prazo e preço definidos a partir dele. No fim, o relatório com o número, a verificação contra ensaio ou solver de referência e o que ficou fora.",
-        cta_primary="Pedir orçamento",
-        cta_secondary="Ver o que você recebe",
+        h1="A próxima geração da engenharia será construída com Physics AI.",
+        lead="Uma plataforma aberta para transformar conhecimento físico em modelos inteligentes, simulações aceleradas e sistemas capazes de compreender, prever e otimizar o mundo real — com verificação física e limites de validade explícitos.",
+        cta_primary="Explorar a plataforma",
+        cta_secondary="Conhecer as aplicações",
         chips=["Tubulação, trocadores e otimização de forma", "Entrega em 4 a 10 semanas", "Número verificado contra ensaio"],
         hero_img="img/erosao-card.webp",
         hero_alt="Mapa de erosão na parede de uma curva de 90°, com a taxa em mm/ano",
@@ -1930,10 +1930,10 @@ HOME = {
     ),
     "en": dict(
         eyebrow="Verified CFD studies · industrial engineering",
-        h1="The simulation study your decision needs.",
-        lead="With scope, deadline and error stated: you send the geometry and the question — flow, pressure drop, temperature or wear — and get the scope with the deadline and price set from it. At the end, the report with the number, the check against an experiment or a reference solver, and what fell outside.",
-        cta_primary="Request a quote",
-        cta_secondary="See what you get",
+        h1="The next generation of engineering will be built with Physics AI.",
+        lead="An open platform to turn physical knowledge into intelligent models, accelerated simulations, and systems that understand, predict, and optimize the real world — with physics verification and explicit validity limits.",
+        cta_primary="Explore the platform",
+        cta_secondary="Explore applications",
         chips=["Piping, exchangers and shape optimization", "Delivered in 4 to 10 weeks", "Number checked against an experiment"],
         hero_img="img/erosao-card.webp",
         hero_alt="Wall erosion map on a 90° bend, rate in mm/year",
@@ -2634,8 +2634,8 @@ def page_home(lang: str) -> str:
         <h1>{C['h1']}</h1>
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
-          {wa_button(lang, label=C['cta_primary'])}
-          <a class="btn btn-ghost" href="#entrega">{C['cta_secondary']} →</a>
+          <a class="btn btn-primary" href="{GITHUB}" target="_blank" rel="noopener">{C['cta_primary']}</a>
+          <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{C['cta_secondary']} →</a>
         </div>
         <p class="hero-note">{S['hero_note']}</p>
         <div class="hero-meta">{chips}</div>
