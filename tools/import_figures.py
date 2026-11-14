@@ -71,6 +71,10 @@ FIGS = [
     ("potential_co2/figures/identities_all_properties.png", "co2-identidades"),
     ("potential_co2/figures/errors_all_properties.png", "co2-erros"),
     ("potential_co2/figures/isotherms_all_properties.png", "co2-isotermas"),
+    # crash automotivo (bumper beam contra poste)
+    ("carcrashnet_pole_impact/_out/figures/peak_displacement_parity.png", "crash-thumb"),
+    ("carcrashnet_pole_impact/_out/figures/peak_displacement_parity.png", "crash-pico"),
+    ("carcrashnet_pole_impact/_out/figures/displacement_surface.png", "crash-superficie"),
 ]
 
 

@@ -219,6 +219,173 @@ LANGUAGES = {
 
 POSTS = [
     dict(
+        slug="pico-de-crash-com-surrogate",
+        iso="2026-11-14",
+        mins=6,
+        thumb="img/exp/crash-thumb.webp",
+        chart=True,
+        tag={"pt": "Crash automotivo", "en": "Automotive crash"},
+        date={"pt": "14 de novembro de 2026", "en": "14 November 2026"},
+        title={
+            "pt": "O surrogate acerta o deslocamento de pico de um projeto que nunca viu",
+            "en": "The surrogate gets the peak displacement of a design it has never seen",
+        },
+        lead={
+            "pt": "Um para-choque contra poste rígido, 200 projetos resolvidos pelo solver explícito do PINNeAPPle e um "
+                  "Transolver que lê as sete variáveis de projeto. Nos 30 projetos mantidos fora do treino, o "
+                  "deslocamento de pico sai com 24,4% de erro médio — e o mesmo modelo sem o vetor de projeto "
+                  "vai a 41,7%.",
+            "en": "A bumper beam against a rigid pole, 200 designs solved by PINNeAPPle's own explicit crash solver and "
+                  "a Transolver that reads the seven design variables. On the 30 designs held out of training the peak "
+                  "displacement comes out with 24.4% mean error — and the same model without the design vector "
+                  "goes to 41.7%.",
+        },
+        metric={
+            "pt": ("24,4%", "de erro médio no deslocamento de pico dos 30 projetos mantidos fora do treino"),
+            "en": ("24.4%", "mean error on the peak displacement of the 30 designs held out of training"),
+        },
+        limits={
+            "pt": "É um cupom de componente — viga de para-choque DP1000 em duas crash boxes DP600 —, não um veículo "
+                  "inteiro. Os rótulos vêm do solver de crash explícito desta biblioteca, não do OpenRadioss, e a "
+                  "espessura age sobre a tensão de escoamento e a densidade de uma malha fixa, o que representa bem o "
+                  "esmagamento axial e subestima a rigidez de flexão. O pico é medido nos 900 nós retidos de 2.783, os "
+                  "mesmos para todos os modelos, e o erro é contra o solver, não contra um ensaio. A campanha é a "
+                  "de 6 de novembro de 2026, no tempo final dela (0,8 ms) e cortada nos nove primeiros quadros: o "
+                  "pipeline da época escrevia 9 ou 10 quadros para o mesmo evento, e o exemplo reconstrói o vetor de "
+                  "projeto a partir do metadado de cada projeto em vez de re-simular.",
+            "en": "This is a component coupon — a DP1000 bumper beam on two DP600 crash boxes —, not a full vehicle. The "
+                  "labels come from this library's explicit crash solver, not from OpenRadioss, and thickness acts on "
+                  "the flow stress and the density of a fixed mesh, which holds for axial crush and under-represents "
+                  "bending stiffness. The peak is measured on the 900 retained nodes out of 2.783, the same for every "
+                  "model, and the error is against the solver, not against a test. The campaign is the one of 6 "
+                  "November 2026, kept at its own end time (0.8 ms) and trimmed to its first nine frames: the "
+                  "pipeline of the time wrote 9 or 10 frames for the same event, and the example rebuilds the "
+                  "design vector from each design's metadata instead of re-simulating.",
+        },
+        body={
+            "pt": [
+                ("p", "Um operador neural pode prever o deslocamento de pico de um crash sem rodar o crash. O exercício "
+                      "que motivou este texto fez exatamente isso com dados de OpenRadioss e um Graph Neural Operator do "
+                      "PhysicsNeMo, e acertou 3,5% num projeto held-out. A pergunta aqui é a mesma; o que muda é de onde "
+                      "vêm os dados — do solver de crash explícito da própria biblioteca, num cupom que roda num laptop."),
+                ("h2", "O caso"),
+                ("p", "Uma viga de para-choque DP1000 apoiada em duas crash boxes DP600, lançada contra um poste rígido: "
+                      "é a metade de componente de um programa de crash. Sete variáveis de projeto — velocidade de "
+                      "impacto (50 a 64 km/h), as duas espessuras de parede, os dois limites de escoamento, o raio do "
+                      "poste e o seu deslocamento lateral. A malha é fixa, com <b>2.783 nós e 1.480 elementos "
+                      "hexaédricos</b>, e 200 projetos foram resolvidos pelo solver explícito (plasticidade J2, "
+                      "contato penalizado), 0,8 ms de evento em nove quadros cada."),
+                ("h2", "O que a rede vê"),
+                ("p", "Por nó: as três coordenadas, o rótulo de parte (a viga e as duas caixas) e a espessura. Por "
+                      "quadro: o tempo. Por projeto: as sete variáveis, mapeadas para [0, 1] dentro da própria faixa e "
+                      "repetidas em todos os nós. Essa última parte é o que torna o modelo paramétrico. Como a malha "
+                      "não muda entre projetos — é isso que permite comparar nó a nó —, a geometria sozinha não "
+                      "distingue um projeto do outro: sem o vetor de projeto, a rede vê 200 vezes o mesmo conjunto de "
+                      "pontos."),
+                ("h2", "Os números"),
+                ("p", "O erro relativo L2 do campo de deslocamento, médio sobre os 30 projetos fora do treino, fica em "
+                      "<b>0,28</b> (intervalo de confiança de 95%: 0,27 a 0,29). O deslocamento de pico — o menor "
+                      "deslocamento na direção do impacto, sobre todos os nós e quadros — sai com <b>24,4%</b> de "
+                      "erro médio, mediana de 24,5% e pior caso de 30,0%. No projeto pole0185, a referência "
+                      "dá -11,15 mm e o surrogate, -8,40 mm. O erro não é ruído: é viés. A nuvem de pontos "
+                      "fica acima da diagonal em todos os 30 projetos — o modelo acerta qual projeto esmaga mais e "
+                      "quanto, mas subestima a magnitude do pico em cerca de 2,7 mm, que é o que se espera de um "
+                      "regressor que suaviza."),
+                ("fig", ("img/exp/crash-pico.webp", "Deslocamento de pico previsto contra o de referência, por projeto fora do treino",
+                         "Cada ponto é um projeto mantido fora do treino; a cor é o erro relativo do pico e a linha "
+                         "tracejada é a predição perfeita. A nuvem fica acima da diagonal: o surrogate acerta a ordem "
+                         "dos projetos e subestima a magnitude do pico em 2,7 mm.")),
+                ("h2", "Sem o vetor de projeto não há resposta"),
+                ("p", "O mesmo Transolver, com o mesmo orçamento de treino, o mesmo split e o mesmo conjunto de nós, mas "
+                      "sem as sete variáveis, fica em <b>41,7%</b> de erro médio no pico (erro de campo "
+                      "0,76 contra 0,28). Não é um modelo pior: é um modelo sem a informação. Ele converge "
+                      "para o campo médio dos projetos de treino, porque nada no que recebe diz qual projeto está sendo "
+                      "pedido — e é essa a diferença entre interpolar a base e responder por um projeto novo."),
+                ("h2", "Quanto custa"),
+                ("p", "O solver leva cerca de <b>3,7 minutos</b> por projeto (medido: 223 s para 1.519 passos em 1 ms de "
+                      "evento, um processo). O surrogate tem 0,64 milhão de parâmetros e infere um projeto inteiro "
+                      "em <b>197 ms</b>, medido no mesmo benchmark. Não é 'mil vezes mais rápido numa GPU': é o que "
+                      "permite varrer o espaço de projeto antes de escolher quais simulações pagar."),
+                ("fig", ("img/exp/crash-superficie.webp", "Superfície deformada: referência e surrogate",
+                         "O mesmo projeto desenhado como superfície, não como nuvem de pontos: à esquerda a referência "
+                         "do solver, à direita a predição do surrogate, deformados 2× e na mesma escala de cor. A "
+                         "referência concentra o esmagamento no centro da viga; o surrogate espalha uma faixa pela "
+                         "face do para-choque e perde o pico.")),
+                ("h2", "O que não está medido"),
+                ("p", "O cupom é de componente e a malha é grosseira para um crash real; a espessura entra pela tensão de "
+                      "escoamento numa malha fixa, o que subestima flexão; o erro é contra o próprio solver, não contra "
+                      "ensaio; e o pico é lido nos 900 nós retidos, os mesmos para todos os modelos — o que não muda o "
+                      "ranking, mas muda o número. Nada aqui é certificação: é o protocolo, com os limites ao lado."),
+                ("h2", "Por que publicar"),
+                ("p", "Porque o resultado útil não é o número do surrogate, é o que ele permite decidir: com o vetor de "
+                      "projeto dentro do modelo, um projeto novo custa 197 ms em vez de minutos de solver, e o erro "
+                      "vem com intervalo. O resto — inclusive o run sem as variáveis, que vai a 41,7% — está no "
+                      "repositório, no mesmo exemplo que gerou as figuras."),
+            ],
+            "en": [
+                ("p", "A neural operator can predict the peak displacement of a crash without running the crash. The "
+                      "exercise that prompted this text did exactly that on OpenRadioss data with a PhysicsNeMo Graph "
+                      "Neural Operator, and landed 3.5% on a held-out design. The question here is the same; what "
+                      "changes is where the data comes from — this library's own explicit crash solver, on a coupon "
+                      "that runs on a laptop."),
+                ("h2", "The case"),
+                ("p", "A DP1000 bumper beam held by two DP600 crash boxes, driven into a rigid pole: the component-scale "
+                      "half of a crash programme. Seven design variables — impact velocity (50 to 64 km/h), the two wall "
+                      "thicknesses, the two flow stresses, the pole radius and its lateral offset. The mesh is fixed, "
+                      "<b>2.783 nodes and 1.480 hexahedral elements</b>, and 200 designs were solved by the explicit "
+                      "solver (J2 plasticity, penalty contact), 0.8 ms of the event in nine frames each."),
+                ("h2", "What the network sees"),
+                ("p", "Per node: the three coordinates, the part label (the beam and the two boxes) and the thickness. "
+                      "Per frame: the time. Per design: the seven variables, mapped to [0, 1] inside their own range "
+                      "and repeated on every node. That last part is what makes the model parametric. Since the mesh "
+                      "does not change between designs — which is what allows node-by-node comparison —, the geometry "
+                      "alone does not tell one design from another: without the design vector the network sees the same "
+                      "set of points 200 times."),
+                ("h2", "The numbers"),
+                ("p", "The relative L2 error of the displacement field, averaged over the 30 designs held out of "
+                      "training, is <b>0.28</b> (95% confidence interval: 0.27 to 0.29). The peak displacement — the "
+                      "smallest displacement along the impact direction, over every node and frame — comes out with "
+                      "<b>24.4%</b> mean error, a median of 24.5% and a worst case of 30.0%. On design "
+                      "pole0185 the reference is -11.15 mm and the surrogate -8.40 mm. The error is not noise, it "
+                      "is bias: the cloud of points sits above the diagonal on all 30 designs — the model gets which "
+                      "design crushes more, and by how much, but under-predicts the magnitude of the peak by about "
+                      "2.7 mm, which is what a smoothing regressor does."),
+                ("fig", ("img/exp/crash-pico.webp", "Predicted against reference peak displacement, per held-out design",
+                         "Each point is a design held out of training; the colour is the relative error of the peak and "
+                         "the dashed line is a perfect prediction. The cloud sits above the diagonal: the surrogate "
+                         "gets the order of the designs right and under-predicts the magnitude by 2.7 mm.")),
+                ("h2", "Without the design vector there is no answer"),
+                ("p", "The same Transolver, with the same training budget, the same split and the same node set, but "
+                      "without the seven variables, sits at <b>41.7%</b> mean error on the peak (field error "
+                      "0.76 against 0.28). It is not a worse model: it is a model without the information. "
+                      "It converges to the mean field of the training designs, because nothing it receives says which "
+                      "design is being asked about — and that is the difference between interpolating the corpus and "
+                      "answering for a new design."),
+                ("h2", "What it costs"),
+                ("p", "The solver takes about <b>3.7 minutes</b> per design (measured: 223 s for 1.519 steps over 1 ms of "
+                      "the event, one process). The surrogate has 0.64 million parameters and infers a whole design "
+                      "in <b>197 ms</b>, measured in the same benchmark. It is not 'a thousand times faster on a "
+                      "GPU': it is what lets a design space be swept before choosing which simulations to pay for."),
+                ("fig", ("img/exp/crash-superficie.webp", "The deformed surface: reference and surrogate",
+                         "The same design drawn as a surface, not as a point cloud: on the left the solver's reference, "
+                         "on the right the surrogate's prediction, deformed 2× and on the same colour scale. The "
+                         "reference concentrates the crush at the centre of the beam; the surrogate spreads a band "
+                         "across the bumper face and misses the peak.")),
+                ("h2", "What is not measured"),
+                ("p", "The coupon is component scale and the mesh is coarse for a real crash; thickness enters through "
+                      "the flow stress on a fixed mesh, which under-represents bending; the error is against the solver "
+                      "itself, not against a test; and the peak is read on the 900 retained nodes, the same for every "
+                      "model — which does not change the ranking, but does change the number. Nothing here is "
+                      "certification: it is the protocol, with its limits next to it."),
+                ("h2", "Why publish it"),
+                ("p", "Because the useful result is not the surrogate's number, it is what it lets you decide: with the "
+                      "design vector inside the model a new design costs 197 ms instead of minutes of solver, and "
+                      "the error comes with an interval. The rest — including the run without the variables, which goes "
+                      "to 41.7% — is in the repository, in the same example that produced the figures."),
+            ],
+        },
+    ),
+    dict(
         slug="fno-placa-fria",
         iso="2026-11-13",
         mins=5,
