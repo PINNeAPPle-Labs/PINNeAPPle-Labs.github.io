@@ -2691,7 +2691,7 @@ def page_home(lang: str) -> str:
       </div>
       <div class="problem-grid reveal">{entrega}</div>
       <div class="note reveal"><span><b>{C['entrega_note_b']}</b> {C['entrega_note']}</span></div>
-      <p class="section-cta reveal">{wa_button(lang, label=C['cta_primary'])} {report_button(lang, root)}</p>
+      <p class="section-cta reveal">{wa_button(lang, label="Discutir um projeto" if lang == "pt" else "Discuss a project")} {report_button(lang, root)}</p>
     </div>
   </section>
 """)
