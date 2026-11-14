@@ -1685,17 +1685,22 @@ def pre_band(lang: str, root: str) -> str:
 """
 
 def cta_band(lang: str, root: str) -> str:
-    S = STRINGS[lang]
+    pt = lang == "pt"
+    eyebrow = "Vamos construir sua solução" if pt else "Let's build your solution"
+    title = "Seu desafio de engenharia pode ser nosso próximo projeto." if pt else "Your engineering challenge could be our next project."
+    lead = ("Converse com nossa equipe sobre consultoria em Physics AI ou conheça o PINNeAPPle Studio para explorar nossos fluxos de modelagem e verificação." if pt else "Talk to our team about Physics AI consulting or explore PINNeAPPle Studio for modeling and verification workflows.")
+    primary = "Discutir um projeto" if pt else "Discuss a project"
+    secondary = "Conhecer o Studio" if pt else "Explore Studio"
     return f"""  <section class="cta-band">
     <div class="wrap cta-inner">
       <div>
-        <p class="eyebrow">{'Traga o seu caso' if lang == 'pt' else 'Bring your case'}</p>
-        <h2>{S['cta_title']}</h2>
-        <p class="lead" style="max-width:52ch">{S['cta_lead']}</p>
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{title}</h2>
+        <p class="lead" style="max-width:52ch">{lead}</p>
       </div>
       <div class="cta-actions">
-        {wa_button(lang)}
-        <a class="btn btn-ghost" href="{GITHUB}" target="_blank" rel="noopener">{S['cta_secondary']}</a>
+        {wa_button(lang, label=primary)}
+        <a class="btn btn-ghost" href="{root}{url(lang, 'studio')}">{secondary}</a>
       </div>
     </div>
   </section>
@@ -1892,9 +1897,9 @@ HOME = {
             ("0,216 °C", "de erro no gêmeo de um permutador em operação", "95,5% de cobertura"),
             ("2,6 h", "de antecedência no alarme, com o erro declarado", "HX-201, incrustação"),
         ],
-        proofs_eyebrow="Do que já rodou",
-        proofs_h="O que já rodou, com o número na frente",
-        proofs_p="Seis experimentos abertos, cada um com artigo inteiro: o que foi medido, contra o que foi comparado e o que ainda não está provado.",
+        proofs_eyebrow="Resultados e evidências",
+        proofs_h="Physics AI aplicada: projetos, experimentos e resultados verificáveis",
+        proofs_p="Explore aplicações reais e estudos técnicos com métricas, referências de comparação e limitações documentadas.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Pressão na pele de uma asa otimizada",
              "Otimização", "1.920 asas, três objetivos", "asa-1920-projetos"),
@@ -1996,9 +2001,9 @@ HOME = {
             ("0.216 °C", "of error on the twin of an exchanger in operation", "95.5% coverage"),
             ("2.6 h", "of alarm lead, with the error stated", "HX-201, fouling"),
         ],
-        proofs_eyebrow="From what already ran",
-        proofs_h="What already ran, with the number up front",
-        proofs_p="Six open experiments, each with a full article: what was measured, what it was compared against, and what is not proven yet.",
+        proofs_eyebrow="Results and evidence",
+        proofs_h="Physics AI in practice: projects, experiments, and verifiable results",
+        proofs_p="Explore real applications and technical studies with metrics, reference comparisons, and documented limitations.",
         proofs=[
             ("img/portfolio/13-aircraft-render-pressure.jpg", "Skin pressure on an optimized wing",
              "Optimization", "1,920 wings, three objectives", "asa-1920-projetos"),
