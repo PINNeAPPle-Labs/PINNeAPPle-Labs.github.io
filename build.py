@@ -1411,14 +1411,14 @@ STRINGS = {
 META = {
     "home": {
         "pt": dict(
-            title="Estudo de CFD com escopo, prazo e erro declarados · PINNeAPPle Labs",
-            desc="Estudo de simulação para indústria: você manda a geometria e a pergunta, recebe o escopo com prazo de 4 a 10 semanas e o preço definido a partir dele, e um relatório com o número verificado contra ensaio e o erro declarado.",
+            title="PINNeAPPle Labs · Physics AI e simulação de engenharia verificada",
+            desc="Simulação e Physics AI para indústria: escopo com prazo e preço definidos, e um relatório com o número verificado contra ensaio e o erro declarado.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="CFD studies with scope, deadline and error stated · PINNeAPPle Labs",
-            desc="Simulation studies for industry: you send the geometry and the question, you get the scope with a 4 to 10 week deadline and the price set from it, and a report with the number checked against an experiment and the error stated.",
+            title="PINNeAPPle Labs · Physics AI and verified engineering simulation",
+            desc="Simulation and Physics AI for industry: a scope with a deadline and a price, and a report with the number checked against an experiment and the error stated.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
@@ -1522,8 +1522,13 @@ def head(lang: str, page: str, root: str) -> str:
 <meta property="og:title" content="{M['title']}" />
 <meta property="og:description" content="{M['desc']}" />
 <meta property="og:image" content="{SITE}/{M['og']}" />
+<meta property="og:site_name" content="PINNeAPPle Labs" />
 <meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"PINNeAPPle Labs","url":"{SITE}/","logo":"{SITE}/apple-touch-icon.png","description":"{M['desc']}","sameAs":["https://github.com/PINNeAPPle-Labs/PINNeAPPle","https://pypi.org/project/pinneapple/"]}}</script>
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="{root}favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="{root}favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="{root}apple-touch-icon.png" />
 <link rel="stylesheet" href="{root}fonts.css" />
 <link rel="stylesheet" href="{root}styles.css" />
 </head>
