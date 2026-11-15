@@ -25,6 +25,7 @@ import urllib.parse
 from pathlib import Path
 
 import casos_sucesso as CS
+from twin_pages import build_twin_pages, update_catalog_images
 
 ROOT = Path(__file__).resolve().parent
 
@@ -3934,6 +3935,19 @@ def build() -> list[str]:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(redirect_page(target, label), encoding="utf-8")
             written.append(str(out.relative_to(ROOT)))
+
+    # Digital Twin pages come from the curated catalogs plus the illustration
+    # manifest, so a fresh clone of this repo reproduces them exactly.
+    written.extend(update_catalog_images())
+    written.extend(build_twin_pages())
+    for rel in (
+        "digital-twins/index.html", "en/digital-twins/index.html",
+        "physics-ai-models/index.html", "en/physics-ai-models/index.html",
+        "physics-ai-demo.js",
+    ):
+        if not (ROOT / rel).is_file():
+            raise FileNotFoundError(f"Required Physics AI gallery asset missing: {rel}")
+        written.append(rel)
 
     return written
 
