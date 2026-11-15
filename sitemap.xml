@@ -110,6 +110,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pinneapple-labs.github.io/physics-ai-models/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/physics-ai-models/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/physics-ai-models/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/physics-ai-models/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/physics-ai-models/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/physics-ai-models/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pinneapple-labs.github.io/artigos/pico-de-crash-com-surrogate/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/pico-de-crash-com-surrogate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/pico-de-crash-com-surrogate/"/>

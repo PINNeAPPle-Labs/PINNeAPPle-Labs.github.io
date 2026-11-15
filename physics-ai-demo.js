@@ -25,16 +25,16 @@
     const data = samples();
     const maxY = Math.max(1,Number(amplitude.value));
     ctx.clearRect(0,0,width,height);
-    ctx.fillStyle = "#0b1b2a"; ctx.fillRect(0,0,width,height);
-    ctx.strokeStyle = "#527080";ctx.lineWidth = 1;
+    ctx.fillStyle = "#0b1018"; ctx.fillRect(0,0,width,height);
+    ctx.strokeStyle = "#1e2836";ctx.lineWidth = 1;
     ctx.beginPath();ctx.moveTo(pad,16);ctx.lineTo(pad,height-pad);ctx.lineTo(width-12,height-pad);ctx.stroke();
-    ctx.strokeStyle = "#76e5d1";ctx.lineWidth = 3;ctx.beginPath();
+    ctx.strokeStyle = "#3dd6c4";ctx.lineWidth = 3;ctx.beginPath();
     data.forEach(([x,y],i) => {
       const px=pad+x*(width-pad-14), py=height-pad-(y/maxY)*(height-pad-28);
       if (i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
     });
     ctx.stroke();
-    ctx.fillStyle="#dce9ef";ctx.font="13px system-ui";
+    ctx.fillStyle="#93a1b4";ctx.font="13px system-ui";
     ctx.fillText("x / L",width-50,height-12);ctx.fillText("u",16,22);
     const peak = Math.max(...data.map(p=>p[1]));
     output.textContent = "α = "+Number(alpha.value).toFixed(3)+" m²/s · t = "+Number(time.value).toFixed(2)+" s · max u = "+peak.toFixed(3);

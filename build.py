@@ -1283,6 +1283,7 @@ PAGES = {
     "artigos": "artigos",
     "sucessos": "casos-de-sucesso",
     "lib": "lib",
+    "models": "physics-ai-models",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
@@ -1475,6 +1476,20 @@ META = {
         "en": dict(
             title="The PINNeAPPle library · PINNeAPPle Labs",
             desc="Architecture, quickstart and the honest open-source split of the PINNeAPPle platform: 31 modules, 248 examples, Apache-2.0.",
+            og="img/portfolio/13-aircraft-render-pressure.jpg",
+            type="website",
+        ),
+    },
+    "models": {
+        "pt": dict(
+            title="Modelos de Physics AI · PINNeAPPle Labs",
+            desc="Modelos substitutos, modelos inversos, otimização e fluxos de Physics AI, com roadmap e critério de evidência — e um experimento de calor 1D para conferir a conta.",
+            og="img/portfolio/13-aircraft-render-pressure.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="Physics AI models · PINNeAPPle Labs",
+            desc="Surrogate models, inverse models, optimization and Physics AI workflows, each with a roadmap and an evidence criterion — plus a 1D heat experiment you can check.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
@@ -3866,6 +3881,118 @@ def page_sucesso(lang: str, slug: str) -> str:
     ])
 
 
+# ---------------------------------------------------------------------------
+# Page: Physics AI models and applications
+# ---------------------------------------------------------------------------
+
+MODELS = {
+    "pt": {
+        "eyebrow": "PHYSICS AI SHOWCASE",
+        "h1": "Modelos e aplicações de Physics AI",
+        "lead": "Arquiteturas, problemas inversos, otimização e fluxos de engenharia. Nada aqui é apresentado como resultado validado: cada família tem um roadmap e um critério de evidência.",
+        "status": "Planejado. Treinamento e validação ainda exigem evidências verificáveis.",
+        "roadmap": "Ver roadmap",
+        "cards": [
+            ("Modelos substitutos", "FNO · DeepONet · PINN · GNN", "6"),
+            ("Modelos inversos", "PINNs inversas · estimativa de parâmetros", "7"),
+            ("Otimização de projeto", "Pareto · solver no laço", "8"),
+            ("Arquiteturas de modelo", "PINN · FNO · DeepONet · MeshGraphNet · ROM", "9"),
+            ("Fluxos de Physics AI", "CFD · FEM · EM · multifísica", "10"),
+        ],
+        "figs_eyebrow": "PORTFÓLIO",
+        "figs_h": "Visualizações que já existem no repositório",
+        "figs_lead": "São imagens de experimentos anteriores, não resultados do experimento interativo abaixo.",
+        "figs": [
+            ("img/portfolio/13-aircraft-render-pressure.jpg", "Campo de pressão sobre uma asa."),
+            ("img/portfolio/aero_pareto.jpg", "Frente de Pareto de um estudo aerodinâmico."),
+            ("img/results/chassis_von_mises.png", "Tensão de von Mises em um chassi."),
+        ],
+        "demo_eyebrow": "EXPERIMENTO INTERATIVO",
+        "demo_h": "Calor 1D: a solução analítica, na sua mão",
+        "demo_lead": "Solução exata de um modo só, não um surrogate treinado nem CFD/FEM. Mexa nos controles: é o tipo de número que dá para conferir.",
+        "formula": "u(x,t) = A · sen(πx/L) · exp(−απ²t/L²)",
+        "labels": ("α (m²/s)", "t (s)", "A"),
+        "canvas_alt": "Curva de temperatura da solução analítica",
+        "export": "Exportar CSV",
+    },
+    "en": {
+        "eyebrow": "PHYSICS AI SHOWCASE",
+        "h1": "Physics AI models and applications",
+        "lead": "Architectures, inverse problems, optimization and engineering workflows. Nothing here is presented as a validated result: each family has a roadmap and an evidence criterion.",
+        "status": "Planned. Training and validation still require verifiable evidence.",
+        "roadmap": "See roadmap",
+        "cards": [
+            ("Surrogate models", "FNO · DeepONet · PINN · GNN", "6"),
+            ("Inverse models", "Inverse PINNs · parameter estimation", "7"),
+            ("Design optimization", "Pareto · solver in the loop", "8"),
+            ("Model architectures", "PINN · FNO · DeepONet · MeshGraphNet · ROM", "9"),
+            ("Physics AI workflows", "CFD · FEM · EM · multiphysics", "10"),
+        ],
+        "figs_eyebrow": "PORTFOLIO",
+        "figs_h": "Visualisations that already exist in the repository",
+        "figs_lead": "These come from earlier experiments, not from the interactive experiment below.",
+        "figs": [
+            ("img/portfolio/13-aircraft-render-pressure.jpg", "Pressure field over a wing."),
+            ("img/portfolio/aero_pareto.jpg", "Pareto front from an aerodynamic study."),
+            ("img/results/chassis_von_mises.png", "von Mises stress in a chassis."),
+        ],
+        "demo_eyebrow": "INTERACTIVE EXPERIMENT",
+        "demo_h": "1D heat: the analytic solution in your hands",
+        "demo_lead": "The exact single-mode solution, not a trained surrogate or CFD/FEM. Move the controls: this is the kind of number you can check.",
+        "formula": "u(x,t) = A · sin(πx/L) · exp(−απ²t/L²)",
+        "labels": ("α (m²/s)", "t (s)", "A"),
+        "canvas_alt": "Temperature curve of the analytic solution",
+        "export": "Export CSV",
+    },
+}
+ISSUE_BASE = "https://github.com/PINNeAPPle-Labs/pinneapple-labs-site/issues/"
+
+
+def page_models(lang: str) -> str:
+    root = up(lang, "models")
+    M = MODELS[lang]
+    cards = "".join(
+        f'<article class="card"><h3>{title}</h3>'
+        f'<p style="font-family:var(--f-mono);font-size:0.72rem;letter-spacing:0.06em;color:var(--cyan)">{tags}</p>'
+        f'<p style="color:var(--text-dim);font-size:0.9rem">{M["status"]}</p>'
+        f'<p><a class="btn btn-quiet" href="{ISSUE_BASE}{issue}" target="_blank" rel="noopener">{M["roadmap"]} →</a></p>'
+        f'</article>'
+        for title, tags, issue in M["cards"]
+    )
+    figs = "".join(
+        f'<figure class="fig"><img src="{root}{src}" alt="{cap}" loading="lazy" decoding="async" />'
+        f'<figcaption>{cap}</figcaption></figure>'
+        for src, cap in M["figs"]
+    )
+    a, b, c = M["labels"]
+    return "".join([
+        head(lang, "models", root),
+        header(lang, "models", root),
+        f'<main id="main"><section class="section"><div class="wrap">',
+        f'<div class="section-head"><p class="eyebrow">{M["eyebrow"]}</p><h1>{M["h1"]}</h1><p>{M["lead"]}</p></div>',
+        f'<div class="grid grid-3">{cards}</div>',
+        f'</div></section>',
+        f'<section class="section alt tight"><div class="wrap">',
+        f'<div class="section-head"><p class="eyebrow">{M["figs_eyebrow"]}</p><h2>{M["figs_h"]}</h2><p>{M["figs_lead"]}</p></div>',
+        f'<div class="grid grid-3">{figs}</div>',
+        f'</div></section>',
+        f'<section class="section tight" id="experimento"><div class="wrap">',
+        f'<div class="section-head"><p class="eyebrow">{M["demo_eyebrow"]}</p><h2>{M["demo_h"]}</h2><p>{M["demo_lead"]}</p></div>',
+        f'<div data-heat-demo><p style="font-family:var(--f-mono);font-size:0.95rem;color:var(--text)">{M["formula"]}</p>',
+        f'<div class="heat-controls"><label>{a} <input name="alpha" type="range" min="0.01" max="0.3" step="0.01" value="0.1"></label>'
+        f'<label>{b} <input name="time" type="range" min="0" max="5" step="0.05" value="0.5"></label>'
+        f'<label>{c} <input name="amplitude" type="range" min="0.2" max="2" step="0.1" value="1"></label></div>',
+        f'<canvas width="760" height="310" style="display:block;width:100%;max-width:760px" aria-label="{M["canvas_alt"]}"></canvas>',
+        f'<p data-heat-readout aria-live="polite"></p>',
+        f'<button type="button" data-export class="btn btn-ghost">{M["export"]}</button></div>',
+        f'<script src="{root}physics-ai-demo.js" defer></script>',
+        f'</div></section>',
+        cta_band(lang, root),
+        '</main>',
+        footer(lang, "models", root),
+    ])
+
+
 BUILDERS = {
     "home": page_home,
     "studio": page_studio,
@@ -3876,6 +4003,7 @@ BUILDERS = {
     "artigos": page_artigos,
     "sucessos": page_sucessos,
     "lib": page_lib,
+    "models": page_models,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
