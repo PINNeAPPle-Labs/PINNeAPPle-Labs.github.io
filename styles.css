@@ -173,7 +173,13 @@ header.site {
 .brand .labs { color: var(--text-dim); font-weight: 500; }
 
 nav.main { display: flex; gap: 1.65rem; margin-left: auto; font-size: 0.855rem; font-weight: 500; }
-nav.main a { color: var(--text-dim); text-decoration: none; transition: color .14s ease; }
+nav.main a { color: var(--text-dim); text-decoration: none; transition: color .14s ease; white-space: nowrap; }
+/* Twelve items in one bar: tighten the spacing before the text starts wrapping. */
+@media (max-width: 1400px) {
+  .bar { gap: 1.1rem; }
+  nav.main { gap: 0.95rem; font-size: 0.8rem; }
+  .bar-cta { gap: 0.5rem; }
+}
 nav.main a:hover, nav.main a[aria-current] { color: var(--text); }
 
 .bar-cta { display: flex; align-items: center; gap: 0.8rem; }
