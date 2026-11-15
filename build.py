@@ -1354,6 +1354,7 @@ STRINGS = {
         "lbl_articles": "Artigos",
         "lbl_reports": "Relatórios de exemplo",
         "lbl_success": "Casos de sucesso",
+        "lbl_consult": "Consultoria",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
         "min_read": "min de leitura",
@@ -1389,6 +1390,7 @@ STRINGS = {
         "lbl_articles": "Articles",
         "lbl_reports": "Example reports",
         "lbl_success": "Success stories",
+        "lbl_consult": "Consulting",
         "lbl_lib": "The library",
         "read_more": "Read the article",
         "min_read": "min read",
@@ -1553,6 +1555,11 @@ def header(lang: str, page: str, root: str) -> str:
     for key, label in NAV[lang]:
         cur = ' aria-current="page"' if key == nav_page else ""
         marks.append(f'      <a href="{root}{url(lang, key) or ""}"{cur}>{label}</a>')
+        if key == "studio":
+            # Consulting is a commercial product, so it must be reachable from
+            # every page — not only from the #consultoria section of the home.
+            marks.append(f'      <a href="{root}{url(lang, "home")}#consultoria">'
+                         f'{"Consultoria" if lang == "pt" else "Consulting"}</a>')
     links = "\n".join(marks)
     # The documentation lives outside this repo, on the platform's own site.
     links += (f'\n      <a href="{DOCS}" target="_blank" rel="noopener">'
@@ -1571,12 +1578,15 @@ def header(lang: str, page: str, root: str) -> str:
 
     <nav class="main" id="primary-nav" aria-label="{STRINGS[lang]['foot_platform']}">
 {links}
+      <a class="mobile-only" href="{root}{url(_other(lang), other_page)}" hreflang="{LANGUAGES[_other(lang)]['code']}">{L['other_label']}</a>
     </nav>
 
     <div class="bar-cta">
       <a class="chip" href="{root}{url(_other(lang), other_page)}" hreflang="{LANGUAGES[_other(lang)]['code']}">{L['other_label']}</a>
       <a class="btn btn-primary btn-sm" href="https://wa.me/{WHATSAPP}?text={_q(STRINGS[lang]['wa_msg'])}" target="_blank" rel="noopener">{STRINGS[lang]['cta_primary']}</a>
     </div>
+
+    <a class="btn btn-primary btn-sm bar-wa" href="https://wa.me/{WHATSAPP}?text={_q(STRINGS[lang]['wa_msg'])}" target="_blank" rel="noopener">{STRINGS[lang]['cta_primary']}</a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
@@ -1607,9 +1617,10 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'erosao')}">{SEGLABELS[lang]['erosao']}</a></li>
           <li><a href="{root}{url(lang, 'trocadores')}">{SEGLABELS[lang]['trocadores']}</a></li>
           <li><a href="{root}{url(lang, 'valvulas')}">{SEGLABELS[lang]['valvulas']}</a></li>
-          <li><a href="#consultoria">{S['lbl_success']}</a></li>
+          <li><a href="{root}{url(lang, 'home')}#consultoria">{S['lbl_consult']}</a></li>
           <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
-          <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_articles']}</a></li>
+          <li><a href="{root}{url(lang, 'sucessos')}">{S['lbl_success']}</a></li>
+          <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
         </ul>
       </div>
@@ -2622,6 +2633,68 @@ META["relatorios"] = {
 # Page: home
 # ---------------------------------------------------------------------------
 
+FLOW = {
+    "pt": {
+        "eyebrow": "DO PROBLEMA AO NÚMERO",
+        "title": "Como um problema de otimização vira uma decisão",
+        "lead": "O caminho é o mesmo, com consultoria ou com o Studio: cada etapa deixa um artefato, e a verificação pode recusar o resultado antes de ele virar relatório.",
+        "steps": [
+            ("01", "Problema", "O que precisa ser decidido e qual número prova a decisão"),
+            ("02", "Geometria e física", "Domínio, materiais, equações e condições de contorno"),
+            ("03", "Solver de referência", "O caso rodando em OpenFOAM, FEniCS ou CalculiX"),
+            ("04", "Dataset", "Casos conferidos, com convergência e incerteza registradas"),
+            ("05", "Surrogate", "Modelo rápido, com os limites de validade declarados"),
+            ("06", "Verificação e decisão", "Comparação contra o solver, relatório e próximo passo"),
+        ],
+        "loop": "<b>Laço de retorno:</b> se a verificação reprova, o caso volta para a geometria com um novo candidato — o número só entra no relatório depois de passar.",
+        "video": ("videos/reel-rover.mp4", "videos/reel-rover.jpg",
+                  "Laço fechado na prática: o rover aprende o solo pelas próprias rodas", "rover-aprende-solo"),
+        "note": "Fluxo ilustrativo do processo — não é resultado de simulação.",
+    },
+    "en": {
+        "eyebrow": "FROM PROBLEM TO NUMBER",
+        "title": "How an optimization problem becomes a decision",
+        "lead": "The path is the same with consulting or with Studio: every step leaves an artifact, and verification can reject the result before it becomes a report.",
+        "steps": [
+            ("01", "Problem", "What has to be decided and which number proves the decision"),
+            ("02", "Geometry and physics", "Domain, materials, equations and boundary conditions"),
+            ("03", "Reference solver", "The case running in OpenFOAM, FEniCS or CalculiX"),
+            ("04", "Dataset", "Checked cases with convergence and uncertainty recorded"),
+            ("05", "Surrogate", "A fast model with its validity limits stated"),
+            ("06", "Verification and decision", "Comparison against the solver, report and next step"),
+        ],
+        "loop": "<b>Feedback loop:</b> if verification rejects the result, the case returns to geometry with a new candidate — the number only reaches the report after it passes.",
+        "video": ("videos/reel-rover.mp4", "videos/reel-rover.jpg",
+                  "A closed loop in practice: the rover learns the ground through its own wheels", "rover-aprende-solo"),
+        "note": "Illustrative process flow — not a simulation result.",
+    },
+}
+
+
+def flow_section(lang: str, root: str) -> str:
+    """The engineering path from a problem to a verified number, plus a live clip."""
+    F = FLOW[lang]
+    steps = "".join(
+        f'<li><span class="fn">{n}</span><h3>{t}</h3><p>{b}</p></li>' for n, t, b in F["steps"]
+    )
+    mp4, poster, cap, slug = F["video"]
+    return f"""  <section id="fluxo" class="alt tight">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{F['eyebrow']}</p>
+        <h2>{F['title']}</h2>
+        <p>{F['lead']}</p>
+      </div>
+      <ol class="flowmap">{steps}</ol>
+      <div class="flow-foot">
+        <p class="flow-loop">{F['loop']}</p>
+        <figure class="flow-video"><video src="{root}{mp4}" poster="{root}{poster}" muted loop playsinline preload="none" data-autoplay aria-label="{cap}"></video><figcaption><a href="{root}{url(lang, 'post:' + slug)}">{cap}</a></figcaption></figure>
+      </div>
+      <p class="flow-note">{F['note']}</p>
+    </div>
+  </section>
+"""
+
 
 def page_home(lang: str) -> str:
     root = up(lang, "home")
@@ -2640,14 +2713,14 @@ def page_home(lang: str) -> str:
         <p class="lead">{C['lead']}</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="{GITHUB}" target="_blank" rel="noopener">{C['cta_primary']}</a>
-          <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{C['cta_secondary']} →</a>
+          <a class="btn btn-ghost" href="{root}{url(lang, 'home')}#consultoria">{C['cta_secondary']} →</a>
         </div>
         <p class="hero-note">{ "Da pesquisa à aplicação industrial: explore a tecnologia aberta ou converse conosco sobre um projeto personalizado." if lang == "pt" else "From research to industrial applications: explore the open technology or discuss a custom project with us." }</p>
         <div class="hero-meta">{chips}</div>
       </div>
       <div>
         <figure class="hero-media">
-          <img src="{root}{C['hero_img']}" alt="{C['hero_alt']}" fetchpriority="high" decoding="async" />
+          <video src="{root}videos/hero-aero.mp4" poster="{root}videos/hero-aero.jpg" muted loop playsinline preload="none" data-autoplay aria-label="{C['hero_alt']}"></video>
           <figcaption><b>{C['hero_fig_b']}</b><span>{C['hero_fig_s']}</span></figcaption>
         </figure>
       </div>
@@ -2681,6 +2754,8 @@ def page_home(lang: str) -> str:
     </div>
   </section>
 """)
+
+    parts.append(flow_section(lang, root))
 
     entrega = "".join(
         f'<article class="problem-card reveal"><h3>{t}</h3><p>{b}</p></article>'
@@ -3877,6 +3952,23 @@ def write_sitemap() -> str:
                 f"  <url>\n    <loc>{SITE}/{url(lang, page)}</loc>\n{alternates}\n"
                 f"    <priority>{priority}</priority>\n  </url>"
             )
+    # The Digital Twin and Physics AI catalogs are curated HTML rather than
+    # PAGES entries, so their URLs are collected from the published folders.
+    for catalog in ("digital-twins", "physics-ai-models"):
+        if not (ROOT / catalog).is_dir():
+            continue
+        for twin in sorted((ROOT / catalog).glob("*/index.html")):
+            slug = twin.parent.name
+            alternates = "\n".join(
+                f'    <xhtml:link rel="alternate" hreflang="{LANGUAGES[o]["code"]}" '
+                f'href="{SITE}/{url(o, "home")}{catalog}/{slug}/"/>'
+                for o in LANGUAGES
+            )
+            for lang in LANGUAGES:
+                entries.append(
+                    f"  <url>\n    <loc>{SITE}/{url(lang, 'home')}{catalog}/{slug}/</loc>\n"
+                    f"{alternates}\n    <priority>0.6</priority>\n  </url>"
+                )
     body = "\n".join(entries)
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'

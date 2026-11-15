@@ -184,16 +184,24 @@ nav.main a:hover, nav.main a[aria-current] { color: var(--text); }
   color: var(--text); width: 2.4rem; height: 2.4rem;
   align-items: center; justify-content: center; cursor: pointer;
 }
+/* The quote button is the main conversion action, so on phones it stays in the
+   bar instead of disappearing inside the collapsed menu. */
+.bar-wa { display: none; margin-left: auto; }
 @media (max-width: 940px) {
+  .bar { gap: 0.55rem; }
   nav.main, .bar-cta { display: none; }
-  .nav-toggle { display: inline-flex; }
+  .nav-toggle { display: inline-flex; margin-left: 0; }
+  .bar-wa { display: inline-flex; padding: 0.5rem 0.75rem; font-size: 0.8rem; }
   nav.main.open {
     display: flex; flex-direction: column; gap: 0;
     position: absolute; left: 0; right: 0; top: 4.1rem;
     background: var(--ink-2); border-bottom: 1px solid var(--line);
     padding: 0.5rem var(--gutter) 1.25rem;
+    max-height: calc(100dvh - 4.1rem); overflow-y: auto;
   }
-  nav.main.open a { padding: 0.7rem 0; border-bottom: 1px solid var(--line-soft); font-size: 0.95rem; }
+  /* 44px minimum touch target */
+  nav.main.open a { padding: 0.85rem 0; border-bottom: 1px solid var(--line-soft); font-size: 0.95rem; }
+  nav.main.open .btn { justify-content: center; margin-top: 0.9rem; padding: 0.85rem 1rem; border-bottom: 0; }
 }
 @media (min-width: 941px) { .mobile-only { display: none; } }
 
@@ -683,6 +691,50 @@ section.alt .cap { background: var(--ink); }
 
 /* steps in three columns */
 .steps.cols3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ==========================================================================
+   Engineering flow: from problem to a verified number
+   ========================================================================== */
+.flowmap {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.1rem;
+  list-style: none; padding: 0; margin: 2rem 0 1.2rem; counter-reset: fm;
+}
+.flowmap li {
+  position: relative; padding: 1.05rem 0.95rem;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px;
+}
+.flowmap li::after {
+  content: ""; position: absolute; top: 50%; right: -1.1rem; width: 1.1rem; height: 0;
+  border-top: 1px dashed var(--gold-dk);
+}
+.flowmap li:last-child { border-color: rgba(67, 217, 138, .45); }
+.flowmap li:last-child::after { display: none; }
+.flowmap .fn {
+  display: block; font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.flowmap h3 { font-size: 0.98rem; margin: 0 0 0.35rem; }
+.flowmap p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+@media (max-width: 1000px) {
+  .flowmap { grid-template-columns: repeat(2, 1fr); }
+  .flowmap li::after { display: none; }
+}
+@media (max-width: 560px) { .flowmap { grid-template-columns: 1fr; } }
+
+.flow-foot { display: grid; grid-template-columns: 1fr 360px; gap: 1.8rem; align-items: start; margin-top: 1.6rem; }
+@media (max-width: 900px) { .flow-foot { grid-template-columns: 1fr; } }
+.flow-loop {
+  display: block; font-size: 0.9rem; color: var(--text-dim);
+  border: 1px dashed var(--gold-dk); border-radius: 10px;
+  padding: 0.95rem 1.1rem; background: rgba(240, 179, 46, .04); margin: 0;
+}
+.flow-loop b { color: var(--gold); }
+.flow-video { margin: 0; }
+.flow-video video { width: 100%; display: block; border-radius: 10px; border: 1px solid var(--line); }
+.flow-video figcaption { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.55rem; }
+.flow-video figcaption a { color: var(--cyan); text-decoration: none; }
+.flow-video figcaption a:hover { text-decoration: underline; }
+.flow-note { font-size: 0.78rem; color: var(--text-mute); margin-top: 1rem; }
 @media (max-width: 820px) { .steps.cols3 { grid-template-columns: 1fr; } }
 
 /* a whole figure stretched into a clickable tile */

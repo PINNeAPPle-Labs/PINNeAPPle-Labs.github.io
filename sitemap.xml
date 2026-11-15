@@ -385,108 +385,604 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/casos-de-sucesso/text2part/"/>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/</loc><priority>0.8</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/</loc><priority>0.8</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/physics-ai-models/</loc><priority>0.8</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/physics-ai-models/</loc><priority>0.8</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/fpso-subsea-production/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/fpso-subsea-production/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/gas-compression-station/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/gas-compression-station/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/pipeline-network/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/pipeline-network/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/blast-furnace/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/blast-furnace/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/chemical-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/chemical-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/smart-manufacturing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/smart-manufacturing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/reusable-rocket/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/reusable-rocket/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/jet-engine/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/jet-engine/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/satellite/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/satellite/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/nuclear-power-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/nuclear-power-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/hydroelectric-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/hydroelectric-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/offshore-wind-farm/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/offshore-wind-farm/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/smart-city/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/smart-city/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/water-treatment-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/water-treatment-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/volcano/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/volcano/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/human-heart/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/human-heart/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/fusion-reactor/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/fusion-reactor/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/lunar-base/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/lunar-base/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/semiconductor-fabrication/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/semiconductor-fabrication/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/battery-gigafactory/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/battery-gigafactory/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/mining-mineral-processing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/mining-mineral-processing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/data-center-cooling/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/data-center-cooling/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/geothermal-reservoir/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/geothermal-reservoir/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/carbon-capture-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/carbon-capture-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/electric-grid/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/electric-grid/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/additive-manufacturing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/additive-manufacturing/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/particle-accelerator/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/particle-accelerator/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/green-hydrogen-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/green-hydrogen-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/desalination-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/desalination-plant/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/bridge-structural-health/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/bridge-structural-health/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/autonomous-underwater-vehicle/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/autonomous-underwater-vehicle/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/high-speed-railway/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/high-speed-railway/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/cement-kiln/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/cement-kiln/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/industrial-refrigeration/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/industrial-refrigeration/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/bioreactor/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/bioreactor/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/radio-telescope/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/radio-telescope/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/fire-smoke-propagation/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/fire-smoke-propagation/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/coastal-infrastructure/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/coastal-infrastructure/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/electric-vehicle/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/electric-vehicle/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/controlled-environment-agriculture/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/controlled-environment-agriculture/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/injection-molding/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/injection-molding/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/floating-solar-farm/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/floating-solar-farm/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/ocean-wave-energy-converter/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/ocean-wave-energy-converter/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/cargo-ship-structural/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/cargo-ship-structural/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/thermal-energy-storage/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/thermal-energy-storage/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/smart-port/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/smart-port/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/electric-arc-furnace/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/electric-arc-furnace/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/wind-tunnel/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/wind-tunnel/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/marine-ecosystem/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/marine-ecosystem/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/digital-twins/atmospheric-reentry/</loc><priority>0.6</priority></url>
-  <url><loc>https://pinneapple-labs.github.io/en/digital-twins/atmospheric-reentry/</loc><priority>0.6</priority></url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/additive-manufacturing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/additive-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/additive-manufacturing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/additive-manufacturing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/additive-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/additive-manufacturing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/atmospheric-reentry/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/atmospheric-reentry/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/atmospheric-reentry/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/atmospheric-reentry/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/atmospheric-reentry/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/atmospheric-reentry/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/autonomous-underwater-vehicle/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/autonomous-underwater-vehicle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/autonomous-underwater-vehicle/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/autonomous-underwater-vehicle/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/autonomous-underwater-vehicle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/autonomous-underwater-vehicle/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/battery-gigafactory/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/battery-gigafactory/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/battery-gigafactory/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/battery-gigafactory/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/battery-gigafactory/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/battery-gigafactory/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/bioreactor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/bioreactor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/bioreactor/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/bioreactor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/bioreactor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/bioreactor/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/blast-furnace/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/blast-furnace/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/blast-furnace/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/blast-furnace/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/blast-furnace/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/blast-furnace/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/bridge-structural-health/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/bridge-structural-health/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/bridge-structural-health/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/bridge-structural-health/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/bridge-structural-health/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/bridge-structural-health/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/carbon-capture-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/carbon-capture-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/carbon-capture-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/carbon-capture-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/carbon-capture-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/carbon-capture-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/cargo-ship-structural/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/cargo-ship-structural/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/cargo-ship-structural/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/cargo-ship-structural/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/cargo-ship-structural/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/cargo-ship-structural/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/cement-kiln/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/cement-kiln/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/cement-kiln/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/cement-kiln/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/cement-kiln/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/cement-kiln/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/chemical-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/chemical-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/chemical-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/chemical-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/chemical-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/chemical-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/coastal-infrastructure/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/coastal-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/coastal-infrastructure/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/coastal-infrastructure/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/coastal-infrastructure/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/coastal-infrastructure/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/controlled-environment-agriculture/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/controlled-environment-agriculture/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/controlled-environment-agriculture/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/controlled-environment-agriculture/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/controlled-environment-agriculture/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/controlled-environment-agriculture/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/data-center-cooling/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/data-center-cooling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/data-center-cooling/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/data-center-cooling/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/data-center-cooling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/data-center-cooling/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/desalination-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/desalination-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/desalination-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/desalination-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/desalination-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/desalination-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/electric-arc-furnace/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-arc-furnace/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-arc-furnace/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/electric-arc-furnace/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-arc-furnace/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-arc-furnace/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/electric-grid/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-grid/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-grid/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/electric-grid/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-grid/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-grid/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/electric-vehicle/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-vehicle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-vehicle/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/electric-vehicle/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/electric-vehicle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/electric-vehicle/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/fire-smoke-propagation/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fire-smoke-propagation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fire-smoke-propagation/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/fire-smoke-propagation/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fire-smoke-propagation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fire-smoke-propagation/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/floating-solar-farm/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/floating-solar-farm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/floating-solar-farm/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/floating-solar-farm/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/floating-solar-farm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/floating-solar-farm/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/fpso-subsea-production/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fpso-subsea-production/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fpso-subsea-production/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/fpso-subsea-production/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fpso-subsea-production/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fpso-subsea-production/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/fusion-reactor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fusion-reactor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fusion-reactor/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/fusion-reactor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/fusion-reactor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/fusion-reactor/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/gas-compression-station/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/gas-compression-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/gas-compression-station/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/gas-compression-station/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/gas-compression-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/gas-compression-station/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/geothermal-reservoir/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/geothermal-reservoir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/geothermal-reservoir/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/geothermal-reservoir/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/geothermal-reservoir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/geothermal-reservoir/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/green-hydrogen-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/green-hydrogen-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/green-hydrogen-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/green-hydrogen-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/green-hydrogen-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/green-hydrogen-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/high-speed-railway/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/high-speed-railway/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/high-speed-railway/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/high-speed-railway/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/high-speed-railway/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/high-speed-railway/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/human-heart/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/human-heart/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/human-heart/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/human-heart/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/human-heart/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/human-heart/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/hydroelectric-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/hydroelectric-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/hydroelectric-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/hydroelectric-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/hydroelectric-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/hydroelectric-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/industrial-refrigeration/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/industrial-refrigeration/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/industrial-refrigeration/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/industrial-refrigeration/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/industrial-refrigeration/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/industrial-refrigeration/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/injection-molding/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/injection-molding/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/injection-molding/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/injection-molding/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/injection-molding/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/injection-molding/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/jet-engine/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/jet-engine/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/jet-engine/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/jet-engine/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/jet-engine/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/jet-engine/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/lunar-base/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/lunar-base/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/lunar-base/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/lunar-base/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/lunar-base/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/lunar-base/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/marine-ecosystem/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/marine-ecosystem/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/marine-ecosystem/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/marine-ecosystem/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/marine-ecosystem/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/marine-ecosystem/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/mining-mineral-processing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/mining-mineral-processing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/mining-mineral-processing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/mining-mineral-processing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/mining-mineral-processing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/mining-mineral-processing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/nuclear-power-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/nuclear-power-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/nuclear-power-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/nuclear-power-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/nuclear-power-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/nuclear-power-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/ocean-wave-energy-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/ocean-wave-energy-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/ocean-wave-energy-converter/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/ocean-wave-energy-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/ocean-wave-energy-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/ocean-wave-energy-converter/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/offshore-wind-farm/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/offshore-wind-farm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/offshore-wind-farm/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/offshore-wind-farm/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/offshore-wind-farm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/offshore-wind-farm/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/particle-accelerator/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/particle-accelerator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/particle-accelerator/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/particle-accelerator/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/particle-accelerator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/particle-accelerator/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/pipeline-network/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/pipeline-network/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/pipeline-network/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/pipeline-network/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/pipeline-network/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/pipeline-network/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/radio-telescope/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/radio-telescope/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/radio-telescope/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/radio-telescope/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/radio-telescope/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/radio-telescope/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/reusable-rocket/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/reusable-rocket/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/reusable-rocket/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/reusable-rocket/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/reusable-rocket/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/reusable-rocket/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/satellite/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/satellite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/satellite/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/satellite/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/satellite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/satellite/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/semiconductor-fabrication/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/semiconductor-fabrication/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/semiconductor-fabrication/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/semiconductor-fabrication/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/semiconductor-fabrication/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/semiconductor-fabrication/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/smart-city/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-city/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-city/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/smart-city/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-city/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-city/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/smart-manufacturing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-manufacturing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/smart-manufacturing/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-manufacturing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-manufacturing/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/smart-port/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-port/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-port/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/smart-port/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/smart-port/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/smart-port/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/thermal-energy-storage/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/thermal-energy-storage/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/thermal-energy-storage/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/thermal-energy-storage/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/thermal-energy-storage/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/thermal-energy-storage/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/volcano/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/volcano/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/volcano/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/volcano/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/volcano/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/volcano/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/water-treatment-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/water-treatment-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/water-treatment-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/water-treatment-plant/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/water-treatment-plant/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/water-treatment-plant/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/digital-twins/wind-tunnel/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/wind-tunnel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/wind-tunnel/"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/digital-twins/wind-tunnel/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/digital-twins/wind-tunnel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/digital-twins/wind-tunnel/"/>
+    <priority>0.6</priority>
+  </url>
 </urlset>

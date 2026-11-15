@@ -1,0 +1,256 @@
+{
+  "version": 2,
+  "description": "AI-generated conceptual images; not validated simulation results. Upload binary WebP assets from the prepared ZIP before enabling.",
+  "images": {
+    "fpso-subsea-production": {
+      "file": "assets/twin-visuals/fpso-subsea-production.webp",
+      "alt_pt": "Ilustração conceitual de FPSO & Subsea Production",
+      "alt_en": "Concept illustration of FPSO & Subsea Production"
+    },
+    "gas-compression-station": {
+      "file": "assets/twin-visuals/gas-compression-station.webp",
+      "alt_pt": "Ilustração conceitual de Gas Compression Station",
+      "alt_en": "Concept illustration of Gas Compression Station"
+    },
+    "pipeline-network": {
+      "file": "assets/twin-visuals/pipeline-network.webp",
+      "alt_pt": "Ilustração conceitual de Pipeline Network",
+      "alt_en": "Concept illustration of Pipeline Network"
+    },
+    "blast-furnace": {
+      "file": "assets/twin-visuals/blast-furnace.webp",
+      "alt_pt": "Ilustração conceitual de Blast Furnace",
+      "alt_en": "Concept illustration of Blast Furnace"
+    },
+    "chemical-plant": {
+      "file": "assets/twin-visuals/chemical-plant.webp",
+      "alt_pt": "Ilustração conceitual de Chemical Plant",
+      "alt_en": "Concept illustration of Chemical Plant"
+    },
+    "smart-manufacturing": {
+      "file": "assets/twin-visuals/smart-manufacturing.webp",
+      "alt_pt": "Ilustração conceitual de Smart Manufacturing",
+      "alt_en": "Concept illustration of Smart Manufacturing"
+    },
+    "reusable-rocket": {
+      "file": "assets/twin-visuals/reusable-rocket.webp",
+      "alt_pt": "Ilustração conceitual de Reusable Rocket",
+      "alt_en": "Concept illustration of Reusable Rocket"
+    },
+    "jet-engine": {
+      "file": "assets/twin-visuals/jet-engine.webp",
+      "alt_pt": "Ilustração conceitual de Jet Engine",
+      "alt_en": "Concept illustration of Jet Engine"
+    },
+    "satellite": {
+      "file": "assets/twin-visuals/satellite.webp",
+      "alt_pt": "Ilustração conceitual de Satellite",
+      "alt_en": "Concept illustration of Satellite"
+    },
+    "nuclear-power-plant": {
+      "file": "assets/twin-visuals/nuclear-power-plant.webp",
+      "alt_pt": "Ilustração conceitual de Nuclear Power Plant",
+      "alt_en": "Concept illustration of Nuclear Power Plant"
+    },
+    "hydroelectric-plant": {
+      "file": "assets/twin-visuals/hydroelectric-plant.webp",
+      "alt_pt": "Ilustração conceitual de Hydroelectric Plant",
+      "alt_en": "Concept illustration of Hydroelectric Plant"
+    },
+    "offshore-wind-farm": {
+      "file": "assets/twin-visuals/offshore-wind-farm.webp",
+      "alt_pt": "Ilustração conceitual de Offshore Wind Farm",
+      "alt_en": "Concept illustration of Offshore Wind Farm"
+    },
+    "smart-city": {
+      "file": "assets/twin-visuals/smart-city.webp",
+      "alt_pt": "Ilustração conceitual de Smart City",
+      "alt_en": "Concept illustration of Smart City"
+    },
+    "water-treatment-plant": {
+      "file": "assets/twin-visuals/water-treatment-plant.webp",
+      "alt_pt": "Ilustração conceitual de Water Treatment Plant",
+      "alt_en": "Concept illustration of Water Treatment Plant"
+    },
+    "volcano": {
+      "file": "assets/twin-visuals/volcano.webp",
+      "alt_pt": "Ilustração conceitual de Volcano",
+      "alt_en": "Concept illustration of Volcano"
+    },
+    "human-heart": {
+      "file": "assets/twin-visuals/human-heart.webp",
+      "alt_pt": "Ilustração conceitual de Human Heart",
+      "alt_en": "Concept illustration of Human Heart"
+    },
+    "fusion-reactor": {
+      "file": "assets/twin-visuals/fusion-reactor.webp",
+      "alt_pt": "Ilustração conceitual de Fusion Reactor",
+      "alt_en": "Concept illustration of Fusion Reactor"
+    },
+    "lunar-base": {
+      "file": "assets/twin-visuals/lunar-base.webp",
+      "alt_pt": "Ilustração conceitual de Lunar Base",
+      "alt_en": "Concept illustration of Lunar Base"
+    },
+    "semiconductor-fabrication": {
+      "file": "assets/twin-visuals/semiconductor-fabrication.webp",
+      "alt_pt": "Ilustração conceitual de Semiconductor Fabrication",
+      "alt_en": "Concept illustration of Semiconductor Fabrication"
+    },
+    "battery-gigafactory": {
+      "file": "assets/twin-visuals/battery-gigafactory.webp",
+      "alt_pt": "Ilustração conceitual de Battery Gigafactory",
+      "alt_en": "Concept illustration of Battery Gigafactory"
+    },
+    "mining-mineral-processing": {
+      "file": "assets/twin-visuals/mining-mineral-processing.webp",
+      "alt_pt": "Ilustração conceitual de Mining & Mineral Processing",
+      "alt_en": "Concept illustration of Mining & Mineral Processing"
+    },
+    "data-center-cooling": {
+      "file": "assets/twin-visuals/data-center-cooling.webp",
+      "alt_pt": "Ilustração conceitual de Data Center Cooling",
+      "alt_en": "Concept illustration of Data Center Cooling"
+    },
+    "geothermal-reservoir": {
+      "file": "assets/twin-visuals/geothermal-reservoir.webp",
+      "alt_pt": "Ilustração conceitual de Geothermal Reservoir",
+      "alt_en": "Concept illustration of Geothermal Reservoir"
+    },
+    "carbon-capture-plant": {
+      "file": "assets/twin-visuals/carbon-capture-plant.webp",
+      "alt_pt": "Ilustração conceitual de Carbon Capture Plant",
+      "alt_en": "Concept illustration of Carbon Capture Plant"
+    },
+    "electric-grid": {
+      "file": "assets/twin-visuals/electric-grid.webp",
+      "alt_pt": "Ilustração conceitual de Electric Grid",
+      "alt_en": "Concept illustration of Electric Grid"
+    },
+    "additive-manufacturing": {
+      "file": "assets/twin-visuals/additive-manufacturing.webp",
+      "alt_pt": "Ilustração conceitual de Additive Manufacturing",
+      "alt_en": "Concept illustration of Additive Manufacturing"
+    },
+    "particle-accelerator": {
+      "file": "assets/twin-visuals/particle-accelerator.webp",
+      "alt_pt": "Ilustração conceitual de Particle Accelerator",
+      "alt_en": "Concept illustration of Particle Accelerator"
+    },
+    "green-hydrogen-plant": {
+      "file": "assets/twin-visuals/green-hydrogen-plant.webp",
+      "alt_pt": "Ilustração conceitual de Green Hydrogen Plant",
+      "alt_en": "Concept illustration of Green Hydrogen Plant"
+    },
+    "desalination-plant": {
+      "file": "assets/twin-visuals/desalination-plant.webp",
+      "alt_pt": "Ilustração conceitual de Desalination Plant",
+      "alt_en": "Concept illustration of Desalination Plant"
+    },
+    "bridge-structural-health": {
+      "file": "assets/twin-visuals/bridge-structural-health.webp",
+      "alt_pt": "Ilustração conceitual de Bridge Structural Health",
+      "alt_en": "Concept illustration of Bridge Structural Health"
+    },
+    "autonomous-underwater-vehicle": {
+      "file": "assets/twin-visuals/autonomous-underwater-vehicle.webp",
+      "alt_pt": "Ilustração conceitual de Autonomous Underwater Vehicle",
+      "alt_en": "Concept illustration of Autonomous Underwater Vehicle"
+    },
+    "high-speed-railway": {
+      "file": "assets/twin-visuals/high-speed-railway.webp",
+      "alt_pt": "Ilustração conceitual de High-Speed Railway",
+      "alt_en": "Concept illustration of High-Speed Railway"
+    },
+    "cement-kiln": {
+      "file": "assets/twin-visuals/cement-kiln.webp",
+      "alt_pt": "Ilustração conceitual de Cement Kiln",
+      "alt_en": "Concept illustration of Cement Kiln"
+    },
+    "industrial-refrigeration": {
+      "file": "assets/twin-visuals/industrial-refrigeration.webp",
+      "alt_pt": "Ilustração conceitual de Industrial Refrigeration",
+      "alt_en": "Concept illustration of Industrial Refrigeration"
+    },
+    "bioreactor": {
+      "file": "assets/twin-visuals/bioreactor.webp",
+      "alt_pt": "Ilustração conceitual de Bioreactor",
+      "alt_en": "Concept illustration of Bioreactor"
+    },
+    "radio-telescope": {
+      "file": "assets/twin-visuals/radio-telescope.webp",
+      "alt_pt": "Ilustração conceitual de Radio Telescope",
+      "alt_en": "Concept illustration of Radio Telescope"
+    },
+    "fire-smoke-propagation": {
+      "file": "assets/twin-visuals/fire-smoke-propagation.webp",
+      "alt_pt": "Ilustração conceitual de Fire & Smoke Propagation",
+      "alt_en": "Concept illustration of Fire & Smoke Propagation"
+    },
+    "coastal-infrastructure": {
+      "file": "assets/twin-visuals/coastal-infrastructure.webp",
+      "alt_pt": "Ilustração conceitual de Coastal Infrastructure",
+      "alt_en": "Concept illustration of Coastal Infrastructure"
+    },
+    "electric-vehicle": {
+      "file": "assets/twin-visuals/electric-vehicle.webp",
+      "alt_pt": "Ilustração conceitual de Electric Vehicle",
+      "alt_en": "Concept illustration of Electric Vehicle"
+    },
+    "controlled-environment-agriculture": {
+      "file": "assets/twin-visuals/controlled-environment-agriculture.webp",
+      "alt_pt": "Ilustração conceitual de Controlled Environment Agriculture",
+      "alt_en": "Concept illustration of Controlled Environment Agriculture"
+    },
+    "injection-molding": {
+      "file": "assets/twin-visuals/injection-molding.webp",
+      "alt_pt": "Ilustração conceitual de Injection Molding",
+      "alt_en": "Concept illustration of Injection Molding"
+    },
+    "floating-solar-farm": {
+      "file": "assets/twin-visuals/floating-solar-farm.webp",
+      "alt_pt": "Ilustração conceitual de Floating Solar Farm",
+      "alt_en": "Concept illustration of Floating Solar Farm"
+    },
+    "ocean-wave-energy-converter": {
+      "file": "assets/twin-visuals/ocean-wave-energy-converter.webp",
+      "alt_pt": "Ilustração conceitual de Ocean Wave Energy Converter",
+      "alt_en": "Concept illustration of Ocean Wave Energy Converter"
+    },
+    "cargo-ship-structural": {
+      "file": "assets/twin-visuals/cargo-ship-structural.webp",
+      "alt_pt": "Ilustração conceitual de Cargo Ship Structural",
+      "alt_en": "Concept illustration of Cargo Ship Structural"
+    },
+    "thermal-energy-storage": {
+      "file": "assets/twin-visuals/thermal-energy-storage.webp",
+      "alt_pt": "Ilustração conceitual de Thermal Energy Storage",
+      "alt_en": "Concept illustration of Thermal Energy Storage"
+    },
+    "smart-port": {
+      "file": "assets/twin-visuals/smart-port.webp",
+      "alt_pt": "Ilustração conceitual de Smart Port",
+      "alt_en": "Concept illustration of Smart Port"
+    },
+    "electric-arc-furnace": {
+      "file": "assets/twin-visuals/electric-arc-furnace.webp",
+      "alt_pt": "Ilustração conceitual de Electric Arc Furnace",
+      "alt_en": "Concept illustration of Electric Arc Furnace"
+    },
+    "wind-tunnel": {
+      "file": "assets/twin-visuals/wind-tunnel.webp",
+      "alt_pt": "Ilustração conceitual de Wind Tunnel",
+      "alt_en": "Concept illustration of Wind Tunnel"
+    },
+    "marine-ecosystem": {
+      "file": "assets/twin-visuals/marine-ecosystem.webp",
+      "alt_pt": "Ilustração conceitual de Marine Ecosystem",
+      "alt_en": "Concept illustration of Marine Ecosystem"
+    },
+    "atmospheric-reentry": {
+      "file": "assets/twin-visuals/atmospheric-reentry.webp",
+      "alt_pt": "Ilustração conceitual de Atmospheric Reentry",
+      "alt_en": "Concept illustration of Atmospheric Reentry"
+    }
+  }
+}
