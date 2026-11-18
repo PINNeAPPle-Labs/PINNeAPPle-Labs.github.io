@@ -158,6 +158,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pinneapple-labs.github.io/noticias/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/noticias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/noticias/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pinneapple-labs.github.io/en/noticias/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/noticias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/noticias/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pinneapple-labs.github.io/artigos/pico-de-crash-com-surrogate/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/artigos/pico-de-crash-com-surrogate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/artigos/pico-de-crash-com-surrogate/"/>

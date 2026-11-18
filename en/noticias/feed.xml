@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PINNeAPPle Labs · What already shipped, with a date</title>
+    <link>https://pinneapple-labs.github.io/en/noticias/</link>
+    <description>Every line here is a milestone that exists in the repository, with the pull request or the release it came from. We do not announce intentions: when a line goes in, the code is already there.</description>
+    <language>en</language>
+    <atom:link href="https://pinneapple-labs.github.io/en/noticias/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Eleven reference digital twins in the library</title>
+      <link>https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1850</link>
+      <guid isPermaLink="false">2026-11-17-1850</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Each one with its conservation laws stated and checked: the system stops being an example and becomes a case that can be compared on equal terms.</description>
+    </item>
+    <item>
+      <title>Meshless 2-D Navier-Stokes, with the airfoil and the spoiler</title>
+      <link>https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1519</link>
+      <guid isPermaLink="false">2026-11-09-1519</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+      <description>The verification-and-validation solver now runs incompressible flow without a mesh, and the airfoil with a deploying spoiler comes with its reference.</description>
+    </item>
+    <item>
+      <title>The .ppx container: a result that reproduces on another machine</title>
+      <link>https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1483</link>
+      <guid isPermaLink="false">2026-11-07-1483</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+      <description>The result, the problem and the environment travel together in one file, each piece hashed. Whoever receives it can re-run without guessing a version.</description>
+    </item>
+    <item>
+      <title>Distributed sweeps and the Schwarz PINN</title>
+      <link>https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1482</link>
+      <guid isPermaLink="false">2026-11-06-1482</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Campaigns now run split across machines, and a partitioned mesh is solved with one PINN per subdomain instead of a single model for the whole domain.</description>
+    </item>
+    <item>
+      <title>pinneapple 0.8.0 on PyPI</title>
+      <link>https://pypi.org/project/pinneapple/0.8.0/</link>
+      <guid isPermaLink="false">2026-11-01-0.8.0</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <description>The release ships with the deployment images patched for CVE-2026-111497 and the full history in the changelog.</description>
+    </item>
+  </channel>
+</rss>

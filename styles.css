@@ -677,6 +677,32 @@ section.alt .problem-card { background: var(--ink-3); }
   width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
 }
 
+/* the newsroom: a dated record, the date on the left and the milestone on the right */
+.news-list { display: flex; flex-direction: column; gap: 0; margin-top: 0.5rem; }
+.news-item {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.4rem;
+  padding: 1.4rem 0; border-top: 1px solid var(--line-soft);
+}
+.news-item:first-child { border-top: 0; }
+.news-item time {
+  font-family: var(--f-mono); font-size: 0.74rem; color: var(--text-mute);
+  letter-spacing: 0.04em; padding-top: 0.25rem;
+}
+.news-item h2 { font-size: 1.05rem; margin-bottom: 0.45rem; }
+.news-item p { font-size: 0.93rem; color: var(--text-dim); }
+@media (max-width: 640px) {
+  .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* third-party proof: only rendered when a client allowed it */
+.depoimentos { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.depoimento {
+  margin: 0; background: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem;
+}
+.depoimento blockquote { margin: 0 0 0.9rem; font-size: 1rem; color: var(--text); line-height: 1.6; }
+.depoimento figcaption { font-size: 0.8rem; color: var(--text-dim); }
+.depoimento figcaption b { color: var(--text); }
+
 /* the published models: one card per anchor, the card's own numbers on chips */
 .anchor-grid {
   display: grid; gap: 1.1rem;

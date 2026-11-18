@@ -102,7 +102,7 @@
         "capabilities"
       ],
       "summary": "Get Capability",
-      "description": "Module, signature, docstring, inputs with validity domain, tests/examples that reference it and status.",
+      "description": "Module, signature, docstring, inputs with validity domain, tests/examples that reference it, status, and the\n``approval_boundary``: the bounded inputs, the library commit and the evidence that says where it may run.",
       "auth": "none",
       "params": [
         {

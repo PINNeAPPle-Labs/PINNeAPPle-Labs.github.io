@@ -1289,6 +1289,7 @@ PAGES = {
     "trust": "confianca",
     "modelos": "modelos",
     "api": "api",
+    "noticias": "noticias",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
@@ -1362,6 +1363,7 @@ STRINGS = {
         "lbl_reports": "Relatórios de exemplo",
         "lbl_trust": "Confiança e segurança",
         "lbl_models": "Os modelos",
+        "lbl_news": "Notícias",
         "lbl_success": "Casos de sucesso",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
@@ -1399,6 +1401,7 @@ STRINGS = {
         "lbl_reports": "Example reports",
         "lbl_trust": "Trust &amp; security",
         "lbl_models": "The models",
+        "lbl_news": "News",
         "lbl_success": "Success stories",
         "lbl_lib": "The library",
         "read_more": "Read the article",
@@ -1417,6 +1420,20 @@ STRINGS = {
 }
 
 META = {
+    "noticias": {
+        "pt": dict(
+            title="Notícias: o que já saiu, com data · PINNeAPPle Labs",
+            desc="Marcos da biblioteca e da plataforma, cada um com a data e o pull request ou a versão de onde veio. Também em RSS.",
+            og="img/verificacao.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="News: what already shipped, with a date · PINNeAPPle Labs",
+            desc="Milestones of the library and the platform, each with its date and the pull request or release it came from. Also as RSS.",
+            og="img/verificacao.jpg",
+            type="website",
+        ),
+    },
     "modelos": {
         "pt": dict(
             title="Os modelos publicados · PINNeAPPle Labs",
@@ -1574,6 +1591,7 @@ def head(lang: str, page: str, root: str) -> str:
 <meta property="og:image" content="{SITE}/{M['og']}" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" title="{STRINGS[lang]['lbl_news']}" href="{root}{url(lang, 'noticias')}feed.xml" />
 <link rel="stylesheet" href="{root}fonts.css" />
 <link rel="stylesheet" href="{root}styles.css" />
 </head>
@@ -1665,6 +1683,7 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
           <li><a href="{root}{url(lang, 'modelos')}">{S['lbl_models']}</a></li>
+          <li><a href="{root}{url(lang, 'noticias')}">{S['lbl_news']}</a></li>
           <li><a href="{root}{url(lang, 'trust')}">{S['lbl_trust']}</a></li>
         </ul>
       </div>
@@ -2873,6 +2892,7 @@ def page_home(lang: str) -> str:
   </section>
 """)
 
+    parts.append(depoimentos_section(lang))
     parts.append(cta_band(lang, root))
     parts.append("</main>")
     parts.append(footer(lang, "home", root))
@@ -3749,6 +3769,231 @@ def page_api(lang: str) -> str:
 {footer(lang, "api", root)}"""
 
 
+# ---------------------------------------------------------------------------
+# News, the event slot and the testimonial slot.
+#
+# Every entry below is a milestone that exists in the repositories, with the pull request or release it came
+# from — the newsroom is a dated record, not a place to announce intentions. Newest first.
+#
+# EVENTO stays None until an edition has a real date and a real page: an event without a date is worse than no
+# event, and a date invented here would be a promise nobody made.
+#
+# DEPOIMENTOS stays empty until a client has given written permission to be named, with a quote stating a
+# result. Nothing renders while it is empty; see the issue on third-party proof. Nothing here is ever written
+# on someone's behalf.
+# ---------------------------------------------------------------------------
+
+NOTICIAS = [
+    dict(
+        iso="2026-11-17",
+        title={"pt": "Onze gêmeos digitais de referência na biblioteca",
+               "en": "Eleven reference digital twins in the library"},
+        body={"pt": ("Cada um com as suas leis de conservação declaradas e verificadas: o sistema deixa de ser um "
+                     "exemplo e passa a ser um caso que se pode comparar de igual para igual."),
+              "en": ("Each one with its conservation laws stated and checked: the system stops being an example and "
+                     "becomes a case that can be compared on equal terms.")},
+        link="https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1850",
+        label={"pt": "Ver o pull request", "en": "See the pull request"},
+    ),
+    dict(
+        iso="2026-11-09",
+        title={"pt": "Navier-Stokes 2-D sem malha, com a asa e o spoiler",
+               "en": "Meshless 2-D Navier-Stokes, with the airfoil and the spoiler"},
+        body={"pt": ("O solver de verificação e validação passa a resolver escoamento incompressível sem malha, e o "
+                     "caso da asa com spoiler que abre entra com a sua referência."),
+              "en": ("The verification-and-validation solver now runs incompressible flow without a mesh, and the "
+                     "airfoil with a deploying spoiler comes with its reference.")},
+        link="https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1519",
+        label={"pt": "Ver o pull request", "en": "See the pull request"},
+    ),
+    dict(
+        iso="2026-11-07",
+        title={"pt": "O contêiner .ppx: um resultado que se reproduz noutra máquina",
+               "en": "The .ppx container: a result that reproduces on another machine"},
+        body={"pt": ("O resultado, o problema e o ambiente vão juntos num arquivo só, com o hash de cada peça. Quem "
+                     "recebe consegue reexecutar sem adivinhar a versão de nada."),
+              "en": ("The result, the problem and the environment travel together in one file, each piece hashed. "
+                     "Whoever receives it can re-run without guessing a version.")},
+        link="https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1483",
+        label={"pt": "Ver o pull request", "en": "See the pull request"},
+    ),
+    dict(
+        iso="2026-11-06",
+        title={"pt": "Sweeps distribuídos e o PINN de Schwarz",
+               "en": "Distributed sweeps and the Schwarz PINN"},
+        body={"pt": ("Campanhas passam a rodar repartidas entre máquinas, e a malha particionada resolve com um PINN "
+                     "por subdomínio em vez de um modelo para o domínio inteiro."),
+              "en": ("Campaigns now run split across machines, and a partitioned mesh is solved with one PINN per "
+                     "subdomain instead of a single model for the whole domain.")},
+        link="https://github.com/PINNeAPPle-Labs/PINNeAPPle/pull/1482",
+        label={"pt": "Ver o pull request", "en": "See the pull request"},
+    ),
+    dict(
+        iso="2026-11-01",
+        title={"pt": "pinneapple 0.8.0 no PyPI", "en": "pinneapple 0.8.0 on PyPI"},
+        body={"pt": ("A versão sai com as imagens de implantação corrigidas para a CVE-2026-111497 e o histórico "
+                     "completo no changelog."),
+              "en": ("The release ships with the deployment images patched for CVE-2026-111497 and the full history "
+                     "in the changelog.")},
+        link="https://pypi.org/project/pinneapple/0.8.0/",
+        label={"pt": "Ver no PyPI", "en": "See it on PyPI"},
+    ),
+]
+
+#: ``dict(iso=..., title={"pt":..,"en":..}, place={"pt":..,"en":..}, link=..., label={...})`` once a date exists.
+EVENTO = None
+
+#: ``dict(name=..., role={"pt":..,"en":..}, org=..., quote={"pt":..,"en":..}, link=...)`` once permission exists.
+DEPOIMENTOS = []
+
+
+# ---------------------------------------------------------------------------
+# News, the event slot and the testimonials
+# ---------------------------------------------------------------------------
+
+
+def _rfc822(iso: str) -> str:
+    from datetime import datetime, timezone
+    from email.utils import format_datetime
+
+    return format_datetime(datetime.fromisoformat(iso).replace(tzinfo=timezone.utc))
+
+
+def page_noticias(lang: str) -> str:
+    """The dated record: what shipped, when, and the pull request or release it came from."""
+    root = up(lang, "noticias")
+    C = NOTICIAS_LABELS[lang]
+    entries = []
+    for n in sorted(NOTICIAS, key=lambda x: x["iso"], reverse=True):
+        day = n["iso"][8:10] + "/" + n["iso"][5:7] + "/" + n["iso"][:4] if lang == "pt" else n["iso"]
+        entries.append(f"""
+    <article class="news-item reveal">
+      <time datetime="{n['iso']}">{day}</time>
+      <div>
+        <h2>{_html.escape(n['title'][lang])}</h2>
+        <p>{_html.escape(n['body'][lang])}</p>
+        <p class="src-note"><a href="{n['link']}" target="_blank" rel="noopener">{n['label'][lang]} ↗</a></p>
+      </div>
+    </article>""")
+
+    if EVENTO:
+        evento = f"""
+      <h2>{_html.escape(EVENTO['title'][lang])}</h2>
+      <p class="area-blurb">{_html.escape(EVENTO['place'][lang])}</p>
+      <p class="src-note"><a href="{EVENTO['link']}" target="_blank" rel="noopener">{EVENTO['label'][lang]} ↗</a></p>"""
+    else:
+        evento = f"""
+      <h2>{C['event_none_h']}</h2>
+      <p class="area-blurb">{C['event_none_p']}</p>
+      <p class="src-note">{wa_button(lang, label=C['event_cta'])}</p>"""
+
+    return f"""{head(lang, "noticias", root)}{header(lang, "noticias", root)}<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{C['eyebrow']}</p>
+      <h1>{C['h1']}</h1>
+      <p class="lead" style="max-width:64ch">{C['lead']}</p>
+      <p class="hero-note" style="max-width:64ch">{C['note']}</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap news-list">{''.join(entries)}</div>
+  </section>
+
+  <section class="alt tight" id="evento">
+    <div class="wrap split-block reveal">
+      <div>
+        <p class="eyebrow">{C['event_eyebrow']}</p>
+        {evento}
+      </div>
+      <div class="code-card">
+        <div class="code-head"><span class="fname">feed.xml</span></div>
+        <pre class="code"><span class="c"># assine</span>
+{_html.escape(SITE)}{url(lang, 'noticias')}feed.xml</pre>
+      </div>
+    </div>
+  </section>
+{cta_band(lang, root)}
+</main>
+{footer(lang, "noticias", root)}"""
+
+
+def depoimentos_section(lang: str) -> str:
+    """Third-party proof, rendered only when a client has given written permission to be named."""
+    if not DEPOIMENTOS:
+        return ""
+    cards = "".join(
+        f'<figure class="depoimento reveal"><blockquote>{_html.escape(d["quote"][lang])}</blockquote>'
+        f'<figcaption><b>{_html.escape(d["name"])}</b> · {_html.escape(d["role"][lang])}, '
+        f'{_html.escape(d["org"])}</figcaption></figure>'
+        for d in DEPOIMENTOS
+    )
+    return f"""
+  <section class="alt tight" id="quem-usa">
+    <div class="wrap">
+      <p class="eyebrow">{NOTICIAS_LABELS[lang]['proof_eyebrow']}</p>
+      <div class="depoimentos">{cards}</div>
+    </div>
+  </section>
+"""
+
+
+def write_feed(lang: str) -> str:
+    """RSS 2.0 of the newsroom, so the record can be followed without the site."""
+    items = []
+    for n in sorted(NOTICIAS, key=lambda x: x["iso"], reverse=True):
+        items.append(f"""    <item>
+      <title>{_html.escape(n['title'][lang])}</title>
+      <link>{n['link']}</link>
+      <guid isPermaLink="false">{n['iso']}-{n['link'].rstrip('/').split('/')[-1]}</guid>
+      <pubDate>{_rfc822(n['iso'])}</pubDate>
+      <description>{_html.escape(n['body'][lang])}</description>
+    </item>""")
+    C = NOTICIAS_LABELS[lang]
+    feed = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PINNeAPPle Labs · {C['h1']}</title>
+    <link>{SITE}/{url(lang, 'noticias')}</link>
+    <description>{_html.escape(C['lead'])}</description>
+    <language>{LANGUAGES[lang]['code']}</language>
+    <atom:link href="{SITE}/{url(lang, 'noticias')}feed.xml" rel="self" type="application/rss+xml"/>
+{chr(10).join(items)}
+  </channel>
+</rss>
+"""
+    out = ROOT / url(lang, "noticias") / "feed.xml"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(feed, encoding="utf-8")
+    return str(out.relative_to(ROOT))
+
+
+NOTICIAS_LABELS = {
+    "pt": dict(eyebrow="Notícias", h1="O que já saiu, com data",
+               lead=("Cada linha aqui é um marco que existe no repositório, com o pull request ou a versão de onde "
+                     "veio. Não anunciamos intenção: quando entra uma linha, o código já está lá."),
+               note="O mesmo conteúdo em feed RSS, para acompanhar fora do site.",
+               event_eyebrow="Próxima edição", event_cta="Quero saber da data",
+               event_none_h="Ainda sem data marcada",
+               event_none_p=("A primeira edição aberta ainda não tem data. Deixamos para marcar quando houver o que "
+                             "mostrar ao vivo — um solver rodando, um modelo saindo do domínio e sendo pego pela "
+                             "checagem, um caso do começo ao relatório."),
+               proof_eyebrow="Quem usa"),
+    "en": dict(eyebrow="News", h1="What already shipped, with a date",
+               lead=("Every line here is a milestone that exists in the repository, with the pull request or the "
+                     "release it came from. We do not announce intentions: when a line goes in, the code is already "
+                     "there."),
+               note="The same content as an RSS feed, to follow outside the site.",
+               event_eyebrow="Next edition", event_cta="Tell me the date",
+               event_none_h="No date set yet",
+               event_none_p=("The first open edition has no date yet. We will set one when there is something worth "
+                             "showing live — a solver running, a model leaving its domain and being caught by the "
+                             "check, a case from geometry to report."),
+               proof_eyebrow="Who uses it"),
+}
+
+
 def page_studio(lang: str) -> str:
     """The product, on its own address, with the early-access list as its conversion."""
     root = up(lang, "studio")
@@ -4375,6 +4620,7 @@ BUILDERS = {
     "trust": page_trust,
     "modelos": page_modelos,
     "api": page_api,
+    "noticias": page_noticias,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
@@ -4439,6 +4685,9 @@ def build() -> list[str]:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page_sucesso(lang, case["slug"]), encoding="utf-8")
             written.append(str(out.relative_to(ROOT)))
+
+    for lang in LANGUAGES:
+        written.append(write_feed(lang))
 
     # The old addresses keep working: same URL, new destination.
     for old, targets in REDIRECTS.items():
