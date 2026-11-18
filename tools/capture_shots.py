@@ -54,7 +54,7 @@ def main() -> int:
 
     sfx = "" if args.lang == "pt" else "-en"
     run_label = RUN_LABEL[args.lang]
-    key = re.search(r"pea_[A-Za-z0-9]+", args.key_file.read_text()).group(0)
+    key = re.search(r"pea_[A-Za-z0-9_-]+", args.key_file.read_text()).group(0)  # keys may carry a hyphen
     OUT.mkdir(parents=True, exist_ok=True)
 
     with sync_playwright() as p:
