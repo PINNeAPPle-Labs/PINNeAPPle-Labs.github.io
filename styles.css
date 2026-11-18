@@ -191,7 +191,7 @@ header.site::after {
 /* The wordmark keeps the logo's arrangement: PINNe blue, APP orange, le blue.
    The letters use the readable tints of the two brand colours, which is what lets the
    name stay legible at 20 px on #262626. */
-.brand .word { font-size: 1.26rem; letter-spacing: 0.008em; line-height: 1; color: var(--accent-2); }
+.brand .word { font-size: 1.55rem; letter-spacing: 0.008em; line-height: 1; color: var(--accent-2); }
 .brand .word .o { color: var(--accent); }
 .brand .mark { width: auto; height: 3.8rem; flex: none; display: block; }
 .brand .lockup { width: 11.5rem; height: auto; display: block; }
@@ -238,9 +238,9 @@ nav.main a:hover, nav.main a[aria-current] { color: var(--text); }
    They have to shrink together or the page is wider than the screen. */
 @media (max-width: 480px) {
   .bar { gap: 0.4rem; padding-inline: 1rem; }
-  .brand { gap: 0.45rem; }
-  .brand .mark { height: 3.15rem; }
-  .brand .word { font-size: 1.02rem; }
+  .brand { gap: 0.35rem; }
+  .brand .mark { height: 3.35rem; }
+  .brand .word { font-size: 1.25rem; }
   .bar-wa { padding: 0.45rem 0.6rem; font-size: 0.72rem; letter-spacing: 0.03em; }
   .nav-toggle { width: 2.2rem; height: 2.2rem; }
 }
