@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<title>El Niño: trinta configurações sob um protocolo — PINNeAPPle Labs</title>
+<title>El Niño: trinta configurações sob um protocolo — PINNeAPPle</title>
 <style>
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -48,7 +48,7 @@
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -64,7 +64,7 @@
 
 <section class="page cover">
   <div class="top">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#a23a00"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/><path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg><span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
     <h1>El Niño<br />trinta configurações, um protocolo só</h1>
     <p class="sub">Modelos físicos, de dados, physics-informed e híbridos avaliados com a mesma métrica, as mesmas janelas e o mesmo teste de significância.</p>
@@ -72,7 +72,7 @@
   </div>
   <div>
     <img src="../../img/exp/nino-plumas.webp" alt="Previsões do índice Niño 3.4 para 1997/98, 2015/16 e 2023/24, com intervalo de 90%" />
-    <div class="meta" style="margin-top:6mm">Documento GEO-01 · versão 1.0 · 2026<br />Dados abertos: OISST v2.1, WOD, ERA5 (cache com SHA-256 de cada arquivo)<br />Protocolo único: ACC, skill contra persistência e contra o melhor baseline, Holm<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+    <div class="meta" style="margin-top:6mm">Documento GEO-01 · versão 1.0 · 2026<br />Dados abertos: OISST v2.1, WOD, ERA5 (cache com SHA-256 de cada arquivo)<br />Protocolo único: ACC, skill contra persistência e contra o melhor baseline, Holm<br />PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
   </div>
 </section>
 
@@ -82,14 +82,14 @@
   <p>Este estudo coloca trinta configurações no mesmo banco: baselines estatísticos, modelos de dados, modelos físicos, physics-informed e híbridos. Todos veem as mesmas janelas, são avaliados nos mesmos horizontes e passam pelo mesmo teste de significância.</p>
   <table><tr><th style="width:22%">Horizonte</th><th>O que muda</th></tr><tr><td>h = 1 a 3 meses</td><td>persistência e climatologia ainda são fortes; a diferença entre modelos é pequena</td></tr><tr><td>h = 6 meses</td><td>atravessa a barreira da primavera: é onde o protocolo separa</td></tr><tr><td>h = 12 a 24 meses</td><td>quase todos perdem habilidade; quem ainda ganha, ganha pouco</td></tr></table>
   <div class="callout"><b>A regra do banco.</b> Nenhum modelo escolhe a métrica, a janela ou o baseline. Quem reporta “ACC 0,95” sem dizer contra o que, em que horizonte e com qual significância não reportou nada.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>1</span></div>
 </section>
 
 <section class="page">
   <div class="runhead"><span>GEO-01 · previsão de El Niño</span><span>2 · o protocolo</span></div>
   <table><tr><th style="width:26%">Item</th><th>Definição</th></tr><tr><td>Dados</td><td>OISST v2.1, WOD e ERA5; cada arquivo entra com o SHA-256 registrado</td></tr><tr><td>Métrica principal</td><td>ACC (correlação de anomalia) por horizonte</td></tr><tr><td>Skills</td><td>contra persistência e contra o melhor baseline em cada horizonte</td></tr><tr><td>Significância</td><td>teste de Holm sobre as diferenças, não sobre a média</td></tr><tr><td>Incerteza</td><td>cobertura do intervalo de 90% e desvio de PIT</td></tr></table>
   <p>As quatro famílias entram com representantes escolhidos na validação, não no teste — o conjunto de teste é medido uma vez, depois da escolha.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>2</span></div>
 </section>
 
 <section class="page">
@@ -97,7 +97,7 @@
   <table><tr><th style="width:30%">Configuração</th><th style="width:16%">Família</th><th>ACC h=1</th><th>ACC h=3</th><th>ACC h=6</th><th>ACC h=12</th><th>Significativo</th></tr><tr><td>persistência</td><td>baseline</td><td>0,93</td><td>0,73</td><td>0,36</td><td>0,01</td><td>—</td></tr><tr><td>arima</td><td>baseline</td><td>0,93</td><td>0,76</td><td>0,42</td><td>0,02</td><td>não</td></tr><tr><td>cnn</td><td>dados</td><td>0,95</td><td>0,87</td><td>0,70</td><td>0,26</td><td>h = 1</td></tr><tr><td>cnn pré-treinada</td><td>dados+física</td><td>0,95</td><td>0,85</td><td>0,66</td><td>0,30</td><td>h = 1, 2, 3</td></tr><tr><td>ro sazonal multiplicativo</td><td>físico</td><td>0,95</td><td>0,84</td><td>0,63</td><td>0,30</td><td>não</td></tr><tr><td>ensemble</td><td>híbrido</td><td>0,95</td><td>0,84</td><td>0,58</td><td>0,20</td><td>h = 1, 2, 3</td></tr><tr><td>pinn_ro (estimador de estado)</td><td>dados+física</td><td>0,94</td><td>−0,69</td><td>−0,35</td><td>−0,01</td><td>não</td></tr><tr><td>climatologia</td><td>baseline</td><td>0,00</td><td>0,00</td><td>0,00</td><td>0,00</td><td>—</td></tr></table>
   <p>Em h = 1 quase tudo empata perto de 0,95: nesse horizonte a persistência já é boa, e a diferença entre modelos é ruído. Em h = 6 a separação aparece — e só <b>três</b> configurações têm ganho significativo sobre o melhor baseline.</p>
   <div class="callout cyan"><b>O resultado que ninguém gosta de publicar.</b> O PINN com estimador de estado (<span class="mono">pinn_ro</span>) cai para ACC <b>−0,69</b> em h = 3: pior que a média do próprio período. Entra no relatório porque entrou no banco.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>3</span></div>
 </section>
 
 <section class="page">
@@ -105,7 +105,7 @@
   <table><tr><th style="width:16%">Família</th><th style="width:22%">Representante</th><th>Skill de CRPS vs climatologia (h = 1, 3, 6)</th><th>Cobertura média</th><th>Desvio de PIT</th></tr><tr><td>baseline</td><td>arima</td><td>0,64 · 0,32 · 0,06</td><td>0,94</td><td>0,20</td></tr><tr><td>dados</td><td>cnn</td><td>0,69 · 0,45 · 0,09</td><td>0,98</td><td>0,28</td></tr><tr><td>físico</td><td>ro sazonal</td><td>0,67 · 0,44 · 0,20</td><td>0,88</td><td>0,17</td></tr><tr><td>híbrido</td><td>ensemble</td><td>0,68 · 0,45 · 0,19</td><td>0,95</td><td>0,12</td></tr><tr><td>dados+física</td><td>gbm com features físicas</td><td>0,64 · 0,28 · −0,08</td><td>0,92</td><td>0,23</td></tr></table>
   <p>A cobertura de 0,98 do modelo de dados parece ótima até se olhar o PIT de 0,28: os intervalos são largos demais. O híbrido com PIT de 0,12 é o mais calibrado do conjunto — e não é o de maior ACC.</p>
   <div class="callout"><b>Duas perguntas, não uma.</b> “Qual acerta mais” e “qual sabe o quanto erra” não têm o mesmo vencedor. Quem escolhe modelo por ACC escolhe metade da resposta.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>4</span></div>
 </section>
 
 <section class="page">
@@ -118,7 +118,7 @@
   <h3>Proveniência</h3>
   <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Tabela completa</td><td><span class="mono">PINNeAPPle/examples/enso_forecasting/results/tables.md</span></td></tr><tr><td>Estudo</td><td><span class="mono">results/study.json · phase.json · spring_barrier.json</span></td></tr><tr><td>Dados</td><td>OISST v2.1, WOD, ERA5 — com SHA-256 no cache</td></tr><tr><td>Artigo público</td><td><span class="mono">pinneapple-labs.github.io/artigos/el-nino-28-modelos/</span></td></tr></table>
   <div class="callout cyan"><b>Este é um relatório de exemplo,</b> sobre dados abertos e um protocolo reproduzível. Um estudo para o seu sistema segue a mesma estrutura: baseline explícito, teste de significância e a página do que não foi previsto.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>5</span></div>
 </section>
 
 </body>

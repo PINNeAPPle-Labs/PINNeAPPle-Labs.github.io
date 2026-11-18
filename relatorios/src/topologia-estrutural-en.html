@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Topology optimization: projection, gradient and the grey — PINNeAPPle Labs</title>
+<title>Topology optimization: projection, gradient and the grey — PINNeAPPle</title>
 <style>
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -48,7 +48,7 @@
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -64,7 +64,7 @@
 
 <section class="page cover">
   <div class="top">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#a23a00"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/><path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg><span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
     <h1>Topology optimization<br />projection, gradient and the grey that stays</h1>
     <p class="sub">MBB and cantilever: four runs, a finite-difference gradient check and the effect of pushing the grey elements out.</p>
@@ -72,7 +72,7 @@
   </div>
   <div>
     
-    <div class="meta" style="margin-top:6mm">Document EST-01 · version 1.0 · 2026<br />Demonstration case: 2-D MBB beam and cantilever, SIMP<br />Finite-difference gradient check on every run<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+    <div class="meta" style="margin-top:6mm">Document EST-01 · version 1.0 · 2026<br />Demonstration case: 2-D MBB beam and cantilever, SIMP<br />Finite-difference gradient check on every run<br />PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
   </div>
 </section>
 
@@ -81,7 +81,7 @@
   <p class="lead">Topology optimization answers a design question: <b>where to put material</b> so the structure is stiffer at the same mass. The answer is a density field, and what decides whether it is usable is the quality of that field — not the pretty picture.</p>
   <table><tr><th style="width:24%">Case</th><th>What it is</th></tr><tr><td>MBB beam</td><td>classic benchmark load case, maximum volume 50%</td></tr><tr><td>Cantilever</td><td>cantilever beam, maximum volume 40%</td></tr><tr><td>Formulation</td><td>SIMP with density filter and, in one run, projection</td></tr><tr><td>Optimizers</td><td>OC (optimality criteria) and MMA (method of moving asymptotes)</td></tr></table>
   <div class="callout"><b>What is measured.</b> Compliance (lower is better), final volume fraction, grey element fraction and the gradient check error. The number that matters is the combination — low compliance with little grey.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>1</span></div>
 </section>
 
 <section class="page">
@@ -89,7 +89,7 @@
   <p>Every run ends with three checks: the volume is the one requested, the grey fraction is measured, and the analytical gradient is compared against finite differences.</p>
   <table><tr><th style="width:30%">Check</th><th style="width:36%">Criterion</th><th>Result</th></tr><tr><td>Final volume</td><td>equal to the requested limit</td><td>0.500 · 0.500 · 0.500 · 0.400</td></tr><tr><td>Gradient</td><td>maximum relative error by finite differences</td><td>1.0·10⁻⁶ <span class="verdict v-ok">passes</span></td></tr><tr><td>Cost</td><td>total time of the five runs</td><td>49.4 s</td></tr></table>
   <p>The gradient check looks like paperwork until the day a result improves 20% with no explanation: with it, either the gradient is right and the gain is real, or the optimizer is walking down the wrong slope — and that shows up before it becomes a drawing.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>2</span></div>
 </section>
 
 <section class="page">
@@ -97,7 +97,7 @@
   <table><tr><th style="width:32%">Run</th><th>Compliance</th><th>Iterations</th><th>Volume</th><th>Grey fraction</th></tr><tr><td>MBB · OC, filter</td><td>233.71</td><td>146</td><td>0.500</td><td>0.444</td></tr><tr><td>MBB · MMA, filter</td><td>233.49</td><td>58</td><td>0.500</td><td>0.453</td></tr><tr><td>MBB · MMA, filter + projection</td><td>190.05</td><td>207</td><td>0.500</td><td>0.0225</td></tr><tr><td>Cantilever · MMA, projection</td><td>75.43</td><td>228</td><td>0.400</td><td>0.00875</td></tr></table>
   <p>OC and MMA land in practically the same place with the filter (233.71 against 233.49), with MMA in 58 iterations against 146. Projection changes the result for real: compliance drops to <b>190.05</b>, over 207 iterations.</p>
   <div class="callout cyan"><b>The correct reading.</b> It is not “projection is better”: projection pushes density towards 0 or 1, which changes the physics of the problem being solved. Comparing the two numbers without the grey fraction would be comparing two different structures.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>3</span></div>
 </section>
 
 <section class="page">
@@ -105,7 +105,7 @@
   <p>Without projection, <b>44%</b> of the elements sit at intermediate density — a material that does not exist. With projection that fraction falls to <b>2.25%</b> on the MBB and <b>0.88%</b> on the cantilever.</p>
   <table><tr><th style="width:28%">Metric</th><th>MBB with filter</th><th>MBB with projection</th><th>Effect</th></tr><tr><td>Compliance</td><td>233.49</td><td>190.05</td><td>−18.6%</td></tr><tr><td>Grey fraction</td><td>0.453</td><td>0.0225</td><td>−95%</td></tr><tr><td>Iterations</td><td>58</td><td>207</td><td>×3.6 cost</td></tr></table>
   <p>The 18.6% compliance gain arrives with 3.6 times more iterations. The design decision is that trade — not an obvious choice.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>4</span></div>
 </section>
 
 <section class="page">
@@ -118,7 +118,7 @@
   <h3>Provenance</h3>
   <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Results</td><td><span class="mono">PINNeAPPle/examples/topology_optimization/results/mbb_summary.json</span></td></tr><tr><td>Scripts</td><td><span class="mono">examples/topology_optimization/01_mbb_beam.py</span></td></tr><tr><td>Reluctance rotor</td><td><span class="mono">results/reluctance_rotor_summary.json</span></td></tr></table>
   <div class="callout cyan"><b>This is an example report,</b> on public benchmarks. A study for your structure follows the same structure: volume respected, gradient checked, grey measured — and the page of what was not verified.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>5</span></div>
 </section>
 
 </body>

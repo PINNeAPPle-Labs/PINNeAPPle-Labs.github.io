@@ -41,10 +41,20 @@ class LandingTests(unittest.TestCase):
                 for label in ("Engineering Automation", "Design Optimization",
                               "Simulation Acceleration", "Industrial Intelligence"):
                     self.assertIn(label, html)
-                self.assertIn("digital-twins/", html)
-                self.assertIn("physics-ai-models/", html)
                 self.assertEqual(html.count("01 · "), 1)
                 self.assertEqual(html.count("02 · "), 1)
+
+    def test_the_two_galleries_are_off_the_home_page_for_now(self):
+        """Digital Twins and the Physics AI models are shelved, not promoted: the pages still
+        build and still answer on their own URLs, but nothing on the home or in the bar offers
+        them. Bringing them back is restoring the nav entry and the #explorar-physics-ai section."""
+        for lang in ("pt", "en"):
+            with self.subTest(lang=lang):
+                html = build.page_home(lang)
+                self.assertNotIn("digital-twins/", html)
+                self.assertNotIn("physics-ai-models/", html)
+                self.assertNotIn("explorar-physics-ai", html)
+                self.assertNotIn("explore-physics-ai", html)
 
     def test_all_100_bilingual_twin_pages_are_reproducible(self):
         for lang in ("pt", "en"):

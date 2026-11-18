@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Ahmed body: drag, mesh and what RANS cannot see — PINNeAPPle Labs</title>
+<title>Ahmed body: drag, mesh and what RANS cannot see — PINNeAPPle</title>
 <style>
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -48,7 +48,7 @@
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -64,7 +64,7 @@
 
 <section class="page cover">
   <div class="top">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#a23a00"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/><path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg><span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">Study report · public example</p>
     <h1>Ahmed body<br />drag, mesh and what RANS cannot see</h1>
     <p class="sub">A 1984 benchmark, four meshes, 48 simulations and a surrogate — with model error separated from mesh error.</p>
@@ -72,7 +72,7 @@
   </div>
   <div>
     <img src="../../img/exp/aero-autonoma-wake.webp" alt="Ahmed body wake: streamwise vorticity in the best case of the campaign" />
-    <div class="meta" style="margin-top:6mm">Document AER-01 · version 1.0 · 2026<br />Open case: Ahmed, Ramm &amp; Faltin (1984)<br />OpenFOAM v1912 · gmsh 4.12 · half model, moving road, RANS k-ω SST<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+    <div class="meta" style="margin-top:6mm">Document AER-01 · version 1.0 · 2026<br />Open case: Ahmed, Ramm &amp; Faltin (1984)<br />OpenFOAM v1912 · gmsh 4.12 · half model, moving road, RANS k-ω SST<br />PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
   </div>
 </section>
 
@@ -82,7 +82,7 @@
   <table><tr><th style="width:22%">Item</th><th>Value</th></tr><tr><td>Geometry</td><td>1.044 × 0.389 × 0.288 m · 0.1 m front radii · 0.222 m rear slant, stilts left out</td></tr><tr><td>Model</td><td>half model, moving road, steady RANS k-ω SST with wall functions, 5 prism layers</td></tr><tr><td>Variables</td><td>slant 0 to 40° · ground clearance 30 to 80 mm · speed 20 to 60 m/s</td></tr><tr><td>CAD</td><td>OpenCASCADE B-rep through gmsh, re-imported from its STL: closed, symmetric to 1.0 mm, volume 0.10993 m³ against 0.10959 parametric</td></tr></table>
   <p>CFD on the CAD body at the reference condition (25°, 50 mm, 60 m/s) gave <b>CD 0.3004</b> against 0.2966 for the parametric body — 1.3% of difference from going through CAD and back. That is the study's first uncertainty, and it appears before the first simulation.</p>
   <div class="callout"><b>The question of the study.</b> It was not “what is the CD”: it was <b>how much of the error is mesh and how much is model</b> — because the two ask for opposite decisions. A mesh is refined; a model is replaced.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>1</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>1</span></div>
 </section>
 
 <section class="page">
@@ -92,7 +92,7 @@
   <p>L0–L1–L2 converges oscillatorily; L1–L2–L3 converges monotonically, with observed order <b>4.26</b> and Richardson value <b>0.2617</b>. The GCI on L3 is <b>1.1%</b>.</p>
   <div class="callout"><b>Read the order with suspicion.</b> 4.26 sits above the scheme's formal order (2), which makes the GCI a <b>lower bound</b> on numerical uncertainty — not a sharp estimate. Saying so is part of the result.</div>
   <p>The campaign mesh (L1) sits <b>13.3% above</b> the Richardson value. It was kept for cost: 7.5 min against 19 min on L2 and 107 min on L3, on 4 cores. That 13% is the numerical uncertainty of every surrogate trained on the campaign.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>2</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>2</span></div>
 </section>
 
 <section class="page">
@@ -101,7 +101,7 @@
   <table><tr><th style="width:14%">Slant</th><th>Measured</th><th>L1</th><th>L2</th></tr><tr><td>0°</td><td>0.250</td><td>0.2693 (+7.7%)</td><td>0.2547 (+1.9%)</td></tr><tr><td>12.5°</td><td>0.230</td><td>0.2557 (+11.2%)</td><td>0.2399 (+4.3%)</td></tr><tr><td>25°</td><td>0.285</td><td>0.2973 (+4.3%)</td><td>0.2715 (−4.7%)</td></tr><tr><td>30°</td><td>0.378</td><td>0.3378 (−10.6%)</td><td>0.3184 (−15.8%)</td></tr><tr><td>35°</td><td>0.260</td><td>0.3835 (+47.5%)</td><td>0.4079 (+56.9%)</td></tr><tr><td>40°</td><td>0.250</td><td>0.3005 (+20.2%)</td><td>0.3958 (+58.3%)</td></tr></table>
   <p>Below the critical angle, refining the mesh brings the CFD towards the measurement — the behaviour expected from a numerical error. That band is what holds up the rest of the study.</p>
   <div class="callout cyan"><b>Where validation stops holding.</b> From 30° up, refining makes it worse: the error grows from 10.6% to 15.8% and from 47.5% to 56.9%. That is not mesh noise — it is the model.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>3</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>3</span></div>
 </section>
 
 <section class="page">
@@ -109,7 +109,7 @@
   <p>Steady RANS with k-ω SST keeps the slant flow attached beyond 30°, where the experiment separates. The result is the drag peak moved from 30° to 35–40°.</p>
   <p>It is an error of <b>model physics</b>, and the practical consequence is direct: no amount of mesh fixes it, and no surrogate trained on those cases learns the real behaviour — it learns the solver's bias, faithfully.</p>
   <div class="callout"><b>What that costs a project.</b> Rear-geometry choices live exactly in the 25°–35° band. A study that only reports “CD = 0.32” there is handing over a number with up to 57% model error — without saying so.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>4</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>4</span></div>
 </section>
 
 <section class="page">
@@ -119,7 +119,7 @@
   <p><small>Relative error for CD and CL; mean relative L2 for the Cp field. The test and extrapolation splits are measured once, after model selection.</small></p>
   <p>Sobol indices over the training region: on CD, slant explains <b>0.96</b> of the variance, clearance 0.05 and speed 0.01. For friction drag the order flips (0.09 / 0.04 / 0.93): two phenomena, two dependencies.</p>
   <div class="callout cyan"><b>Extrapolation warns.</b> Above 34° of slant, interval coverage drops to 0.6–0.8: the model is not to be used there, and the twin says so on screen instead of answering.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>5</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>5</span></div>
 </section>
 
 <section class="page">
@@ -130,7 +130,7 @@
   <h3>Provenance</h3>
   <table><tr><th style="width:30%">What</th><th>Where</th></tr><tr><td>Reference experiment</td><td>Ahmed, Ramm &amp; Faltin (1984)</td></tr><tr><td>Full case</td><td><span class="mono">PINNeAPPle/examples/end_to_end/ahmed_body</span></td></tr><tr><td>Data and evidence</td><td><span class="mono">results/dataset · results/evidence.zip</span> (with the SHA-256 of every source)</td></tr><tr><td>Public article</td><td><span class="mono">pinneapple-labs.github.io/artigos/aerodinamica-autonoma/</span></td></tr></table>
   <div class="callout cyan"><b>This is an example report,</b> on a public benchmark. A study for your body follows the same structure: a mesh with GCI, validation against an experiment, model error separated from numerical error — and the page of what is not proven.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · example report</span><span>6</span></div>
+  <div class="runfoot"><span>PINNeAPPle · example report</span><span>6</span></div>
 </section>
 
 </body>

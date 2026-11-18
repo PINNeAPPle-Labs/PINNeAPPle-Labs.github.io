@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the PINNeAPPle Labs site: a commercial home, the product page, the
+"""Builds the PINNeAPPle site: a commercial home, the product page, the
 articles (one post per experiment) and the library page, in two languages.
 
     python3 build.py
@@ -1374,7 +1374,7 @@ STRINGS = {
     "en": {
         "skip": "Skip to content",
         "wa": "Talk to an engineer",
-        "wa_msg": "Hello! I found the PINNeAPPle Labs site and would like a quote: I have a simulation case to discuss.",
+        "wa_msg": "Hello! I found the PINNeAPPle site and would like a quote: I have a simulation case to discuss.",
         "cta_title": "Got a simulation that is slow, expensive or hard to verify?",
         "cta_lead": "Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.",
         "cta_primary": "Request a quote",
@@ -1412,13 +1412,13 @@ STRINGS = {
 META = {
     "home": {
         "pt": dict(
-            title="PINNeAPPle Labs · Physics AI e simulação de engenharia verificada",
+            title="PINNeAPPle · Physics AI e simulação de engenharia verificada",
             desc="Simulação e Physics AI para indústria: escopo com prazo e preço definidos, e um relatório com o número verificado contra ensaio e o erro declarado.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="PINNeAPPle Labs · Physics AI and verified engineering simulation",
+            title="PINNeAPPle · Physics AI and verified engineering simulation",
             desc="Simulation and Physics AI for industry: a scope with a deadline and a price, and a report with the number checked against an experiment and the error stated.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
@@ -1440,13 +1440,13 @@ META = {
     },
     "sucessos": {
         "pt": dict(
-            title="Casos de sucesso · PINNeAPPle Labs",
+            title="Casos de sucesso · PINNeAPPle",
             desc="Seis casos de engenharia, cada número conferido contra uma referência independente — e o que cada um ainda não prova.",
             og="img/casos/cfd04_mapa_erosao.png",
             type="website",
         ),
         "en": dict(
-            title="Success stories · PINNeAPPle Labs",
+            title="Success stories · PINNeAPPle",
             desc="Six engineering cases, every number checked against an independent reference — and what each one still does not prove.",
             og="img/casos/cfd04_mapa_erosao.png",
             type="website",
@@ -1454,13 +1454,13 @@ META = {
     },
     "artigos": {
         "pt": dict(
-            title="Artigos · PINNeAPPle Labs",
+            title="Artigos · PINNeAPPle",
             desc="Cada artigo é um experimento contado por inteiro: o que foi medido, contra o que foi comparado e onde ainda não chegamos.",
             og="img/surrogate_speed_rerun.jpg",
             type="website",
         ),
         "en": dict(
-            title="Articles · PINNeAPPle Labs",
+            title="Articles · PINNeAPPle",
             desc="Every article is one experiment told in full: what was measured, what it was compared against, and where we are not there yet.",
             og="img/surrogate_speed_rerun.jpg",
             type="website",
@@ -1468,13 +1468,13 @@ META = {
     },
     "lib": {
         "pt": dict(
-            title="A biblioteca PINNeAPPle · PINNeAPPle Labs",
+            title="A biblioteca PINNeAPPle · PINNeAPPle",
             desc="Arquitetura, quickstart e o split honesto do código aberto da plataforma PINNeAPPle: 31 módulos, 248 exemplos, Apache-2.0.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="The PINNeAPPle library · PINNeAPPle Labs",
+            title="The PINNeAPPle library · PINNeAPPle",
             desc="Architecture, quickstart and the honest open-source split of the PINNeAPPle platform: 31 modules, 248 examples, Apache-2.0.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
@@ -1482,13 +1482,13 @@ META = {
     },
     "models": {
         "pt": dict(
-            title="Modelos de Physics AI · PINNeAPPle Labs",
+            title="Modelos de Physics AI · PINNeAPPle",
             desc="Modelos substitutos, modelos inversos, otimização e fluxos de Physics AI, com roadmap e critério de evidência — e um experimento de calor 1D para conferir a conta.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
         "en": dict(
-            title="Physics AI models · PINNeAPPle Labs",
+            title="Physics AI models · PINNeAPPle",
             desc="Surrogate models, inverse models, optimization and Physics AI workflows, each with a roadmap and an evidence criterion — plus a 1D heat experiment you can check.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
@@ -1503,12 +1503,12 @@ def meta(lang: str, page: str) -> dict:
         slug = page[5:]
         case = next(c for c in CS.CASES if c["slug"] == slug)
         C = case[lang]
-        return dict(title=f'{C["h1"]} · PINNeAPPle Labs', desc=C["deck"][:180],
+        return dict(title=f'{C["h1"]} · PINNeAPPle', desc=C["deck"][:180],
                     og="img/casos/" + C.get("og", "cfd04_mapa_erosao.png"), type="article")
     if page.startswith("post:"):
         p = POST_BY_SLUG[page[5:]]
         return dict(
-            title=f"{p['title'][lang]} · PINNeAPPle Labs",
+            title=f"{p['title'][lang]} · PINNeAPPle",
             desc=p["lead"][lang].replace("<b>", "").replace("</b>", ""),
             og=p["thumb"],
             type="article",
@@ -1528,7 +1528,7 @@ def head(lang: str, page: str, root: str) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{M['title']}</title>
 <meta name="description" content="{M['desc']}" />
-<meta name="theme-color" content="#070a10" />
+<meta name="theme-color" content="#262626" />
 <link rel="canonical" href="{SITE}/{url(lang, page)}" />
 <link rel="alternate" hreflang="pt-BR" href="{alt_pt}" />
 <link rel="alternate" hreflang="en" href="{alt_en}" />
@@ -1537,9 +1537,9 @@ def head(lang: str, page: str, root: str) -> str:
 <meta property="og:title" content="{M['title']}" />
 <meta property="og:description" content="{M['desc']}" />
 <meta property="og:image" content="{SITE}/{M['og']}" />
-<meta property="og:site_name" content="PINNeAPPle Labs" />
+<meta property="og:site_name" content="PINNeAPPle" />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"PINNeAPPle Labs","url":"{SITE}/","logo":"{SITE}/apple-touch-icon.png","description":"{M['desc']}","sameAs":["https://github.com/PINNeAPPle-Labs/PINNeAPPle","https://pypi.org/project/pinneapple/"]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"PINNeAPPle","url":"{SITE}/","logo":"{SITE}/apple-touch-icon.png","description":"{M['desc']}","sameAs":["https://github.com/PINNeAPPle-Labs/PINNeAPPle","https://pypi.org/project/pinneapple/"]}}</script>
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="{root}favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="{root}favicon-16.png" sizes="16x16" type="image/png" />
@@ -1552,13 +1552,19 @@ def head(lang: str, page: str, root: str) -> str:
 """
 
 
-LOGO = """<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
-        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
-        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
-        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
-        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
-      </svg>"""
+LOGO = '<img class="mark" src="{root}img/brand/mark.png" alt="" aria-hidden="true" width="200" height="444" />'
+
+# The wordmark is set in the brand face instead of shipped as a picture: it stays crisp at
+# any size and the letters keep the logo's arrangement (PINNe blue, APP orange, le blue).
+# They use the readable tints (--accent-2, --accent), because the fills themselves are too
+# dark to read at 20 px on #262626. The delivered lockup artwork carries the fills and is
+# used wherever it has room: the footer, the Studio page, the READMEs and the social card.
+WORDMARK = '<span class="word">PINNe<span class="o">APP</span>le</span>'
+
+
+def brand(root: str) -> str:
+    """The mark plus the wordmark, the one lockup every page and the footer share."""
+    return LOGO.format(root=root) + WORDMARK
 
 WA_ICON = """<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg>"""
 
@@ -1582,10 +1588,9 @@ def header(lang: str, page: str, root: str) -> str:
             marks.append(f'      <a href="{root}{url(lang, "home")}#consultoria">'
                          f'{"Consultoria" if lang == "pt" else "Consulting"}</a>')
     links = "\n".join(marks)
-    # Research galleries stay reachable from the desktop bar and the mobile menu.
-    links += (f'\n      <a href="{root}{"en/" if lang == "en" else ""}digital-twins/">Digital Twins</a>'
-              f'\n      <a href="{root}{"en/" if lang == "en" else ""}physics-ai-models/">'
-              f'{"Physics AI Models" if lang == "en" else "Modelos Physics AI"}</a>')
+    # The Digital Twin and Physics AI model galleries are off the navigation for now: their
+    # pages still build and still answer on their own URLs, so nothing that links to them
+    # breaks, but they are no longer offered as part of the offer.
     # The documentation lives outside this repo, on the platform's own site.
     links += (f'\n      <a href="{DOCS}" target="_blank" rel="noopener">'
               f'{STRINGS[lang]["docs_nav"]} ↗</a>')
@@ -1597,8 +1602,7 @@ def header(lang: str, page: str, root: str) -> str:
     return f"""<header class="site">
   <div class="bar">
     <a class="brand" href="{root}{url(lang, 'home') or ''}">
-      {LOGO}
-      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+      {brand(root)}
     </a>
 
     <nav class="main" id="primary-nav" aria-label="{STRINGS[lang]['foot_platform']}">
@@ -1630,8 +1634,7 @@ def footer(lang: str, page: str, root: str) -> str:
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="{root}{url(lang, 'home') or ''}">
-          {LOGO}
-          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+          <img class="lockup" src="{root}img/brand/logo-horizontal.png" alt="PINNeAPPle" width="720" height="399" />
         </a>
         <p>{S['foot_tag']}</p>
       </div>
@@ -1668,7 +1671,7 @@ def footer(lang: str, page: str, root: str) -> str:
       </div>
     </div>
     <div class="foot-base">
-      <span>© <span id="yr">2026</span> PINNeAPPle Labs · {S['foot_rights']}</span>
+      <span>© <span id="yr">2026</span> PINNeAPPle · {S['foot_rights']}</span>
       <span>{S['foot_law']}</span>
     </div>
   </div>
@@ -2324,7 +2327,7 @@ SEGMENTS = {
     "erosao": {
         "slug": "erosao-em-tubulacao",
         "pt": dict(
-            meta_title="Erosão em tubulação: onde vai furar e em quanto tempo · PINNeAPPle Labs",
+            meta_title="Erosão em tubulação: onde vai furar e em quanto tempo · PINNeAPPle",
             meta_desc=("Estudo de erosão em tubos e curvas, verificado contra ensaio publicado: taxa em mm/ano, "
                        "posição do pico e vida útil. Prazo de 4 a 10 semanas, orçamento a partir do escopo."),
             eyebrow="Erosão e desgaste · tubulação",
@@ -2373,7 +2376,7 @@ SEGMENTS = {
             ],
         ),
         "en": dict(
-            meta_title="Erosion in piping: where it will fail and how soon · PINNeAPPle Labs",
+            meta_title="Erosion in piping: where it will fail and how soon · PINNeAPPle",
             meta_desc=("Erosion study for pipes and bends, checked against a published experiment: rate in mm/year, "
                        "peak position and service life. 4 to 10 weeks, quoted from the scope."),
             eyebrow="Erosion and wear · piping",
@@ -2425,7 +2428,7 @@ SEGMENTS = {
     "trocadores": {
         "slug": "trocadores-e-termico",
         "pt": dict(
-            meta_title="Trocadores de calor e simulação térmica · PINNeAPPle Labs",
+            meta_title="Trocadores de calor e simulação térmica · PINNeAPPle",
             meta_desc=("Estudo térmico de trocadores, dissipadores e painéis: temperatura no ponto crítico, margem até "
                        "o limite e tempo até a incrustação tirar o processo da faixa. Prazo de 4 a 10 semanas."),
             eyebrow="Trocadores de calor e térmico",
@@ -2472,7 +2475,7 @@ SEGMENTS = {
             ],
         ),
         "en": dict(
-            meta_title="Heat exchangers and thermal simulation · PINNeAPPle Labs",
+            meta_title="Heat exchangers and thermal simulation · PINNeAPPle",
             meta_desc=("Thermal study for exchangers, heat sinks and panels: temperature at the critical point, margin "
                        "to the limit and time until fouling takes the process out of band. 4 to 10 weeks."),
             eyebrow="Heat exchangers and thermal",
@@ -2522,7 +2525,7 @@ SEGMENTS = {
     "valvulas": {
         "slug": "valvulas-e-maquinas",
         "pt": dict(
-            meta_title="Válvulas, bocais e máquinas de fluxo · PINNeAPPle Labs",
+            meta_title="Válvulas, bocais e máquinas de fluxo · PINNeAPPle",
             meta_desc=("Estudo de escoamento compressível em válvulas, bocais e orifícios: vazão, perda de carga, "
                        "campos de pressão e a checagem que recusa o caso quando o regime não é o do projeto."),
             eyebrow="Válvulas e máquinas de fluxo",
@@ -2569,7 +2572,7 @@ SEGMENTS = {
             ],
         ),
         "en": dict(
-            meta_title="Valves, nozzles and flow machinery · PINNeAPPle Labs",
+            meta_title="Valves, nozzles and flow machinery · PINNeAPPle",
             meta_desc=("Compressible flow study for valves, nozzles and orifices: flow rate, pressure drop, pressure "
                        "fields and the check that refuses the case when the regime is not the design one."),
             eyebrow="Valves and flow machinery",
@@ -2636,7 +2639,7 @@ META["studio"] = META["produto"]
 
 META["relatorios"] = {
     "pt": dict(
-        title="Relatórios de exemplo por área · PINNeAPPle Labs",
+        title="Relatórios de exemplo por área · PINNeAPPle",
         desc=("Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, "
               "aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — "
               "cada um com a sua verificação e a sua página de limites."),
@@ -2644,7 +2647,7 @@ META["relatorios"] = {
         type="website",
     ),
     "en": dict(
-        title="Example reports by area · PINNeAPPle Labs",
+        title="Example reports by area · PINNeAPPle",
         desc=("Seven study reports, one per area: erosion in piping, gas valve, heat exchanger, Ahmed-body "
               "aerodynamics, topology optimization, surface-PM machine and El Niño forecasting — each with its "
               "own verification and its own limits page."),
@@ -2783,7 +2786,6 @@ def page_home(lang: str) -> str:
 
     parts.append("\n<section class=\"section\" id=\"automacao-engenharia\"><div class=\"wrap\"><p class=\"eyebrow\">CAPACIDADES DE PHYSICS AI</p><h2>Automação e inteligência de engenharia</h2><p>Da definição do problema físico à simulação, verificação e decisão. Capacidades aplicadas por meio da consultoria e do PINNeAPPle Studio, não produtos adicionais.</p><div class=\"grid\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem\"><article class=\"card\" style=\"padding:1.3rem\"><h3>Engineering Automation</h3><p>Orquestração de geometria, malha, solver, dados, treinamento, VeriPhysics e relatórios reproduzíveis.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Design Optimization</h3><p>Exploração de parâmetros e geometrias com restrições físicas e reavaliação pelo solver de referência.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Simulation Acceleration</h3><p>Surrogate models para inferência mais rápida, com comparação ao solver e limites de validade explícitos.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Industrial Intelligence</h3><p>Integração de dados, modelos físicos, sensores e apoio a decisões de engenharia e operação.</p></article></div><p style=\"margin-top:1.2rem\">As funcionalidades dependem do caso de uso, das integrações disponíveis e da validação de cada modelo.</p><p><a href=\"studio/\">Conhecer o Studio →</a></p></div></section>\n" if lang == "pt" else "\n<section class=\"section\" id=\"engineering-automation\"><div class=\"wrap\"><p class=\"eyebrow\">PHYSICS AI CAPABILITIES</p><h2>Engineering automation and intelligence</h2><p>From physical problem definition to simulation, verification and decisions. Capabilities delivered through consulting and PINNeAPPle Studio, not additional products.</p><div class=\"grid\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem\"><article class=\"card\" style=\"padding:1.3rem\"><h3>Engineering Automation</h3><p>Orchestrating geometry, mesh, solver, data, training, VeriPhysics and reproducible reports.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Design Optimization</h3><p>Exploring parameters and geometries under physical constraints, with reference-solver re-evaluation.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Simulation Acceleration</h3><p>Faster inference with surrogate models, reference-solver comparisons and explicit validity limits.</p></article><article class=\"card\" style=\"padding:1.3rem\"><h3>Industrial Intelligence</h3><p>Integrating data, physics models, sensors and engineering and operational decision support.</p></article></div><p style=\"margin-top:1.2rem\">Availability depends on the use case, existing integrations and model validation.</p><p><a href=\"../en/studio/\">Explore Studio →</a></p></div></section>\n")
 
-    parts.append("\n<section class=\"section\" id=\"explorar-physics-ai\"><div class=\"wrap\"><p class=\"eyebrow\">EXPLORAR A TECNOLOGIA</p><h2>Aplicações e modelos de Physics AI</h2><p>Recursos técnicos e de pesquisa do PINNeAPPle, não produtos comerciais adicionais.</p><div class=\"grid\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem\"><article class=\"card\" style=\"padding:1.5rem\"><h3>Digital Twins</h3><p>50 aplicações com ilustração conceitual, roteiro de validação e status explícito.</p><a href=\"digital-twins/\">Explorar Digital Twins →</a></article><article class=\"card\" style=\"padding:1.5rem\"><h3>Modelos de Physics AI</h3><p>Surrogates, inversão, otimização e arquiteturas.</p><a href=\"physics-ai-models/\">Explorar modelos →</a></article></div></div></section>\n" if lang == "pt" else "\n<section class=\"section\" id=\"explore-physics-ai\"><div class=\"wrap\"><p class=\"eyebrow\">EXPLORE THE TECHNOLOGY</p><h2>Physics AI applications and models</h2><p>PINNeAPPle technical and research resources, not additional commercial products.</p><div class=\"grid\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem\"><article class=\"card\" style=\"padding:1.5rem\"><h3>Digital Twins</h3><p>50 applications with a concept illustration, validation roadmap and explicit status.</p><a href=\"../en/digital-twins/\">Explore Digital Twins →</a></article><article class=\"card\" style=\"padding:1.5rem\"><h3>Physics AI models</h3><p>Surrogates, inversion, optimization and architectures.</p><a href=\"../en/physics-ai-models/\">Explore models →</a></article></div></div></section>\n")
     parts.append(flow_section(lang, root))
 
     entrega = "".join(
@@ -2918,7 +2920,7 @@ def page_home(lang: str) -> str:
 """)
 
 
-    parts.append("<section class=\"section\" id=\"traga-seu-problema\"><div class=\"wrap\" style=\"padding-top:30px;padding-bottom:30px\"><div style=\"padding:clamp(24px,4vw,44px);border:1px solid #397b7c;border-radius:18px;background:linear-gradient(115deg,#10313b,#10202e)\"><p class=\"eyebrow\">TRANSFORME SEU DESAFIO EM PROJETO</p><h2>Tem um problema real de engenharia?</h2><p>Descreva o desafio, as condições físicas e o resultado esperado. Explore como estruturar um projeto de Physics AI, da modelagem à verificação.</p><a class=\"btn btn-primary\" href=\"https://pinneapple.org/bring-your-problem\" target=\"_blank\" rel=\"noopener noreferrer\">Programa Bring Your Problem (EN) ↗</a></div></div></section>\n" if lang == "pt" else "<section class=\"section\" id=\"bring-your-problem\"><div class=\"wrap\" style=\"padding-top:30px;padding-bottom:30px\"><div style=\"padding:clamp(24px,4vw,44px);border:1px solid #397b7c;border-radius:18px;background:linear-gradient(115deg,#10313b,#10202e)\"><p class=\"eyebrow\">TURN YOUR CHALLENGE INTO A PROJECT</p><h2>Have a real engineering problem?</h2><p>Describe your challenge, physical conditions and desired outcomes. Explore a Physics AI project from modeling through verification.</p><a class=\"btn btn-primary\" href=\"https://pinneapple.org/bring-your-problem\" target=\"_blank\" rel=\"noopener noreferrer\">Bring Your Problem program ↗</a></div></div></section>\n")
+    parts.append("<section class=\"section\" id=\"traga-seu-problema\"><div class=\"wrap\" style=\"padding-top:30px;padding-bottom:30px\"><div class=\"bring-band\"><p class=\"eyebrow\">TRANSFORME SEU DESAFIO EM PROJETO</p><h2>Tem um problema real de engenharia?</h2><p>Descreva o desafio, as condições físicas e o resultado esperado. Explore como estruturar um projeto de Physics AI, da modelagem à verificação.</p><a class=\"btn btn-primary\" href=\"https://pinneapple.org/bring-your-problem\" target=\"_blank\" rel=\"noopener noreferrer\">Programa Bring Your Problem (EN) ↗</a></div></div></section>\n" if lang == "pt" else "<section class=\"section\" id=\"bring-your-problem\"><div class=\"wrap\" style=\"padding-top:30px;padding-bottom:30px\"><div class=\"bring-band\"><p class=\"eyebrow\">TURN YOUR CHALLENGE INTO A PROJECT</p><h2>Have a real engineering problem?</h2><p>Describe your challenge, physical conditions and desired outcomes. Explore a Physics AI project from modeling through verification.</p><a class=\"btn btn-primary\" href=\"https://pinneapple.org/bring-your-problem\" target=\"_blank\" rel=\"noopener noreferrer\">Bring Your Problem program ↗</a></div></div></section>\n")
     parts.append(cta_band(lang, root))
     parts.append("</main>")
     parts.append(footer(lang, "home", root))
@@ -4033,8 +4035,8 @@ def redirect_page(target: str, label: str) -> str:
 <meta name="robots" content="noindex" />
 <meta http-equiv="refresh" content="0; url={target}" />
 <link rel="canonical" href="{target}" />
-<title>PINNeAPPle Labs</title>
-<style>body{{background:#070a10;color:#eef2f7;font:400 16px/1.6 system-ui,sans-serif;display:grid;place-items:center;height:100vh;margin:0}}a{{color:#f0b32e}}</style>
+<title>PINNeAPPle</title>
+<style>body{{background:#262626;color:#f1f1f1;font:400 16px/1.6 system-ui,sans-serif;display:grid;place-items:center;height:100vh;margin:0}}a{{color:#e07a3c}}</style>
 </head>
 <body>
 <p>Esta página mudou de lugar. <a href="{target}">{label} →</a></p>

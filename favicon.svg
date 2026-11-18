@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#070a10"/>
-  <g fill="#3dd6c4">
+  <rect width="32" height="32" rx="7" fill="#262626"/>
+  <g fill="#0081be">
     <path d="M16 2.2c1.1 2.6 1.6 5.5 1.4 8.6h-2.8c-.2-3.1.3-6 1.4-8.6Z"/>
     <path d="M9.9 5.1c2.1 1.7 3.9 3.9 5.2 6.4l-2.4 1.3c-1.6-2.5-2.6-5.2-2.8-7.7Z"/>
     <path d="M22.1 5.1c-.2 2.5-1.2 5.2-2.8 7.7l-2.4-1.3c1.3-2.5 3.1-4.7 5.2-6.4Z"/>
   </g>
   <clipPath id="b"><ellipse cx="16" cy="20.6" rx="8" ry="9.2"/></clipPath>
-  <ellipse cx="16" cy="20.6" rx="8" ry="9.2" fill="#f0b32e"/>
-  <g clip-path="url(#b)" stroke="#0b1018" stroke-opacity=".32" stroke-width="1.1">
+  <ellipse cx="16" cy="20.6" rx="8" ry="9.2" fill="#bc3700"/>
+  <g clip-path="url(#b)" stroke="#262626" stroke-opacity=".38" stroke-width="1.1">
     <path d="M4 12 26 34M4 19 23 38M4 26 17 39M28 12 6 34M28 19 9 38M28 26 15 39"/>
   </g>
 </svg>

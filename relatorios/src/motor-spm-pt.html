@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<title>Máquina síncrona de ímãs: torque por duas rotas — PINNeAPPle Labs</title>
+<title>Máquina síncrona de ímãs: torque por duas rotas — PINNeAPPle</title>
 <style>
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -48,7 +48,7 @@
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -64,7 +64,7 @@
 
 <section class="page cover">
   <div class="top">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#a23a00"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/><path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg><span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
     <h1>Máquina síncrona de ímãs<br />torque calculado por duas rotas</h1>
     <p class="sub">O mesmo torque por Maxwell e por coenergia — e a otimização topológica do rotor que só vale quando as duas concordam.</p>
@@ -72,7 +72,7 @@
   </div>
   <div>
     
-    <div class="meta" style="margin-top:6mm">Documento ELE-01 · versão 1.0 · 2026<br />Caso de demonstração: dimensões, materiais e coeficientes ilustrativos<br />FEM 2D A_z · duas rotas independentes de torque<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+    <div class="meta" style="margin-top:6mm">Documento ELE-01 · versão 1.0 · 2026<br />Caso de demonstração: dimensões, materiais e coeficientes ilustrativos<br />FEM 2D A_z · duas rotas independentes de torque<br />PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
   </div>
 </section>
 
@@ -81,7 +81,7 @@
   <p class="lead">Uma máquina síncrona de ímãs superficiais em 2-D: cogging, torque contra ângulo de corrente, força contra-eletromotriz e perdas. O torque é calculado duas vezes, por rotas independentes, e as duas são impressas lado a lado.</p>
   <table><tr><th style="width:32%">Grandeza</th><th>Valor</th></tr><tr><td>Polos / ranhuras</td><td>2 pares de polos · 24 ranhuras</td></tr><tr><td>Comprimento axial · entreferro</td><td>50 mm · 1 mm</td></tr><tr><td>Ímã</td><td>Br = 1,2 T, montagem superficial</td></tr><tr><td>Discretização angular</td><td>360 posições · FEM 2D no potencial vetor A_z</td></tr><tr><td>Custo</td><td>cerca de 2 min por execução</td></tr></table>
   <div class="callout"><b>Por que duas rotas.</b> Maxwell (tensão na superfície) e coenergia (diferença de energia entre duas posições) usam contas diferentes sobre o mesmo campo. Se as duas concordam, o campo está resolvido o suficiente para o torque; se divergem, o problema costuma ser a malha ou a discretização angular — e o número não deveria sair.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>1</span></div>
 </section>
 
 <section class="page">
@@ -90,14 +90,14 @@
   <p>No ponto de projeto as duas rotas ficam a <b>0,087%</b> uma da outra — muito abaixo do que qualquer decisão de projeto distingue.</p>
   <p>Nos pontos de torque pequeno, a discordância relativa cresce: nos instantes de cogging ela chega a <b>2,6%</b> (0,3391 contra 0,3302 Nm). Não é contradição: é a mesma diferença absoluta pesando mais sobre um número pequeno, e é por isso que a checagem precisa ser lida em valor absoluto também.</p>
   <div class="callout cyan"><b>Regra da casa.</b> Duas rotas independentes não provam que o resultado está certo — provam que ele está consistente. A prova contra o real continua sendo ensaio, e este relatório não tem um.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>2</span></div>
 </section>
 
 <section class="page">
   <div class="runhead"><span>ELE-01 · máquina SPM de 4 polos</span><span>3 · cogging, força contra-eletromotriz e perdas</span></div>
   <table><tr><th style="width:34%">Grandeza</th><th style="width:30%">Valor</th><th>Observação</th></tr><tr><td>Cogging pico-a-pico</td><td>0,7447 Nm</td><td>período de 15° (360/24 ranhuras)</td></tr><tr><td>Torque médio a 1.500 rpm</td><td>16,05 Nm</td><td>ponto de operação avaliado</td></tr><tr><td>Fluxo de ímã (pico)</td><td>0,1871 Wb</td><td>por fase</td></tr><tr><td>FCEM a 1.500 rpm</td><td>51,66 V de pico · 40,36 V RMS</td><td>senoidal</td></tr><tr><td>Perdas no ferro do estator</td><td>9,70 W</td><td>a 50 Hz</td></tr><tr><td>Perdas no ferro do rotor</td><td>0,021 W</td><td>praticamente nulas</td></tr><tr><td>Correntes de Foucault no ímã</td><td>0,172 W</td><td>a 50 Hz</td></tr></table>
   <p>O cogging de 0,74 Nm pico-a-pico contra 16,7 Nm de torque nominal é 4,5% de ondulação — o número que decide se a máquina precisa de skew ou de passo fracionário.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>3</span></div>
 </section>
 
 <section class="page">
@@ -105,7 +105,7 @@
   <p>Sobre a mesma formulação, uma otimização topológica do rotor de relutância: 1.410 variáveis de projeto em 5.640 elementos, gradiente conferido por diferenças finitas com erro relativo máximo de <b>4,6·10⁻⁸</b>.</p>
   <table><tr><th style="width:38%">Resultado</th><th>Valor</th></tr><tr><td>Rotor maciço (referência)</td><td>≈ 0 Nm (−2,4·10⁻¹¹)</td></tr><tr><td>Rotor otimizado, modelo linear</td><td>38,10 Nm de torque médio</td></tr><tr><td>Rotor otimizado, modelo não linear</td><td>13,44 Nm de torque médio</td></tr><tr><td>Torque por coenergia a 5°</td><td>47,07 Nm</td></tr><tr><td>Iterações · tempo</td><td>120 · 215 s</td></tr><tr><td>Fração de volume</td><td>0,500</td></tr></table>
   <div class="callout"><b>A diferença que muda a decisão.</b> O mesmo desenho entrega <b>38,1 Nm</b> no modelo linear e <b>13,4 Nm</b> com saturação — um fator de 2,8. O número linear é útil para explorar o espaço de projeto; não é número de máquina.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>4</span></div>
 </section>
 
 <section class="page">
@@ -118,7 +118,7 @@
   <h3>Proveniência</h3>
   <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Resultado completo</td><td><span class="mono">PINNeAPPle/examples/motor_magnetics/results/spm_summary.json</span></td></tr><tr><td>Script</td><td><span class="mono">examples/motor_magnetics/01_spm_cogging_and_torque.py</span></td></tr><tr><td>Otimização do rotor</td><td><span class="mono">examples/topology_optimization/results/reluctance_rotor_summary.json</span></td></tr></table>
   <div class="callout cyan"><b>Este é um relatório de exemplo,</b> com dados de demonstração. Um estudo para a sua máquina segue a mesma estrutura: duas rotas de torque, a diferença entre elas publicada, e a página do que não foi validado.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>5</span></div>
 </section>
 
 </body>

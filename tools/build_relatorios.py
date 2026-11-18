@@ -26,8 +26,8 @@ CSS = """
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -67,7 +67,7 @@ CSS = """
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -80,9 +80,9 @@ CSS = """
 """
 
 LOGO = ('<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">'
-        '<circle cx="16" cy="16" r="15" fill="#f0b32e"/>'
-        '<path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/>'
-        '<path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg>')
+        '<circle cx="16" cy="16" r="15" fill="#a23a00"/>'
+        '<path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/>'
+        '<path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg>')
 
 
 def render_block(b: tuple) -> str:
@@ -129,7 +129,7 @@ def render(report: dict, lang: str) -> str:
     cover = f"""
 <section class="page cover">
   <div class="top">
-    <div class="brand">{LOGO}<span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand">{LOGO}<span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">{R['eyebrow']}</p>
     <h1>{R['title']}</h1>
     <p class="sub">{R['sub']}</p>
@@ -148,7 +148,7 @@ def render(report: dict, lang: str) -> str:
 <section class="page">
   <div class="runhead"><span>{R['short']}</span><span>{title}</span></div>
   {body}
-  <div class="runfoot"><span>PINNeAPPle Labs · {R['foot']}</span><span>{i}</span></div>
+  <div class="runfoot"><span>PINNeAPPle · {R['foot']}</span><span>{i}</span></div>
 </section>
 """)
     return (f'<!doctype html>\n<html lang="{R["html_lang"]}">\n<head>\n<meta charset="utf-8" />\n'
@@ -166,7 +166,7 @@ REPORTS = {}
 REPORTS["estudo-erosao-curva-90"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Estudo de erosão em curva de 90° — PINNeAPPle Labs",
+        doc_title="Estudo de erosão em curva de 90° — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Erosão em curva de 90°<br />ar com areia a 15 m/s",
         sub="Onde a parede erode, a que taxa, em quanto tempo — e por que este número pode ser usado numa decisão.",
@@ -178,7 +178,7 @@ REPORTS["estudo-erosao-curva-90"] = {
         meta=["Documento ERC-04 · versão 1.0 · 2026",
               "Caso de demonstração (geometria e condições públicas, sem dado de cliente)",
               "Ensaio de referência: Vieira et al. (2016), dados abertos",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="ERC-04 · erosão em curva de 90°",
         foot="relatório de exemplo",
         pages=[
@@ -305,7 +305,7 @@ REPORTS["estudo-erosao-curva-90"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="Erosion study in a 90° bend — PINNeAPPle Labs",
+        doc_title="Erosion study in a 90° bend — PINNeAPPle",
         eyebrow="Study report · public example",
         title="Erosion in a 90° bend<br />sand-laden air at 15 m/s",
         sub="Where the wall erodes, at what rate, in how long — and why this number can carry a decision.",
@@ -317,7 +317,7 @@ REPORTS["estudo-erosao-curva-90"] = {
         meta=["Document ERC-04 · version 1.0 · 2026",
               "Demonstration case (public geometry and conditions, no client data)",
               "Reference experiment: Vieira et al. (2016), open data",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="ERC-04 · erosion in a 90° bend",
         foot="example report",
         pages=[
@@ -448,7 +448,7 @@ REPORTS["estudo-erosao-curva-90"] = {
 REPORTS["gemeo-hx201"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Gêmeo digital HX-201 — PINNeAPPle Labs",
+        doc_title="Gêmeo digital HX-201 — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Gêmeo digital HX-201<br />permutador com incrustação",
         sub="Um contrato de acurácia assinado antes da operação — e o que aconteceu quando a incrustação apareceu.",
@@ -460,7 +460,7 @@ REPORTS["gemeo-hx201"] = {
         meta=["Documento TW-201 · versão 1.0 · 2026",
               "Histórico sintético de demonstração: não é registro de comissionamento de planta",
               "Referência: sonda TT-105, reservada e fora do filtro",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="TW-201 · gêmeo do permutador HX-201",
         foot="relatório de exemplo",
         pages=[
@@ -552,7 +552,7 @@ REPORTS["gemeo-hx201"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="HX-201 digital twin — PINNeAPPle Labs",
+        doc_title="HX-201 digital twin — PINNeAPPle",
         eyebrow="Study report · public example",
         title="HX-201 digital twin<br />a fouled heat exchanger",
         sub="An accuracy contract signed before operation — and what happened when the fouling showed up.",
@@ -564,7 +564,7 @@ REPORTS["gemeo-hx201"] = {
         meta=["Document TW-201 · version 1.0 · 2026",
               "Synthetic demonstration history: not a plant commissioning record",
               "Reference: probe TT-105, held out of the filter",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="TW-201 · HX-201 exchanger twin",
         foot="example report",
         pages=[
@@ -660,7 +660,7 @@ REPORTS["gemeo-hx201"] = {
 REPORTS["valvula-globo"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Válvula globo, metano 80 → 60 bar — PINNeAPPle Labs",
+        doc_title="Válvula globo, metano 80 → 60 bar — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Válvula globo<br />metano 80 → 60 bar",
         sub="O que o documento do cliente dizia, o que o CFD diz — e o que ainda não fecha.",
@@ -672,7 +672,7 @@ REPORTS["valvula-globo"] = {
         meta=["Documento VR-08 · versão 1.0 · 2026",
               "Caso de cliente anonimizado: geometria e condições de processo preservadas, identidade não",
               "OpenFOAM v2606 · Peng-Robinson · rhoPimpleFoam em tempo físico",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="VR-08 · válvula globo, 80 → 60 bar",
         foot="relatório de exemplo",
         pages=[
@@ -749,7 +749,7 @@ REPORTS["valvula-globo"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="Globe valve, methane 80 → 60 bar — PINNeAPPle Labs",
+        doc_title="Globe valve, methane 80 → 60 bar — PINNeAPPle",
         eyebrow="Study report · public example",
         title="Globe valve<br />methane 80 → 60 bar",
         sub="What the client's document said, what the CFD says — and what still does not close.",
@@ -761,7 +761,7 @@ REPORTS["valvula-globo"] = {
         meta=["Document VR-08 · version 1.0 · 2026",
               "Anonymised client case: geometry and process conditions kept, identity not",
               "OpenFOAM v2606 · Peng-Robinson · rhoPimpleFoam in physical time",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="VR-08 · globe valve, 80 → 60 bar",
         foot="example report",
         pages=[

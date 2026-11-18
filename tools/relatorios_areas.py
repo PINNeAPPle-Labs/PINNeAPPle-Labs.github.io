@@ -18,7 +18,7 @@ REPORTS = {}
 REPORTS["aero-ahmed-body"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Corpo de Ahmed: arrasto, malha e o que o RANS não vê — PINNeAPPle Labs",
+        doc_title="Corpo de Ahmed: arrasto, malha e o que o RANS não vê — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Corpo de Ahmed<br />arrasto, malha e o que o RANS não vê",
         sub="Um benchmark de 1984, quatro malhas, 48 simulações e um substituto — com o erro de modelo separado do erro de malha.",
@@ -30,7 +30,7 @@ REPORTS["aero-ahmed-body"] = {
         meta=["Documento AER-01 · versão 1.0 · 2026",
               "Caso aberto: Ahmed, Ramm &amp; Faltin (1984)",
               "OpenFOAM v1912 · gmsh 4.12 · meio modelo, estrada móvel, RANS k-ω SST",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="AER-01 · corpo de Ahmed",
         foot="relatório de exemplo",
         pages=[
@@ -109,7 +109,7 @@ REPORTS["aero-ahmed-body"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="Ahmed body: drag, mesh and what RANS cannot see — PINNeAPPle Labs",
+        doc_title="Ahmed body: drag, mesh and what RANS cannot see — PINNeAPPle",
         eyebrow="Study report · public example",
         title="Ahmed body<br />drag, mesh and what RANS cannot see",
         sub="A 1984 benchmark, four meshes, 48 simulations and a surrogate — with model error separated from mesh error.",
@@ -121,7 +121,7 @@ REPORTS["aero-ahmed-body"] = {
         meta=["Document AER-01 · version 1.0 · 2026",
               "Open case: Ahmed, Ramm &amp; Faltin (1984)",
               "OpenFOAM v1912 · gmsh 4.12 · half model, moving road, RANS k-ω SST",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="AER-01 · Ahmed body",
         foot="example report",
         pages=[
@@ -204,7 +204,7 @@ REPORTS["aero-ahmed-body"] = {
 REPORTS["motor-spm"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Máquina síncrona de ímãs: torque por duas rotas — PINNeAPPle Labs",
+        doc_title="Máquina síncrona de ímãs: torque por duas rotas — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Máquina síncrona de ímãs<br />torque calculado por duas rotas",
         sub="O mesmo torque por Maxwell e por coenergia — e a otimização topológica do rotor que só vale quando as duas concordam.",
@@ -214,7 +214,7 @@ REPORTS["motor-spm"] = {
         meta=["Documento ELE-01 · versão 1.0 · 2026",
               "Caso de demonstração: dimensões, materiais e coeficientes ilustrativos",
               "FEM 2D A_z · duas rotas independentes de torque",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="ELE-01 · máquina SPM de 4 polos",
         foot="relatório de exemplo",
         pages=[
@@ -289,7 +289,7 @@ REPORTS["motor-spm"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="Surface-PM machine: torque by two routes — PINNeAPPle Labs",
+        doc_title="Surface-PM machine: torque by two routes — PINNeAPPle",
         eyebrow="Study report · public example",
         title="Surface-PM machine<br />torque computed by two routes",
         sub="The same torque by Maxwell stress and by co-energy — and the rotor topology optimization that only counts when the two agree.",
@@ -299,7 +299,7 @@ REPORTS["motor-spm"] = {
         meta=["Document ELE-01 · version 1.0 · 2026",
               "Demonstration case: dimensions, materials and coefficients illustrative",
               "2-D A_z FEM · two independent torque routes",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="ELE-01 · 4-pole SPM machine",
         foot="example report",
         pages=[
@@ -378,7 +378,7 @@ REPORTS["motor-spm"] = {
 REPORTS["topologia-estrutural"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="Otimização topológica: projeção, gradiente e o cinza — PINNeAPPle Labs",
+        doc_title="Otimização topológica: projeção, gradiente e o cinza — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="Otimização topológica<br />projeção, gradiente e o cinza que sobra",
         sub="MBB e cantilever: quatro execuções, checagem de gradiente por diferença finita e o efeito de tirar os elementos cinzentos.",
@@ -387,7 +387,7 @@ REPORTS["topologia-estrutural"] = {
         meta=["Documento EST-01 · versão 1.0 · 2026",
               "Caso de demonstração: viga MBB e cantilever em 2-D, SIMP",
               "Checagem de gradiente por diferenças finitas em todas as execuções",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="EST-01 · otimização topológica",
         foot="relatório de exemplo",
         pages=[
@@ -454,7 +454,7 @@ REPORTS["topologia-estrutural"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="Topology optimization: projection, gradient and the grey — PINNeAPPle Labs",
+        doc_title="Topology optimization: projection, gradient and the grey — PINNeAPPle",
         eyebrow="Study report · public example",
         title="Topology optimization<br />projection, gradient and the grey that stays",
         sub="MBB and cantilever: four runs, a finite-difference gradient check and the effect of pushing the grey elements out.",
@@ -463,7 +463,7 @@ REPORTS["topologia-estrutural"] = {
         meta=["Document EST-01 · version 1.0 · 2026",
               "Demonstration case: 2-D MBB beam and cantilever, SIMP",
               "Finite-difference gradient check on every run",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="EST-01 · topology optimization",
         foot="example report",
         pages=[
@@ -534,7 +534,7 @@ REPORTS["topologia-estrutural"] = {
 REPORTS["el-nino-modelos"] = {
     "pt": dict(
         html_lang="pt-BR",
-        doc_title="El Niño: trinta configurações sob um protocolo — PINNeAPPle Labs",
+        doc_title="El Niño: trinta configurações sob um protocolo — PINNeAPPle",
         eyebrow="Relatório de estudo · exemplo público",
         title="El Niño<br />trinta configurações, um protocolo só",
         sub="Modelos físicos, de dados, physics-informed e híbridos avaliados com a mesma métrica, as mesmas janelas e o mesmo teste de significância.",
@@ -546,7 +546,7 @@ REPORTS["el-nino-modelos"] = {
         meta=["Documento GEO-01 · versão 1.0 · 2026",
               "Dados abertos: OISST v2.1, WOD, ERA5 (cache com SHA-256 de cada arquivo)",
               "Protocolo único: ACC, skill contra persistência e contra o melhor baseline, Holm",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="GEO-01 · previsão de El Niño",
         foot="relatório de exemplo",
         pages=[
@@ -622,7 +622,7 @@ REPORTS["el-nino-modelos"] = {
     ),
     "en": dict(
         html_lang="en",
-        doc_title="El Niño: thirty configurations under one protocol — PINNeAPPle Labs",
+        doc_title="El Niño: thirty configurations under one protocol — PINNeAPPle",
         eyebrow="Study report · public example",
         title="El Niño<br />thirty configurations, one protocol",
         sub="Physical, data-driven, physics-informed and hybrid models scored with the same metric, the same windows and the same significance test.",
@@ -634,7 +634,7 @@ REPORTS["el-nino-modelos"] = {
         meta=["Document GEO-01 · version 1.0 · 2026",
               "Open data: OISST v2.1, WOD, ERA5 (cache with the SHA-256 of every file)",
               "One protocol: ACC, skill against persistence and the best baseline, Holm",
-              "PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
+              "PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io"],
         short="GEO-01 · El Niño forecasting",
         foot="example report",
         pages=[

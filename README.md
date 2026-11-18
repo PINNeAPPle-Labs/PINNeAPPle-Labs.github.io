@@ -1,12 +1,42 @@
 # pinneapple-labs-site
 
-Landing site for **PINNeAPPle Labs**, open-source Physics AI with verification as part of the
+Landing site for **PINNeAPPle**, open-source Physics AI with verification as part of the
 product. Served at <https://pinneapple-labs.github.io/>.
 
 A single home page that carries the commercial pitch — the study we deliver, its scope,
 deadline and price rule — then the proof, the three problems it solves, and the
 **PINNeAPPle Studio** product story (with a "coming soon" badge), an articles section with one
 post per experiment, and the library page, in two languages, generated from one script.
+
+## Brand
+
+The identity is four things: a surface, two colours, one typeface.
+
+| | |
+|---|---|
+| surface | `#262626` |
+| blue | `#0081be` — the leaves, the wordmark's `PINNe`, every interactive accent |
+| orange | `#a23a00` — the fruit, the wordmark's `APP`, the primary button |
+| type | **Oxanium Bold** for headlines, the wordmark, navigation, buttons and measured numbers; Archivo for running text; JetBrains Mono for data |
+
+Neither brand hex carries text on the surface (the orange is 2.3:1, the blue 3.5:1), so every
+accent that is read rather than looked at uses a lighter tint of the same hue: `--accent`
+(`#e07a3c`) and `--accent-2` (`#3fa9dc`), both above 4.5:1. The two hexes are used as fills. All
+of it lives in the `:root` block of [`styles.css`](styles.css); no page hard-codes a colour.
+
+The logo artwork is in `assets/brand/source/` (the delivered files) and the site's cut of it in
+`img/brand/`. Regenerate the cuts, the favicon and the touch icon with:
+
+```bash
+python3 tools/build_brand_assets.py     # needs Pillow
+```
+
+The mark and the wordmark are set in markup (`build.py`), not shipped as one picture, so the
+header stays crisp at any size; the delivered lockup is used in the footer, in the Studio page
+and in the READMEs, where it has room.
+
+The name is **PINNeAPPle**, not "PINNeAPPle Labs": the URL, the GitHub organisation and the
+repository names keep the old form, the product does not.
 
 ## Build
 

@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<title>Otimização topológica: projeção, gradiente e o cinza — PINNeAPPle Labs</title>
+<title>Otimização topológica: projeção, gradiente e o cinza — PINNeAPPle</title>
 <style>
   @font-face { font-family: 'Archivo'; font-weight: 400 800; src: url(../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
   @font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url(../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
   :root {
-    --ink: #10151d; --dim: #4a5768; --mute: #7b8899; --line: #dfe4ea;
-    --gold: #b57f0a; --gold-bg: #fdf3dc; --cyan: #0f8c80; --cyan-bg: #e4f6f3;
+    --ink: #262626; --dim: #4a4a4a; --mute: #767676; --line: #e0e0e0;
+    --gold: #a23a00; --gold-bg: #f7e7df; --cyan: #0081be; --cyan-bg: #e3f0f8;
     --ok: #1f7a4d; --fail: #b03a3a;
   }
   @page { size: A4; margin: 0; }
@@ -48,7 +48,7 @@
   .verdict { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; padding: .6mm 2mm; border-radius: 1.5mm; letter-spacing: .04em; }
   .v-ok { background: #e3f4ea; color: var(--ok); }
   .v-fail { background: #f8e6e6; color: var(--fail); }
-  .v-mid { background: #fdf3dc; color: var(--gold); }
+  .v-mid { background: #f7e7df; color: var(--gold); }
   ul { margin: 0 0 3.5mm; padding-left: 4.5mm; }
   li { margin-bottom: 1.2mm; }
   figure { margin: 0 0 4mm; }
@@ -64,7 +64,7 @@
 
 <section class="page cover">
   <div class="top">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f0b32e"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#0b1018"/><path d="M16 8.5v15" stroke="#f0b32e" stroke-width="1.2"/></svg><span>PINNeAPPle<span class="labs"> Labs</span></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#a23a00"/><path d="M16 6c4 3 6 6.5 6 10s-2.5 6.5-6 10c-3.5-3.5-6-6.5-6-10s2-7 6-10z" fill="#262626"/><path d="M16 8.5v15" stroke="#262626" stroke-width="1.2"/></svg><span>PINNeAPPle</span></div>
     <p class="eyebrow" style="margin-top:6mm">Relatório de estudo · exemplo público</p>
     <h1>Otimização topológica<br />projeção, gradiente e o cinza que sobra</h1>
     <p class="sub">MBB e cantilever: quatro execuções, checagem de gradiente por diferença finita e o efeito de tirar os elementos cinzentos.</p>
@@ -72,7 +72,7 @@
   </div>
   <div>
     
-    <div class="meta" style="margin-top:6mm">Documento EST-01 · versão 1.0 · 2026<br />Caso de demonstração: viga MBB e cantilever em 2-D, SIMP<br />Checagem de gradiente por diferenças finitas em todas as execuções<br />PINNeAPPle Labs · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
+    <div class="meta" style="margin-top:6mm">Documento EST-01 · versão 1.0 · 2026<br />Caso de demonstração: viga MBB e cantilever em 2-D, SIMP<br />Checagem de gradiente por diferenças finitas em todas as execuções<br />PINNeAPPle · LAIS &amp; YAN LTDA · pinneapple-labs.github.io</div>
   </div>
 </section>
 
@@ -81,7 +81,7 @@
   <p class="lead">Otimização topológica responde a uma pergunta de projeto: <b>onde colocar material</b> para a estrutura ser mais rígida com a mesma massa. A resposta é um campo de densidade, e o que decide se ela serve é a qualidade do campo — não o desenho bonito.</p>
   <table><tr><th style="width:24%">Caso</th><th>O que é</th></tr><tr><td>Viga MBB</td><td>carregamento clássico de benchmark, volume máximo de 50%</td></tr><tr><td>Cantilever</td><td>viga em balanço, volume máximo de 40%</td></tr><tr><td>Formulação</td><td>SIMP com filtro de densidade e, numa das execuções, projeção</td></tr><tr><td>Otimizadores</td><td>OC (optimality criteria) e MMA (method of moving asymptotes)</td></tr></table>
   <div class="callout"><b>O que é medido.</b> Compliance (flexibilidade: menor é melhor), fração de volume final, fração de elementos cinzentos e o erro da checagem de gradiente. O número que interessa é a combinação — compliance baixa com pouco cinza.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>1</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>1</span></div>
 </section>
 
 <section class="page">
@@ -89,7 +89,7 @@
   <p>Cada execução termina com três verificações: o volume é o pedido, a fração cinzenta é medida e o gradiente analítico é comparado com diferenças finitas.</p>
   <table><tr><th style="width:30%">Verificação</th><th style="width:36%">Critério</th><th>Resultado</th></tr><tr><td>Volume final</td><td>igual ao limite pedido</td><td>0,500 · 0,500 · 0,500 · 0,400</td></tr><tr><td>Gradiente</td><td>erro relativo máximo por diferença finita</td><td>1,0·10⁻⁶ <span class="verdict v-ok">passa</span></td></tr><tr><td>Custo</td><td>tempo total das cinco execuções</td><td>49,4 s</td></tr></table>
   <p>A checagem de gradiente parece burocracia até o dia em que um resultado melhora 20% sem explicação: com ela, ou o gradiente está certo e a melhora é real, ou o otimizador está descendo a ladeira errada e isso aparece antes de virar desenho.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>2</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>2</span></div>
 </section>
 
 <section class="page">
@@ -97,7 +97,7 @@
   <table><tr><th style="width:32%">Execução</th><th>Compliance</th><th>Iterações</th><th>Volume</th><th>Fração cinzenta</th></tr><tr><td>MBB · OC, filtro</td><td>233,71</td><td>146</td><td>0,500</td><td>0,444</td></tr><tr><td>MBB · MMA, filtro</td><td>233,49</td><td>58</td><td>0,500</td><td>0,453</td></tr><tr><td>MBB · MMA, filtro + projeção</td><td>190,05</td><td>207</td><td>0,500</td><td>0,0225</td></tr><tr><td>Cantilever · MMA, projeção</td><td>75,43</td><td>228</td><td>0,400</td><td>0,00875</td></tr></table>
   <p>OC e MMA chegam praticamente ao mesmo lugar com filtro (233,71 contra 233,49), com o MMA em 58 iterações contra 146. A projeção muda o resultado de verdade: compliance cai para <b>190,05</b>, com 207 iterações.</p>
   <div class="callout cyan"><b>A leitura correta.</b> Não é “projeção é melhor”: é que a projeção empurra a densidade para 0 ou 1, o que muda a física do problema resolvido. Comparar os dois números sem olhar a fração cinzenta seria comparar duas estruturas diferentes.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>3</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>3</span></div>
 </section>
 
 <section class="page">
@@ -105,7 +105,7 @@
   <p>Sem projeção, <b>44%</b> dos elementos ficam em densidade intermediária — um material que não existe. Com projeção, essa fração cai para <b>2,25%</b> na MBB e <b>0,88%</b> no cantilever.</p>
   <table><tr><th style="width:28%">Métrica</th><th>MBB com filtro</th><th>MBB com projeção</th><th>Efeito</th></tr><tr><td>Compliance</td><td>233,49</td><td>190,05</td><td>−18,6%</td></tr><tr><td>Fração cinzenta</td><td>0,453</td><td>0,0225</td><td>−95%</td></tr><tr><td>Iterações</td><td>58</td><td>207</td><td>×3,6 de custo</td></tr></table>
   <p>O ganho de 18,6% em compliance vem junto com 3,6 vezes mais iterações. A decisão de projeto é essa troca — não uma escolha óbvia.</p>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>4</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>4</span></div>
 </section>
 
 <section class="page">
@@ -118,7 +118,7 @@
   <h3>Proveniência</h3>
   <table><tr><th style="width:30%">O que</th><th>Onde</th></tr><tr><td>Resultados</td><td><span class="mono">PINNeAPPle/examples/topology_optimization/results/mbb_summary.json</span></td></tr><tr><td>Scripts</td><td><span class="mono">examples/topology_optimization/01_mbb_beam.py</span></td></tr><tr><td>Rotor de relutância</td><td><span class="mono">results/reluctance_rotor_summary.json</span></td></tr></table>
   <div class="callout cyan"><b>Este é um relatório de exemplo,</b> sobre benchmarks públicos. Um estudo para a sua estrutura segue a mesma estrutura: volume respeitado, gradiente checado, cinza medido — e a página do que não foi verificado.</div>
-  <div class="runfoot"><span>PINNeAPPle Labs · relatório de exemplo</span><span>5</span></div>
+  <div class="runfoot"><span>PINNeAPPle · relatório de exemplo</span><span>5</span></div>
 </section>
 
 </body>
