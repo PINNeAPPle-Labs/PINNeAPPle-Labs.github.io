@@ -1,0 +1,298 @@
+{
+  "family": {
+    "name": "PINNeAPPle Anchor",
+    "short": "PPA",
+    "version": "1.0.0",
+    "promise": "One named model per engineering problem, published with the error it was measured at, the range it holds in and the checks it passed -- so the answer arrives with the condition under which it is true."
+  },
+  "anchors": [
+    {
+      "id": "anchor-aero",
+      "name": "Anchor-Aero",
+      "domain": "Aerodynamics",
+      "problem": "Lift, drag and pitching moment of a 2-D section from its shape and angle of attack",
+      "replaces": "A RANS sweep per design point (meshing + solve) during shape exploration, at Re 4e6, attached to mildly separated flow",
+      "guard_metric": "test/Cl_mae",
+      "members": [
+        {
+          "model": "airfoil_cst_rans_mlp",
+          "version": "1.0.0",
+          "task": "Airfoil aerodynamic coefficients (Cl, Cd, Cm) from shape and angle of attack, 2-D steady RANS",
+          "trust": "APPROVED",
+          "metrics": {
+            "test/Cl_mae": 0.0028476635807695894,
+            "test/Cd_mape_pct": 0.5447462642571239,
+            "test/Cm_mae": 0.0004539437796155409
+          },
+          "acceptance": {
+            "test/Cl_mae": 0.01,
+            "test/Cd_mape_pct": 2.0,
+            "test/Cm_mae": 0.002,
+            "naca_reference/Cl_mae": 0.01,
+            "naca_reference/Cd_mape_pct": 2.0
+          },
+          "validity_range": {
+            "T0": [
+              0.1,
+              0.24
+            ],
+            "T1": [
+              0.08,
+              0.22
+            ],
+            "T2": [
+              0.08,
+              0.22
+            ],
+            "M0": [
+              -0.03,
+              0.08
+            ],
+            "M1": [
+              -0.02,
+              0.14
+            ],
+            "M2": [
+              -0.04,
+              0.12
+            ],
+            "alpha_deg": [
+              -2.0,
+              14.0
+            ],
+            "reynolds": 4000000.0,
+            "mach": "incompressible",
+            "geometry_family": "2nd-order Bernstein CST, upper = M + T, lower = M - T, trailing-edge thickness 0.25 % chord",
+            "regime": "fully turbulent (k-omega SST), attached to mildly separated; deep stall (Cl swing > 0.1 over the last 500 iterations) was excluded from training"
+          },
+          "limitations": [
+            "Drag at high lift reads ~14 % high on the campaign grid (20k cells) compared with finer grids/XFOIL; the surrogate inherits the solver's bias, it does not correct it.",
+            "Not valid in deep stall, at other Reynolds numbers, compressible flow or outside the CST bounds.",
+            "Accuracy is against the same solver and grid that generated the training data (interpolation error); the solver's own error against experiment is the larger term."
+          ],
+          "license": "apache-2.0",
+          "hf_repo": "PINNeAPPle-Labs/airfoil-cst-rans-mlp",
+          "revision": "v1.0.0.post1",
+          "citation": "PINNeAPPle contributors (2026). Airfoil RANS campaign (OpenFOAM v1912 simpleFoam, k-omega SST, Re 4e6, 436 runs) and MLP-ensemble surrogate. PINNeAPPle model zoo, https://github.com/PINNeAPPle-Labs/PINNeAPPle"
+        }
+      ]
+    },
+    {
+      "id": "anchor-contact",
+      "name": "Anchor-Contact",
+      "domain": "Terramechanics",
+      "problem": "Wheel-soil contact forces of a rigid grousered wheel on lunar regolith simulant",
+      "replaces": "A discrete-element wheel-soil simulation per slip and load condition during mobility studies",
+      "guard_metric": "test/Fz_rmse_N",
+      "members": [
+        {
+          "model": "rover_contact_grc1_viper",
+          "version": "1.1.0",
+          "task": "Wheel-soil contact forces of a rigid grousered wheel on lunar regolith simulant (terramechanics)",
+          "trust": "APPROVED",
+          "metrics": {
+            "test/Fx_rmse_N": 0.22012320923636258,
+            "test/Fz_rmse_N": 0.46965493069413194,
+            "test/My_rmse_Nm": 0.07066064857911242
+          },
+          "acceptance": {
+            "test/Fx_rmse_N": 5.0,
+            "test/Fz_rmse_N": 5.0,
+            "test/My_rmse_Nm": 2.0
+          },
+          "validity_range": {
+            "slip": [
+              -0.4,
+              0.9
+            ],
+            "sinkage_m": [
+              0.002,
+              0.06
+            ],
+            "soil": "GRC-1 (pinneapple terramechanics soil database)",
+            "wheel": "VIPER wheel, R 0.25 m, b 0.20 m, 24 grousers",
+            "slip_angle_deg": 0.0,
+            "physics": "Wong-Reece with slip-sinkage n = n0 + n1 s on driving slip (GRC-1: n0 0.8, n1 0.8); steady state, so the slip that sets the exponent equals the slip"
+          },
+          "limitations": [
+            "Only as good as the Wong-Reece model: against published single-wheel tests the model's drawbar pull RMSE is 4-14 N (digitised data), larger than the surrogate's own error.",
+            "One soil and one wheel; zero slip angle (no lateral force); steady state.",
+            "Slip-sinkage makes the forces kink at zero slip (the exponent grows only with driving slip); the network smooths the kink over a small slip interval."
+          ],
+          "license": "apache-2.0",
+          "hf_repo": "PINNeAPPle-Labs/rover-contact-grc1-viper",
+          "revision": "v1.1.0.post1",
+          "citation": "PINNeAPPle contributors (2026). Wheel-soil contact PINN surrogate (Wong-Reece, GRC-1, VIPER wheel). PINNeAPPle model zoo, https://github.com/PINNeAPPle-Labs/PINNeAPPle"
+        }
+      ]
+    },
+    {
+      "id": "anchor-thermal-forced",
+      "name": "Anchor-Thermal-Forced",
+      "domain": "Thermal",
+      "problem": "Base-to-air thermal resistance and pressure drop of a plate-fin heat sink in ducted forced convection",
+      "replaces": "A conjugate-heat-transfer solve per fin geometry during heat-sink sizing",
+      "guard_metric": "test/R_mean_abs_pct",
+      "members": [
+        {
+          "model": "heatsink_forced_mlp",
+          "version": "1.0.0",
+          "task": "Plate-fin heat sink in ducted forced convection: base-to-air thermal resistance and pressure drop",
+          "trust": "APPROVED",
+          "metrics": {
+            "test/R_mean_abs_pct": 0.7115466916915623,
+            "test/dP_mean_abs_pct": 1.040685707438438
+          },
+          "acceptance": {
+            "test/R_mean_abs_pct": 2.0,
+            "test/R_p95_abs_pct": 5.0,
+            "test/dP_mean_abs_pct": 3.0
+          },
+          "validity_range": {
+            "base_width_mm": [
+              30.0,
+              200.0
+            ],
+            "base_depth_mm": [
+              30.0,
+              200.0
+            ],
+            "base_thickness_mm": [
+              2.0,
+              15.0
+            ],
+            "fin_thickness_mm": [
+              0.6,
+              4.0
+            ],
+            "fin_height_mm": [
+              8.0,
+              80.0
+            ],
+            "k_w_mk": [
+              150.0,
+              400.0
+            ],
+            "source_frac_w": [
+              0.15,
+              1.0
+            ],
+            "source_frac_d": [
+              0.15,
+              1.0
+            ],
+            "t_ambient_c": [
+              0.0,
+              50.0
+            ],
+            "fin_gap_mm": [
+              0.6,
+              12.0
+            ],
+            "fin_gap_note": "gap sampled in 0.8-10 mm, then the fin count is rounded; the realised gaps of the training designs span 0.56-12.2 mm",
+            "air_velocity_m_s": [
+              0.5,
+              6.0
+            ],
+            "power_w": [
+              10.0,
+              400.0
+            ],
+            "regime": "ducted (no bypass) laminar/developing forced convection in air"
+          },
+          "limitations": [
+            "Ducted flow: real heat sinks with bypass lose 20-50 % of the airflow; correct the velocity first.",
+            "Convection correlations carry a typical +-15 % accuracy; the surrogate's own error (<1 % mean) is against the engine, not against a measurement.",
+            "Screening tool: re-verify a chosen design with the physics engine."
+          ],
+          "license": "apache-2.0",
+          "hf_repo": "PINNeAPPle-Labs/heatsink-forced-mlp",
+          "revision": "v1.0.0.post1",
+          "citation": "PINNeAPPle contributors (2026). HeatSink Sizer forced-convection surrogate. PINNeAPPle model zoo, https://github.com/PINNeAPPle-Labs/PINNeAPPle"
+        }
+      ]
+    },
+    {
+      "id": "anchor-thermal-natural",
+      "name": "Anchor-Thermal-Natural",
+      "domain": "Thermal",
+      "problem": "Base-to-air thermal resistance of a plate-fin heat sink in natural convection",
+      "replaces": "A buoyancy-driven CFD solve per fin geometry where no fan is available",
+      "guard_metric": "test/R_mean_abs_pct",
+      "members": [
+        {
+          "model": "heatsink_natural_mlp",
+          "version": "1.0.0",
+          "task": "Plate-fin heat sink in natural convection (vertical fins, free air): base-to-air thermal resistance",
+          "trust": "APPROVED",
+          "metrics": {
+            "test/R_mean_abs_pct": 0.46867034214113035
+          },
+          "acceptance": {
+            "test/R_mean_abs_pct": 2.0,
+            "test/R_p95_abs_pct": 5.0
+          },
+          "validity_range": {
+            "base_width_mm": [
+              30.0,
+              200.0
+            ],
+            "base_depth_mm": [
+              30.0,
+              200.0
+            ],
+            "base_thickness_mm": [
+              2.0,
+              15.0
+            ],
+            "fin_thickness_mm": [
+              0.6,
+              4.0
+            ],
+            "fin_height_mm": [
+              8.0,
+              80.0
+            ],
+            "k_w_mk": [
+              150.0,
+              400.0
+            ],
+            "source_frac_w": [
+              0.15,
+              1.0
+            ],
+            "source_frac_d": [
+              0.15,
+              1.0
+            ],
+            "t_ambient_c": [
+              0.0,
+              50.0
+            ],
+            "fin_gap_mm": [
+              2.2,
+              30.6
+            ],
+            "fin_gap_note": "gap sampled in 2.5-20 mm, then the fin count is rounded; the realised gaps of the training designs span 2.2-30.6 mm",
+            "power_w": [
+              1.0,
+              80.0
+            ],
+            "regime": "natural convection in free air, vertical fins, no radiation"
+          },
+          "limitations": [
+            "Natural convection without radiation: at low power, radiation can carry a comparable share of the heat for black-anodised sinks; the reference does not model it.",
+            "Correlation-based reference (typical +-15 % against experiments); the surrogate's own error is against the engine, not against a measurement.",
+            "The engine's resistance rises with power on 0.5 % of designs (non-monotone correlation blending); the power law is checked on the model but not enforced in training.",
+            "Screening tool: re-verify a chosen design with the physics engine."
+          ],
+          "license": "apache-2.0",
+          "hf_repo": "PINNeAPPle-Labs/heatsink-natural-mlp",
+          "revision": "v1.0.0.post1",
+          "citation": "PINNeAPPle contributors (2026). HeatSink Sizer natural-convection surrogate (monotone). PINNeAPPle model zoo, https://github.com/PINNeAPPle-Labs/PINNeAPPle"
+        }
+      ]
+    }
+  ],
+  "problems": []
+}

@@ -661,6 +661,85 @@ section.alt .problem-card { background: var(--ink-3); }
 .problem-card h3 { font-size: 1.05rem; }
 .problem-card p { font-size: 0.925rem; color: var(--text-dim); }
 
+/* the trust page: the guarantees of one pillar, one bullet each, no decoration */
+.rule-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  font-size: 0.925rem; color: var(--text-dim);
+}
+.rule-list li {
+  position: relative; padding-left: 1.5rem;
+  border-left: 1px solid var(--line-soft);
+  padding-block: 0.1rem;
+}
+.rule-list li::before {
+  content: ""; position: absolute; left: -3.5px; top: 0.62em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+}
+
+/* the published models: one card per anchor, the card's own numbers on chips */
+.anchor-grid {
+  display: grid; gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.anchor-card {
+  background: var(--ink); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 0.55rem;
+}
+.anchor-card h2 { font-size: 1.15rem; }
+.anchor-card p { font-size: 0.92rem; color: var(--text-dim); }
+.anchor-card .eyebrow { margin-bottom: 0.2rem; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.2rem 0 0.4rem; }
+.anchor-card .src-note code { font-size: 0.78rem; }
+.op-details { border-top: 1px solid var(--line-soft); padding-top: 0.55rem; margin-top: 0.2rem; }
+.op-details summary {
+  cursor: pointer; font-family: var(--f-mono); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold);
+}
+.op-details .rule-list { margin-top: 0.6rem; font-size: 0.86rem; }
+.op-details .rule-list li { padding-left: 1.1rem; }
+
+/* the API reference: one collapsible block per operation, method on a chip */
+.ops { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.4rem; }
+.op {
+  background: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+}
+section.alt .op { background: var(--ink-3); }
+.op[open] { border-color: var(--gold-dk); }
+.op summary {
+  display: flex; align-items: baseline; gap: 0.7rem; cursor: pointer;
+  flex-wrap: wrap;
+}
+.op summary::marker { color: var(--text-mute); }
+.method {
+  font-family: var(--f-mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.06em; padding: 0.18rem 0.45rem; border-radius: 4px;
+  background: var(--ink-4); color: var(--text-dim);
+}
+.method.m-get { color: var(--cyan); }
+.method.m-post { color: var(--gold); }
+.method.m-delete { color: #f08c6a; }
+.op-path { font-size: 0.86rem; color: var(--text); }
+.op-summary { font-size: 0.88rem; color: var(--text-dim); }
+.op-body { padding-top: 0.9rem; }
+.op-body > p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.7rem; }
+table.fields {
+  width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.1rem;
+  font-size: 0.84rem; color: var(--text-dim);
+}
+table.fields th {
+  text-align: left; font-family: var(--f-mono); font-size: 0.68rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-mute);
+  border-bottom: 1px solid var(--line-soft); padding: 0.35rem 0.6rem 0.35rem 0;
+  font-weight: 500;
+}
+table.fields td { border-bottom: 1px solid var(--line-soft); padding: 0.4rem 0.6rem 0.4rem 0; vertical-align: top; }
+table.fields code { font-size: 0.8rem; color: var(--text); }
+@media (max-width: 720px) {
+  table.fields { display: block; overflow-x: auto; }
+}
+
 /* what you will be able to do, one card per job, each with a measured example */
 .cap {
   display: flex; flex-direction: column; gap: 0.55rem;

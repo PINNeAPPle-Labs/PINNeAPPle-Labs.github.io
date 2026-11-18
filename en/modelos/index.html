@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The published models · PINNeAPPle Labs</title>
+<meta name="description" content="The PINNeAPPle Anchor family: one model per engineering problem, with the error measured against the reference, the validity range and the trust verdict that came in its card." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/en/modelos/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/modelos/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/modelos/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/modelos/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The published models · PINNeAPPle Labs" />
+<meta property="og:description" content="The PINNeAPPle Anchor family: one model per engineering problem, with the error measured against the reference, the validity range and the trust verdict that came in its card." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/surrogate_speed_rerun.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../fonts.css" />
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../../en/">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Platform">
+      <a href="../../en/">Home</a>
+      <a href="../../en/studio/">Studio</a>
+      <a href="../../en/modelos/" aria-current="page">Models</a>
+      <a href="../../en/demo/">3-D demo</a>
+      <a href="../../en/relatorios/">Reports</a>
+      <a href="../../en/artigos/">Articles</a>
+      <a href="../../en/lib/">The library</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+      <a class="pre" href="../../en/studio/#pre-acesso">Early access ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../../modelos/" hreflang="pt-BR">PT</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener">Request a quote</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">The models · PINNeAPPle Anchor 1.0.0</p>
+      <h1>The published family</h1>
+      <p class="lead" style="max-width:64ch">One named model per engineering problem, published with the error it was measured at, the range it holds in and the checks it passed -- so the answer arrives with the condition under which it is true.</p>
+      <p class="hero-note" style="max-width:64ch">Every number is the one in the model card, measured against the reference that card names. The domain and the limits are the card's, not this page's: the two cannot drift.</p>
+      <div class="hero-meta"><span class="chip"><span class="dot"></span>4 models</span>
+        <span class="chip">4 published weights</span>
+        <span class="chip">SHA-256 in the manifest</span></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap anchor-grid">
+    <article class="anchor-card reveal">
+      <p class="eyebrow">Aerodynamics</p>
+      <h2>Anchor-Aero</h2>
+      <p><b>Answers.</b> Lift, drag and pitching moment of a 2-D section from its shape and angle of attack.</p>
+      <p class="area-blurb"><b>Replaces.</b> A RANS sweep per design point (meshing + solve) during shape exploration, at Re 4e6, attached to mildly separated flow.</p>
+      <p class="eyebrow">Held-out error</p>
+      <div class="chip-row"><span class="chip">test/Cl_mae · 0.00285</span><span class="chip">test/Cd_mape_pct · 0.545</span><span class="chip">test/Cm_mae · 0.000454</span></div>
+      <p class="src-note"><code>airfoil_cst_rans_mlp</code> v1.0.0 · Verdict
+        <b>APPROVED</b></p>
+      <details class="op-details"><summary>Validity range</summary><ul class="rule-list"><li><code>T0</code> 0.1 – 0.24</li><li><code>T1</code> 0.08 – 0.22</li><li><code>T2</code> 0.08 – 0.22</li><li><code>M0</code> -0.03 – 0.08</li><li><code>M1</code> -0.02 – 0.14</li><li><code>M2</code> -0.04 – 0.12</li><li><code>alpha_deg</code> -2 – 14</li><li><code>reynolds</code>: 4e+06</li><li><code>mach</code>: incompressible</li><li><code>geometry_family</code>: 2nd-order Bernstein CST, upper = M + T, lower = M - T, trailing-edge thickness 0.25 % chord</li><li><code>regime</code>: fully turbulent (k-omega SST), attached to mildly separated; deep stall (Cl swing &gt; 0.1 over the last 500 iterations) was excluded from training</li></ul></details>
+      <details class="op-details"><summary>Does not hold for</summary><ul class="rule-list"><li>Drag at high lift reads ~14 % high on the campaign grid (20k cells) compared with finer grids/XFOIL; the surrogate inherits the solver&#x27;s bias, it does not correct it.</li><li>Not valid in deep stall, at other Reynolds numbers, compressible flow or outside the CST bounds.</li><li>Accuracy is against the same solver and grid that generated the training data (interpolation error); the solver&#x27;s own error against experiment is the larger term.</li></ul></details>
+      <p class="src-note"><a href="https://huggingface.co/PINNeAPPle-Labs/airfoil-cst-rans-mlp/tree/v1.0.0.post1" target="_blank" rel="noopener">Weights · PINNeAPPle-Labs/airfoil-cst-rans-mlp ↗</a> <span class="chip">apache-2.0</span></p>
+    </article>
+    <article class="anchor-card reveal">
+      <p class="eyebrow">Terramechanics</p>
+      <h2>Anchor-Contact</h2>
+      <p><b>Answers.</b> Wheel-soil contact forces of a rigid grousered wheel on lunar regolith simulant.</p>
+      <p class="area-blurb"><b>Replaces.</b> A discrete-element wheel-soil simulation per slip and load condition during mobility studies.</p>
+      <p class="eyebrow">Held-out error</p>
+      <div class="chip-row"><span class="chip">test/Fx_rmse_N · 0.22</span><span class="chip">test/Fz_rmse_N · 0.47</span><span class="chip">test/My_rmse_Nm · 0.0707</span></div>
+      <p class="src-note"><code>rover_contact_grc1_viper</code> v1.1.0 · Verdict
+        <b>APPROVED</b></p>
+      <details class="op-details"><summary>Validity range</summary><ul class="rule-list"><li><code>slip</code> -0.4 – 0.9</li><li><code>sinkage_m</code> 0.002 – 0.06</li><li><code>soil</code>: GRC-1 (pinneapple terramechanics soil database)</li><li><code>wheel</code>: VIPER wheel, R 0.25 m, b 0.20 m, 24 grousers</li><li><code>slip_angle_deg</code>: 0</li><li><code>physics</code>: Wong-Reece with slip-sinkage n = n0 + n1 s on driving slip (GRC-1: n0 0.8, n1 0.8); steady state, so the slip that sets the exponent equals the slip</li></ul></details>
+      <details class="op-details"><summary>Does not hold for</summary><ul class="rule-list"><li>Only as good as the Wong-Reece model: against published single-wheel tests the model&#x27;s drawbar pull RMSE is 4-14 N (digitised data), larger than the surrogate&#x27;s own error.</li><li>One soil and one wheel; zero slip angle (no lateral force); steady state.</li><li>Slip-sinkage makes the forces kink at zero slip (the exponent grows only with driving slip); the network smooths the kink over a small slip interval.</li></ul></details>
+      <p class="src-note"><a href="https://huggingface.co/PINNeAPPle-Labs/rover-contact-grc1-viper/tree/v1.1.0.post1" target="_blank" rel="noopener">Weights · PINNeAPPle-Labs/rover-contact-grc1-viper ↗</a> <span class="chip">apache-2.0</span></p>
+    </article>
+    <article class="anchor-card reveal">
+      <p class="eyebrow">Thermal</p>
+      <h2>Anchor-Thermal-Forced</h2>
+      <p><b>Answers.</b> Base-to-air thermal resistance and pressure drop of a plate-fin heat sink in ducted forced convection.</p>
+      <p class="area-blurb"><b>Replaces.</b> A conjugate-heat-transfer solve per fin geometry during heat-sink sizing.</p>
+      <p class="eyebrow">Held-out error</p>
+      <div class="chip-row"><span class="chip">test/R_mean_abs_pct · 0.712</span><span class="chip">test/dP_mean_abs_pct · 1.04</span></div>
+      <p class="src-note"><code>heatsink_forced_mlp</code> v1.0.0 · Verdict
+        <b>APPROVED</b></p>
+      <details class="op-details"><summary>Validity range</summary><ul class="rule-list"><li><code>base_width_mm</code> 30 – 200</li><li><code>base_depth_mm</code> 30 – 200</li><li><code>base_thickness_mm</code> 2 – 15</li><li><code>fin_thickness_mm</code> 0.6 – 4</li><li><code>fin_height_mm</code> 8 – 80</li><li><code>k_w_mk</code> 150 – 400</li><li><code>source_frac_w</code> 0.15 – 1</li><li><code>source_frac_d</code> 0.15 – 1</li><li><code>t_ambient_c</code> 0 – 50</li><li><code>fin_gap_mm</code> 0.6 – 12</li><li><code>air_velocity_m_s</code> 0.5 – 6</li><li><code>power_w</code> 10 – 400</li><li><code>fin_gap_note</code>: gap sampled in 0.8-10 mm, then the fin count is rounded; the realised gaps of the training designs span 0.56-12.2 mm</li><li><code>regime</code>: ducted (no bypass) laminar/developing forced convection in air</li></ul></details>
+      <details class="op-details"><summary>Does not hold for</summary><ul class="rule-list"><li>Ducted flow: real heat sinks with bypass lose 20-50 % of the airflow; correct the velocity first.</li><li>Convection correlations carry a typical +-15 % accuracy; the surrogate&#x27;s own error (&lt;1 % mean) is against the engine, not against a measurement.</li><li>Screening tool: re-verify a chosen design with the physics engine.</li></ul></details>
+      <p class="src-note"><a href="https://huggingface.co/PINNeAPPle-Labs/heatsink-forced-mlp/tree/v1.0.0.post1" target="_blank" rel="noopener">Weights · PINNeAPPle-Labs/heatsink-forced-mlp ↗</a> <span class="chip">apache-2.0</span></p>
+    </article>
+    <article class="anchor-card reveal">
+      <p class="eyebrow">Thermal</p>
+      <h2>Anchor-Thermal-Natural</h2>
+      <p><b>Answers.</b> Base-to-air thermal resistance of a plate-fin heat sink in natural convection.</p>
+      <p class="area-blurb"><b>Replaces.</b> A buoyancy-driven CFD solve per fin geometry where no fan is available.</p>
+      <p class="eyebrow">Held-out error</p>
+      <div class="chip-row"><span class="chip">test/R_mean_abs_pct · 0.469</span></div>
+      <p class="src-note"><code>heatsink_natural_mlp</code> v1.0.0 · Verdict
+        <b>APPROVED</b></p>
+      <details class="op-details"><summary>Validity range</summary><ul class="rule-list"><li><code>base_width_mm</code> 30 – 200</li><li><code>base_depth_mm</code> 30 – 200</li><li><code>base_thickness_mm</code> 2 – 15</li><li><code>fin_thickness_mm</code> 0.6 – 4</li><li><code>fin_height_mm</code> 8 – 80</li><li><code>k_w_mk</code> 150 – 400</li><li><code>source_frac_w</code> 0.15 – 1</li><li><code>source_frac_d</code> 0.15 – 1</li><li><code>t_ambient_c</code> 0 – 50</li><li><code>fin_gap_mm</code> 2.2 – 30.6</li><li><code>power_w</code> 1 – 80</li><li><code>fin_gap_note</code>: gap sampled in 2.5-20 mm, then the fin count is rounded; the realised gaps of the training designs span 2.2-30.6 mm</li><li><code>regime</code>: natural convection in free air, vertical fins, no radiation</li></ul></details>
+      <details class="op-details"><summary>Does not hold for</summary><ul class="rule-list"><li>Natural convection without radiation: at low power, radiation can carry a comparable share of the heat for black-anodised sinks; the reference does not model it.</li><li>Correlation-based reference (typical +-15 % against experiments); the surrogate&#x27;s own error is against the engine, not against a measurement.</li><li>The engine&#x27;s resistance rises with power on 0.5 % of designs (non-monotone correlation blending); the power law is checked on the model but not enforced in training.</li><li>Screening tool: re-verify a chosen design with the physics engine.</li></ul></details>
+      <p class="src-note"><a href="https://huggingface.co/PINNeAPPle-Labs/heatsink-natural-mlp/tree/v1.0.0.post1" target="_blank" rel="noopener">Weights · PINNeAPPle-Labs/heatsink-natural-mlp ↗</a> <span class="chip">apache-2.0</span></p>
+    </article></div>
+    
+  </section>
+
+  <section class="alt tight" id="usar">
+    <div class="wrap split-block reveal">
+      <div class="code-card">
+        <div class="code-head"><span class="fname">How to use</span></div>
+        <pre class="code"><span class="c">$ </span>pinneapple recommend &quot;finned heat sink cooled by air&quot;</pre>
+      </div>
+      <div>
+        <p class="eyebrow">How to use</p>
+        <h2>pp.zoo</h2>
+        <p style="color:var(--text-dim)">All of them ship in the package and on Hugging Face, with the SHA-256 in the manifest. Loading checks the hash, and a prediction warns when the request leaves the range.</p>
+        <p class="section-cta" style="margin-top:1.4rem">
+          <a class="btn btn-ghost" href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+          <a class="btn btn-ghost" href="../../en/lib/">The library →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="eyebrow">Bring your case</p>
+        <h2>Got a simulation that is slow, expensive or hard to verify?</h2>
+        <p class="lead" style="max-width:52ch">Send it over. We come back with a closed scope and a measurable success criterion, or we tell you the classical method does it better.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener">Request a quote</a>
+        <a class="btn btn-ghost" href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">Start from the code</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../en/">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Open-source Physics AI, with verification as part of the product. Models that show their work.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../../en/studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../../en/erosao-em-tubulacao/">Erosion in piping</a></li>
+          <li><a href="../../en/trocadores-e-termico/">Exchangers and thermal</a></li>
+          <li><a href="../../en/valvulas-e-maquinas/">Valves and machinery</a></li>
+          <li><a href="../../en/casos-de-sucesso/">Success stories</a></li>
+          <li><a href="../../en/relatorios/">Example reports</a></li>
+          <li><a href="../../en/artigos/">Articles</a></li>
+          <li><a href="../../en/lib/">The library</a></li>
+          <li><a href="../../en/modelos/">The models</a></li>
+          <li><a href="../../en/confianca/">Trust &amp; security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="../../en/api/">API</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Talk to an engineer</a></li>
+          <li><a href="../../modelos/" hreflang="pt-BR">PT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 in the code, verification by default.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Industrial delivery with Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Hello%21%20I%20found%20the%20PINNeAPPle%20Labs%20site%20and%20would%20like%20a%20quote%3A%20I%20have%20a%20simulation%20case%20to%20discuss." target="_blank" rel="noopener" aria-label="Talk to an engineer">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Talk to an engineer</span>
+</a>
+
+<script src="../../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

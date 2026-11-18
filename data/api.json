@@ -1,0 +1,674 @@
+{
+  "info": {
+    "title": "PINNeAPPle Engineering API",
+    "version": "0.1.0",
+    "description": "PINNeAPPle Engineering Cloud API. An engineering requirement in plain language is structured, matched against the\n**Capability Registry** (built by introspecting the PINNeAPPle library), validated, executed in a limited sandbox and\nreturned with an **evidence record** (parameters, versions, logs, resources, files, verifications).\n\nAuthentication: send your key in the `X-API-Key` header. Every call that creates work counts against the key's\nquota (jobs per 24 h, jobs in flight).\n\n```bash\nexport PEA=https://engineering.pinneapple.org PEA_KEY=pea_...\ncurl -s -X POST $PEA/v1/agent/requests -H \"X-API-Key: $PEA_KEY\" -H 'Content-Type: application/json' \\\n  -d '{\"text\": \"60 W MOSFET module on an aluminium finned heat sink, air at 35 °C and 3 m/s, keep it below 85 °C\"}'\ncurl -s $PEA/v1/jobs/<job_id> -H \"X-API-Key: $PEA_KEY\"\ncurl -s $PEA/v1/jobs/<job_id>/result -H \"X-API-Key: $PEA_KEY\"\n```\n\n```python\nimport httpx, time\nc = httpx.Client(base_url=\"https://engineering.pinneapple.org\", headers={\"X-API-Key\": \"pea_...\"})\nr = c.post(\"/v1/agent/requests\", json={\"text\": \"60 W module, finned heat sink, air 35 °C at 3 m/s, limit 85 °C\"}).json()\nwhile c.get(f\"/v1/jobs/{r['job_id']}\").json()[\"status\"] in (\"queued\", \"running\"):\n    time.sleep(2)\nprint(c.get(f\"/v1/jobs/{r['job_id']}/result\").json()[\"report_markdown\"])\n```"
+  },
+  "generated_from": "app.openapi()",
+  "tags": [
+    "meta",
+    "capabilities",
+    "jobs",
+    "agent",
+    "products",
+    "solvers",
+    "lpm"
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "tags": [
+        "meta"
+      ],
+      "summary": "Healthz",
+      "description": "",
+      "auth": "none",
+      "params": [],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/deployment/modules",
+      "tags": [
+        "meta"
+      ],
+      "summary": "Deployment Modules",
+      "description": "Operator-selected modules and immutable image module ceiling (no keys exposed).",
+      "auth": "none",
+      "params": [],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/capabilities",
+      "tags": [
+        "capabilities"
+      ],
+      "summary": "List Capabilities",
+      "description": "Every capability with its status (`discovered`, `tested`, `verified`) and the evidence behind it.",
+      "auth": "none",
+      "params": [
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "type": "",
+          "description": ""
+        },
+        {
+          "name": "kind",
+          "in": "query",
+          "required": false,
+          "type": "",
+          "description": ""
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "type": "",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s 'https://engineering.pinneapple.org/v1/capabilities?status=verified'"
+        },
+        {
+          "lang": "Python",
+          "source": "import httpx\nprint(httpx.get('https://engineering.pinneapple.org/v1/capabilities', params={'status': 'verified'}).json())"
+        }
+      ],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/capabilities/{cap_id}",
+      "tags": [
+        "capabilities"
+      ],
+      "summary": "Get Capability",
+      "description": "Module, signature, docstring, inputs with validity domain, tests/examples that reference it and status.",
+      "auth": "none",
+      "params": [
+        {
+          "name": "cap_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s https://engineering.pinneapple.org/v1/capabilities/preset.plate_fin_heatsink_forced"
+        },
+        {
+          "lang": "Python",
+          "source": "import httpx\nc = httpx.get('https://engineering.pinneapple.org/v1/capabilities/preset.plate_fin_heatsink_forced').json()\nprint(c['status'], c['evidence'][0]['url'])"
+        }
+      ],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/jobs",
+      "tags": [
+        "jobs"
+      ],
+      "summary": "Create Job",
+      "description": "Run one capability directly. Returns at once with the job id; poll `GET /v1/jobs/{id}`.\n\nBesides the registry's capabilities, any executable Studio tool (`tool.<tool id>`) or example with a flow\n(`example.<entry id>`) runs here; its inputs are checked against its form.",
+      "auth": "api_key",
+      "params": [],
+      "body": [
+        {
+          "name": "capability_id",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s -X POST https://engineering.pinneapple.org/v1/jobs -H \"X-API-Key: $PEA_KEY\" -H 'Content-Type: application/json' \\\n  -d '{\"capability_id\": \"preset.plate_fin_heatsink_forced\", \"params\": {\"power\": 60, \"velocity\": 3}}'"
+        },
+        {
+          "lang": "Python",
+          "source": "import httpx\nc = httpx.Client(base_url='https://engineering.pinneapple.org', headers={'X-API-Key': KEY})\njob = c.post('/v1/jobs', json={'capability_id': 'preset.plate_fin_heatsink_forced', 'params': {'power': 60, 'velocity': 3}}).json()\nprint(job['id'])"
+        }
+      ],
+      "responses": [
+        "202",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}",
+      "tags": [
+        "jobs"
+      ],
+      "summary": "Get Job",
+      "description": "Status: queued, running, succeeded, failed, timeout, cancelled or not_implemented.",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s https://engineering.pinneapple.org/v1/jobs/$JOB -H \"X-API-Key: $PEA_KEY\""
+        },
+        {
+          "lang": "Python",
+          "source": "print(c.get(f'/v1/jobs/{job_id}').json()['status'])"
+        }
+      ],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/jobs/{job_id}/cancel",
+      "tags": [
+        "jobs"
+      ],
+      "summary": "Cancel Job",
+      "description": "Stop a job that is queued or running (`409` once it has finished). It stops counting as in flight for the\nkey's quota and keeps whatever it produced as evidence, not as a result. The job's child is killed in the\nprocess that runs it: at once here, within a couple of seconds in a worker.",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s -X POST https://engineering.pinneapple.org/v1/jobs/$JOB/cancel -H \"X-API-Key: $PEA_KEY\""
+        },
+        {
+          "lang": "Python",
+          "source": "print(c.post(f'/v1/jobs/{job_id}/cancel').json()['status'])"
+        }
+      ],
+      "responses": [
+        "202",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}/files/{name}",
+      "tags": [
+        "jobs"
+      ],
+      "summary": "Get File",
+      "description": "A file the job wrote (listed with its SHA-256 in the evidence record).",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}/result",
+      "tags": [
+        "jobs"
+      ],
+      "summary": "Get Result",
+      "description": "Outputs, decision, the evidence record and a reproducible Markdown report. 409 while the job runs.\n\n``lang`` (else ``Accept-Language``, else English) is the report's language; each verification also carries its\n``label`` in that language (the server's own checks; a check named by the library keeps its name).",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "lang",
+          "in": "query",
+          "required": false,
+          "type": "",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s https://engineering.pinneapple.org/v1/jobs/$JOB/result -H \"X-API-Key: $PEA_KEY\""
+        },
+        {
+          "lang": "Python",
+          "source": "r = c.get(f'/v1/jobs/{job_id}/result').json()\nprint(r['evidence']['status'])\nprint(r['report_markdown'])"
+        }
+      ],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/agent/requests",
+      "tags": [
+        "agent"
+      ],
+      "summary": "Agent Request",
+      "description": "Requirement in plain language. The answer is one of `supported` (a job was created: follow `job_id`),\n`needs_information` (answer `questions` and send again with `answers`), `partial` (what is reused and what\nmust be adapted) or `out_of_scope` (why, labelled hardware / scientific / functional, and a roadmap).",
+      "auth": "api_key",
+      "params": [],
+      "body": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "answers",
+          "type": "object",
+          "required": false,
+          "description": "answers to a previous needs_information response, keyed by its question `field`"
+        },
+        {
+          "name": "use_llm",
+          "type": "object",
+          "required": false,
+          "description": "when no capability matches, let the configured model write the closest case instead of the deterministic planner; null uses the server default (BEST_EFFORT_LLM)"
+        }
+      ],
+      "samples": [
+        {
+          "lang": "curl",
+          "source": "curl -s -X POST https://engineering.pinneapple.org/v1/agent/requests -H \"X-API-Key: $PEA_KEY\" -H 'Content-Type: application/json' \\\n  -d '{\"text\": \"60 W module on a finned aluminium heat sink, air at 35 C and 3 m/s, keep it below 85 C\"}'"
+        },
+        {
+          "lang": "Python",
+          "source": "r = c.post('/v1/agent/requests', json={'text': '60 W module, finned heat sink, air 35 C at 3 m/s, limit 85 C'}).json()\nprint(r['outcome'], r.get('job_id'))"
+        }
+      ],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/agent/requests/{req_id}",
+      "tags": [
+        "agent"
+      ],
+      "summary": "Get Agent Request",
+      "description": "",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "req_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/products",
+      "tags": [
+        "products"
+      ],
+      "summary": "Products",
+      "description": "The five products and their state in this deployment.",
+      "auth": "none",
+      "params": [],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/products/{product}/requests",
+      "tags": [
+        "products"
+      ],
+      "summary": "Product Request",
+      "description": "Standard adapter contract. Products not wired yet answer 501 with `status: not_implemented`.",
+      "auth": "api_key",
+      "params": [
+        {
+          "name": "product",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [
+        {
+          "name": "operation",
+          "type": "string",
+          "required": true,
+          "description": "what to do, e.g. 'run', 'train', 'verify', 'assimilate'"
+        },
+        {
+          "name": "inputs",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "samples": [],
+      "responses": [
+        "200",
+        "422",
+        "501"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/solvers/catalog",
+      "tags": [
+        "solvers"
+      ],
+      "summary": "List Solver Methods",
+      "description": "",
+      "auth": "none",
+      "params": [],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/solvers/catalog/{method_id}",
+      "tags": [
+        "solvers"
+      ],
+      "summary": "Get Solver Method",
+      "description": "",
+      "auth": "none",
+      "params": [
+        {
+          "name": "method_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/solvers/recommendations",
+      "tags": [
+        "solvers"
+      ],
+      "summary": "Create Recommendation",
+      "description": "",
+      "auth": "none",
+      "params": [],
+      "body": [
+        {
+          "name": "facts",
+          "type": "object",
+          "required": false,
+          "description": "Explicitly supplied engineering facts. Allowed dimensions and values come from the solver catalog."
+        },
+        {
+          "name": "selected_method",
+          "type": "object",
+          "required": false,
+          "description": "Optional method ID chosen by the engineer."
+        },
+        {
+          "name": "selection_reason",
+          "type": "object",
+          "required": false,
+          "description": "Reason for overriding the recommendation."
+        }
+      ],
+      "samples": [],
+      "responses": [
+        "200",
+        "422"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/lpm/architectures",
+      "tags": [
+        "lpm"
+      ],
+      "summary": "Architectures",
+      "description": "What this deployment's LPM endpoint supports, negotiated with the installed library.\n\n``available: false`` means the pinned PINNeAPPle has no LPM module (or no torch behind it): the endpoint then\nrefuses jobs with ``501`` instead of failing them inside the sandbox. ``backbones`` is what the pin's\n``LargePhysicsModel`` takes, ``fit`` what its ``fit`` accepts, and ``design_space_source`` whether the family\nis generated by the library's own ``ellipse_design_space`` or by the same draws over ``Design.ellipse``.",
+      "auth": "api_key",
+      "params": [],
+      "body": [],
+      "samples": [],
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/lpm/jobs",
+      "tags": [
+        "lpm"
+      ],
+      "summary": "Start Training",
+      "description": "Launch bounded CPU training in the existing job worker; poll `GET /v1/jobs/{id}` for it.",
+      "auth": "api_key",
+      "params": [],
+      "body": [
+        {
+          "name": "family",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "designs",
+          "type": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "n_designs",
+          "type": "integer",
+          "required": false,
+          "description": "designs generated when `designs` is not sent"
+        },
+        {
+          "name": "a_range",
+          "type": "array",
+          "required": false,
+          "description": "uniform range of the generated `a`"
+        },
+        {
+          "name": "b_range",
+          "type": "array",
+          "required": false,
+          "description": "uniform range of the generated `b`"
+        },
+        {
+          "name": "n_points",
+          "type": "integer",
+          "required": false,
+          "description": "surface points of each design"
+        },
+        {
+          "name": "seed",
+          "type": "integer",
+          "required": false,
+          "description": "seeds the design family, the split and the fit"
+        },
+        {
+          "name": "holdout_fraction",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "epochs",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lr",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "heads",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "code",
+          "type": "integer",
+          "required": false,
+          "description": "width of the geometry code"
+        },
+        {
+          "name": "n_freq",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "backbone",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "attn_heads",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "attn_layers",
+          "type": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "batch_designs",
+          "type": "object",
+          "required": false,
+          "description": "designs per optimizer step, when the installed library has it"
+        },
+        {
+          "name": "budget_s",
+          "type": "number",
+          "required": false,
+          "description": "wall clock of the training loop; the sandbox allows a fixed startup allowance on top and kills the child past it"
+        },
+        {
+          "name": "holdout_tolerance",
+          "type": "number",
+          "required": false,
+          "description": "relative L2 the held-out designs must stay under for the run's own check to pass; take it from your requirement, not from this default"
+        }
+      ],
+      "samples": [],
+      "responses": [
+        "202",
+        "422"
+      ]
+    }
+  ],
+  "counts": {
+    "operations": 18,
+    "paths": 18,
+    "internal_paths_omitted": 207
+  }
+}

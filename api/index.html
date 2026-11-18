@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Referência da API · PINNeAPPle Labs</title>
+<meta name="description" content="As 16 operações públicas do PINNeAPPle Engineering: registro de capacidades, exigência em texto, trabalhos e a evidência de cada resultado. Gerada do OpenAPI do servidor." />
+<meta name="theme-color" content="#070a10" />
+<link rel="canonical" href="https://pinneapple-labs.github.io/api/" />
+<link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/api/" />
+<link rel="alternate" hreflang="en" href="https://pinneapple-labs.github.io/en/api/" />
+<link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/api/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Referência da API · PINNeAPPle Labs" />
+<meta property="og:description" content="As 16 operações públicas do PINNeAPPle Engineering: registro de capacidades, exigência em texto, trabalhos e a evidência de cada resultado. Gerada do OpenAPI do servidor." />
+<meta property="og:image" content="https://pinneapple-labs.github.io/img/eng/studio-home.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../fonts.css" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+      <span>PINNeAPPle<span class="labs"> Labs</span></span>
+    </a>
+
+    <nav class="main" id="primary-nav" aria-label="Plataforma">
+      <a href="../">Início</a>
+      <a href="../studio/">Studio</a>
+      <a href="../modelos/">Modelos</a>
+      <a href="../demo/">Demo 3D</a>
+      <a href="../relatorios/">Relatórios</a>
+      <a href="../artigos/">Artigos</a>
+      <a href="../lib/">A lib</a>
+      <a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs ↗</a>
+      <a class="pre" href="../studio/#pre-acesso">Pré-acesso ↗</a>
+    </nav>
+
+    <div class="bar-cta">
+      <a class="chip" href="../en/api/" hreflang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20queria%20um%20or%C3%A7amento%3A%20tenho%20um%20caso%20de%20simula%C3%A7%C3%A3o%20para%20discutir." target="_blank" rel="noopener">Pedir orçamento</a>
+    </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Desenvolvedores</p>
+      <h1>Referência da API</h1>
+      <p class="lead" style="max-width:64ch">PINNeAPPle Engineering API 0.1.0.
+        18 operações públicas, 18 rotas, 207 rotas internas fora desta página.</p>
+      <p class="hero-note" style="max-width:64ch">Autenticação: Chave no cabeçalho <code>X-API-Key</code>. Onde existe OIDC, um token vai em <code>Authorization: Bearer</code>.</p>
+      <div class="hero-meta"><a class="chip" href="#tag-meta">Estado</a><a class="chip" href="#tag-capabilities">Registro de capacidades</a><a class="chip" href="#tag-jobs">Trabalhos</a><a class="chip" href="#tag-agent">Exigência em texto</a><a class="chip" href="#tag-products">Produtos</a><a class="chip" href="#tag-solvers">Solvers</a><a class="chip" href="#tag-lpm">Large Physics Models</a></div>
+    </div>
+  </section>
+
+  <section class="tight" id="cliente">
+    <div class="wrap split-block reveal">
+      <div class="code-card">
+        <div class="code-head"><span class="fname">pinneapple_client</span></div>
+        <pre class="code"><span class="k">from</span> pinneapple_client <span class="k">import</span> Client
+
+<span class="k">with</span> Client(<span class="s">"https://engineering.pinneapple.org"</span>, api_key=KEY) <span class="k">as</span> pea:
+    answer = pea.submit(<span class="s">"60 W module on a finned aluminium heat sink, air 35 C at 3 m/s"</span>)
+    job = pea.wait(answer[<span class="s">"job_id"</span>])
+    result = pea.result(job[<span class="s">"id"</span>])
+    <span class="f">print</span>(result[<span class="s">"evidence"</span>][<span class="s">"status"</span>])   <span class="c"># pass | fail | inconclusive | not_run</span></pre>
+      </div>
+      <div>
+        <p class="eyebrow">Cliente Python</p>
+        <h2>pinneapple-client</h2>
+        <p style="color:var(--text-dim)">Uma chamada por endpoint, a resposta como ela vem, autenticação e polling resolvidos.</p>
+        <pre class="code" style="margin-top:1rem">$ pip install -e sdk/</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" id="tag-meta">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">2 operações públicas</p>
+        <h2>Estado</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="get-healthz">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/healthz</code>
+          <span class="op-summary">Healthz</span>
+        </summary>
+        <div class="op-body">
+          <p>Healthz</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200</p>
+          
+          
+        </div>
+      </details>
+      <details class="op" id="get-v1-deployment-modules">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/deployment/modules</code>
+          <span class="op-summary">Deployment Modules</span>
+        </summary>
+        <div class="op-body">
+          <p>Operator-selected modules and immutable image module ceiling (no keys exposed).</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200</p>
+          
+          
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="alt tight" id="tag-capabilities">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">2 operações públicas</p>
+        <h2>Registro de capacidades</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="get-v1-capabilities">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/capabilities</code>
+          <span class="op-summary">List Capabilities</span>
+        </summary>
+        <div class="op-body">
+          <p>Every capability with its status (<code>discovered</code>, <code>tested</code>, <code>verified</code>) and the evidence behind it.</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>status</code></td><td>query</td><td></td><td>não</td><td></td></tr><tr><td><code>kind</code></td><td>query</td><td></td><td>não</td><td></td></tr><tr><td><code>q</code></td><td>query</td><td></td><td>não</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details>
+      <details class="op" id="get-v1-capabilities-cap_id">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/capabilities/{cap_id}</code>
+          <span class="op-summary">Get Capability</span>
+        </summary>
+        <div class="op-body">
+          <p>Module, signature, docstring, inputs with validity domain, tests/examples that reference it and status.</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>cap_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="tight" id="tag-jobs">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">5 operações públicas</p>
+        <h2>Trabalhos</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="post-v1-jobs">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/jobs</code>
+          <span class="op-summary">Create Job</span>
+        </summary>
+        <div class="op-body">
+          <p>Run one capability directly. Returns at once with the job id; poll <code>GET /v1/jobs/{id}</code>.
+
+Besides the registry&#x27;s capabilities, any executable Studio tool (<code>tool.&lt;tool id&gt;</code>) or example with a flow
+(<code>example.&lt;entry id&gt;</code>) runs here; its inputs are checked against its form.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 202, 422</p>
+          
+          <p class="eyebrow">Corpo</p><table class="fields"><thead><tr><th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>capability_id</code></td><td>string</td><td>sim</td><td></td></tr><tr><td><code>params</code></td><td>object</td><td>não</td><td></td></tr></tbody></table>
+        </div>
+      </details>
+      <details class="op" id="get-v1-jobs-job_id">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/jobs/{job_id}</code>
+          <span class="op-summary">Get Job</span>
+        </summary>
+        <div class="op-body">
+          <p>Status: queued, running, succeeded, failed, timeout, cancelled or not_implemented.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>job_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details>
+      <details class="op" id="post-v1-jobs-job_id-cancel">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/jobs/{job_id}/cancel</code>
+          <span class="op-summary">Cancel Job</span>
+        </summary>
+        <div class="op-body">
+          <p>Stop a job that is queued or running (<code>409</code> once it has finished). It stops counting as in flight for the
+key&#x27;s quota and keeps whatever it produced as evidence, not as a result. The job&#x27;s child is killed in the
+process that runs it: at once here, within a couple of seconds in a worker.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 202, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>job_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details>
+      <details class="op" id="get-v1-jobs-job_id-files-name">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/jobs/{job_id}/files/{name}</code>
+          <span class="op-summary">Get File</span>
+        </summary>
+        <div class="op-body">
+          <p>A file the job wrote (listed with its SHA-256 in the evidence record).</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>job_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr><tr><td><code>name</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details>
+      <details class="op" id="get-v1-jobs-job_id-result">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/jobs/{job_id}/result</code>
+          <span class="op-summary">Get Result</span>
+        </summary>
+        <div class="op-body">
+          <p>Outputs, decision, the evidence record and a reproducible Markdown report. 409 while the job runs.
+
+`<code>lang</code><code> (else </code><code>Accept-Language</code><code>, else English) is the report&#x27;s language; each verification also carries its
+</code><code>label</code>` in that language (the server&#x27;s own checks; a check named by the library keeps its name).</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>job_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr><tr><td><code>lang</code></td><td>query</td><td></td><td>não</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="alt tight" id="tag-agent">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">2 operações públicas</p>
+        <h2>Exigência em texto</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="post-v1-agent-requests">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/agent/requests</code>
+          <span class="op-summary">Agent Request</span>
+        </summary>
+        <div class="op-body">
+          <p>Requirement in plain language. The answer is one of <code>supported</code> (a job was created: follow <code>job_id</code>),
+<code>needs_information</code> (answer <code>questions</code> and send again with <code>answers</code>), <code>partial</code> (what is reused and what
+must be adapted) or <code>out_of_scope</code> (why, labelled hardware / scientific / functional, and a roadmap).</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422</p>
+          
+          <p class="eyebrow">Corpo</p><table class="fields"><thead><tr><th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>text</code></td><td>string</td><td>sim</td><td></td></tr><tr><td><code>answers</code></td><td>object</td><td>não</td><td>answers to a previous needs_information response, keyed by its question <code>field</code></td></tr><tr><td><code>use_llm</code></td><td>object</td><td>não</td><td>when no capability matches, let the configured model write the closest case instead of the deterministic planner; null uses the server default (BEST_EFFORT_LLM)</td></tr></tbody></table>
+        </div>
+      </details>
+      <details class="op" id="get-v1-agent-requests-req_id">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/agent/requests/{req_id}</code>
+          <span class="op-summary">Get Agent Request</span>
+        </summary>
+        <div class="op-body">
+          <p>Get Agent Request</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>req_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="tight" id="tag-products">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">2 operações públicas</p>
+        <h2>Produtos</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="get-v1-products">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/products</code>
+          <span class="op-summary">Products</span>
+        </summary>
+        <div class="op-body">
+          <p>The five products and their state in this deployment.</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200</p>
+          
+          
+        </div>
+      </details>
+      <details class="op" id="post-v1-products-product-requests">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/products/{product}/requests</code>
+          <span class="op-summary">Product Request</span>
+        </summary>
+        <div class="op-body">
+          <p>Standard adapter contract. Products not wired yet answer 501 with <code>status: not_implemented</code>.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200, 422, 501</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>product</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          <p class="eyebrow">Corpo</p><table class="fields"><thead><tr><th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>operation</code></td><td>string</td><td>sim</td><td>what to do, e.g. &#x27;run&#x27;, &#x27;train&#x27;, &#x27;verify&#x27;, &#x27;assimilate&#x27;</td></tr><tr><td><code>inputs</code></td><td>object</td><td>não</td><td></td></tr></tbody></table>
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="alt tight" id="tag-solvers">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">3 operações públicas</p>
+        <h2>Solvers</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="get-v1-solvers-catalog">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/solvers/catalog</code>
+          <span class="op-summary">List Solver Methods</span>
+        </summary>
+        <div class="op-body">
+          <p>List Solver Methods</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200</p>
+          
+          
+        </div>
+      </details>
+      <details class="op" id="get-v1-solvers-catalog-method_id">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/solvers/catalog/{method_id}</code>
+          <span class="op-summary">Get Solver Method</span>
+        </summary>
+        <div class="op-body">
+          <p>Get Solver Method</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200, 422</p>
+          <p class="eyebrow">Parâmetros</p><table class="fields"><thead><tr><th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>method_id</code></td><td>path</td><td>string</td><td>sim</td><td></td></tr></tbody></table>
+          
+        </div>
+      </details>
+      <details class="op" id="post-v1-solvers-recommendations">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/solvers/recommendations</code>
+          <span class="op-summary">Create Recommendation</span>
+        </summary>
+        <div class="op-body">
+          <p>Create Recommendation</p>
+          <p class="src-note">Autenticação: <code>público</code> ·
+            Respostas: 200, 422</p>
+          
+          <p class="eyebrow">Corpo</p><table class="fields"><thead><tr><th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>facts</code></td><td>object</td><td>não</td><td>Explicitly supplied engineering facts. Allowed dimensions and values come from the solver catalog.</td></tr><tr><td><code>selected_method</code></td><td>object</td><td>não</td><td>Optional method ID chosen by the engineer.</td></tr><tr><td><code>selection_reason</code></td><td>object</td><td>não</td><td>Reason for overriding the recommendation.</td></tr></tbody></table>
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="tight" id="tag-lpm">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">2 operações públicas</p>
+        <h2>Large Physics Models</h2>
+      </div>
+      <div class="ops reveal">
+      <details class="op" id="get-v1-lpm-architectures">
+        <summary>
+          <span class="method m-get">GET</span>
+          <code class="op-path">/v1/lpm/architectures</code>
+          <span class="op-summary">Architectures</span>
+        </summary>
+        <div class="op-body">
+          <p>What this deployment&#x27;s LPM endpoint supports, negotiated with the installed library.
+
+`<code>available: false</code><code> means the pinned PINNeAPPle has no LPM module (or no torch behind it): the endpoint then
+refuses jobs with </code><code>501</code><code> instead of failing them inside the sandbox. </code><code>backbones</code><code> is what the pin&#x27;s
+</code><code>LargePhysicsModel</code><code> takes, </code><code>fit</code><code> what its </code><code>fit</code><code> accepts, and </code><code>design_space_source</code><code> whether the family
+is generated by the library&#x27;s own </code><code>ellipse_design_space</code><code> or by the same draws over </code><code>Design.ellipse</code>`.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 200</p>
+          
+          
+        </div>
+      </details>
+      <details class="op" id="post-v1-lpm-jobs">
+        <summary>
+          <span class="method m-post">POST</span>
+          <code class="op-path">/v1/lpm/jobs</code>
+          <span class="op-summary">Start Training</span>
+        </summary>
+        <div class="op-body">
+          <p>Launch bounded CPU training in the existing job worker; poll <code>GET /v1/jobs/{id}</code> for it.</p>
+          <p class="src-note">Autenticação: <code>chave</code> ·
+            Respostas: 202, 422</p>
+          
+          <p class="eyebrow">Corpo</p><table class="fields"><thead><tr><th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead><tbody><tr><td><code>family</code></td><td>string</td><td>não</td><td></td></tr><tr><td><code>designs</code></td><td>object</td><td>não</td><td></td></tr><tr><td><code>n_designs</code></td><td>integer</td><td>não</td><td>designs generated when <code>designs</code> is not sent</td></tr><tr><td><code>a_range</code></td><td>array</td><td>não</td><td>uniform range of the generated <code>a</code></td></tr><tr><td><code>b_range</code></td><td>array</td><td>não</td><td>uniform range of the generated <code>b</code></td></tr><tr><td><code>n_points</code></td><td>integer</td><td>não</td><td>surface points of each design</td></tr><tr><td><code>seed</code></td><td>integer</td><td>não</td><td>seeds the design family, the split and the fit</td></tr><tr><td><code>holdout_fraction</code></td><td>number</td><td>não</td><td></td></tr><tr><td><code>epochs</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>lr</code></td><td>number</td><td>não</td><td></td></tr><tr><td><code>width</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>heads</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>code</code></td><td>integer</td><td>não</td><td>width of the geometry code</td></tr><tr><td><code>n_freq</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>backbone</code></td><td>string</td><td>não</td><td></td></tr><tr><td><code>attn_heads</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>attn_layers</code></td><td>integer</td><td>não</td><td></td></tr><tr><td><code>batch_designs</code></td><td>object</td><td>não</td><td>designs per optimizer step, when the installed library has it</td></tr><tr><td><code>budget_s</code></td><td>number</td><td>não</td><td>wall clock of the training loop; the sandbox allows a fixed startup allowance on top and kills the child past it</td></tr><tr><td><code>holdout_tolerance</code></td><td>number</td><td>não</td><td>relative L2 the held-out designs must stay under for the run&#x27;s own check to pass; take it from your requirement, not from this default</td></tr></tbody></table>
+        </div>
+      </details></div>
+    </div>
+  </section>
+  <section class="alt tight">
+    <div class="wrap"><p class="src-note">Gerado de <code>app.openapi()</code>: descrição, parâmetros, corpo e respostas vêm do esquema do próprio servidor. Atualize com <code>tools/api_docs.py</code>.
+      <code>meta</code> · <code>capabilities</code> · <code>jobs</code> · <code>agent</code> · <code>products</code> · <code>solvers</code> · <code>lpm</code></p></div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2.6c1.35 2.1 1.95 4.4 1.8 6.7" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M15.3 3.4c-2.6 1-4.4 2.9-5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M16.7 3.4c2.6 1 4.4 2.9 5.4 5.3" stroke="#3dd6c4" stroke-width="1.9" stroke-linecap="round"/>
+        <ellipse cx="16" cy="20.1" rx="7.7" ry="9.2" fill="#f0b32e" fill-opacity=".18" stroke="#f0b32e" stroke-width="1.9"/>
+        <path d="M12.4 12.6 19.6 27.6M19.6 12.6 12.4 27.6M8.9 17.6h14.2M10.6 22.6h10.8" stroke="#f0b32e" stroke-width="1.15" stroke-opacity=".7"/>
+      </svg>
+          <span>PINNeAPPle<span class="labs"> Labs</span></span>
+        </a>
+        <p>Physics AI de código aberto, com verificação como parte do produto. Modelos que mostram a conta.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="../studio/">PINNeAPPle Studio</a></li>
+          <li><a href="../erosao-em-tubulacao/">Erosão em tubulação</a></li>
+          <li><a href="../trocadores-e-termico/">Trocadores e térmico</a></li>
+          <li><a href="../valvulas-e-maquinas/">Válvulas e máquinas</a></li>
+          <li><a href="../casos-de-sucesso/">Casos de sucesso</a></li>
+          <li><a href="../relatorios/">Relatórios de exemplo</a></li>
+          <li><a href="../artigos/">Artigos</a></li>
+          <li><a href="../lib/">A lib</a></li>
+          <li><a href="../modelos/">Os modelos</a></li>
+          <li><a href="../confianca/">Confiança e segurança</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Código</h4>
+        <ul>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://pypi.org/project/pinneapple/" target="_blank" rel="noopener">PyPI</a></li>
+          <li><a href="https://pinneapple-labs.github.io/PINNeAPPle/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="../api/">API</a></li>
+          <li><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:yanbarrosyan@gmail.com">yanbarrosyan@gmail.com</a></li>
+          <li><a href="https://wa.me/5584991287602" target="_blank" rel="noopener">Falar com um engenheiro</a></li>
+          <li><a href="../en/api/" hreflang="en">EN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> PINNeAPPle Labs · Apache-2.0 no código, verificação por padrão.</span>
+      <span>LAIS &amp; YAN LTDA · CNPJ 62.766.371/0001-36 · Entrega industrial com a Domus.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5584991287602?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20queria%20um%20or%C3%A7amento%3A%20tenho%20um%20caso%20de%20simula%C3%A7%C3%A3o%20para%20discutir." target="_blank" rel="noopener" aria-label="Falar com um engenheiro">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.9-1.15-4.72-4.15-4.86-4.34-.14-.19-1.15-1.53-1.15-2.92s.73-2.07 1-2.35c.26-.29.58-.36.77-.36l.55.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48l-.44.51c-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.66.78 1.95.93.29.14.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg><span>Falar com um engenheiro</span>
+</a>
+
+<script src="../app.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

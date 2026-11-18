@@ -20,6 +20,9 @@ pages cannot drift apart. Text lives next to the markup it belongs to, per langu
 """
 from __future__ import annotations
 
+import html as _html
+import json
+import re
 import shutil
 import urllib.parse
 from pathlib import Path
@@ -1282,6 +1285,10 @@ PAGES = {
     "artigos": "artigos",
     "sucessos": "casos-de-sucesso",
     "lib": "lib",
+    "demo": "demo",
+    "trust": "confianca",
+    "modelos": "modelos",
+    "api": "api",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
@@ -1312,10 +1319,10 @@ def up(lang: str, page: str) -> str:
 # ---------------------------------------------------------------------------
 
 NAV = {
-    "pt": [("home", "Início"), ("studio", "Studio"), ("relatorios", "Relatórios"),
-           ("artigos", "Artigos"), ("lib", "A lib")],
-    "en": [("home", "Home"), ("studio", "Studio"), ("relatorios", "Reports"),
-           ("artigos", "Articles"), ("lib", "The library")],
+    "pt": [("home", "Início"), ("studio", "Studio"), ("modelos", "Modelos"), ("demo", "Demo 3D"),
+           ("relatorios", "Relatórios"), ("artigos", "Artigos"), ("lib", "A lib")],
+    "en": [("home", "Home"), ("studio", "Studio"), ("modelos", "Models"), ("demo", "3-D demo"),
+           ("relatorios", "Reports"), ("artigos", "Articles"), ("lib", "The library")],
 }
 
 # Short labels for the footer and the cross-links between segment pages.
@@ -1353,6 +1360,8 @@ STRINGS = {
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Artigos",
         "lbl_reports": "Relatórios de exemplo",
+        "lbl_trust": "Confiança e segurança",
+        "lbl_models": "Os modelos",
         "lbl_success": "Casos de sucesso",
         "lbl_lib": "A lib",
         "read_more": "Ler o artigo",
@@ -1388,6 +1397,8 @@ STRINGS = {
         "lbl_product": "PINNeAPPle Studio",
         "lbl_articles": "Articles",
         "lbl_reports": "Example reports",
+        "lbl_trust": "Trust &amp; security",
+        "lbl_models": "The models",
         "lbl_success": "Success stories",
         "lbl_lib": "The library",
         "read_more": "Read the article",
@@ -1406,6 +1417,48 @@ STRINGS = {
 }
 
 META = {
+    "modelos": {
+        "pt": dict(
+            title="Os modelos publicados · PINNeAPPle Labs",
+            desc="A família PINNeAPPle Anchor: um modelo por problema de engenharia, com o erro medido contra a referência, a faixa de validade e o veredito de confiança que vieram no card.",
+            og="img/surrogate_speed_rerun.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="The published models · PINNeAPPle Labs",
+            desc="The PINNeAPPle Anchor family: one model per engineering problem, with the error measured against the reference, the validity range and the trust verdict that came in its card.",
+            og="img/surrogate_speed_rerun.jpg",
+            type="website",
+        ),
+    },
+    "api": {
+        "pt": dict(
+            title="Referência da API · PINNeAPPle Labs",
+            desc="As 16 operações públicas do PINNeAPPle Engineering: registro de capacidades, exigência em texto, trabalhos e a evidência de cada resultado. Gerada do OpenAPI do servidor.",
+            og="img/eng/studio-home.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="API reference · PINNeAPPle Labs",
+            desc="The 16 public operations of PINNeAPPle Engineering: capability registry, requirement in text, jobs and the evidence of each result. Generated from the server's OpenAPI.",
+            og="img/eng/studio-home.jpg",
+            type="website",
+        ),
+    },
+    "trust": {
+        "pt": dict(
+            title="Confiança e segurança · PINNeAPPle Labs",
+            desc="Como cada resultado sai verificável: registro de evidência com SHA-256, treino só com dado aprovado, três modos de implantação, retenção controlada — e a lista do que ainda não temos.",
+            og="img/verificacao.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="Trust & security · PINNeAPPle Labs",
+            desc="How every result comes out verifiable: an evidence record with SHA-256, training only on approved data, three deployment modes, controlled retention — and the list of what we do not have yet.",
+            og="img/verificacao.jpg",
+            type="website",
+        ),
+    },
     "home": {
         "pt": dict(
             title="Estudo de CFD com escopo, prazo e erro declarados · PINNeAPPle Labs",
@@ -1611,6 +1664,8 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']}</a></li>
           <li><a href="{root}{url(lang, 'artigos')}">{S['lbl_articles']}</a></li>
           <li><a href="{root}{url(lang, 'lib')}">{S['lbl_lib']}</a></li>
+          <li><a href="{root}{url(lang, 'modelos')}">{S['lbl_models']}</a></li>
+          <li><a href="{root}{url(lang, 'trust')}">{S['lbl_trust']}</a></li>
         </ul>
       </div>
       <div>
@@ -1619,6 +1674,7 @@ def footer(lang: str, page: str, root: str) -> str:
           <li><a href="{GITHUB}" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="{PYPI}" target="_blank" rel="noopener">PyPI</a></li>
           <li><a href="{DOCS}" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="{root}{url(lang, 'api')}">API</a></li>
           <li><a href="{CHANGELOG}" target="_blank" rel="noopener">Changelog</a></li>
         </ul>
       </div>
@@ -2593,6 +2649,26 @@ for _key, _seg in SEGMENTS.items():
 # The Studio is its own page now; it keeps the product metadata.
 META["studio"] = META["produto"]
 
+# The 3-D demo is a page the library generates (pp.viz.cinematic_page), not one build.py renders: it lives in
+# demo/ and en/demo/ with its own scene.glb and vendor/, and this entry only gives it metadata and a place in the
+# navigation and the sitemap.
+META["demo"] = {
+    "pt": dict(
+        title="Demo 3D: uma aeronave com o Cp do OpenFOAM · PINNeAPPle Labs",
+        desc="Uma aeronave classe A320 com o coeficiente de pressão de uma rodada de OpenFOAM sobre a pele, girando "
+             "conforme você rola a página.",
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+    "en": dict(
+        title="3-D demo: an aircraft with its OpenFOAM Cp · PINNeAPPle Labs",
+        desc="An A320-class aircraft with the pressure coefficient of an OpenFOAM run on its skin, turning as you "
+             "scroll.",
+        og="img/portfolio/13-aircraft-render-pressure.jpg",
+        type="website",
+    ),
+}
+
 META["relatorios"] = {
     "pt": dict(
         title="Relatórios de exemplo por área · PINNeAPPle Labs",
@@ -3144,6 +3220,533 @@ def apresentacao_section(lang: str, root: str) -> str:
     </div>
   </section>
 """
+
+
+# The trust page. Every claim below is one the repository can back: the evidence record and its verdicts
+# (pinneapple-engineering-api, `app/evidence.py`), the deployment profile and what a private deployment must
+# provide (`app/enterprise_deployment_policy.py`), the fail-closed training gate
+# (`app/physics_data_training_gate.py`), retention (`app/artifact_retention.py`) and the security policy
+# (`SECURITY.md`). What the platform does NOT have yet is listed on the page too, because a trust page that
+# only lists strengths is a brochure.
+TRUST = {
+    "pt": dict(
+        eyebrow="Confiança e segurança",
+        h1="O que a plataforma faz com o seu dado — e o que ela não faz",
+        lead=("Um resultado de engenharia não vale por parecer certo: vale pelo que se consegue provar sobre ele. "
+              "Esta página diz como cada número sai verificável, onde o dado fica, quem pode vê-lo e o que ainda "
+              "não temos."),
+        note="Toda afirmação abaixo aponta para o código ou o documento que a sustenta.",
+        facts=[
+            ("Apache-2.0", "a biblioteca"),
+            ("SHA-256", "por arquivo de resultado"),
+            ("OIDC", "na identidade"),
+            ("3 modos", "de implantação"),
+        ],
+        rows=[
+            dict(
+                h="Cada resultado carrega a própria prova",
+                p=("Toda execução grava o registro de evidência: parâmetros pedidos e resolvidos, versões (commit da "
+                   "biblioteca e pacotes do runtime), hardware, logs, recursos consumidos (tempo de parede e de CPU, "
+                   "pico de memória, código de saída, limites) e os arquivos com SHA-256 de cada um."),
+                bullets=[
+                    "Cada verificação é pass, fail, inconclusive ou not_run — e uma que não rodou nunca conta como "
+                    "aprovada.",
+                    "O registro só é pass se ao menos uma verificação conferiu o resultado e todas rodaram e "
+                    "passaram.",
+                    "O relatório sai em Markdown com todos os parâmetros e a origem de cada um: o seu texto ou o "
+                    "padrão documentado com a fonte.",
+                ],
+            ),
+            dict(
+                h="Um modelo só aprende com dado aprovado",
+                p=("O portão de treino é fechado por padrão: o dataset precisa de aprovação técnica registrada e de "
+                   "um recibo de armazenamento imutável, conferido pelo SHA-256, antes de qualquer treino. Sem isso, "
+                   "o treino é recusado."),
+                bullets=[
+                    "Geometria, malha e campos passam por checagem de unidade antes de entrar.",
+                    "O catálogo guarda a proveniência de cada conjunto: origem, licença e hash.",
+                    "Quando um modelo é aprovado, a assinatura registra quem aprovou e sob quais condições.",
+                ],
+            ),
+            dict(
+                h="Onde o dado fica",
+                p=("Três modos de implantação: gerenciado, VPC privada e on-premises. Uma implantação privada não "
+                   "sobe sem chave gerenciada (KMS), isolamento de rede, auditoria em armazenamento imutável, backup "
+                   "e procedimento de restauração declarados."),
+                bullets=[
+                    "A região da implantação tem de estar entre as regiões de residência de dado declaradas, ou a "
+                    "configuração é rejeitada.",
+                    "Credenciais só entram como referência a cofre (vault://, secret://, aws-secretsmanager://); DSN "
+                    "embutido é recusado na validação.",
+                    "A retenção de artefatos roda em modo de simulação por padrão; apagar exige habilitação explícita "
+                    "do operador e nunca segue link simbólico.",
+                ],
+            ),
+            dict(
+                h="O modelo de linguagem não decide nada sozinho",
+                p=("A estruturação do pedido usa um modelo local (Ollama) quando ele está disponível e, sem ele, "
+                   "regras determinísticas. Um provedor externo só entra se o operador configurar. Um número que o "
+                   "modelo devolve só é mantido se estiver escrito no pedido."),
+                bullets=[
+                    "O texto de entrada passa por inspeção que bloqueia chave privada, token e segredo antes do "
+                    "processamento.",
+                    "A resposta nunca devolve o texto do segredo encontrado.",
+                    "Toda decisão de engenharia fica registrada com a regra que a tomou.",
+                ],
+            ),
+        ],
+        gaps_h="O que ainda não temos",
+        gaps_lead=("Publicar só o que está pronto é mais barato do que responder depois por uma promessa. Hoje não "
+                   "temos:"),
+        gaps=[
+            "Certificação SOC 2 ou ISO 27001.",
+            "Relatório de teste de intrusão externo publicado.",
+            "Página de status com histórico de disponibilidade.",
+            "SLA de disponibilidade contratual publicado.",
+        ],
+        gaps_note=("Se algum desses é requisito para você, diga no primeiro contato: entra no escopo do seu contrato "
+                   "em vez de virar surpresa depois."),
+        sec_h="Reportar uma vulnerabilidade",
+        sec_p=("Não abra issue pública. Envie o relato privado aos mantenedores ou um rascunho de advisory de "
+               "segurança no GitHub, com descrição, impacto, passos para reproduzir e versões afetadas."),
+        sec_link="Política de segurança no repositório (SECURITY.md)",
+    ),
+    "en": dict(
+        eyebrow="Trust &amp; security",
+        h1="What the platform does with your data — and what it does not do",
+        lead=("An engineering result is not worth anything because it looks right: it is worth what can be proven "
+              "about it. This page says how every number comes out verifiable, where the data lives, who can see it, "
+              "and what we do not have yet."),
+        note="Every claim below points at the code or the document behind it.",
+        facts=[
+            ("Apache-2.0", "the library"),
+            ("SHA-256", "per result file"),
+            ("OIDC", "for identity"),
+            ("3 modes", "of deployment"),
+        ],
+        rows=[
+            dict(
+                h="Every result carries its own proof",
+                p=("Each execution stores the evidence record: requested and resolved parameters, versions (library "
+                   "commit and runtime packages), hardware, logs, resources consumed (wall and CPU time, peak "
+                   "memory, exit code, limits) and the files with a SHA-256 for each."),
+                bullets=[
+                    "Every verification is pass, fail, inconclusive or not_run — a check that did not run never counts "
+                    "as passed.",
+                    "The record is pass only if at least one verification checked the result and all of them ran and "
+                    "passed.",
+                    "The report comes out in Markdown with every parameter and where it came from: your text or the "
+                    "documented default with its source.",
+                ],
+            ),
+            dict(
+                h="A model trains only on approved data",
+                p=("The training gate is closed by default: a dataset needs a recorded technical approval and an "
+                   "immutable storage receipt, checked against its SHA-256, before any training. Without it, training "
+                   "is refused."),
+                bullets=[
+                    "Geometry, mesh and fields go through a unit check before they enter.",
+                    "The catalogue keeps each set's provenance: origin, licence and hash.",
+                    "When a model is approved, the signature records who approved it and under which conditions.",
+                ],
+            ),
+            dict(
+                h="Where the data lives",
+                p=("Three deployment modes: managed, private VPC and on-premises. A private deployment does not come "
+                   "up without a managed key (KMS), network isolation, audit into immutable storage, backups and a "
+                   "declared restore procedure."),
+                bullets=[
+                    "The deployment region has to be among the declared data-residency regions, or the configuration "
+                    "is rejected.",
+                    "Credentials enter only as secret-manager references (vault://, secret://, "
+                    "aws-secretsmanager://); an inline DSN is refused at validation.",
+                    "Artifact retention runs as a dry run by default; deleting needs explicit operator enablement and "
+                    "never follows a symbolic link.",
+                ],
+            ),
+            dict(
+                h="The language model decides nothing on its own",
+                p=("Structuring the request uses a local model (Ollama) when one answers and deterministic rules when "
+                   "none does. An external provider enters only if the operator configures it. A number the model "
+                   "returns is kept only if it is written in the request."),
+                bullets=[
+                    "Input text goes through an inspection that blocks private keys, tokens and secrets before "
+                    "processing.",
+                    "The answer never returns the matched secret text.",
+                    "Every engineering decision is recorded with the rule that took it.",
+                ],
+            ),
+        ],
+        gaps_h="What we do not have yet",
+        gaps_lead=("Publishing only what is ready is cheaper than answering for a promise later. Today we do not "
+                   "have:"),
+        gaps=[
+            "SOC 2 or ISO 27001 certification.",
+            "A published external penetration-test report.",
+            "A status page with an availability history.",
+            "A published contractual availability SLA.",
+        ],
+        gaps_note=("If any of these is a requirement for you, say so in the first conversation: it goes into the "
+                   "scope of your contract instead of becoming a surprise later."),
+        sec_h="Reporting a vulnerability",
+        sec_p=("Do not open a public issue. Send a private report to the maintainers, or open a draft GitHub security "
+               "advisory, with a description, impact, steps to reproduce and affected versions."),
+        sec_link="Security policy in the repository (SECURITY.md)",
+    ),
+}
+
+
+def page_trust(lang: str) -> str:
+    """What the platform can prove about a result, where the data sits, and what is still missing."""
+    root = up(lang, "trust")
+    T = TRUST[lang]
+    S = STRINGS[lang]
+    C = TRUST_CARDS[lang]
+    facts = "".join(f'<span class="chip">{v} · {l}</span>' for v, l in T["facts"])
+    rows = "".join(
+        f"""
+  <section class="{'alt ' if i % 2 else ''}tight" id="pilar-{i + 1}">
+    <div class="wrap area-row">
+      <div class="reveal">
+        <p class="eyebrow">{C['pillar']} {i + 1:02d}</p>
+        <h2>{r['h']}</h2>
+        <p class="area-blurb">{r['p']}</p>
+      </div>
+      <ul class="reveal rule-list">{"".join(f"<li>{b}</li>" for b in r['bullets'])}</ul>
+    </div>
+  </section>
+"""
+        for i, r in enumerate(T["rows"])
+    )
+    gaps = "".join(f"<li>{g}</li>" for g in T["gaps"])
+    return f"""{head(lang, "trust", root)}{header(lang, "trust", root)}<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{T['eyebrow']}</p>
+      <h1>{T['h1']}</h1>
+      <p class="lead" style="max-width:64ch">{T['lead']}</p>
+      <p class="hero-note" style="max-width:64ch">{T['note']}</p>
+      <div class="hero-meta">{facts}</div>
+    </div>
+  </section>
+{rows}
+  <section class="tight" id="lacunas">
+    <div class="wrap area-row">
+      <div class="reveal">
+        <p class="eyebrow">{C['gaps']}</p>
+        <h2>{T['gaps_h']}</h2>
+        <p class="area-blurb">{T['gaps_lead']}</p>
+        <p class="src-note">{T['gaps_note']}</p>
+      </div>
+      <ul class="reveal rule-list">{gaps}</ul>
+    </div>
+  </section>
+  <section class="alt tight" id="vulnerabilidade">
+    <div class="wrap">
+      <div class="reveal" style="max-width:72ch">
+        <p class="eyebrow">{C['security']}</p>
+        <h2>{T['sec_h']}</h2>
+        <p class="area-blurb">{T['sec_p']}</p>
+        <p class="src-note"><a href="https://github.com/PINNeAPPle-Labs/PINNeAPPle/blob/main/SECURITY.md"
+          target="_blank" rel="noopener">{T['sec_link']} ↗</a></p>
+      </div>
+    </div>
+  </section>
+{cta_band(lang, root)}
+</main>
+{footer(lang, "trust", root)}"""
+
+
+# Small labels of the trust page, kept apart from the prose above.
+TRUST_CARDS = {
+    "pt": dict(pillar="Pilar", gaps="Lacunas declaradas", security="Segurança"),
+    "en": dict(pillar="Pillar", gaps="Stated gaps", security="Security"),
+}
+
+
+# ---------------------------------------------------------------------------
+# Pages: the published models and the API reference, both rendered from data
+# generated out of the repositories (tools/modelos.py, tools/api_docs.py), so
+# the site never restates a number or a field that lives in the code.
+# ---------------------------------------------------------------------------
+
+MODELOS_LABELS = {
+    "pt": dict(eyebrow="Os modelos", h1="A família publicada", answers="Responde", replaces="Substitui",
+               holds="Faixa de validade", limits="Não vale para", weights="Pesos", trust="Veredito",
+               load="Carregar", family_note=("Cada número é o que veio no card do modelo, medido contra a "
+                                             "referência que o card nomeia. O domínio e os limites são do card, "
+                                             "não desta página: os dois não podem divergir."),
+               how_h="Como usar", how_p=("Todos estão no pacote e no Hugging Face, com o SHA-256 no manifest. "
+                                         "A carga verifica o hash, e a predição avisa quando o pedido sai da faixa."),
+               cmd="pinneapple recommend \"dissipador aletado resfriado por ar\"",
+               metrics_h="Erro medido (held-out)",
+               promise=("Um modelo nomeado por problema de engenharia, publicado com o erro em que foi medido, a "
+                        "faixa em que vale e as checagens que passou — para que a resposta chegue junto com a "
+                        "condição em que ela é verdadeira."),
+               card_lang=("O texto de cada card abaixo é o do modelo, em inglês: é o mesmo que está publicado no "
+                          "Hugging Face, e traduzi-lo aqui criaria uma segunda versão do card."),
+               count_models="modelos", count_weights="pesos publicados", count_hash="SHA-256 no manifest"),
+    "en": dict(eyebrow="The models", h1="The published family", answers="Answers", replaces="Replaces",
+               holds="Validity range", limits="Does not hold for", weights="Weights", trust="Verdict",
+               load="Load", family_note=("Every number is the one in the model card, measured against the "
+                                        "reference that card names. The domain and the limits are the card's, not "
+                                        "this page's: the two cannot drift."),
+               how_h="How to use", how_p=("All of them ship in the package and on Hugging Face, with the SHA-256 "
+                                         "in the manifest. Loading checks the hash, and a prediction warns when "
+                                         "the request leaves the range."),
+               cmd="pinneapple recommend \"finned heat sink cooled by air\"",
+               metrics_h="Held-out error",
+               promise=None,
+               card_lang="",
+               count_models="models", count_weights="published weights", count_hash="SHA-256 in the manifest"),
+}
+
+API_LABELS = {
+    "pt": dict(eyebrow="Desenvolvedores", h1="Referência da API", summary="Resumo",
+               params="Parâmetros", body="Corpo", responses="Respostas", auth="Autenticação",
+               auth_p=("Chave no cabeçalho <code>X-API-Key</code>. Onde existe OIDC, um token vai em "
+                       "<code>Authorization: Bearer</code>."),
+               install_h="Cliente Python", install_p=("Uma chamada por endpoint, a resposta como ela vem, "
+                                                      "autenticação e polling resolvidos."),
+               ops="operações públicas", omitted="rotas internas fora desta página", paths="rotas",
+               generated=("Gerado de <code>app.openapi()</code>: descrição, parâmetros, corpo e respostas vêm do "
+                          "esquema do próprio servidor. Atualize com <code>tools/api_docs.py</code>."),
+               tagline={"meta": "Estado", "capabilities": "Registro de capacidades", "jobs": "Trabalhos",
+                        "agent": "Exigência em texto", "products": "Produtos", "solvers": "Solvers",
+                        "lpm": "Large Physics Models"},
+               requires_key="chave", public="público"),
+    "en": dict(eyebrow="Developers", h1="API reference", summary="Summary",
+               params="Parameters", body="Body", responses="Responses", auth="Authentication",
+               auth_p=("Key in the <code>X-API-Key</code> header. Where OIDC is enabled, a token goes in "
+                       "<code>Authorization: Bearer</code>."),
+               install_h="Python client", install_p=("One call per endpoint, the response as it comes, "
+                                                     "authentication and polling handled. For now it installs from "
+                                                     "the repository; the index release is tracked in #384."),
+               ops="public operations", omitted="internal paths left off this page", paths="paths",
+               generated=("Generated from <code>app.openapi()</code>: description, parameters, body and "
+                          "responses come from the server's own schema. Refresh with "
+                          "<code>tools/api_docs.py</code>."),
+               tagline={"meta": "Status", "capabilities": "Capability registry", "jobs": "Jobs",
+                        "agent": "Requirement in text", "products": "Products", "solvers": "Solvers",
+                        "lpm": "Large Physics Models"},
+               requires_key="key", public="public"),
+}
+
+SDK_SNIPPET = """<pre class="code"><span class="k">from</span> pinneapple_client <span class="k">import</span> Client
+
+<span class="k">with</span> Client(<span class="s">"https://engineering.pinneapple.org"</span>, api_key=KEY) <span class="k">as</span> pea:
+    answer = pea.submit(<span class="s">"60 W module on a finned aluminium heat sink, air 35 C at 3 m/s"</span>)
+    job = pea.wait(answer[<span class="s">"job_id"</span>])
+    result = pea.result(job[<span class="s">"id"</span>])
+    <span class="f">print</span>(result[<span class="s">"evidence"</span>][<span class="s">"status"</span>])   <span class="c"># pass | fail | inconclusive | not_run</span></pre>"""
+
+
+def _data(name: str) -> dict:
+    """One generated data file, with an error that says which tool produces it."""
+    path = ROOT / "data" / f"{name}.json"
+    if not path.exists():
+        raise SystemExit(f"{path.relative_to(ROOT)} is missing: run tools/{name}.py first")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _num(value: float) -> str:
+    return f"{value:g}" if float(value).is_integer() or abs(value) >= 1e4 else f"{value:.3g}"
+
+
+def _range(value) -> str | None:
+    if isinstance(value, list) and len(value) == 2 and all(isinstance(v, (int, float)) for v in value):
+        return f"{_num(value[0])} – {_num(value[1])}"
+    return None
+
+
+def _md_inline(text: str) -> str:
+    """Escape, then render the inline Markdown the OpenAPI descriptions use (backticks, **bold**)."""
+    out = _html.escape(text)
+    out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
+    return re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", out)
+
+
+def page_modelos(lang: str) -> str:
+    """The published family, read from ``data/modelos.json`` (generated by ``pp.zoo.anchors``)."""
+    root = up(lang, "modelos")
+    L = MODELOS_LABELS[lang]
+    D = _data("modelos")
+    fam = D["family"]
+
+    cards = []
+    for anchor in D["anchors"]:
+        metrics = []
+        ranges, notes, limits = [], [], []
+        for member in anchor["members"]:
+            for k, v in member["metrics"].items():
+                metrics.append(f'<span class="chip">{k} · {_num(v)}</span>')
+            for k, v in member["validity_range"].items():
+                span = _range(v)
+                if span:
+                    ranges.append(f'<li><code>{k}</code> {span}</li>')
+                elif isinstance(v, (int, float)):
+                    notes.append(f'<li><code>{k}</code>: {_num(v)}</li>')
+                elif v not in ("", None):
+                    notes.append(f'<li><code>{k}</code>: {_html.escape(str(v))}</li>')
+            limits += [f"<li>{_html.escape(str(x))}</li>" for x in member["limitations"]]
+        member0 = anchor["members"][0]
+        repo = member0.get("hf_repo", "")
+        weights = (f'<p class="src-note"><a href="https://huggingface.co/{repo}/tree/{member0["revision"]}" '
+                   f'target="_blank" rel="noopener">{L["weights"]} · {repo} ↗</a> '
+                   f'<span class="chip">{member0["license"]}</span></p>') if repo else ""
+        ranges_html = (f'<details class="op-details"><summary>{L["holds"]}</summary><ul class="rule-list">'
+                       f'{"".join(ranges)}{"".join(notes)}</ul></details>') if (ranges or notes) else ""
+        limits_html = (f'<details class="op-details"><summary>{L["limits"]}</summary><ul class="rule-list">'
+                       f'{"".join(limits)}</ul></details>') if limits else ""
+        cards.append(f"""
+    <article class="anchor-card reveal">
+      <p class="eyebrow">{_html.escape(anchor['domain'])}</p>
+      <h2>{_html.escape(anchor['name'])}</h2>
+      <p><b>{L['answers']}.</b> {_html.escape(anchor['problem'])}.</p>
+      <p class="area-blurb"><b>{L['replaces']}.</b> {_html.escape(anchor['replaces'])}.</p>
+      <p class="eyebrow">{L['metrics_h']}</p>
+      <div class="chip-row">{''.join(metrics)}</div>
+      <p class="src-note"><code>{member0['model']}</code> v{member0['version']} · {L['trust']}
+        <b>{_html.escape(member0['trust'] or '-')}</b></p>
+      {ranges_html}
+      {limits_html}
+      {weights}
+    </article>""")
+
+    return f"""{head(lang, "modelos", root)}{header(lang, "modelos", root)}<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{L['eyebrow']} · {_html.escape(fam['name'])} {_html.escape(fam['version'])}</p>
+      <h1>{L['h1']}</h1>
+      <p class="lead" style="max-width:64ch">{_html.escape(L['promise'] or fam['promise'])}</p>
+      <p class="hero-note" style="max-width:64ch">{L['family_note']}</p>
+      <div class="hero-meta"><span class="chip"><span class="dot"></span>{len(D['anchors'])} {L['count_models']}</span>
+        <span class="chip">{len({m['model'] for a in D['anchors'] for m in a['members']})} {L['count_weights']}</span>
+        <span class="chip">{L['count_hash']}</span></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap anchor-grid">{''.join(cards)}</div>
+    {f'<div class="wrap"><p class="src-note">{L["card_lang"]}</p></div>' if L.get("card_lang") else ''}
+  </section>
+
+  <section class="alt tight" id="usar">
+    <div class="wrap split-block reveal">
+      <div class="code-card">
+        <div class="code-head"><span class="fname">{L['how_h']}</span></div>
+        <pre class="code"><span class="c">$ </span>{_html.escape(L['cmd'])}</pre>
+      </div>
+      <div>
+        <p class="eyebrow">{L['how_h']}</p>
+        <h2>pp.zoo</h2>
+        <p style="color:var(--text-dim)">{L['how_p']}</p>
+        <p class="section-cta" style="margin-top:1.4rem">
+          <a class="btn btn-ghost" href="{DOCS}" target="_blank" rel="noopener">Docs ↗</a>
+          <a class="btn btn-ghost" href="{root}{url(lang, 'lib')}">{STRINGS[lang]['lbl_lib']} →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+{cta_band(lang, root)}
+</main>
+{footer(lang, "modelos", root)}"""
+
+
+def page_api(lang: str) -> str:
+    """The public API reference, read from ``data/api.json`` (generated from ``app.openapi()``)."""
+    root = up(lang, "api")
+    L = API_LABELS[lang]
+    D = _data("api")
+    counts = D["counts"]
+
+    sections = []
+    for tag in D["tags"]:
+        ops = [o for o in D["operations"] if tag in o["tags"]]
+        if not ops:
+            continue
+        blocks = []
+        for op in ops:
+            params = ""
+            if op["params"]:
+                rows = "".join(
+                    f"<tr><td><code>{_html.escape(p['name'])}</code></td><td>{_html.escape(p['in'])}</td>"
+                    f"<td>{_html.escape(p['type'])}</td><td>{'sim' if p['required'] else 'não'}</td>"
+                    f"<td>{_md_inline(p['description'])}</td></tr>"
+                    for p in op["params"])
+                params = (f'<p class="eyebrow">{L["params"]}</p><table class="fields"><thead><tr>'
+                          f'<th>nome</th><th>em</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead>'
+                          f'<tbody>{rows}</tbody></table>')
+            body = ""
+            if op["body"]:
+                rows = "".join(
+                    f"<tr><td><code>{_html.escape(f['name'])}</code></td><td>{_html.escape(f['type'])}</td>"
+                    f"<td>{'sim' if f['required'] else 'não'}</td>"
+                    f"<td>{_md_inline(f['description'])}</td></tr>"
+                    for f in op["body"])
+                body = (f'<p class="eyebrow">{L["body"]}</p><table class="fields"><thead><tr>'
+                        f'<th>campo</th><th>tipo</th><th>obrigatório</th><th>descrição</th></tr></thead>'
+                        f'<tbody>{rows}</tbody></table>')
+            auth = L["requires_key"] if op["auth"] == "api_key" else L["public"]
+            blocks.append(f"""
+      <details class="op" id="{op['method'].lower()}-{op['path'].strip('/').replace('/', '-').replace('{', '').replace('}', '').replace('.', '-')}">
+        <summary>
+          <span class="method m-{op['method'].lower()}">{op['method']}</span>
+          <code class="op-path">{_html.escape(op['path'])}</code>
+          <span class="op-summary">{_html.escape(op['summary'])}</span>
+        </summary>
+        <div class="op-body">
+          <p>{_md_inline(op['description']) or _html.escape(op['summary'])}</p>
+          <p class="src-note">{L['auth']}: <code>{_html.escape(auth)}</code> ·
+            {L['responses']}: {', '.join(op['responses'])}</p>
+          {params}
+          {body}
+        </div>
+      </details>""")
+        sections.append(f"""
+  <section class="{'alt ' if len(sections) % 2 else ''}tight" id="tag-{tag}">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">{len(ops)} {L['ops']}</p>
+        <h2>{L['tagline'].get(tag, tag)}</h2>
+      </div>
+      <div class="ops reveal">{''.join(blocks)}</div>
+    </div>
+  </section>""")
+
+    return f"""{head(lang, "api", root)}{header(lang, "api", root)}<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{L['eyebrow']}</p>
+      <h1>{L['h1']}</h1>
+      <p class="lead" style="max-width:64ch">{_html.escape(D['info']['title'])} {_html.escape(D['info']['version'])}.
+        {counts['operations']} {L['ops']}, {counts['paths']} {L['paths']}, {counts['internal_paths_omitted']} {L['omitted']}.</p>
+      <p class="hero-note" style="max-width:64ch">{L['auth']}: {L['auth_p']}</p>
+      <div class="hero-meta">{''.join(f'<a class="chip" href="#tag-{t}">{L["tagline"].get(t, t)}</a>' for t in D['tags'] if any(t in o['tags'] for o in D['operations']))}</div>
+    </div>
+  </section>
+
+  <section class="tight" id="cliente">
+    <div class="wrap split-block reveal">
+      <div class="code-card">
+        <div class="code-head"><span class="fname">pinneapple_client</span></div>
+        {SDK_SNIPPET}
+      </div>
+      <div>
+        <p class="eyebrow">{L['install_h']}</p>
+        <h2>pinneapple-client</h2>
+        <p style="color:var(--text-dim)">{L['install_p']}</p>
+        <pre class="code" style="margin-top:1rem">$ pip install -e sdk/</pre>
+      </div>
+    </div>
+  </section>
+{''.join(sections)}
+  <section class="alt tight">
+    <div class="wrap"><p class="src-note">{L['generated']}
+      {' · '.join(f'<code>{t}</code>' for t in D['tags'])}</p></div>
+  </section>
+</main>
+{footer(lang, "api", root)}"""
 
 
 def page_studio(lang: str) -> str:
@@ -3769,6 +4372,9 @@ BUILDERS = {
     "artigos": page_artigos,
     "sucessos": page_sucessos,
     "lib": page_lib,
+    "trust": page_trust,
+    "modelos": page_modelos,
+    "api": page_api,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
