@@ -848,6 +848,33 @@ section.alt .cap { background: var(--ink); }
   font-family: var(--f-mono); font-size: 0.7rem; color: var(--text-mute);
 }
 
+/* Evidence: the articles and the example reports are one section, two formats of one proof */
+.evid-block { margin-top: 2.2rem; }
+.evid-label {
+  margin: 0 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+  font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-mute);
+}
+.evid-reports { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 1.2rem; }
+@media (max-width: 900px) { .evid-reports { grid-template-columns: 1fr; } }
+.report-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.3rem 0.9rem;
+  align-items: center; padding: 0.8rem 1rem;
+  background: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+  text-decoration: none; transition: border-color .16s ease, background .16s ease;
+}
+section.alt .report-row { background: var(--ink-3); }
+.report-row:hover { border-color: var(--accent-dk); }
+.report-row .rr-area {
+  font-family: var(--f-mono); font-size: 0.63rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-mute);
+}
+.report-row .rr-title { font-size: 0.92rem; line-height: 1.35; color: var(--text); }
+.report-row .rr-go {
+  grid-column: 2; grid-row: 1 / span 2;
+  font-family: var(--f-mono); font-size: 0.7rem; color: var(--accent); white-space: nowrap;
+}
+
 /* article page */
 .post-head { padding-block: clamp(2.4rem, 5vw, 3.6rem) 1.2rem; }
 .post-head h1 { max-width: 30ch; margin-top: 0.4rem; }

@@ -68,8 +68,9 @@ def main() -> None:
     save(vertical, OUT / "logo-vertical.png", 400)
     save(mark, OUT / "mark.png", 200)
 
-    icon(mark, 32, ROOT / "favicon-32.png", pad=0.10)
-    icon(mark, 16, ROOT / "favicon-16.png", pad=0.06)
+    # The 16 and 32 px icons are favicon.svg rasterised, not this mark: at that size the
+    # honeycomb turns to noise, so the drawn small-size cut is what goes in the tab.
+    # Only the touch icon, which has room, carries the delivered artwork.
     icon(mark, 180, ROOT / "apple-touch-icon.png", pad=0.18)
 
 

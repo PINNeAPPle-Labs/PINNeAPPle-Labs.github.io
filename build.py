@@ -1953,9 +1953,11 @@ HOME = {
             ("img/verificacao.jpg", "Run do VeriPhysics com a nota por checagem",
              "Verificação", "A checagem que não rodou não conta", "guardrail-veriphysics"),
         ],
-        news_eyebrow="Artigos",
+        news_eyebrow="Evidências",
         news_h="O que a gente mediu, contado por inteiro",
-        news_p="Um experimento por artigo, com imagens, vídeo e os números que saíram da execução. Inclusive os que limitam o resultado.",
+        news_p="Dois formatos da mesma prova: o artigo conta o experimento, com as imagens e os números que saíram da execução; o relatório é o documento que o cliente recebe, com o número conferido contra ensaio e a página do que não ficou provado.",
+        news_posts="Artigos",
+        news_reports="Relatórios de exemplo",
         show_eyebrow="A apresentação",
         show_h="A plataforma inteira em uma gravação",
         show_p="A apresentação que fizemos no evento da SIMR: o pedido escrito, a busca, a execução e o relatório, sem corte no meio. É o jeito mais rápido de ver o que o PINNeAPPle Studio faz.",
@@ -2057,9 +2059,11 @@ HOME = {
             ("img/verificacao.jpg", "A VeriPhysics run with the score per check",
              "Verification", "A check that did not run does not count", "guardrail-veriphysics"),
         ],
-        news_eyebrow="Articles",
+        news_eyebrow="Evidence",
         news_h="What we measured, told in full",
-        news_p="One experiment per article, with images, video and the numbers that came out of the run. Including the ones that limit the result.",
+        news_p="Two formats of the same proof: the article tells the experiment, with the images and the numbers that came out of the run; the report is the document the client receives, with the number checked against a test and the page on what was not proven.",
+        news_posts="Articles",
+        news_reports="Example reports",
         show_eyebrow="The talk",
         show_h="The whole platform in one recording",
         show_p="The talk we gave at the SIMR event: the written request, the search, the run and the report, without cuts in between. It is the fastest way to see what PINNeAPPle Studio does.",
@@ -2699,6 +2703,20 @@ FLOW = {
 }
 
 
+def home_report_rows(lang: str, root: str) -> str:
+    """One example report per area, the closest thing to holding the deliverable: the same
+    section as the articles, because a report and an article are two formats of one proof."""
+    rows = []
+    for area, _blurb, items in REPORTS_INDEX[lang]["areas"][:4]:
+        slug, title, _desc = items[0]
+        rows.append(
+            f'<a class="report-row" href="{root}{REPORT_FILES[slug][lang]}" target="_blank" rel="noopener">'
+            f'<span class="rr-area">{area}</span><span class="rr-title">{title}</span>'
+            f'<span class="rr-go">PDF ↗</span></a>'
+        )
+    return "".join(rows)
+
+
 def flow_section(lang: str, root: str) -> str:
     """The engineering path from a problem to a verified number, plus a live clip."""
     F = FLOW[lang]
@@ -2876,14 +2894,24 @@ def page_home(lang: str) -> str:
 
     cards = "".join(post_card(lang, p, root) for p in POSTS[:3])
     parts.append(f"""
-  <section id="artigos" class="alt">
+  <section id="evidencias" class="alt">
     <div class="wrap">
       <div class="section-head split reveal">
         <div><p class="eyebrow">{C['news_eyebrow']}</p><h2>{C['news_h']}</h2></div>
         <p>{C['news_p']}</p>
       </div>
-      <div class="post-grid reveal">{cards}</div>
-      <p class="section-cta reveal"><a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{S['all_articles']} →</a></p>
+      <div class="evid-block reveal">
+        <p class="evid-label">{C['news_posts']}</p>
+        <div class="post-grid">{cards}</div>
+      </div>
+      <div class="evid-block reveal">
+        <p class="evid-label">{C['news_reports']}</p>
+        <div class="evid-reports">{home_report_rows(lang, root)}</div>
+      </div>
+      <p class="section-cta reveal">
+        <a class="btn btn-ghost" href="{root}{url(lang, 'artigos')}">{S['all_articles']} →</a>
+        <a class="btn btn-ghost" href="{root}{url(lang, 'relatorios')}">{S['lbl_reports']} →</a>
+      </p>
     </div>
   </section>
 """)

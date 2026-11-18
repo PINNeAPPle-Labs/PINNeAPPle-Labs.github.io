@@ -25,7 +25,11 @@ accent that is read rather than looked at uses a lighter tint of the same hue: `
 of it lives in the `:root` block of [`styles.css`](styles.css); no page hard-codes a colour.
 
 The logo artwork is in `assets/brand/source/` (the delivered files) and the site's cut of it in
-`img/brand/`. Regenerate the cuts, the favicon and the touch icon with:
+`img/brand/`. The favicon is the one drawing made for this brand by hand: at 16 px the artwork's
+honeycomb turns to noise, so `favicon.svg` keeps the silhouette (solid leaves, the fruit's outline
+and its three bands) in the same colours, one step lighter on the orange. `favicon-16.png` and
+`favicon-32.png` are that SVG rasterised; `apple-touch-icon.png` is the delivered mark. Regenerate
+the cuts and the touch icon with:
 
 ```bash
 python3 tools/build_brand_assets.py     # needs Pillow
