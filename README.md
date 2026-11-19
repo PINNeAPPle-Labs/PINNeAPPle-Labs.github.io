@@ -1,7 +1,12 @@
-# pinneapple-labs-site
+# PINNeAPPle Labs — site
 
 Landing site for **PINNeAPPle**, open-source Physics AI with verification as part of the
 product. Served at <https://pinneapple-labs.github.io/>.
+
+**`build.py` and the sources live here**, next to the generated pages. The older private repository
+`PINNeAPPle-Labs/pinneapple-labs-site` is archived: it was the source that this repository used to be
+rsynced from, and keeping one tree is what removed the drift between the two. Build and publish from
+this repository.
 
 A single home page that carries the commercial pitch — the study we deliver, its scope,
 deadline and price rule — then the proof, the three problems it solves, and the
