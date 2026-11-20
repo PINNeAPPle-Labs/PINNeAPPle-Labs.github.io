@@ -34,6 +34,7 @@ MIDIA = SERIE2 / "midia"
 sys.path.insert(0, str(AQUI.parent))
 
 import estilo  # noqa: E402
+import texto  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.animation import FFMpegWriter  # noqa: E402
 
@@ -431,7 +432,7 @@ def escrever_resultado(camada, res, erro_l1, s_frente, fecho) -> None:
         "- Não é um sítio geológico: a camada do SPE10 é um benchmark público, não um reservatório "
         "com caracterização.",
     ]
-    (AQUI / "resultado.md").write_text("\n".join(linhas) + "\n")
+    (AQUI / "resultado.md").write_text(texto.virgula("\n".join(linhas)) + "\n")
     print("resultado.md")
 
 

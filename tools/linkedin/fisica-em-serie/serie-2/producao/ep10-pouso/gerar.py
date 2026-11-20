@@ -28,6 +28,7 @@ MIDIA = SERIE2 / "midia"
 sys.path.insert(0, str(AQUI.parent))
 
 import estilo  # noqa: E402
+import texto  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.animation import FFMpegWriter  # noqa: E402
 
@@ -234,7 +235,7 @@ def escrever_resultado(sem_vento, sem_controle, ventos, erros, toques):
     linhas = [
         "# EP 10 · resultado medido", "",
         "Massa pontual em 2-D, empuxo vetorado com gimbal de 20°, empuxo máximo de 2,2× o peso, "
-        "Isp de 3.000 m/s, arrasto quadrático e vento lateral com rajada. Controlador PD "
+        "Isp de 3000 m/s, arrasto quadrático e vento lateral com rajada. Controlador PD "
         "saturado, sem otimização.", "",
         f"- **sem vento, com controle**: pousou em "
         f"{'sim' if sem_vento['pousou'] else 'não'}, erro lateral "
@@ -257,7 +258,7 @@ def escrever_resultado(sem_vento, sem_controle, ventos, erros, toques):
                "- Não é um gêmeo do veículo: é massa pontual, sem atitude, sem inércia rotacional.",
                "- Não há voo nem ensaio: a comparação é entre o controlador e a ausência dele.",
                "- O vento é sintético, com envelope declarado; não é atmosfera medida."]
-    (AQUI / "resultado.md").write_text("\n".join(linhas) + "\n")
+    (AQUI / "resultado.md").write_text(texto.virgula("\n".join(linhas)) + "\n")
     print("resultado.md")
 
 

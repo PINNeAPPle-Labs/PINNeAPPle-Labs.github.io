@@ -2,14 +2,14 @@
 
 Material completo de duas séries editoriais para o LinkedIn, construídas sobre o acervo real do
 PINNeAPPle. Não é um plano a executar: o texto dos 20 posts está escrito, os carrosséis da Série 1
-estão renderizados em PNG/JPG prontos para subir, e os roteiros da Série 2 dizem, caso por caso,
-o que já pode ser filmado e o que precisa rodar antes.
+estão renderizados em PNG/JPG prontos para subir, e os **dez vídeos da Série 2 estão produzidos**,
+cada um com o número medido, a verificação que o sustenta e o limite escrito ao lado.
 
 | | Série 1 — **The Physics Atlas** | Série 2 — **Physics in Action** |
 |---|---|---|
 | formato | 10 carrosséis, 8 slides, 1080×1350 | 10 vídeos de 40–50 s |
 | prova | amplitude: dez domínios, cada número com o limite ao lado | profundidade: um caso ambicioso por episódio |
-| estado | **pronto** — PNG/JPG renderizados, PT e EN | **roteiro** — 3 parcialmente prontos, 7 a produzir |
+| estado | **pronto** — PNG/JPG renderizados, PT e EN | **pronto** — 10 vídeos em `serie-2/midia/`, cada um com código e `resultado.md` |
 | pasta | [`serie-1/`](serie-1/) | [`serie-2/`](serie-2/) |
 
 ## A regra que vale para tudo
@@ -85,6 +85,23 @@ Servem para reaproveitar qualquer experimento, sem inventar caso novo:
 5. Responda comentário técnico com número, não com "obrigado pelo comentário". É o que a série
    toda promete.
 
+## Rodar os episódios da Série 2
+
+Cada episódio é um `gerar.py` que resolve o problema, verifica contra a régua declarada, escreve
+`resultado.md` e renderiza o vídeo e o poster em `midia/`. Nada depende de Docker, OpenFOAM ou
+malha pronta: os solvers que faltavam foram escritos em `producao/`, e cada um é comparado com
+solução analítica.
+
+```bash
+cd PINNeAPPle-Labs.github.io/tools/linkedin/fisica-em-serie/serie-2/producao
+/opt/homebrew/bin/python3.11 ep05-supersonico/gerar.py          # ~4 min
+/opt/homebrew/bin/python3.11 ep09-trinca/gerar.py               # ~2 min
+/opt/homebrew/bin/python3.11 ep07-motor/gerar.py --segundos 20  # ~1 min
+```
+
+O EP 08 importa a série de referência do pacote `PINNeAPPle` (caminho resolvido no próprio
+script). Os demais são autônomos.
+
 ## Como mexer no material
 
 O JSON é a fonte de verdade do carrossel; o PNG é derivado.
@@ -133,5 +150,16 @@ fisica-em-serie/
     img/               saída: <slug>-<lang>-NN.jpg
     revisao/           a copy em markdown, gerada
   serie-2/
-    01..10-*.md        os 10 roteiros de vídeo
+    01..10-*.md        os 10 episódios: roteiro, resultado medido, legendas PT/EN
+    midia/             os 10 vídeos e os 10 posters, 1080x1350
+    producao/
+      estilo.py        cores, fontes e moldura iguais às do carrossel
+      cards.py         cartões de texto para os episódios de montagem
+      texto.py         vírgula decimal nos documentos gerados
+      euler_bocal.py   Euler quasi-1D (HLLC) — EP 05
+      aguas_rasas.py   águas rasas 1-D/2-D (HLL) — EP 03
+      mie2d.py         série de Bessel/Hankel multicamada — EP 08
+      motor.py         circuito equivalente + rede térmica — EP 07
+      fratura.py       Q4 + J-integral por contorno — EP 09
+      ep01..ep10/      um diretório por episódio, com gerar.py e resultado.md
 ```

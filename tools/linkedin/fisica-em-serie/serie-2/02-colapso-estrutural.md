@@ -1,6 +1,6 @@
 # EP 02 · O que acontece quando uma estrutura chega ao limite
 
-**Duração** 45 s · **Estado** parcial — a estática roda, a progressão não · **Base** `artigos/construcoes-de-bloco`, prefixo CalculiX, `digital-twins/bridge-structural-health`
+**Duração** 45 s · **Estado** produzido — `midia/ep02-colapso-estrutural.mp4` · **Base** `examples/bricks/_out` (rodada auditada), `producao/ep02-colapso/resultado.md`, `artigos/construcoes-de-bloco`, `digital-twins/bridge-structural-health`
 
 ## O que o vídeo prova
 
@@ -17,11 +17,23 @@ Que a falha de uma estrutura de encaixe é previsível por estática rígida: qu
 | 28–36 s | Simulador de corpo rígido derrubando o candidato no limite exato | `90% · 100% · 75%` | "Estática e corpo rígido concordam em noventa, cem e setenta e cinco por cento dos candidatos. A discordância é o que ensina: no limite exato, o equilíbrio é neutro e a simulação decide por vocês." |
 | 36–45 s | Relatório de confiança: nota 1,00, cobertura 1,00 | `9 formas fechadas` | "Antes de otimizar qualquer coisa, o modelo foi conferido contra nove formas fechadas. Foi por isso que ele pôde julgar." |
 
-## O que precisa rodar antes de publicar
+## Resultado medido
 
-- Um caso de **falha progressiva** (não-linear, com flambagem) — hoje a plataforma tem estática rígida e FEA linear. Ou o vídeo assume que é estática, ou roda o não-linear.
-- Replay de corpo rígido em vídeo, com as juntas intactas e o passo de integração declarado.
-- A animação da busca geração a geração já existe (`videos/blocos-evolucao.mp4`): serve como abertura ou como bônus.
+O episódio é montagem sobre um resultado que já existe e já foi auditado (`examples/bricks`,
+rodada anterior). Nada foi simulado de novo para ele, e isso está dito no vídeo.
+
+- balanço vencedor: **135,9 mm** com 8 peças, utilização do pino em **33,9%**, margem **2,95×**
+- ponte: **3 peças**; torre: **153,6 mm**
+- relatório de confiança: **APPROVED**, 9 de 9 checagens aprovadas
+- concordância estática × corpo rígido no limite da pilha harmônica: **7 de 8** fatores testados
+
+## O que ficou de fora, e por quê
+
+- **Não há falha progressiva nem não-linear**: a plataforma tem estática rígida e FEA linear. O
+  vídeo assume, em texto, que é estática avaliada candidato a candidato.
+- Não há ensaio: as constantes de junta vêm da literatura, não de bancada.
+- A animação da busca geração a geração existe (`videos/blocos-evolucao.mp4`) e entra como
+  abertura, declarada como tal.
 
 ## O que o vídeo não deve afirmar
 
@@ -39,6 +51,11 @@ E mostra o que quase ninguém publica: onde os dois simuladores discordam. No li
 
 Link do artigo no primeiro comentário.
 
+
+Medido: o balanço de melhor pontuação tem **135,9 mm** com 8 peças, utiliza o pino em 33,9% e sai com margem de 2,95×. A ponte tem 3 peças; a torre, 153,6 mm. O relatório de confiança fecha em **APPROVED**, 9 de 9 checagens.
+
+É estática rígida sobre um modelo de junta declarado — a distribuição de forças mais favorável possível. Não é falha progressiva, não é ensaio, e o vídeo diz isso.
+
 `#EngenhariaEstrutural #Simulação #PhysicsAI #ElementosFinitos #Falha`
 
 ## Legenda (EN)
@@ -51,13 +68,18 @@ And it shows what almost nobody publishes: where the two simulators disagree. At
 
 Article link in the first comment.
 
+
+Measured: the best-scoring balancer is **135.9 mm** tall with 8 pieces, loads the pin to 33.9% and comes out with a 2.95× margin. The bridge needs 3 pieces; the tower is 153.6 mm. The confidence report is **APPROVED**, 9 of 9 checks.
+
+It is rigid statics over a declared joint model — the most favourable force distribution possible. Not progressive failure, not a test, and the video says so.
+
 `#StructuralEngineering #Simulation #PhysicsAI #FiniteElement #Failure`
 
 ## Mídia
 
 | arquivo | origem | estado |
 |---|---|---|
+| `serie-2/midia/ep02-colapso-estrutural.mp4` | montagem sobre `examples/bricks/_out` | **produzido** |
+| `serie-2/midia/ep02-colapso-estrutural-poster.jpg` | idem | **produzido** |
 | `serie-1/midia/est-blocos.webp` | `img/exp/blocos-balanco.webp` | existe |
 | `videos/blocos-evolucao.mp4` | site | existe |
-| render do balanço em vídeo | a produzir | **a produzir** |
-| replay de corpo rígido | a produzir | **a produzir** |

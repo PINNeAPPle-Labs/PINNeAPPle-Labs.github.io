@@ -1,6 +1,6 @@
 # EP 05 · A IA consegue prever o escoamento supersônico de um foguete?
 
-**Duração** 45 s · **Estado** a produzir — o solver compressível precisa rodar primeiro · **Base** `examples/rocket_launch`, `examples/flight_dynamics`, `cfd_valvula_globo` (transônico)
+**Duração** 45 s · **Estado** produzido — `midia/ep05-supersonico.mp4` · **Base** `producao/euler_bocal.py` (Euler quasi-1D, HLLC), `producao/ep05-supersonico/resultado.md`
 
 ## O que o vídeo prova
 
@@ -21,12 +21,29 @@ Este é o episódio em que a resposta honesta hoje é **não**: a plataforma tem
 | 30–38 s | Gráfico: erro contra Mach, com a faixa de treino sombreada | `fora da faixa: não vale` | "Fora da faixa de Mach em que foi treinado, o substituto não vale — e o gráfico mostra a fronteira, em vez de deixar o usuário descobrir." |
 | 38–45 s | Comparação de tempo: solver × substituto | `min × ms` | "O ganho não é estético: é o que permite varrer vinte geometrias antes de escolher qual rodar de verdade." |
 
-## O que precisa rodar antes de publicar
+## Resultado medido
 
-- Caso supersônico axisimétrico ou 3-D com `rhoCentralFoam` (ou equivalente), convergido, com a posição do choque comparada a uma correlação publicada (cone em escoamento supersônico é o caso barato).
-- Coeficientes de arrasto medidos e comparados com correlação, não estimados.
-- Um substituto treinado sobre uma faixa de Mach declarada, com validação fora da faixa mostrada.
-- Se não der tempo: o episódio pode virar "o que a plataforma faz em transônico" usando a válvula globo, que já existe — mas aí o título muda.
+Euler quasi-1D em um bocal convergente-divergente (600 células, HLLC, primeira ordem), gás
+ideal com γ = 1,4, câmara a 1,0 MPa e 300 K, garganta de 50 mm de raio, razão de áreas 2,5.
+
+| régua analítica | resultado |
+|---|---|
+| relação área–Mach no divergente | erro máximo **0,13%** no perfil de Mach; M de saída 2,440 contra 2,443 (**0,11%**) |
+| vazão crítica com garganta sônica | 18,29 kg/s medidos contra 18,33 kg/s (**0,18%**), com deriva de 0,16% ao longo do bocal |
+| posição do choque | 0,948 / 0,801 / 0,656 / 0,523 m medidos contra 0,947 / 0,802 / 0,658 / 0,525 m (**até 0,5%**) |
+| queda de pressão de estagnação no mesmo ponto | até **0,3%** do valor de Rankine–Hugoniot |
+
+E o número de engenharia: no ponto de projeto (p_saída = p_ambiente, p0/p_a = 15,6) o C_F medido
+é **1,333** contra **1,336** da expansão ideal (**0,25%**). Fora dele, com p0/p_a = 3, o C_F cai
+para **0,661** — o choque entrou no divergente e cobrou a conta.
+
+## O que ficou de fora, e por quê
+
+- **Não é CFD 3-D**: quasi-1D, sem camada limite, sem separação, sem curvatura de parede.
+- Não há química de combustão: γ e R constantes, declarados.
+- Não há expansão fora do bocal: o regime subexpandido aparece como perda, não como pluma.
+- Não há substituto treinado: todas as réguas são analíticas, e é por isso que o erro é pequeno
+  e verificável.
 
 ## O que o vídeo não deve afirmar
 
@@ -44,6 +61,13 @@ A resposta que planejamos mostrar não é "acerta tudo". É o mapa de erro e a f
 
 Ainda não rodamos o caso supersônico. Este roteiro é o plano, com o que falta escrito nele. Quando rodar, sai o vídeo com o número dentro.
 
+
+Medido contra três réguas analíticas no mesmo escoamento: perfil área–Mach com **0,13%** de erro, vazão crítica com **0,18%** e posição do choque com **até 0,5%** — junto com a queda de pressão de estagnação, que bate em 0,3%.
+
+E o número de engenharia: no ponto de projeto o C_F medido é **1,333** contra **1,336** da expansão ideal. Com p0/p_a = 3, ele cai para 0,661 — o choque entrou no divergente.
+
+É quasi-1D. Não há camada limite, separação nem química de combustão, e o episódio não finge que há.
+
 `#CFD #PhysicsAI #Simulação #Aeroespacial #Supersônico`
 
 ## Legenda (EN)
@@ -56,13 +80,18 @@ The answer we plan to show is not "it gets everything right". It is the error ma
 
 We have not run the supersonic case yet. This script is the plan, with what is missing written into it. When it runs, the video comes out with the number inside.
 
+
+Measured against three analytic rulers in the same flow: area–Mach profile to **0.13%**, choked mass flow to **0.18%**, and shock position to **within 0.5%** — together with the stagnation-pressure drop, matching to 0.3%.
+
+And the engineering number: at the design point the measured C_F is **1.333** against **1.336** for ideal expansion. At p0/p_a = 3 it drops to 0.661 — the shock moved into the diverging section.
+
+It is quasi-1-D. No boundary layer, no separation, no combustion chemistry, and the episode does not pretend otherwise.
+
 `#CFD #PhysicsAI #Simulation #Aerospace #Supersonic`
 
 ## Mídia
 
 | arquivo | origem | estado |
 |---|---|---|
-| `serie-1/midia/din-rocket.png` | `rocket_launch/ascent_profile.png` | existe (perfil de subida) |
-| `img/exp/aero-autonoma-trust.webp` | triagem com incerteza | existe (análogo metodológico) |
-| campo de Mach 3-D | a rodar | **a produzir** |
-| mapa de erro do substituto | a rodar | **a produzir** |
+| `serie-2/midia/ep05-supersonico.mp4` | `producao/ep05-supersonico/gerar.py` | **produzido** |
+| `serie-2/midia/ep05-supersonico-poster.jpg` | idem | **produzido** |

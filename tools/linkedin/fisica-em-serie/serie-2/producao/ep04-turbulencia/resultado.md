@@ -1,13 +1,13 @@
 # EP 04 · resultado medido
 
-Rajada 1-cosine de 7.62 m/s (25 ft/s), 2H = 100 m, a 3000 m, comando fixo, quatro aeronaves do catálogo, cada uma na sua velocidade de encontro.
+Rajada 1-cosine de 7,62 m/s (25 ft/s), 2H = 100 m, a 3000 m, comando fixo, quatro aeronaves do catálogo, cada uma na sua velocidade de encontro.
 
 | aeronave | V [m/s] | pico Δn_z | quase-estacionário | Pratt | erro do quase | erro do Pratt |
 |---|---|---|---|---|---|---|
-| light_ga | 55 | +0.625 | 1.463 | 1.014 | +134.1% | +62.3% |
-| regional_turboprop | 120 | +0.571 | 0.644 | 0.523 | +12.9% | -8.3% |
-| a320 | 128 | +0.357 | 0.396 | 0.321 | +11.1% | -9.9% |
-| motor_glider | 40 | +0.939 | 1.883 | 1.297 | +100.4% | +38.1% |
+| light_ga | 55 | +0,625 | 1,463 | 1,014 | +134,1% | +62,3% |
+| regional_turboprop | 120 | +0,571 | 0,644 | 0,523 | +12,9% | -8,3% |
+| a320 | 128 | +0,357 | 0,396 | 0,321 | +11,1% | -9,9% |
+| motor_glider | 40 | +0,939 | 1,883 | 1,297 | +100,4% | +38,1% |
 
 ## O que isso verifica, e o que isso desmente
 

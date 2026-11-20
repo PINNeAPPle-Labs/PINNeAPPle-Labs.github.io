@@ -28,6 +28,7 @@ MIDIA = SERIE2 / "midia"
 sys.path.insert(0, str(AQUI.parent))
 
 import estilo  # noqa: E402
+import texto  # noqa: E402
 import aguas_rasas as aguas  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.animation import FFMpegWriter  # noqa: E402
@@ -235,7 +236,7 @@ def escrever_resultado(res2, erro_l2, erro_frente, frente_num, frente_ana, vol):
         "- Águas rasas não resolve o que acontece na colisão com a parede: é modelo de "
         "profundidade integrada, sem detalhe 3-D.",
     ]
-    (AQUI / "resultado.md").write_text("\n".join(linhas) + "\n")
+    (AQUI / "resultado.md").write_text(texto.virgula("\n".join(linhas)) + "\n")
     print("resultado.md")
 
 

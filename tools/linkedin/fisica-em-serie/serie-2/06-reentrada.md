@@ -1,6 +1,6 @@
 # EP 06 · A IA consegue prever o aquecimento extremo na reentrada?
 
-**Duração** 45 s · **Estado** a produzir — a condução transiente roda, o acoplamento não · **Base** `digital-twins/atmospheric-reentry` (conceito, implementação pendente), `artigos/fno-placa-fria`, cadeia do módulo `capsule-aeroheating`
+**Duração** 45 s · **Estado** produzido — vídeo em `midia/ep06-reentrada.mp4` · **Base** `producao/ep06-reentrada/gerar.py`, `resultado.md`, `digital-twins/atmospheric-reentry` (conceito), `artigos/fno-placa-fria`, módulo `capsule-aeroheating`
 
 ## O que o vídeo prova
 
@@ -21,12 +21,42 @@ Que o aquecimento de um escudo térmico é um problema de condução transiente 
 | 31–39 s | Gráfico: temperatura na interface para três espessuras | `3 espessuras` | "Três espessuras, três respostas. O gráfico é a decisão de projeto; o render é o slide." |
 | 39–45 s | Checagens: balanço de energia, positividade, convergência | `verificação` | "E a checagem que fecha: o balanço de energia tem de fechar. Se não fecha, não importa quão convincente esteja a imagem." |
 
-## O que precisa rodar antes de publicar
+## Resultado medido
 
-- Caso de condução transiente 1-D e 2-D no escudo, com fluxo prescrito e balanço de energia medido.
-- Uma curva `q(t)` de origem declarada: correlação de engenharia (tipo Sutton-Graves) **ou** um substituto treinado — e o erro de cada uma na superfície.
-- Comparação com uma solução de referência (analítica para o caso 1-D com fluxo degrau; solver para o 2-D).
-- Se entrar CFD do campo externo, é outro projeto: declare que não entra.
+Solver próprio de condução transiente 1-D (backward Euler, 400 células, malha uniforme), laje
+de material térmico com k = 0,55 W/(m·K), ρ = 1.400 kg/m³, cp = 1.250 J/(kg·K). Fluxo prescrito
+na face exposta: pulso gaussiano com pico de **1,2 MW/m² em t = 40 s**, meia-largura de 18 s,
+energia total **38,3 MJ/m²**. Face fria adiabática. O passo de tempo sai de um número de Fourier
+alvo (r = α·dt/dx² = 0,5), não é escolhido por espessura.
+
+| régua | resultado |
+|---|---|
+| face quente contra a solução exata de fluxo constante em meio semi-infinito (r = 0,5, o mesmo que roda) | erro máximo **1,95 %** |
+| a mesma, com passo de tempo 4× menor (r = 0,125) | erro máximo **1,72 %** — convergência temporal medida |
+| balanço de energia (o que entrou pela face × o que está guardado na laje) | **0,08 % a 0,31 %** nas três espessuras |
+
+| espessura | face quente (pico) | face fria (pico) |
+|---|---|---|
+| 10 mm | 6.592 K | **2.088 K** |
+| 25 mm | 6.592 K | **305 K** |
+| 50 mm | 6.592 K | **293 K** |
+
+A face quente idêntica nas três espessuras é o resultado da onda não perceber a espessura no
+tempo do pico — é a assinatura do regime semi-infinito, e ela serve de conferência.
+
+E o número que precisa ser dito em voz alta: **6.592 K** é a temperatura de superfície que o
+modelo devolve, e nenhum material real chega lá — acima da temperatura de decomposição, um
+ablador estaria consumindo massa e segurando a superfície. Esse valor não é um resultado sobre
+o material; é o modelo mostrando que **a ablação não pode ser ignorada** num caso de projeto.
+O número de projeto é a face fria, e ela separa as três espessuras.
+
+## O que ficou de fora, e por quê
+
+- Não há CFD do escoamento: o fluxo q(t) é prescrito, não vem de um solver compressível com
+  química de gás real. Sutton-Graves não entra.
+- Não há ablação, pirólise nem variação de propriedades com a temperatura.
+- Não há caso 2-D: a espessura é a variável que decide, e ela existe em 1-D.
+- Não é um caso de veículo: sem geometria, ângulo de ataque ou trajetória.
 
 ## O que o vídeo não deve afirmar
 
@@ -42,7 +72,9 @@ O que prova alguma coisa é o gráfico: o fluxo de calor no ponto de estagnaçã
 
 Se o fluxo vier de um modelo substituto em vez do escoamento resolvido, o erro dele entra como condição de contorno. É esse erro que precisa estar medido.
 
-Ainda é roteiro. O que temos hoje é a condução transiente e o critério de verificação; o que falta está escrito no documento.
+Os números, medidos: o esquema bate **1,95 %** contra a solução exata de fluxo constante, o balanço de energia fecha em **0,31 %**, e a face fria vai de **2.088 K com 10 mm** a **293 K com 50 mm** no mesmo pulso de 38 MJ/m².
+
+E um número que vale mais que os outros: o modelo sem ablação põe a superfície a **6.592 K**. Nenhum material chega lá — é o cálculo dizendo que a ablação não é um detalhe a ignorar.
 
 `#Aeroespacial #Simulação #PhysicsAI #TransferênciaDeCalor #Reentrada`
 
@@ -54,7 +86,9 @@ What proves something is the plot: the heat flux at the stagnation point over ti
 
 If the flux comes from a surrogate instead of a resolved flow, its error enters as a boundary condition. That error is what needs to be measured.
 
-It is still a script. What we have today is transient conduction and the verification criterion; what is missing is written into the document.
+The numbers, measured: the scheme matches the exact constant-flux solution to **1,95 %**, the energy balance closes to **0,31 %**, and the cold face goes from **2.088 K at 10 mm** to **293 K at 50 mm** under the same 38 MJ/m² pulse.
+
+And one number worth more than the others: the model without ablation puts the surface at **6.592 K**. No material gets there — that is the calculation saying ablation is not a detail to skip.
 
 `#Aerospace #Simulation #PhysicsAI #HeatTransfer #Reentry`
 
@@ -64,5 +98,5 @@ It is still a script. What we have today is transient conduction and the verific
 |---|---|---|
 | `serie-1/midia/term-fno-campos.webp` | campo térmico (análogo) | existe |
 | `digital-twins/atmospheric-reentry` | página do catálogo, marcada como conceito | existe |
-| corte do escudo com isotermas | a rodar | **a produzir** |
-| curva `q(t)` e temperatura na interface | a rodar | **a produzir** |
+| `serie-2/midia/ep06-reentrada.mp4` | produzido por `producao/ep06-reentrada/gerar.py` | **produzido** |
+| `serie-2/midia/ep06-reentrada-poster.jpg` | idem | **produzido** |

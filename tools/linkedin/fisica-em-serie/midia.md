@@ -78,23 +78,33 @@ Acervo pronto para o próximo lote, sem precisar rodar nada:
 - `PINNeAPPle-Labs.github.io/videos/`: 28 vídeos, incluindo `hero-aero.mp4`,
   `blocos-evolucao.mp4`, `rover-traverse.mp4`, `unity-ponte.mp4`, `app1.mp4`, `app8.mp4`.
 
-## O que falta produzir
+## O que foi produzido (Série 2)
 
-Nada nesta lista é decoração: cada item é o que transforma um roteiro da Série 2 em vídeo
-publicável.
+Os dez episódios estão renderizados em `serie-2/midia/`, cada um gerado por um `gerar.py` que
+resolve o problema, verifica contra uma régua declarada e escreve `resultado.md`.
 
-| item | para | esforço | bloqueia |
+| episódio | vídeo | código | régua da verificação |
 |---|---|---|---|
-| campo de saturação de CO₂ animado + balanço de massa | EP 01 | médio | rodar o caso de injeção sobre o SPE10 |
-| render do balanço em vídeo + replay de corpo rígido | EP 02 | baixo | — |
-| animação de dam break + comparação com Martin & Moyce | EP 03 | médio | rodar o caso de superfície livre |
-| animação das quatro respostas à mesma rajada | EP 04 | **baixo** | — (dado já existe) |
-| campo de Mach 3-D + mapa de erro do substituto | EP 05 | alto | rodar caso supersônico |
-| corte do escudo com isotermas + curva `q(t)` | EP 06 | médio | montar o transiente com fluxo prescrito |
-| mapa de perdas + campo térmico no estator | EP 07 | alto | implementar o acoplamento EM→térmico |
-| padrão de espalhamento + curva SBC(ω) | EP 08 | alto | formulação de espalhamento 2-D + Mie |
-| campo na ponta da trinca + curva da/dN | EP 09 | alto | mecânica da fratura (não implementada) |
-| descida com grade de vento + curva de sensibilidade | EP 10 | médio | fechar a malha de controle |
+| EP 01 · CO₂ no subsolo | `ep01-co2-subsolo.mp4` | `producao/ep01-co2-subsolo/` | Buckley-Leverett/Welge analítico + balanço de massa 100,00% |
+| EP 02 · colapso estrutural | `ep02-colapso-estrutural.mp4` | `producao/ep02-colapso/` | resultado auditado do `examples/bricks` |
+| EP 03 · barragem | `ep03-barragem.mp4` | `producao/ep03-barragem/` | Ritter (1892) exato: L2 0,0052 |
+| EP 04 · turbulência | `ep04-turbulencia.mp4` | `producao/ep04-turbulencia/` | quatro aeronaves do catálogo, rajada 1-cos |
+| EP 05 · supersônico | `ep05-supersonico.mp4` | `producao/ep05-supersonico/` | área–Mach, vazão crítica e choque normal |
+| EP 06 · reentrada | `ep06-reentrada.mp4` | `producao/ep06-reentrada/` | fluxo constante em meio semi-infinito |
+| EP 07 · motor | `ep07-motor.mp4` | `producao/ep07-motor/` | exponencial de um nó + balanço de energia |
+| EP 08 · metamaterial | `ep08-metamaterial.mp4` | `producao/ep08-metamaterial/` | série da casa, erro de máquina |
+| EP 09 · trinca | `ep09-trinca.mp4` | `producao/ep09-trinca/` | Feddersen + energia liberada |
+| EP 10 · pouso | `ep10-pouso-foguete.mp4` | `producao/ep10-pouso/` | com controle × sem controle |
 
-O EP 04 é o único que pode ser produzido hoje sem rodar nada novo — por isso ele é o primeiro
-candidato quando a série 2 começar.
+Cada episódio tem também o `-poster.jpg` no mesmo formato 1080×1350 do carrossel, para o caso de
+o vídeo ser publicado como imagem estática.
+
+## O que continua faltando
+
+- **Narração em áudio.** Os vídeos são mudos: trazem os gráficos e o número na tela, e o roteiro
+  de cada `.md` é o texto que vai na locução. Gravar é o próximo passo, e é o único que ainda
+  separa o material de estar publicado.
+- **Legenda queimada.** O texto de apoio está no documento, não no quadro; para LinkedIn com som
+  desligado, vale queimar a linha principal.
+- **Um caso de cliente.** Todos os episódios usam geometria canônica. O primeiro caso real muda o
+  patamar de credibilidade — e nenhum dos números acima depende disso.

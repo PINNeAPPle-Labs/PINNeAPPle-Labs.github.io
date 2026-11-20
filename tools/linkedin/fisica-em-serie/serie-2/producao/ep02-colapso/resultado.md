@@ -2,8 +2,8 @@
 
 Vem do exemplo `examples/bricks/self_modifying_bricks.py` (rodada anterior, `_out/`), não de uma simulação nova: o vídeo é montagem sobre resultado já auditado.
 
-- balanço vencedor: **135.9 mm** com 8 peças, utilização do pino em 33.9%, margem 2.95×
-- ponte: **3 peças**; torre: **153.6 mm**
+- balanço vencedor: **135,9 mm** com 8 peças, utilização do pino em 33,9%, margem 2,95×
+- ponte: **3 peças**; torre: **153,6 mm**
 - relatório de confiança: **APPROVED**, com 9 de 9 checagens aprovadas
 - concordância estática × corpo rígido no limite da pilha harmônica: 7 de 8 fatores testados
 

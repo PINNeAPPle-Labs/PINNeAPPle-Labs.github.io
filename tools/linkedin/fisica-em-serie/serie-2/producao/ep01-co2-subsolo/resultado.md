@@ -2,9 +2,9 @@
 
 Seção do deck público do SPE10 Model 1 (100 × 1 × 20 células, lida do arquivo original), injeção no canto inferior esquerdo e produção no canto oposto, deslocamento bifásico imiscível por IMPES próprio. Razão de permeabilidade na camada: 998915×.
 
-- **Buckley-Leverett 1-D**: erro L1 do perfil de saturação em PVI = 0,3 → **0.001**; saturação de frente de Welge S_f = **0.238**.
-- **Balanço de massa 2-D**: injetado = no domínio + produzido fecha em **100.0%** ao fim da rodada.
-- Saturação máxima no domínio ao final: **0.99**; volume de poros injetado: **0.60**.
+- **Buckley-Leverett 1-D**: erro L1 do perfil de saturação em PVI = 0,3 → **0,001**; saturação de frente de Welge S_f = **0,238**.
+- **Balanço de massa 2-D**: injetado = no domínio + produzido fecha em **100,0%** ao fim da rodada.
+- Saturação máxima no domínio ao final: **0,99**; volume de poros injetado: **0,60**.
 
 ## O que este resultado é
 

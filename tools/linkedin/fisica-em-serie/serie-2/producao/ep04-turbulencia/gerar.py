@@ -36,6 +36,7 @@ sys.path.insert(0, str(RAIZ / "PINNeAPPle"))
 sys.path.insert(0, str(AQUI.parent))
 
 import estilo  # noqa: E402
+import texto  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.animation import FFMpegWriter  # noqa: E402
 
