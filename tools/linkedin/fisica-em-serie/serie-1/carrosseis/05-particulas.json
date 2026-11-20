@@ -1,0 +1,130 @@
+{
+  "slug": "05-particulas",
+  "ordem": 5,
+  "total": 10,
+  "dominio": {"pt": "Multifásicos e partículas", "en": "Multiphase and particles"},
+  "titulo": {
+    "pt": "Milhares de partículas: onde a mistura não é a fase",
+    "en": "Thousands of particles: where mixing is not a phase"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {"pt": "The Physics Atlas · 05/10 · Partículas", "en": "The Physics Atlas · 05/10 · Particles"},
+      "title": {"pt": "Milhares de partículas. Física simples. Contas honestas.", "en": "Thousands of particles. Simple physics. Honest accounting."},
+      "sub": {
+        "pt": "O que é multifásico de verdade nesta plataforma, e o que é transporte — a diferença importa.",
+        "en": "What is genuinely multiphase on this platform, and what is transport — the difference matters."
+      },
+      "image": "midia/mf-stirred.jpg"
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Discreto, partícula por partícula", "en": "Discrete, particle by particle"},
+      "title": {"pt": "Tanque agitado: cada partícula é resolvida", "en": "Stirred tank: every particle is solved"},
+      "image": "midia/mf-stirred.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "DEM puro: colisão, atrito e contato resolvidos para cada partícula. É o caso em que a física discreta aparece inteira — e o custo cresce com o número de partículas, não com o refinamento da malha.",
+        "en": "Pure DEM: collision, friction and contact solved for every particle. It is the case where discrete physics shows itself whole — and the cost grows with the particle count, not the mesh refinement."
+      },
+      "fonte": {"pt": "PINNeAPPle · examples/granular_dem", "en": "PINNeAPPle · examples/granular_dem"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Colapso granular", "en": "Granular collapse"},
+      "title": {"pt": "Uma coluna que desaba", "en": "A column that comes down"},
+      "image": "midia/mf-coluna.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "O experimento clássico de coluna granular: solta-se a lateral, a coluna desaba e o raio final depende do aspecto inicial. É o análogo granular do que se vê num vídeo de barragem — e é <b>granular</b>, não água.",
+        "en": "The classic granular-column experiment: release the side, the column collapses and the final run-out depends on the initial aspect ratio. It is the granular analogue of what a dam video shows — and it is <b>granular</b>, not water."
+      },
+      "ajuste": "contain",
+      "altura": 620,
+      "fonte": {"pt": "PINNeAPPle · examples/geomechanics", "en": "PINNeAPPle · examples/geomechanics"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Mistura não é fase", "en": "Mixing is not a phase"},
+      "title": {"pt": "Kenics: linhas de corrente", "en": "Kenics: streamlines"},
+      "image": "midia/mf-kenics-linhas.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "O misturador estático Kenics mostra transporte e mistura de concentração num escoamento único. É um resultado de <b>advecção e mistura</b>, não de duas fases — e chamar de multifásico seria inflar o que está medido.",
+        "en": "The Kenics static mixer shows transport and concentration mixing in a single-phase flow. It is a result of <b>advection and mixing</b>, not of two phases — and calling it multiphase would inflate what is measured."
+      },
+      "ajuste": "contain",
+      "altura": 620,
+      "fonte": {"pt": "PINNeAPPle · flow_studio", "en": "PINNeAPPle · flow_studio"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "O que a mistura faz", "en": "What mixing does"},
+      "title": {"pt": "Estriações de concentração", "en": "Concentration striations"},
+      "image": "midia/mf-kenics-faixas.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "As faixas são a assinatura do misturador: cada elemento divide e gira o escoamento, e o que entra separado sai estratificado em escalas cada vez menores.",
+        "en": "The striations are the mixer's signature: each element splits and twists the flow, and what enters separate leaves stratified at ever smaller scales."
+      },
+      "ajuste": "contain",
+      "altura": 620
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Acoplamento de verdade", "en": "Real coupling"},
+      "title": {"pt": "Fluido + partícula + parede", "en": "Fluid + particle + wall"},
+      "image": "midia/cfd-erosao.jpg",
+      "chip": "EXPERIMENTO",
+      "nota": {
+        "pt": "Aqui as três coisas interagem: o escoamento carrega a areia, a areia bate na parede, a parede perde material. O resultado ficou entre <b>1,05 e 1,49 vez</b> o ensaio de Vieira et al. (2016).",
+        "en": "Here all three interact: the flow carries the sand, the sand hits the wall, the wall loses material. The result landed between <b>1.05 and 1.49 times</b> the Vieira et al. (2016) experiment."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "artigos/erosao-curva-90", "en": "artigos/erosao-curva-90"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Superfície livre", "en": "Free surface"},
+      "title": {"pt": "A onda que corre sobre o declive", "en": "The wave that runs up the slope"},
+      "image": "midia/mf-free-surface.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Escoamento com superfície livre: a frente de onda, o run-up e a lâmina que sobra depois que ela passa. É a base do que um caso de barragem exigiria — com uma parede a menos.",
+        "en": "Free-surface flow: the wave front, the run-up and the film that stays after it passes. It is the basis a dam case would need — with one wall fewer."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "PINNeAPPle · examples/free_surface", "en": "PINNeAPPle · examples/free_surface"}
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {"pt": "Antes de fechar", "en": "Before you close"},
+      "title": {"pt": "O que este carrossel não está dizendo", "en": "What this carousel is not saying"},
+      "bullets": {
+        "pt": [
+          "Tanque DEM é partícula; Kenics é mistura de uma fase; erosão é fluido-partícula-parede. Três coisas, três nomes.",
+          "Não há resultado bifásico gás-líquido medido nesta casa — e não vamos chamar o Kenics de bifásico para fechar a lista.",
+          "Erosão é fator 2 de tolerância, não precisão de 1%."
+        ],
+        "en": [
+          "The DEM tank is particles; Kenics is single-phase mixing; erosion is fluid-particle-wall. Three things, three names.",
+          "There is no measured gas-liquid two-phase result here — and we will not call Kenics two-phase to round out the list.",
+          "Erosion carries a factor-2 tolerance, not 1% precision."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: erosao-curva-90",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: erosao-curva-90",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

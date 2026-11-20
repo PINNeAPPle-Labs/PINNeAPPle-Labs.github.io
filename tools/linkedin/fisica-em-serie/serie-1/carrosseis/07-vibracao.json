@@ -1,0 +1,132 @@
+{
+  "slug": "07-vibracao",
+  "ordem": 7,
+  "total": 10,
+  "dominio": {"pt": "Acústica e vibrações", "en": "Acoustics and vibration"},
+  "titulo": {
+    "pt": "Vibração: o que a plataforma mede, e o que ela ainda não mede",
+    "en": "Vibration: what the platform measures, and what it does not yet"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {"pt": "The Physics Atlas · 07/10 · Vibração", "en": "The Physics Atlas · 07/10 · Vibration"},
+      "title": {"pt": "A estrutura responde. A pergunta é a quanto.", "en": "The structure responds. The question is by how much."},
+      "sub": {
+        "pt": "Excitação, espectro e resposta — e uma área que ainda não está pronta, dita com essas palavras.",
+        "en": "Excitation, spectrum and response — and one area that is not ready yet, said in those words."
+      },
+      "image": "midia/vib-cantilever.jpg"
+    },
+    {
+      "tipo": "texto",
+      "kicker": {"pt": "A posição honesta", "en": "The honest position"},
+      "title": {"pt": "Não há solver acústico nesta plataforma. Ainda.", "en": "There is no acoustic solver on this platform. Yet."},
+      "bullets": {
+        "pt": [
+          "O que <b>existe e está medido</b>: resposta dinâmica, excitação turbulenta, espectro, sensibilidade a rajada e modos.",
+          "O que <b>não existe</b>: propagação acústica, ruído radiado, transmissão por parede e metamaterial acústico.",
+          "Publicar a segunda lista é o que dá crédito à primeira — e é a regra da casa desde o primeiro artigo."
+        ],
+        "en": [
+          "What <b>exists and is measured</b>: dynamic response, turbulent excitation, spectra, gust sensitivity and modes.",
+          "What <b>does not exist</b>: acoustic propagation, radiated noise, wall transmission and acoustic metamaterials.",
+          "Publishing the second list is what gives the first one credit — and it has been the house rule since the first article."
+        ]
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "A excitação", "en": "The excitation"},
+      "title": {"pt": "Turbulência atmosférica como entrada", "en": "Atmospheric turbulence as input"},
+      "image": "midia/vib-traces.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Séries de rajada geradas com o espectro de von Kármán para três intensidades. A estrutura não escolhe o que a excita: quem escolhe é o modelo de turbulência, e ele precisa estar declarado.",
+        "en": "Gust series generated with the von Kármán spectrum at three intensities. The structure does not choose what excites it: the turbulence model does, and it has to be declared."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "PINNeAPPle · examples/flight_dynamics", "en": "PINNeAPPle · examples/flight_dynamics"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "O espectro", "en": "The spectrum"},
+      "title": {"pt": "Onde a energia está, e onde a estrutura sofre", "en": "Where the energy is, and where the structure suffers"},
+      "image": "midia/vib-psd.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "A densidade espectral de potência é o que liga a excitação à resposta: sem ela, comparar duas aeronaves é comparar desenhos. Com ela, é comparar amplitudes em cada faixa.",
+        "en": "The power spectral density is what links excitation to response: without it, comparing two aircraft is comparing drawings. With it, it is comparing amplitudes in each band."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "A resposta", "en": "The response"},
+      "title": {"pt": "Sensibilidade a rajada, por aeronave", "en": "Gust sensitivity, per aircraft"},
+      "image": "midia/vib-gust.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "A mesma rajada, aplicada a geometrias diferentes, dá respostas diferentes — e é isso que a análise serve para dizer antes do voo, em vez de depois.",
+        "en": "The same gust, applied to different geometries, gives different responses — and that is what the analysis is for: saying it before the flight, instead of after."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "O modo", "en": "The mode"},
+      "title": {"pt": "von Mises numa viga em balanço", "en": "von Mises on a cantilever beam"},
+      "image": "midia/vib-cantilever.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Forma modal e tensão no mesmo lugar. A frequência própria é o que decide se a excitação de um lado do espectro vai encontrar a estrutura do outro.",
+        "en": "Mode shape and stress in the same place. The natural frequency is what decides whether the excitation on one side of the spectrum meets the structure on the other."
+      },
+      "fonte": {"pt": "CalculiX · viga em balanço", "en": "CalculiX · cantilever beam"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "O mínimo denominador", "en": "The smallest case"},
+      "title": {"pt": "Do pêndulo ao amortecimento", "en": "From pendulum to damping"},
+      "image": "midia/vib-pendulo.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Todo método de dinâmica se confere primeiro onde a resposta é conhecida: oscilador, amortecimento, ressonância. Foi assim que as cinco ferramentas do kit foram auditadas.",
+        "en": "Every dynamics method is checked first where the answer is known: oscillator, damping, resonance. That is how the five tools in the kit were audited."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "artigos/ferramentas-de-dinamica", "en": "artigos/ferramentas-de-dinamica"}
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {"pt": "Antes de fechar", "en": "Before you close"},
+      "title": {"pt": "O que este carrossel não está dizendo", "en": "What this carousel is not saying"},
+      "bullets": {
+        "pt": [
+          "Não há resultado de ruído radiado nem de transmissão acústica publicado — porque não foi medido.",
+          "A turbulência aqui é sintética, com espectro declarado: não é atmosfera real medida em voo.",
+          "Quando a área acústica rodar, ela entra neste carrossel com número e limite, como as outras."
+        ],
+        "en": [
+          "There is no published radiated-noise or acoustic-transmission result — because it has not been measured.",
+          "The turbulence here is synthetic, with a declared spectrum: it is not real atmosphere measured in flight.",
+          "When the acoustic area runs, it enters this carousel with a number and a limit, like the others."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: ferramentas-de-dinamica",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: ferramentas-de-dinamica",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

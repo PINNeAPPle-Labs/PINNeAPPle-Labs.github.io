@@ -1,0 +1,136 @@
+{
+  "slug": "09-geofisica",
+  "ordem": 9,
+  "total": 10,
+  "dominio": {"pt": "Geofísica e energia", "en": "Geophysics and energy"},
+  "titulo": {
+    "pt": "Debaixo do chão e acima do clima: escalas que não cabem numa bancada",
+    "en": "Below the ground and above the weather: scales that do not fit a bench"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {"pt": "The Physics Atlas · 09/10 · Geofísica", "en": "The Physics Atlas · 09/10 · Geophysics"},
+      "title": {"pt": "O reservatório não cabe numa bancada.", "en": "The reservoir does not fit on a bench."},
+      "sub": {
+        "pt": "Reservatório, aquífero, clima e solo: as escalas em que a validação tem de ser feita contra dado, não contra intuição.",
+        "en": "Reservoir, aquifer, climate and soil: the scales where validation has to be against data, not against intuition."
+      },
+      "image": "midia/geo-simr.jpg"
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Escala de campo", "en": "Field scale"},
+      "title": {"pt": "Reservatório: Darcy em quilômetros", "en": "Reservoir: Darcy across kilometres"},
+      "image": "midia/geo-simr.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Escoamento em meio poroso resolvido com um solver de reservatório aberto (OPM Flow), sobre os decks públicos do SPE10. É o caso em que a permissão de publicação passa por citar o dado de entrada, não por desenhar um campo.",
+        "en": "Porous-media flow solved with an open reservoir simulator (OPM Flow), on the public SPE10 decks. It is the case where the licence to publish runs through citing the input data, not through drawing a field."
+      },
+      "fonte": {"pt": "PINNeAPPle-SimR · OPM Flow · SPE10", "en": "PINNeAPPle-SimR · OPM Flow · SPE10"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Escala de poro", "en": "Pore scale"},
+      "title": {"pt": "O que o Darcy não vê", "en": "What Darcy does not see"},
+      "image": "midia/geo-lbm.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Lattice-Boltzmann em torno de esferas: a permeabilidade não é um parâmetro do problema, é o resultado dele. É assim que uma propriedade de entrada de reservatório pode ser conferida em vez de assumida.",
+        "en": "Lattice-Boltzmann around spheres: permeability is not a parameter of the problem, it is its result. That is how a reservoir input property can be checked instead of assumed."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "dado",
+      "kicker": {"pt": "Clima como problema de comparação", "en": "Climate as a comparison problem"},
+      "title": {"pt": "28 modelos, uma régua só", "en": "28 models, one yardstick"},
+      "num": {"pt": "0,42", "en": "0.42"},
+      "numlabel": {
+        "pt": "de correlação de anomalia a 24 meses — contra 0,33 do AR e 0 da climatologia",
+        "en": "anomaly correlation at 24 months — against 0.33 for AR and 0 for climatology"
+      },
+      "nota": {
+        "pt": "Cinco famílias, os mesmos dados (OISST v2.1), a mesma janela e a mesma regra de significância. Ganha um oscilador físico de 15 parâmetros. As PINNs construídas sobre ele ficam em <b>−0,69</b> onde ele fica em 0,80.",
+        "en": "Five families, the same data (OISST v2.1), the same window and the same significance rule. A 15-parameter physical oscillator wins. The PINNs built on top of it sit at <b>−0.69</b> where it sits at 0.80."
+      },
+      "image": "midia/geo-nino.webp",
+      "ajuste": "contain",
+      "altura": 340,
+      "fonte": {"pt": "artigos/el-nino-28-modelos", "en": "artigos/el-nino-28-modelos"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Campo atmosférico", "en": "Atmospheric field"},
+      "title": {"pt": "Ondas de calor como campo previsto", "en": "Heat waves as a forecast field"},
+      "image": "midia/geo-heatdome.png",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "Altura geopotencial em 500 hPa num evento de calor extremo. A pergunta não é se o campo é plausível, é contra qual análise ele foi comparado e com que habilidade — a mesma régua do ranking do El Niño.",
+        "en": "500 hPa geopotential height during an extreme heat event. The question is not whether the field is plausible, but what analysis it was compared against and with what skill — the same yardstick as the El Niño ranking."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "PINNeAPPle · examples/weather_forecasting", "en": "PINNeAPPle · examples/weather_forecasting"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Solo e geotecnia", "en": "Soil and geotechnics"},
+      "title": {"pt": "Quando o material é o próprio risco", "en": "When the material is the risk itself"},
+      "image": "midia/mf-coluna.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "O mesmo DEM do carrossel de partículas, aqui como problema geotécnico: colapso, ângulo de repouso e alcance final. É o tipo de caso em que a simulação serve para delimitar cenário, não para prever o evento.",
+        "en": "The same DEM as in the particles carousel, here as a geotechnical problem: collapse, angle of repose and final run-out. It is the kind of case where simulation bounds a scenario instead of predicting the event."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "texto",
+      "kicker": {"pt": "A regra desta área", "en": "The rule in this area"},
+      "title": {"pt": "Onde não existe verdade, existe protocolo", "en": "Where there is no truth, there is protocol"},
+      "bullets": {
+        "pt": [
+          "Reservatório e clima não têm solução analítica: a régua passa a ser o dado observado, a janela fixa e a significância declarada.",
+          "O solver se confere antes contra o que tem resposta: a onda de Kelvin viaja a <b>2,689 m/s</b> contra 2,7 m/s da teoria.",
+          "Modelo que perde é publicado perdendo: é o que permite escolher com orçamento em vez de entusiasmo."
+        ],
+        "en": [
+          "Reservoir and climate have no analytical solution: the yardstick becomes observed data, a fixed window and declared significance.",
+          "The solver is checked first against what has an answer: the Kelvin wave travels at <b>2.689 m/s</b> against 2.7 m/s from theory.",
+          "A model that loses is published losing: that is what lets the choice be made with a budget instead of with enthusiasm."
+        ]
+      }
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {"pt": "Antes de fechar", "en": "Before you close"},
+      "title": {"pt": "O que este carrossel não está dizendo", "en": "What this carousel is not saying"},
+      "bullets": {
+        "pt": [
+          "A avaliação do El Niño é retrospectiva, com splits fixos: não é previsão operacional.",
+          "Não há resultado de migração de CO₂ em reservatório real medido aqui — há o caso, o solver e o caminho para medi-lo.",
+          "Geomecânica é modelo constitutivo escolhido; solo real tem variabilidade que nenhum modelo de 15 parâmetros carrega."
+        ],
+        "en": [
+          "The El Niño evaluation is retrospective, with fixed splits: it is not an operational forecast.",
+          "There is no measured CO₂ migration result in a real reservoir here — there is the case, the solver and the path to measuring it.",
+          "Geomechanics is a chosen constitutive model; real soil carries variability no 15-parameter model holds."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: el-nino-28-modelos",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: el-nino-28-modelos",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

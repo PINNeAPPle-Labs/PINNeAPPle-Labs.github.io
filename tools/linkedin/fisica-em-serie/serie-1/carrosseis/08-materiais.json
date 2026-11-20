@@ -1,0 +1,130 @@
+{
+  "slug": "08-materiais",
+  "ordem": 8,
+  "total": 10,
+  "dominio": {"pt": "Física dos materiais", "en": "Materials physics"},
+  "titulo": {
+    "pt": "Do átomo ao componente: três escalas de material",
+    "en": "From atom to component: three scales of material"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {"pt": "The Physics Atlas · 08/10 · Materiais", "en": "The Physics Atlas · 08/10 · Materials"},
+      "title": {"pt": "Do átomo ao componente.", "en": "From the atom to the component."},
+      "sub": {
+        "pt": "Três escalas resolvidas por métodos diferentes — e uma quarta que ainda não está implementada.",
+        "en": "Three scales solved by different methods — and a fourth that is not implemented yet."
+      },
+      "image": "midia/mat-md.jpg"
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Escala atômica", "en": "Atomic scale"},
+      "title": {"pt": "Dinâmica molecular: o material como ele é", "en": "Molecular dynamics: the material as it is"},
+      "image": "midia/mat-md.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Átomos, potencial de interação e trajetória. Nesta escala não se fala em tensão nem em módulo: mede-se o que as partículas fazem, e é disso que as propriedades do contínuo precisam nascer.",
+        "en": "Atoms, interaction potential and trajectory. At this scale one does not speak of stress or modulus: what is measured is what the particles do, and that is where continuum properties have to come from."
+      },
+      "fonte": {"pt": "PINNeAPPle · examples/molecular", "en": "PINNeAPPle · examples/molecular"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "O que sai da escala atômica", "en": "What comes out of the atomic scale"},
+      "title": {"pt": "Difusão, energia e estrutura", "en": "Diffusion, energy and structure"},
+      "image": "midia/mat-md-dash.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Temperatura, energia e deslocamento quadrático médio ao longo da trajetória. São estas as quantidades que viram coeficiente de difusão e, depois, propriedade de entrada de um modelo de contínuo.",
+        "en": "Temperature, energy and mean squared displacement along the trajectory. These are the quantities that become a diffusion coefficient and, later, an input property for a continuum model."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Plasticidade", "en": "Plasticity"},
+      "title": {"pt": "O esmagamento, resolvido com plasticidade J2", "en": "Crush, solved with J2 plasticity"},
+      "image": "midia/est-crash-superficie.webp",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Contato penalizado, plasticidade J2, 2.783 nós e 1.480 hexaedros. O cupom roda num laptop — e é essa a escala em que o comportamento do material pode ser conferido sem uma campanha de ensaios.",
+        "en": "Penalty contact, J2 plasticity, 2,783 nodes and 1,480 hexahedra. The coupon runs on a laptop — and that is the scale at which material behaviour can be checked without a test campaign."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Desgaste", "en": "Wear"},
+      "title": {"pt": "Material saindo da peça, medido", "en": "Material leaving the part, measured"},
+      "image": "midia/mp-wear.jpg",
+      "chip": "EXPERIMENTO",
+      "nota": {
+        "pt": "O desgaste é a interface entre o material e o escoamento: a partícula que risca a parede é o mesmo fenômeno da curva de 90°, visto pela parede. A taxa fica dentro do fator 2 do ensaio publicado.",
+        "en": "Wear is the interface between material and flow: the particle scoring the wall is the same phenomenon as the 90° bend, seen from the wall. The rate lands inside the factor-2 band of the published experiment."
+      },
+      "fonte": {"pt": "artigos/erosao-curva-90", "en": "artigos/erosao-curva-90"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Propriedade termodinâmica", "en": "Thermodynamic property"},
+      "title": {"pt": "O material que obedece às próprias identidades", "en": "The material that obeys its own identities"},
+      "image": "midia/mat-co2-erros.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "A rede que aprende a energia de Helmholtz e tira cada propriedade por derivada mantém as seis identidades termodinâmicas abaixo de 0,0021%. A que acerta cada número isolado viola a de c_v em 1.100%.",
+        "en": "The network that learns the Helmholtz energy and takes every property as a derivative keeps all six thermodynamic identities below 0.0021%. The one that gets each number on its own violates the c_v identity by 1,100%."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "artigos/co2-supercritico", "en": "artigos/co2-supercritico"}
+    },
+    {
+      "tipo": "texto",
+      "kicker": {"pt": "O que falta", "en": "What is missing"},
+      "title": {"pt": "Trinca, fadiga e microestrutura: ainda não", "en": "Crack, fatigue and microstructure: not yet"},
+      "bullets": {
+        "pt": [
+          "<b>Mecânica da fratura</b> — não implementada. Sem isso, não há propagação de trinca medida, só ilustração.",
+          "<b>Fadiga</b> — não implementada. Depende de histórico de carregamento e de curva S-N, e nenhuma das duas está no repositório com resultado.",
+          "<b>Microestrutura</b> — existe na escala atômica (MD), não no contínuo: crescimento de grão e solidificação não estão resolvidos."
+        ],
+        "en": [
+          "<b>Fracture mechanics</b> — not implemented. Without it there is no measured crack growth, only illustration.",
+          "<b>Fatigue</b> — not implemented. It needs a load history and an S-N curve, and neither is in the repository with a result.",
+          "<b>Microstructure</b> — exists at the atomic scale (MD), not in the continuum: grain growth and solidification are not solved."
+        ]
+      }
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {"pt": "Antes de fechar", "en": "Before you close"},
+      "title": {"pt": "O que este carrossel não está dizendo", "en": "What this carousel is not saying"},
+      "bullets": {
+        "pt": [
+          "Não há ensaio de tração nem de dureza nesta casa: o material entra por propriedade declarada, não por caracterização própria.",
+          "A ponte entre MD e contínuo é um projeto em aberto, não um pipeline pronto.",
+          "Nada aqui substitui um laudo de material."
+        ],
+        "en": [
+          "There is no tensile or hardness test in this house: the material enters as a declared property, not as our own characterisation.",
+          "The bridge between MD and continuum is an open project, not a finished pipeline.",
+          "Nothing here replaces a material report."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: pico-de-crash-com-surrogate · co2-supercritico · erosao-curva-90",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: pico-de-crash-com-surrogate · co2-supercritico · erosao-curva-90",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

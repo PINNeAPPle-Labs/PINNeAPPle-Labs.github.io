@@ -1,0 +1,205 @@
+{
+  "slug": "03-calor",
+  "ordem": 3,
+  "total": 10,
+  "dominio": {
+    "pt": "Termodinâmica e transferência de calor",
+    "en": "Thermodynamics and heat transfer"
+  },
+  "titulo": {
+    "pt": "Calor: campo certo e física violada são duas coisas",
+    "en": "Heat: a right field and a violated physics are two things"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {
+        "pt": "The Physics Atlas · 03/10 · Calor",
+        "en": "The Physics Atlas · 03/10 · Heat"
+      },
+      "title": {
+        "pt": "O campo está certo. E agora?",
+        "en": "The field is right. Now what?"
+      },
+      "sub": {
+        "pt": "Um dissipador, uma placa fria e um permutador em operação — cada um com o erro ao lado.",
+        "en": "A heat sink, a cold plate and an exchanger in operation — each with its error beside it."
+      },
+      "image": "midia/term-twin.jpg"
+    },
+    {
+      "tipo": "dado",
+      "kicker": {
+        "pt": "Dimensionamento térmico",
+        "en": "Thermal sizing"
+      },
+      "title": {
+        "pt": "Sete geometrias de dissipador, um substituto",
+        "en": "Seven heat-sink geometries, one surrogate"
+      },
+      "num": {
+        "pt": "227.059×",
+        "en": "227,059×"
+      },
+      "numlabel": {
+        "pt": "mais rápido que o FEA 3-D, com 4,46% de erro médio e 7,35% no pior caso",
+        "en": "faster than the 3-D FEA, at 4.46% mean error and 7.35% worst case"
+      },
+      "nota": {
+        "pt": "Sete geometrias resolvidas em FEniCS/dolfinx, malha em gmsh, e a comparação feita <b>em pontos que não estavam no treino</b>. A previsão é determinística: três rodadas, em dias diferentes, devolveram os mesmos números.",
+        "en": "Seven geometries solved in FEniCS/dolfinx, meshed in gmsh, compared <b>at points that were not in the training set</b>. The prediction is deterministic: three runs, on different days, returned the same numbers."
+      },
+      "image": "midia/term-heatsink.jpg",
+      "ajuste": "contain",
+      "altura": 330,
+      "fonte": {
+        "pt": "artigos/substituto-termico",
+        "en": "artigos/substituto-termico"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "O substituto acerta",
+        "en": "The surrogate gets it right"
+      },
+      "title": {
+        "pt": "1,7% de erro em 50 layouts de placa fria",
+        "en": "1.7% error across 50 cold-plate layouts"
+      },
+      "image": "midia/term-fno-campos.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "FNO2d com 1,18 milhão de parâmetros, treinado em 133 s. Erro relativo L2 de <b>1,7%</b> fora do treino e o ponto quente errando no máximo <b>0,24 K</b>. E 1,5 vez mais rápido que o volumes finitos — não mil vezes.",
+        "en": "An FNO2d with 1.18 million parameters, trained in 133 s. Relative L2 error of <b>1.7%</b> out of training, with the hotspot erring by at most <b>0.24 K</b>. And 1.5 times faster than finite volumes — not a thousand."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "artigos/fno-placa-fria",
+        "en": "artigos/fno-placa-fria"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "E o cartão diz não",
+        "en": "And the card says no"
+      },
+      "title": {
+        "pt": "Resíduo de PDE: 0,164 contra o limite de 0,1",
+        "en": "PDE residual: 0.164 against the 0.1 limit"
+      },
+      "image": "midia/term-fno-checagens.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "Decisão: <b>REJECT</b>. Acertar o campo de referência e satisfazer a equação são duas coisas diferentes, e a segunda é a que decide se o resultado entra num projeto. Passaram a condição de contorno e a positividade — as duas mais fáceis.",
+        "en": "Decision: <b>REJECT</b>. Matching the reference field and satisfying the equation are two different things, and the second decides whether the result enters a design. The boundary condition and positivity checks passed — the two easy ones."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "artigos/fno-placa-fria",
+        "en": "artigos/fno-placa-fria"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Do solver para a planta",
+        "en": "From the solver to the plant floor"
+      },
+      "title": {
+        "pt": "Um permutador que avisou 2,6 horas antes",
+        "en": "An exchanger that warned 2.6 hours ahead"
+      },
+      "image": "midia/term-twin.jpg",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "Gêmeo do HX-201 ajustado só com o histórico anterior à janela de validação, com uma sonda redundante fora do ajuste servindo de juiz: <b>0,216 °C</b> de erro e 95,5% de cobertura da banda.",
+        "en": "The HX-201 twin was fitted only on history before the validation window, with a redundant probe kept out of the fit as judge: <b>0.216 °C</b> of error and 95.5% band coverage."
+      },
+      "fonte": {
+        "pt": "artigos/gemeo-hx201",
+        "en": "artigos/gemeo-hx201"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "No Studio",
+        "en": "In the Studio"
+      },
+      "title": {
+        "pt": "\"Dissipador de aletas para 60 W\"",
+        "en": "\"Fin heatsink for 60 W\""
+      },
+      "image": "midia/term-studio.jpg",
+      "chip": "STUDIO",
+      "nota": {
+        "pt": "A frase entra em português comum; sai o valor, as verificações uma por uma com valor e limite, a versão do código e o hash de cada arquivo. Se o seu caso cai fora da faixa validada, a resposta é essa — e não um campo colorido.",
+        "en": "The sentence goes in plain language; out comes the value, the checks one by one with value and limit, the code version and the hash of every file. If your case falls outside the validated range, that is the answer — not a colourful field."
+      },
+      "fonte": {
+        "pt": "PINNeAPPle Studio · dimensionamento térmico",
+        "en": "PINNeAPPle Studio · thermal sizing"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Onde o erro não é o critério",
+        "en": "Where error is not the criterion"
+      },
+      "title": {
+        "pt": "CO₂ perto do ponto crítico",
+        "en": "CO₂ near the critical point"
+      },
+      "image": "midia/term-co2.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "A rede direta é <b>16× mais precisa</b> e viola a identidade de c_v em <b>1.100%</b>. A rede de potencial erra mais e mantém as seis identidades abaixo de 0,0021%. Para alimentar um solver de CFD, quem serve é a segunda.",
+        "en": "The direct network is <b>16× more accurate</b> and violates the c_v identity by <b>1,100%</b>. The potential network errs more and keeps all six identities below 0.0021%. To feed a CFD solver, the second one is the one that serves."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "artigos/co2-supercritico",
+        "en": "artigos/co2-supercritico"
+      }
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {
+        "pt": "Antes de fechar",
+        "en": "Before you close"
+      },
+      "title": {
+        "pt": "O que este carrossel não está dizendo",
+        "en": "What this carousel is not saying"
+      },
+      "bullets": {
+        "pt": [
+          "O alvo do CO₂ é uma equação de estado (Span & Wagner), não um ensaio: mede-se fidelidade ao modelo de referência.",
+          "4,46% é a média dentro da faixa treinada; fora dela, o erro não está medido. Determinismo não é acerto.",
+          "A antecedência de 2,6 h vem de uma extrapolação linear, com o erro reportado."
+        ],
+        "en": [
+          "The CO₂ target is an equation of state (Span & Wagner), not a test: what is measured is fidelity to the reference model.",
+          "4.46% is the mean inside the trained range; outside it, the error is unmeasured. Determinism is not accuracy.",
+          "The 2.6 h lead comes from a linear extrapolation, with the error reported."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: fno-placa-fria · substituto-termico · gemeo-hx201 · co2-supercritico",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: fno-placa-fria · substituto-termico · gemeo-hx201 · co2-supercritico",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

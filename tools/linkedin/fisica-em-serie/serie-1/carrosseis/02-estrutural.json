@@ -1,0 +1,209 @@
+{
+  "slug": "02-estrutural",
+  "ordem": 2,
+  "total": 10,
+  "dominio": {
+    "pt": "Mecânica estrutural",
+    "en": "Structural mechanics"
+  },
+  "titulo": {
+    "pt": "Da tensão à falha: o que a plataforma mede em estrutural",
+    "en": "From stress to failure: what the platform measures in structures"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {
+        "pt": "The Physics Atlas · 02/10 · Estrutural",
+        "en": "The Physics Atlas · 02/10 · Structural"
+      },
+      "title": {
+        "pt": "Da tensão à falha.",
+        "en": "From stress to failure."
+      },
+      "sub": {
+        "pt": "Quatro medições estruturais, cada uma contra uma referência que não é o modelo.",
+        "en": "Four structural measurements, each against a reference that is not the model."
+      },
+      "image": "midia/est-bracket-render.jpg"
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "O caso de base",
+        "en": "The baseline case"
+      },
+      "title": {
+        "pt": "O suporte em L, em CalculiX",
+        "en": "The L-bracket, in CalculiX"
+      },
+      "image": "midia/est-bracket-fea.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Malha própria, material próprio, campo resolvido. Antes de qualquer alegação sobre um componente real, o caso de base precisa fechar — e ele fecha.",
+        "en": "Our own mesh, our own material, the field solved. Before any claim about a real component, the baseline case has to close — and it does."
+      },
+      "fonte": {
+        "pt": "CalculiX · exemplo de prepomax",
+        "en": "CalculiX · prepomax example"
+      }
+    },
+    {
+      "tipo": "dado",
+      "kicker": {
+        "pt": "O substituto, num crash",
+        "en": "The surrogate, on a crash"
+      },
+      "title": {
+        "pt": "O pico de deslocamento, num projeto novo",
+        "en": "Peak displacement, on a design never seen"
+      },
+      "num": {
+        "pt": "24,4%",
+        "en": "24.4%"
+      },
+      "numlabel": {
+        "pt": "de erro médio no pico, nos 30 projetos mantidos fora do treino",
+        "en": "mean error on the peak, across the 30 designs held out of training"
+      },
+      "nota": {
+        "pt": "O mesmo modelo, sem o vetor das sete variáveis de projeto, vai a <b>41,7%</b>: ele converge para o campo médio porque nada no que recebe diz qual projeto está sendo pedido. Solver: 3,7 min por projeto. Substituto: 197 ms.",
+        "en": "The same model, without the vector of seven design variables, goes to <b>41.7%</b>: it converges to the mean field because nothing it receives says which design is being asked about. Solver: 3.7 min per design. Surrogate: 197 ms."
+      },
+      "image": "midia/est-crash-pico.webp",
+      "ajuste": "contain",
+      "altura": 340,
+      "fonte": {
+        "pt": "artigos/pico-de-crash-com-surrogate",
+        "en": "artigos/pico-de-crash-com-surrogate"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Onde o substituto erra",
+        "en": "Where the surrogate errs"
+      },
+      "title": {
+        "pt": "A referência e a previsão, na mesma escala",
+        "en": "Reference and prediction, same scale"
+      },
+      "image": "midia/est-crash-superficie.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "A referência concentra o esmagamento no centro da viga; o substituto espalha uma faixa pela face do para-choque e perde o pico. O erro não é ruído: é viés de 2,7 mm, e está declarado.",
+        "en": "The reference concentrates the crush at the centre of the beam; the surrogate spreads a band across the bumper face and misses the peak. The error is not noise: it is a 2.7 mm bias, and it is declared."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "artigos/pico-de-crash-com-surrogate",
+        "en": "artigos/pico-de-crash-com-surrogate"
+      }
+    },
+    {
+      "tipo": "dado",
+      "kicker": {
+        "pt": "Busca com física no laço",
+        "en": "Search with physics in the loop"
+      },
+      "title": {
+        "pt": "Até onde uma construção de bloco vai",
+        "en": "How far a brick build reaches"
+      },
+      "num": {
+        "pt": "135,9 mm",
+        "en": "135.9 mm"
+      },
+      "numlabel": {
+        "pt": "de balanço com 8 peças — a pilha harmônica clássica chega a 86,7 mm, um bloco só a 31,9 mm",
+        "en": "of overhang with 8 parts — the classic harmonic stack reaches 86.7 mm, a single brick 31.9 mm"
+      },
+      "nota": {
+        "pt": "A tração de pico no pino mais carregado ficou em 0,333 N, 34% do limite de 0,98 N. Cada candidato é julgado por estática rígida antes de virar resultado.",
+        "en": "Peak tension on the most loaded stud was 0.333 N, 34% of the 0.98 N limit. Every candidate is judged by rigid statics before it becomes a result."
+      },
+      "image": "midia/est-blocos.webp",
+      "altura": 360,
+      "fonte": {
+        "pt": "artigos/construcoes-de-bloco",
+        "en": "artigos/construcoes-de-bloco"
+      }
+    },
+    {
+      "tipo": "texto",
+      "kicker": {
+        "pt": "Antes de otimizar",
+        "en": "Before optimising"
+      },
+      "title": {
+        "pt": "A física do modelo foi conferida contra nove formas fechadas",
+        "en": "The model's physics was checked against nine closed forms"
+      },
+      "bullets": {
+        "pt": [
+          "Pilha harmônica, tombamento de um bloco, balanço em um pino, empurrão em torre, reações de apoio.",
+          "Uma viga resolvida por FEA de voxels ficou a <b>0,4% de Timoshenko</b> (0,0327 contra 0,0328 mm).",
+          "Estática e simulador de corpo rígido concordam em <b>90%, 100% e 75%</b> dos candidatos — e a discordância está publicada, não escondida."
+        ],
+        "en": [
+          "Harmonic stack, tipping of one brick, one-stud overhang, tower push, support reactions.",
+          "A beam solved by voxel FEA landed within <b>0.4% of Timoshenko</b> (0.0327 against 0.0328 mm).",
+          "Statics and the rigid-body simulator agree on <b>90%, 100% and 75%</b> of the candidates — and the disagreement is published, not hidden."
+        ]
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Num componente real",
+        "en": "On a real component"
+      },
+      "title": {
+        "pt": "von Mises no chassi",
+        "en": "von Mises on the chassis"
+      },
+      "image": "midia/est-chassis.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "O mesmo pipeline de malha, solver e pós-processamento que fecha nos casos de base é o que roda aqui. O que muda é a geometria, não o critério.",
+        "en": "The same mesh, solver and post-processing pipeline that closes on the baseline cases is the one running here. What changes is the geometry, not the criterion."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {
+        "pt": "Antes de fechar",
+        "en": "Before you close"
+      },
+      "title": {
+        "pt": "O que este carrossel não está dizendo",
+        "en": "What this carousel is not saying"
+      },
+      "bullets": {
+        "pt": [
+          "O crash é um cupom de componente, não um veículo: viga DP1000 em duas crash boxes DP600, malha fixa.",
+          "O erro é contra o próprio solver, não contra ensaio — e a espessura entra pela tensão de escoamento, o que subestima flexão.",
+          "Otimização de blocos não prova fabricabilidade: prova que a estática que julgou o candidato foi conferida antes."
+        ],
+        "en": [
+          "The crash is a component coupon, not a vehicle: a DP1000 beam on two DP600 crash boxes, fixed mesh.",
+          "The error is against the solver itself, not against a test — and thickness enters through flow stress, which under-represents bending.",
+          "Block optimisation does not prove manufacturability: it proves the statics that judged the candidate was checked first."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: pico-de-crash-com-surrogate · construcoes-de-bloco",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: pico-de-crash-com-surrogate · construcoes-de-bloco",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

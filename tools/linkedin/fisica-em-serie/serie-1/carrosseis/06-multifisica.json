@@ -1,0 +1,144 @@
+{
+  "slug": "06-multifisica",
+  "ordem": 6,
+  "total": 10,
+  "dominio": {"pt": "Multifísica", "en": "Multiphysics"},
+  "titulo": {
+    "pt": "Uma simulação não basta: quando a física interage com a física",
+    "en": "One simulation is not enough: when physics interacts with physics"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {"pt": "The Physics Atlas · 06/10 · Multifísica", "en": "The Physics Atlas · 06/10 · Multiphysics"},
+      "title": {"pt": "Uma simulação não basta.", "en": "One simulation is not enough."},
+      "sub": {
+        "pt": "O que a plataforma acopla hoje, o que acopla em parte e o que ainda não acopla — com o nome certo em cada caso.",
+        "en": "What the platform couples today, what it couples in part and what it does not couple yet — each called by its right name."
+      },
+      "image": "midia/mp-stress.jpg"
+    },
+    {
+      "tipo": "texto",
+      "kicker": {"pt": "Cinco acoplamentos", "en": "Five couplings"},
+      "title": {"pt": "O que a engenharia cobra de uma plataforma multifísica", "en": "What engineering asks of a multiphysics platform"},
+      "bullets": {
+        "pt": [
+          "<b>Fluido + partícula + parede</b> — erosão, desgaste, ciclones. <i>Implementado e comparado com ensaio.</i>",
+          "<b>Condução + convecção (CHT)</b> — dissipadores, placas frias, trocadores. <i>Implementado, com resíduo medido.</i>",
+          "<b>Temperatura + tensão</b> — gradiente térmico, tensão residual. <i>Parcial: campos resolvidos em separado.</i>",
+          "<b>Eletromagnético + térmico + estrutural</b> — motores, transformadores. <i>Parcial: só a parte magnética está medida.</i>",
+          "<b>Fluido + estrutura (FSI)</b> — asa flexível, válvula, flutter. <i>Ainda não.</i>"
+        ],
+        "en": [
+          "<b>Fluid + particle + wall</b> — erosion, wear, cyclones. <i>Implemented and compared against an experiment.</i>",
+          "<b>Conduction + convection (CHT)</b> — heat sinks, cold plates, exchangers. <i>Implemented, with a measured residual.</i>",
+          "<b>Temperature + stress</b> — thermal gradients, residual stress. <i>Partial: fields solved separately.</i>",
+          "<b>Electromagnetic + thermal + structural</b> — motors, transformers. <i>Partial: only the magnetic side is measured.</i>",
+          "<b>Fluid + structure (FSI)</b> — flexible wing, valve, flutter. <i>Not yet.</i>"
+        ]
+      },
+      "nota": {
+        "pt": "A lista vale mais com a terceira coluna do que sem ela.",
+        "en": "The list is worth more with that third column than without it."
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "CHT", "en": "CHT"},
+      "title": {"pt": "Condução no sólido, convecção no fluido, um campo só", "en": "Conduction in the solid, convection in the fluid, one field"},
+      "image": "midia/term-fno-campos.webp",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "O substituto da placa fria acerta 1,7% do campo de referência — e é reprovado no resíduo. Num caso acoplado isso pesa mais, não menos: o erro de um lado vira condição de contorno do outro.",
+        "en": "The cold-plate surrogate matches the reference field to 1.7% — and is rejected on the residual. In a coupled case that weighs more, not less: the error on one side becomes the boundary condition on the other."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "artigos/fno-placa-fria", "en": "artigos/fno-placa-fria"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Fluido + partícula + parede", "en": "Fluid + particle + wall"},
+      "title": {"pt": "O acoplamento que já passou por um ensaio", "en": "The coupling that already met an experiment"},
+      "image": "midia/cfd-erosao.jpg",
+      "chip": "EXPERIMENTO",
+      "nota": {
+        "pt": "O escoamento move a partícula, a partícula risca a parede, a parede muda — e a taxa de erosão fica entre <b>1,05 e 1,49 vez</b> o medido por Vieira et al. (2016). Acoplamento fraco, em sequência, com o resultado conferido fora de casa.",
+        "en": "The flow moves the particle, the particle scores the wall, the wall changes — and the erosion rate lands between <b>1.05 and 1.49 times</b> what Vieira et al. (2016) measured. Weak coupling, in sequence, with the result checked outside the house."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Temperatura + tensão", "en": "Temperature + stress"},
+      "title": {"pt": "O campo de tensão em 3-D, validado contra FEM", "en": "The 3-D stress field, validated against FEM"},
+      "image": "midia/mp-stress.jpg",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "É a metade estrutural do acoplamento termomecânico, resolvida e validada. A outra metade — passar o campo de temperatura como carregamento térmico e comparar com um caso de referência — é o próximo passo, e ainda não tem número publicado.",
+        "en": "This is the structural half of the thermomechanical coupling, solved and validated. The other half — feeding the temperature field in as a thermal load and comparing against a reference case — is the next step, and it has no published number yet."
+      },
+      "fonte": {"pt": "PINNeAPPle · apps/d24-validate", "en": "PINNeAPPle · apps/d24-validate"}
+    },
+    {
+      "tipo": "media",
+      "kicker": {"pt": "Processo, não componente", "en": "Process, not component"},
+      "title": {"pt": "Uma panela de aço, do ciclo ao substituto", "en": "A steel ladle, from cycle to surrogate"},
+      "image": "midia/mp-ladle.png",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "O caso em que o acoplamento é o próprio problema: o térmico do processo define o que acontece com o material, e o substituto existe para responder em segundos o que o modelo leva horas.",
+        "en": "The case where the coupling is the problem itself: the process thermal history defines what happens to the material, and the surrogate exists to answer in seconds what the model takes hours to run."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {"pt": "PINNeAPPle · examples/modelica", "en": "PINNeAPPle · examples/modelica"}
+    },
+    {
+      "tipo": "texto",
+      "kicker": {"pt": "Forte e fraco", "en": "Strong and weak"},
+      "title": {"pt": "A diferença que separa um resultado de uma promessa", "en": "The difference that separates a result from a promise"},
+      "bullets": {
+        "pt": [
+          "<b>Fraco</b> — um solver termina, o campo vai para o outro, o segundo resolve. É o que a plataforma faz hoje, e é o que a erosão e o CHT usam.",
+          "<b>Forte</b> — os dois resolvem juntos, a cada passo, com malha móvel. Não está implementado, e é o que FSI exige.",
+          "Transferir campo entre malhas diferentes é onde o erro entra calado: cada interpolação conserva ou não conserva, e isso precisa ser medido, não assumido."
+        ],
+        "en": [
+          "<b>Weak</b> — one solver finishes, the field goes to the other, the second solves. That is what the platform does today, and what erosion and CHT use.",
+          "<b>Strong</b> — both solve together, every step, with a moving mesh. It is not implemented, and it is what FSI requires.",
+          "Transferring a field between different meshes is where error slips in quietly: each interpolation either conserves or does not, and that has to be measured, not assumed."
+        ]
+      }
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {"pt": "Antes de fechar", "en": "Before you close"},
+      "title": {"pt": "O que este carrossel não está dizendo", "en": "What this carousel is not saying"},
+      "bullets": {
+        "pt": [
+          "Motor elétrico multifísico completo (EM + calor + estrutura) é um projeto, não um resultado.",
+          "Flutter, asa flexível e válvula com malha móvel: não implementados.",
+          "Os casos desta série que ainda não rodaram estão marcados como <i>a produzir</i> — e continuarão marcados até rodarem."
+        ],
+        "en": [
+          "A complete multiphysics electric motor (EM + heat + structure) is a project, not a result.",
+          "Flutter, flexible wings and valves with a moving mesh: not implemented.",
+          "The cases in this series that have not run yet are marked <i>to be produced</i> — and will stay marked until they run."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: erosao-curva-90 · fno-placa-fria",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: erosao-curva-90 · fno-placa-fria",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}

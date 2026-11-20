@@ -1,0 +1,14 @@
+# saída do renderizador: 160 JPG de 1080x1350, refeitos por
+#   python3.11 serie-1/build.py
+# O que fica versionado é a fonte (carrosseis/*.json, card.html), não o derivado.
+serie-1/img/
+
+# temporários da montagem de vídeo (segmentos ffmpeg)
+serie-2/producao/**/_tmp/
+
+# fontes ttf instanciadas a partir do woff2 do site (recriadas no primeiro uso)
+serie-2/producao/fontes/
+
+# caches de simulação dos episódios (recriados rodando o gerar.py)
+serie-2/producao/**/dados.pkl
+serie-2/producao/**/dados.npz

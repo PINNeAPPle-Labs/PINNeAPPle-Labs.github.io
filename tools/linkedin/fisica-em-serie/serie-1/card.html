@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Slide · The Physics Atlas</title>
+<!--
+  Template do slide de carrossel. O build.py abre esta página no Chrome, chama
+  window.renderSlide(dado) com um objeto do carrosseis.json e fotografa o
+  elemento #slide em 1080x1350 (2x). Mexa aqui e rode o build de novo; nada de
+  texto de post vive neste arquivo.
+
+  Campos por slide: tipo (capa | media | dado | texto | fecho), kicker, title,
+  sub, image, chip, nota, num, numlabel, bullets, links, fonte, ajuste
+  (cover | contain), altura.
+  Campos que o build preenche: n, total, rodape_esq.
+-->
+<style>
+@font-face { font-family:'Oxanium'; font-weight:200 800; font-display:block;
+  src:url(../../../../fonts/oxanium-latin.woff2) format('woff2'); }
+@font-face { font-family:'Archivo'; font-weight:400 800; font-display:block;
+  src:url(../../../../fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2) format('woff2'); }
+@font-face { font-family:'JetBrains Mono'; font-weight:400 700; font-display:block;
+  src:url(../../../../fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2) format('woff2'); }
+
+:root{
+  --surface:#262626;
+  --line:#3e3e3e;
+  --ink:#f1f1f1;
+  --ink-2:#b6b6b6;
+  --blue:#0081be;
+  --orange:#a23a00;
+  --accent:#e07a3c;
+  --accent-2:#3fa9dc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--surface)}
+#slide{
+  width:1080px;height:1350px;position:relative;overflow:hidden;
+  background:var(--surface);color:var(--ink);
+  font-family:'Archivo',sans-serif;
+  padding:72px 80px 172px;
+  display:flex;flex-direction:column;
+}
+#slide::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--blue)}
+
+/* capa */
+#slide.capa{padding:0}
+.cover-wrap{position:absolute;inset:0}
+.cover-wrap img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);filter:blur(3px)}
+.cover-wrap .scrim{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(38,38,38,.95) 0%,rgba(38,38,38,.62) 26%,rgba(38,38,38,.88) 58%,#262626 100%)}
+.cover-text{position:absolute;left:80px;right:80px;bottom:170px}
+.cover-text .kicker{margin-bottom:26px}
+.cover-text h1{font-family:'Oxanium',sans-serif;font-weight:700;font-size:82px;line-height:1.03;letter-spacing:-.015em}
+.cover-text p{margin-top:26px;font-size:32px;line-height:1.34;color:#d3d3d3;max-width:25ch}
+
+.kicker{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:21px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-2)}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:32px}
+.head .idx{font-family:'JetBrains Mono',monospace;font-size:21px;color:#8b8b8b;letter-spacing:.08em;white-space:nowrap}
+h2{font-family:'Oxanium',sans-serif;font-weight:700;font-size:56px;line-height:1.07;letter-spacing:-.01em;margin-bottom:28px}
+
+.media{position:relative;border-radius:16px;overflow:hidden;background:#1f1f1f;flex:0 0 auto;width:100%}
+.media img{width:100%;height:100%;object-fit:cover;display:block}
+.media.contain{background:#141414}
+.media.contain img{object-fit:contain}
+.chip{position:absolute;top:20px;left:20px;font-family:'JetBrains Mono',monospace;font-weight:500;
+  font-size:18px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px;
+  background:rgba(38,38,38,.88);border:1px solid rgba(241,241,241,.35);color:#f1f1f1}
+.chip.ref{border-color:var(--accent-2);color:#dff2fb}
+.chip.ai{border-color:var(--accent);color:#ffe6d5}
+.chip.exp{border-color:#8ed08e;color:#e6f7e6}
+.chip.concept{border-color:#9a9a9a;color:#d0d0d0}
+
+.note{margin-top:24px;font-size:28px;line-height:1.42;color:var(--ink-2)}
+.note b{color:var(--ink);font-weight:600}
+
+.num{font-family:'Oxanium',sans-serif;font-weight:800;font-size:186px;line-height:.94;letter-spacing:-.03em;
+  color:var(--accent);white-space:nowrap}
+.num.small{font-size:132px}
+.numlabel{margin-top:16px;font-size:34px;line-height:1.32;color:var(--ink);max-width:24ch}
+
+ul.bullets{list-style:none;display:flex;flex-direction:column;gap:24px;margin-top:4px}
+ul.bullets li{position:relative;padding-left:42px;font-size:31px;line-height:1.38;color:#dcdcdc}
+ul.bullets li::before{content:"";position:absolute;left:0;top:13px;width:17px;height:17px;background:var(--orange);border-radius:3px}
+ul.bullets li b{color:var(--ink);font-weight:600}
+
+.src{position:absolute;left:80px;right:80px;bottom:98px;font-family:'JetBrains Mono',monospace;
+  font-size:18px;color:#7f7f7f;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rule{position:absolute;left:80px;right:80px;bottom:82px;height:1px;background:var(--line)}
+.foot{position:absolute;left:80px;right:80px;bottom:32px;display:flex;justify-content:space-between;
+  align-items:center;font-family:'JetBrains Mono',monospace;font-size:19px;color:#7a7a7a;letter-spacing:.06em}
+.foot .brand{color:#c9c9c9;font-weight:500;letter-spacing:.04em}
+.foot .brand span{color:var(--accent)}
+
+#slide.texto ul.bullets,#slide.fecho ul.bullets{margin-top:auto;margin-bottom:auto}
+.fecho h2{font-size:62px}
+.fecho .links{margin-top:auto;display:flex;flex-direction:column;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent-2);line-height:1.4}
+</style>
+</head>
+<body>
+<div id="slide"></div>
+<script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+function foot(d){
+  return `<div class="rule"></div><div class="foot">
+    <div class="brand">PINNe<span>APP</span>le</div>
+    <div>${esc(d.rodape_esq || '')}</div>
+    <div>${d.n || ''}${d.total ? ' / ' + d.total : ''}</div>
+  </div>`;
+}
+function src(d){ return d.fonte ? `<div class="src">${esc(d.fonte)}</div>` : ''; }
+
+function chip(c){
+  if(!c) return '';
+  const map = {'REFERÊNCIA':'ref','SOLVER':'ref','STUDIO':'ref','SURROGATE':'ai','PREVISÃO DE IA':'ai',
+               'EXPERIMENTO':'exp','CONCEITUAL':'concept','A PRODUZIR':'concept'};
+  return `<div class="chip ${map[c.toUpperCase()] || 'ref'}">${esc(c)}</div>`;
+}
+
+function mediaBlock(d, height, extra){
+  const cls = d.ajuste === 'contain' ? 'media contain' : 'media';
+  return `<div class="${cls}" style="height:${height}px;${extra || ''}">${chip(d.chip)}
+    ${d.image ? `<img src="${esc(d.image)}" alt="">` : ''}</div>`;
+}
+
+window.renderSlide = function(d){
+  const el = document.getElementById('slide');
+  el.className = d.tipo || 'media';
+  el.style.padding = '';
+  let h = '';
+  const head = `<div class="head"><div class="kicker">${esc(d.kicker || '')}</div>
+      <div class="idx">${esc(d.idx || '')}</div></div>`;
+
+  if(d.tipo === 'capa'){
+    el.style.padding = '0';
+    h = `<div class="cover-wrap">${d.image ? `<img src="${esc(d.image)}" alt="">` : ''}
+        <div class="scrim"></div></div>
+      <div class="cover-text"><div class="kicker">${esc(d.kicker || '')}</div>
+        <h1>${esc(d.title)}</h1>${d.sub ? `<p>${esc(d.sub)}</p>` : ''}</div>` + foot(d);
+
+  } else if(d.tipo === 'media'){
+    h = head + `<h2>${esc(d.title)}</h2>` + mediaBlock(d, d.altura || 620)
+      + (d.nota ? `<div class="note">${d.nota}</div>` : '') + src(d) + foot(d);
+
+  } else if(d.tipo === 'dado'){
+    h = head + `<h2>${esc(d.title)}</h2>`
+      + `<div class="num ${String(d.num).length > 6 ? 'small' : ''}">${esc(d.num)}</div>`
+      + (d.numlabel ? `<div class="numlabel">${d.numlabel}</div>` : '')
+      + (d.nota ? `<div class="note">${d.nota}</div>` : '')
+      + (d.image ? mediaBlock(d, d.altura || 300, 'margin-top:auto') : '')
+      + src(d) + foot(d);
+
+  } else if(d.tipo === 'texto'){
+    h = head + `<h2>${esc(d.title)}</h2>`
+      + `<ul class="bullets">${(d.bullets || []).map(b => `<li>${b}</li>`).join('')}</ul>`
+      + (d.nota ? `<div class="note">${d.nota}</div>` : '') + src(d) + foot(d);
+
+  } else if(d.tipo === 'fecho'){
+    h = head + `<h2>${esc(d.title)}</h2>`
+      + `<ul class="bullets">${(d.bullets || []).map(b => `<li>${b}</li>`).join('')}</ul>`
+      + `<div class="links">${(d.links || []).map(l => `<div>${esc(l)}</div>`).join('')}</div>`
+      + src(d) + foot(d);
+  }
+  el.innerHTML = h;
+  return true;
+};
+</script>
+</body>
+</html>

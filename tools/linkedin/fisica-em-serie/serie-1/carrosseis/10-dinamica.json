@@ -1,0 +1,210 @@
+{
+  "slug": "10-dinamica",
+  "ordem": 10,
+  "total": 10,
+  "dominio": {
+    "pt": "Sistemas dinâmicos e controle",
+    "en": "Dynamical systems and control"
+  },
+  "titulo": {
+    "pt": "O plano muda quando o chão ensina",
+    "en": "The plan changes when the ground teaches"
+  },
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": {
+        "pt": "The Physics Atlas · 10/10 · Dinâmica",
+        "en": "The Physics Atlas · 10/10 · Dynamical systems"
+      },
+      "title": {
+        "pt": "O plano muda quando o chão ensina.",
+        "en": "The plan changes when the ground teaches."
+      },
+      "sub": {
+        "pt": "Um rover que aprendeu o solo pelas próprias rodas, um atrator, uma órbita e um foguete.",
+        "en": "A rover that learned the soil from its own wheels, an attractor, an orbit and a rocket."
+      },
+      "image": "midia/din-viper.png"
+    },
+    {
+      "tipo": "dado",
+      "kicker": {
+        "pt": "Aprender no caminho",
+        "en": "Learning on the way"
+      },
+      "title": {
+        "pt": "A rota mais longa gastou menos energia",
+        "en": "The longer route used less energy"
+      },
+      "num": {
+        "pt": "30,7 mm",
+        "en": "30.7 mm"
+      },
+      "numlabel": {
+        "pt": "de afundamento máximo na rota replanejada, contra 319 mm na rota direta",
+        "en": "maximum sinkage on the replanned route, against 319 mm on the direct one"
+      },
+      "nota": {
+        "pt": "A rota B percorreu <b>2,2 vezes</b> a distância com metade do escorregamento e <b>3% menos energia</b>. Em solo fofo, o custo não é o quilômetro: é a patinagem. O único sinal novo foi o que aconteceu com as rodas.",
+        "en": "Route B covered <b>2.2 times</b> the distance with half the slip and <b>3% less energy</b>. In soft soil the cost is not the kilometre: it is the wheel spin. The only new signal was what happened at the wheels."
+      },
+      "image": "midia/din-rover-rotas.webp",
+      "ajuste": "contain",
+      "altura": 340,
+      "fonte": {
+        "pt": "artigos/rover-aprende-solo",
+        "en": "artigos/rover-aprende-solo"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "O gêmeo vivo",
+        "en": "The live twin"
+      },
+      "title": {
+        "pt": "O que a missão sabe, em tempo real",
+        "en": "What the mission knows, in real time"
+      },
+      "image": "midia/din-rover-dash.png",
+      "chip": "SURROGATE",
+      "nota": {
+        "pt": "Escorregamento, afundamento, energia e risco na mesma tela — a decisão viaja junto com o número em vez de ficar no relatório de quem rodou.",
+        "en": "Slip, sinkage, energy and risk on the same screen — the decision travels with the number instead of staying in the report of whoever ran it."
+      },
+      "fonte": {
+        "pt": "artigos/rover-aprende-solo",
+        "en": "artigos/rover-aprende-solo"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Caos",
+        "en": "Chaos"
+      },
+      "title": {
+        "pt": "O atrator de Lorenz, resolvido e previsto",
+        "en": "The Lorenz attractor, solved and forecast"
+      },
+      "image": "midia/din-lorenz.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "O sistema em que a previsão tem horizonte por construção. Serve para o que todo modelo de dinâmica precisa provar antes de encarar uma máquina: que ele acerta o que é verificável e declara quando deixa de acertar.",
+        "en": "The system where a forecast has a horizon by construction. It serves the purpose every dynamics model must serve before facing a machine: getting right what is checkable and declaring when it stops doing so."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "PINNeAPPle · examples/discovery",
+        "en": "PINNeAPPle · examples/discovery"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Mecânica orbital",
+        "en": "Orbital mechanics"
+      },
+      "title": {
+        "pt": "Kepler, onde a resposta exata existe",
+        "en": "Kepler, where the exact answer exists"
+      },
+      "image": "midia/din-kepler.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Órbita de dois corpos contra a solução fechada. É o teste mais barato que existe e o primeiro que qualquer propagador deveria passar — e o motivo pelo qual publicamos casos com resposta conhecida antes dos que não têm.",
+        "en": "Two-body orbit against the closed-form solution. It is the cheapest test there is and the first any propagator should pass — and the reason we publish cases with known answers before the ones without."
+      },
+      "ajuste": "contain",
+      "altura": 600
+    },
+    {
+      "tipo": "dado",
+      "kicker": {
+        "pt": "Alerta precoce",
+        "en": "Early warning"
+      },
+      "title": {
+        "pt": "O indicador que avisa antes da sela",
+        "en": "The indicator that fires before the saddle-node"
+      },
+      "num": {
+        "pt": "τ 0,94",
+        "en": "τ 0.94"
+      },
+      "numlabel": {
+        "pt": "de Kendall na variância de janela móvel antes da bifurcação — e −0,22 no controle estável",
+        "en": "Kendall tau on rolling variance before the bifurcation — and −0.22 on the stable control"
+      },
+      "nota": {
+        "pt": "E o caso que separa os dois indicadores: um sistema estável com ruído crescente levanta a variância (0,97) <b>sem</b> levantar a autocorrelação (0,38). Um indicador sozinho teria dado alarme falso.",
+        "en": "And the case that separates the two indicators: a stable system with growing noise lifts the variance (0.97) <b>without</b> lifting the autocorrelation (0.38). One indicator alone would have raised a false alarm."
+      },
+      "image": "midia/din-alerta.webp",
+      "ajuste": "contain",
+      "altura": 340,
+      "fonte": {
+        "pt": "artigos/ferramentas-de-dinamica",
+        "en": "artigos/ferramentas-de-dinamica"
+      }
+    },
+    {
+      "tipo": "media",
+      "kicker": {
+        "pt": "Do perfil ao controle",
+        "en": "From profile to control"
+      },
+      "title": {
+        "pt": "Subida e pouso como problema de controle",
+        "en": "Ascent and landing as a control problem"
+      },
+      "image": "midia/din-rocket.png",
+      "chip": "SOLVER",
+      "nota": {
+        "pt": "Perfil de subida, ângulo de ataque e sensibilidade. É a área em que a plataforma tem as duas metades — a física e o controle — e ainda não tem o vídeo que mostra as duas juntas.",
+        "en": "Ascent profile, angle of attack and sensitivity. It is the area where the platform has both halves — the physics and the control — and does not yet have the video showing them together."
+      },
+      "ajuste": "contain",
+      "altura": 600,
+      "fonte": {
+        "pt": "PINNeAPPle · examples/rocket_launch",
+        "en": "PINNeAPPle · examples/rocket_launch"
+      }
+    },
+    {
+      "tipo": "fecho",
+      "kicker": {
+        "pt": "Antes de fechar",
+        "en": "Before you close"
+      },
+      "title": {
+        "pt": "O que este carrossel não está dizendo",
+        "en": "What this carousel is not saying"
+      },
+      "bullets": {
+        "pt": [
+          "O sítio do rover é sintético: o solo verdadeiro é conhecido, e a comparação é honesta, mas não é campo.",
+          "A física do futebol pagou em três de quatro frentes e não pagou no xG — o resultado negativo está no artigo.",
+          "Pouso autônomo com perturbação é demonstração a produzir, não resultado desta casa."
+        ],
+        "en": [
+          "The rover site is synthetic: the true soil is known, and the comparison is honest, but it is not field data.",
+          "Football physics paid in three of four fronts and did not pay on xG — the negative result is in the article.",
+          "Autonomous landing under perturbation is a demo to be produced, not a result of this house."
+        ]
+      },
+      "links": {
+        "pt": [
+          "artigos: rover-aprende-solo · ferramentas-de-dinamica · futebol-fisica",
+          "pré-acesso ao Studio: forms.gle/FQT8ekYrHBaKizQo8"
+        ],
+        "en": [
+          "articles: rover-aprende-solo · ferramentas-de-dinamica · futebol-fisica",
+          "Studio early access: forms.gle/FQT8ekYrHBaKizQo8"
+        ]
+      }
+    }
+  ]
+}
