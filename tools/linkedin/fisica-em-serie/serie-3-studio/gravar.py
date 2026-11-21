@@ -374,8 +374,31 @@ def optics(pg, g: Gravador):
     g.orbita(caixa, 35, amplitude=100, altura=150)
 
 
+def ahmed(pg, g: Gravador):
+    """Corpo de Ahmed: o twin em 3-D, com os sliders que mudam o escoamento e o CD com a incerteza a 90%."""
+    pg.goto(f"http://127.0.0.1:{PORTAS['ahmed']}/", wait_until="load", timeout=90000)
+    pg.wait_for_timeout(6000)
+    g.clip = {"x": 0, "y": 60, "width": 1500, "height": 880}
+    caixa = pg.locator("canvas").first.bounding_box()
+    g.orbita(caixa, 45, amplitude=260, altura=70)
+    # a inclinação da traseira de 25 para 40 graus: é o slider que muda o regime
+    for v in (30.0, 35.0, 40.0):
+        _arrastar_slider(pg, "#s0", v)
+        pg.wait_for_timeout(700)
+        g.quadro()
+    caixa = pg.locator("canvas").first.bounding_box()
+    g.orbita(caixa, 30, amplitude=180, altura=55)
+    # a folga ao solo desce: o CD e a faixa de 90% acompanham
+    for v in (0.04, 0.03):
+        _arrastar_slider(pg, "#s1", v)
+        pg.wait_for_timeout(700)
+        g.quadro()
+    caixa = pg.locator("canvas").first.bounding_box()
+    g.orbita(caixa, 25, amplitude=120, altura=45)
+
+
 EPISODIOS = {"brakecool": brakecool, "soundshape": soundshape, "heatsink": heatsink,
-             "pcb": pcb, "afpm": afpm, "ridetune": ridetune, "observatory": observatory, "optics": optics}
+             "pcb": pcb, "afpm": afpm, "ridetune": ridetune, "observatory": observatory, "optics": optics, "ahmed": ahmed}
 
 
 def main() -> None:
