@@ -1,6 +1,6 @@
 # Série 3 · Physics in Action no Studio
 
-Nove episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
+Dez episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
 (`pinneapple-engineering-api`): cada app é um serviço real, o botão que aparece no vídeo roda o
 solver de verdade, e o campo em 3-D que gira na tela é o que a app serve depois que o job termina.
 Nada aqui é gráfico de matplotlib.
@@ -8,7 +8,7 @@ Nada aqui é gráfico de matplotlib.
 Os vídeos estão em [`midia/`](midia/), as fichas (roteiro, número medido, limites e legendas PT/EN)
 em [`episodios/`](episodios/).
 
-## Os nove episódios
+## Os dez episódios
 
 | # | área | app | o que aparece | vídeo |
 |---|---|---|---|---|
@@ -21,6 +21,7 @@ em [`episodios/`](episodios/).
 | 07 | freio / mobilidade | `brakecool_ai` | rotor ventilado em 3-D, 112 → 65 °C, Monte Carlo de tolerância | [9 s](midia/07-freio.mp4) |
 | 08 | mecânica dos sólidos | `ridetune_ai` | viga de suspensão em 3-D com tensão viva, 3022 → 2169 g e a sensibilidade que decide | [6,4 s](midia/08-mecanica-solidos.mp4) |
 | 09 | astronomia | `observatory` | céu de São Paulo em 3-D (JPL DE421), Lua a 371.661 km, sistema solar com o tempo andando | [5,3 s](midia/09-astronomia.mp4) |
+| 10 | óptica | `optics_lab` | imagem aérea de litografia em 3-D através do foco, CD/NILS/janela de processo, Abbe × Hopkins | [4 s](midia/10-optica.mp4) |
 
 Cada episódio tem um `.jpg` de pôster com o mesmo nome.
 
@@ -34,7 +35,7 @@ cd PINNeAPPle/apps/afpm_designer && PYTHONPATH=../..:../_shared \
   uvicorn afpm_designer.api:app --port 8191          # as portas estão em PORTAS, no gravar.py
 
 # 2. gravar
-python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm | ridetune | observatory
+python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm | ridetune | observatory | optics
 ```
 
 O que o gravador faz, por episódio:
@@ -72,11 +73,16 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
   O que o vídeo entrega é a elasticidade: espessura 22,2 contra largura 11,1.
 - **09** as posições são aparentes e topocêntricas, não astrométricas — e o próprio README da app
   reprova o propagador aprendido para muitos NEOs (1,2× melhor que Kepler contra um portão de 5×).
+- **10** a imagem é escalar (sem polarização) e a lente é perfeita além do defoco; os três checagens
+  na tela são as mesmas do teste da biblioteca. O mesmo clipe tem viés de 20,7 nm em ArF imersão e
+  0,11 nm em EUV — os planos do desenho estão espaçados para a vista, não em escala.
 
 ## Ambiente desta máquina
 
 - As apps rodam nativas com `uvicorn` (sem build de Docker), que é mais rápido para gravar.
 - O `afpm_designer` é o episódio caro: o job de verificação leva ~4,5 min por rodada.
+- O `optics_lab` é uma app **nova**, construída para esta série (está em `PINNeAPPle/apps/optics_lab`,
+  sobre `pinneapple_physics.lithography`): sobe com `uvicorn optics_lab.api:app --port 8166`.
 - O `observatory` precisa do kernel JPL DE421: `pip install skyfield-data` (ou `PINNEAPPLE_DE_KERNEL`
   apontando para um `.bsp`). Sem ele a app não sobe.
 - O `ahmed_twin` só sobe com a pasta `_runs/cfd` do estudo presente, e essa pasta **não está** nesta

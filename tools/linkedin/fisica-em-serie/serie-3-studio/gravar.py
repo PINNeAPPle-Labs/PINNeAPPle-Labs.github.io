@@ -25,7 +25,7 @@ LARGURA = 1200
 VIS = {"width": 1500, "height": 950}
 
 PORTAS = {"ahmed": 8451, "afpm": 8191, "pcb": 8401, "aero": 8092, "heatsink": 8402,
-          "soundshape": 8403, "brakecool": 8404, "ridetune": 8405, "observatory": 8406}
+          "soundshape": 8403, "brakecool": 8404, "ridetune": 8405, "observatory": 8406, "optics": 8166}
 
 
 def _codificar(pasta: Path, destino: Path) -> None:
@@ -350,8 +350,32 @@ def observatory(pg, g: Gravador):
         g.quadro()
 
 
+def optics(pg, g: Gravador):
+    """Óptica: imagem aérea de um clipe litográfico em 3-D, com as checagens ao lado de cada número."""
+    pg.goto(f"http://127.0.0.1:{PORTAS['optics']}/", wait_until="load", timeout=90000)
+    pg.wait_for_timeout(9000)
+    g.clip = {"x": 170, "y": 120, "width": 1160, "height": 760}
+    def iso():
+        """Espera o campo novo e devolve a caixa do canvas (o campo novo não herda a câmera do anterior)."""
+        pg.wait_for_timeout(1800)
+        return pg.locator("#viewer canvas").first.bounding_box()
+
+    caixa = iso()
+    g.orbita(caixa, 45, amplitude=110, altura=200)
+    # outro sistema óptico: EUV, onde o mesmo clipe imprime com viés quase nulo
+    pg.get_by_role("button", name="EUV").click()
+    pg.wait_for_timeout(9000)
+    caixa = iso()
+    g.orbita(caixa, 40, amplitude=120, altura=180)
+    # e de volta ao ArF imersão, que é o caso apertado (viés de 20 nm, NILS 2,2)
+    pg.get_by_role("button", name="ArF imersão").click()
+    pg.wait_for_timeout(9000)
+    caixa = iso()
+    g.orbita(caixa, 35, amplitude=100, altura=150)
+
+
 EPISODIOS = {"brakecool": brakecool, "soundshape": soundshape, "heatsink": heatsink,
-             "pcb": pcb, "afpm": afpm, "ridetune": ridetune, "observatory": observatory}
+             "pcb": pcb, "afpm": afpm, "ridetune": ridetune, "observatory": observatory, "optics": optics}
 
 
 def main() -> None:
