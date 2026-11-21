@@ -12,7 +12,7 @@ em [`episodios/`](episodios/).
 
 | # | área | app | o que aparece | vídeo |
 |---|---|---|---|---|
-| 01 | eletromagnetismo | `afpm_designer` | motor de fluxo axial, \|B\| em 3-D sobre 15.728 triângulos, cogging do estimate contra o 3-D | [6 s](midia/01-eletromagnetismo.mp4) |
+| 01 | eletromagnetismo | `afpm_designer` | motor de fluxo axial, \|B\| em 3-D sobre 15.728 triângulos, cogging do estimate contra o 3-D | [5,7 s](midia/01-eletromagnetismo.mp4) |
 | 02 | aerodinâmica externa | `ahmed_twin` | corpo de Ahmed em 3-D, Cp na superfície, sliders de inclinação/folga/velocidade | [7 s](midia/02-aerodinamica-externa.mp4) |
 | 03 | aviação | `aero_optimizer` | aeronave em 3-D com Cp do OpenFOAM, 47,9 g CO₂/pkm certificável | [4,7 s](midia/03-aviacao.mp4) |
 | 04 | térmico de trocador | `heatsink_sizer` | 38.301 candidatos → 414 → 24 verificados, campo em 3-D nas aletas | [6,2 s](midia/04-termico-trocador.mp4) |

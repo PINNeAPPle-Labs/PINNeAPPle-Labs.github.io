@@ -1,6 +1,6 @@
 # EP S3-01 · Eletromagnetismo — o motor de fluxo axial
 
-**Área** eletromagnetismo · **App** `afpm_designer` (Axial-Flux Motor Designer) · **Duração** 6 s
+**Área** eletromagnetismo · **App** `afpm_designer` (Axial-Flux Motor Designer) · **Duração** 5,7 s
 · **Mídia** `midia/01-eletromagnetismo.mp4`
 
 ## O que o vídeo mostra
