@@ -25,7 +25,7 @@ LARGURA = 1200
 VIS = {"width": 1500, "height": 950}
 
 PORTAS = {"ahmed": 8451, "afpm": 8191, "pcb": 8401, "aero": 8092, "heatsink": 8402,
-          "soundshape": 8403, "brakecool": 8404, "ridetune": 8405}
+          "soundshape": 8403, "brakecool": 8404, "ridetune": 8405, "observatory": 8406}
 
 
 def _codificar(pasta: Path, destino: Path) -> None:
@@ -313,8 +313,45 @@ def ridetune(pg, g: Gravador):
     g.parado(34, espera=0.12)
 
 
+def observatory(pg, g: Gravador):
+    """O céu de agora em 3-D: catálogo de estrelas, Lua com fase e distância, e o sistema solar."""
+    pg.goto(f"http://127.0.0.1:{PORTAS['observatory']}/", wait_until="load", timeout=90000)
+    pg.wait_for_timeout(8000)
+    try:                                     # fecha o cartão de curiosidade que cobre o céu
+        pg.click("text=×", timeout=2500)
+    except Exception:
+        pass
+    g.clip = {"x": 0, "y": 0, "width": 1074, "height": 950}
+    # anoitece: o céu de São Paulo às 21h30 de hoje
+    pg.eval_on_selector("#tDate", """e => {
+        e.value = '2026-11-21T21:30';
+        e.dispatchEvent(new Event('change', {bubbles: true}));
+    }""")
+    pg.wait_for_timeout(4000)
+    caixa = pg.locator("#gl").bounding_box()
+    g.orbita(caixa, 70, amplitude=260, altura=90)
+    # a grade equatorial e a eclíptica mostram o plano em que os planetas andam
+    try:
+        pg.check("text=Equatorial grid")
+        pg.wait_for_timeout(1500)
+    except Exception:
+        pass
+    g.orbita(caixa, 30, amplitude=180, altura=60)
+    # sai do céu para o sistema solar: o mesmo instante, visto de fora
+    pg.click("#vSys")
+    pg.wait_for_timeout(5000)
+    g.clip = {"x": 0, "y": 0, "width": 1500, "height": 950}
+    caixa = pg.locator("#gl").bounding_box()
+    g.orbita(caixa, 45, amplitude=240, altura=70)
+    # roda o tempo: os planetas andam nas órbitas
+    for _ in range(14):
+        pg.click("#tFwd")
+        pg.wait_for_timeout(320)
+        g.quadro()
+
+
 EPISODIOS = {"brakecool": brakecool, "soundshape": soundshape, "heatsink": heatsink,
-             "pcb": pcb, "afpm": afpm, "ridetune": ridetune}
+             "pcb": pcb, "afpm": afpm, "ridetune": ridetune, "observatory": observatory}
 
 
 def main() -> None:

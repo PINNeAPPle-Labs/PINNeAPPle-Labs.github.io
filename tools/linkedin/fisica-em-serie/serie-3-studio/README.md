@@ -1,6 +1,6 @@
 # Série 3 · Physics in Action no Studio
 
-Oito episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
+Nove episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
 (`pinneapple-engineering-api`): cada app é um serviço real, o botão que aparece no vídeo roda o
 solver de verdade, e o campo em 3-D que gira na tela é o que a app serve depois que o job termina.
 Nada aqui é gráfico de matplotlib.
@@ -8,7 +8,7 @@ Nada aqui é gráfico de matplotlib.
 Os vídeos estão em [`midia/`](midia/), as fichas (roteiro, número medido, limites e legendas PT/EN)
 em [`episodios/`](episodios/).
 
-## Os oito episódios
+## Os nove episódios
 
 | # | área | app | o que aparece | vídeo |
 |---|---|---|---|---|
@@ -20,6 +20,7 @@ em [`episodios/`](episodios/).
 | 06 | acústica | `soundshape_ai` | duto bass-reflex em 3-D, Helmholtz ao vivo, otimizador conferido na fórmula | [5 s](midia/06-acustica.mp4) |
 | 07 | freio / mobilidade | `brakecool_ai` | rotor ventilado em 3-D, 112 → 65 °C, Monte Carlo de tolerância | [9 s](midia/07-freio.mp4) |
 | 08 | mecânica dos sólidos | `ridetune_ai` | viga de suspensão em 3-D com tensão viva, 3022 → 2169 g e a sensibilidade que decide | [6,4 s](midia/08-mecanica-solidos.mp4) |
+| 09 | astronomia | `observatory` | céu de São Paulo em 3-D (JPL DE421), Lua a 371.661 km, sistema solar com o tempo andando | [5,3 s](midia/09-astronomia.mp4) |
 
 Cada episódio tem um `.jpg` de pôster com o mesmo nome.
 
@@ -33,7 +34,7 @@ cd PINNeAPPle/apps/afpm_designer && PYTHONPATH=../..:../_shared \
   uvicorn afpm_designer.api:app --port 8191          # as portas estão em PORTAS, no gravar.py
 
 # 2. gravar
-python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm | ridetune
+python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm | ridetune | observatory
 ```
 
 O que o gravador faz, por episódio:
@@ -69,12 +70,20 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
 - **08** o otimizador **não** acha o mínimo: o próprio README da app declara 0,73 kg no ótimo da
   fórmula fechada contra 2,17 kg entregues, porque a verificação checa segurança e não otimalidade.
   O que o vídeo entrega é a elasticidade: espessura 22,2 contra largura 11,1.
+- **09** as posições são aparentes e topocêntricas, não astrométricas — e o próprio README da app
+  reprova o propagador aprendido para muitos NEOs (1,2× melhor que Kepler contra um portão de 5×).
 
 ## Ambiente desta máquina
 
 - As apps rodam nativas com `uvicorn` (sem build de Docker), que é mais rápido para gravar.
 - O `afpm_designer` é o episódio caro: o job de verificação leva ~4,5 min por rodada.
-- O `ahmed_twin` só sobe com a pasta `_runs/cfd` do estudo presente; o vídeo 02 veio da sessão em
-  que esses dados estavam disponíveis (nesta cópia do repositório eles não estão).
+- O `observatory` precisa do kernel JPL DE421: `pip install skyfield-data` (ou `PINNEAPPLE_DE_KERNEL`
+  apontando para um `.bsp`). Sem ele a app não sobe.
+- O `ahmed_twin` só sobe com a pasta `_runs/cfd` do estudo presente, e essa pasta **não está** nesta
+  cópia do repositório nem em nenhum dos arquivos compactados do Mac. O vídeo 02 é o da sessão em que
+  os dados estavam lá. Refazer a campanha exigiria OpenFOAM nativo: sob emulação amd64 nesta máquina
+  o `foamRun` gasta **mais de 6 s por iteração** num caso de 12 mil células, o que põe as 73 corridas
+  de 1.000 iterações na casa dos dias.
 - Nenhum episódio usa dado de cliente: os casos são de referência (corpo de Ahmed, motor de fluxo
-  axial, placa com FPGA/DDR, dissipador extrudado, duto bass-reflex, rotor ventilado).
+  axial, placa com FPGA/DDR, dissipador extrudado, duto bass-reflex, rotor ventilado, viga de
+  suspensão, céu de São Paulo).
