@@ -1,6 +1,6 @@
 # Série 3 · Physics in Action no Studio
 
-Sete episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
+Oito episódios, um por área principal da física, **gravados dentro do PINNeAPPle Studio**
 (`pinneapple-engineering-api`): cada app é um serviço real, o botão que aparece no vídeo roda o
 solver de verdade, e o campo em 3-D que gira na tela é o que a app serve depois que o job termina.
 Nada aqui é gráfico de matplotlib.
@@ -8,7 +8,7 @@ Nada aqui é gráfico de matplotlib.
 Os vídeos estão em [`midia/`](midia/), as fichas (roteiro, número medido, limites e legendas PT/EN)
 em [`episodios/`](episodios/).
 
-## Os sete episódios
+## Os oito episódios
 
 | # | área | app | o que aparece | vídeo |
 |---|---|---|---|---|
@@ -19,6 +19,7 @@ em [`episodios/`](episodios/).
 | 05 | térmico de eletrônica | `pcb_hotspot` | placa com FPGA/DDR em 3-D, Tj por parte, margem e balanço de energia | [5 s](midia/05-termico-eletronica.mp4) |
 | 06 | acústica | `soundshape_ai` | duto bass-reflex em 3-D, Helmholtz ao vivo, otimizador conferido na fórmula | [5 s](midia/06-acustica.mp4) |
 | 07 | freio / mobilidade | `brakecool_ai` | rotor ventilado em 3-D, 112 → 65 °C, Monte Carlo de tolerância | [9 s](midia/07-freio.mp4) |
+| 08 | mecânica dos sólidos | `ridetune_ai` | viga de suspensão em 3-D com tensão viva, 3022 → 2169 g e a sensibilidade que decide | [6,4 s](midia/08-mecanica-solidos.mp4) |
 
 Cada episódio tem um `.jpg` de pôster com o mesmo nome.
 
@@ -32,7 +33,7 @@ cd PINNeAPPle/apps/afpm_designer && PYTHONPATH=../..:../_shared \
   uvicorn afpm_designer.api:app --port 8191          # as portas estão em PORTAS, no gravar.py
 
 # 2. gravar
-python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm
+python gravar.py brakecool      # brakecool | soundshape | heatsink | pcb | afpm | ridetune
 ```
 
 O que o gravador faz, por episódio:
@@ -65,6 +66,9 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
   neste ponto de operação — as duas coisas estão escritas na ficha.
 - **07** o veredito do Monte Carlo depende de um limite genérico de 500 °C; o número que importa é o
   espalhamento, ±0,2 °C.
+- **08** o otimizador **não** acha o mínimo: o próprio README da app declara 0,73 kg no ótimo da
+  fórmula fechada contra 2,17 kg entregues, porque a verificação checa segurança e não otimalidade.
+  O que o vídeo entrega é a elasticidade: espessura 22,2 contra largura 11,1.
 
 ## Ambiente desta máquina
 

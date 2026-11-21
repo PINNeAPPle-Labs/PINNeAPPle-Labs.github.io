@@ -25,7 +25,7 @@ LARGURA = 1200
 VIS = {"width": 1500, "height": 950}
 
 PORTAS = {"ahmed": 8451, "afpm": 8191, "pcb": 8401, "aero": 8092, "heatsink": 8402,
-          "soundshape": 8403, "brakecool": 8404}
+          "soundshape": 8403, "brakecool": 8404, "ridetune": 8405}
 
 
 def _codificar(pasta: Path, destino: Path) -> None:
@@ -279,8 +279,42 @@ def afpm(pg, g: Gravador):
         g.parado(8, espera=0.12)
 
 
+def ridetune(pg, g: Gravador):
+    """Braço de suspensão: viga em 3-D com a tensão de flexão viva, e a sensibilidade que decide."""
+    pg.goto(f"http://127.0.0.1:{PORTAS['ridetune']}/", wait_until="networkidle", timeout=90000)
+    pg.wait_for_timeout(3000)
+    g.clip = {"x": 170, "y": 130, "width": 1150, "height": 640}
+    caixa = pg.locator("#viewer canvas").first.bounding_box()
+    g.orbita(caixa, 45, amplitude=180, altura=70)
+    # afina a seção: a cor da viga acompanha a tensão na hora
+    for v in (44, 40, 36, 32):
+        _arrastar_slider(pg, "#s-width", v)
+        pg.wait_for_timeout(500)
+        g.quadro()
+    for v in (20, 18, 16, 14):
+        _arrastar_slider(pg, "#s-thickness", v)
+        pg.wait_for_timeout(500)
+        g.quadro()
+    caixa = pg.locator("#viewer canvas").first.bounding_box()
+    g.orbita(caixa, 30, amplitude=110, altura=60)
+    # o otimizador devolve o projeto e a verificação contra a fórmula fechada
+    pg.click("#btn-optimize")
+    pg.wait_for_timeout(6000)
+    _esperar_texto(pg, "#result", limite=120)
+    pg.wait_for_timeout(1200)
+    g.parado(26, espera=0.12)
+    # a análise que decide qual variável importa: espessura pesa o dobro da largura
+    pg.click("#btn-sensitivity")
+    pg.wait_for_timeout(5000)
+    _esperar_texto(pg, "#sensitivity-result", limite=120)
+    pg.locator("#sensitivity-result").evaluate("e => e.scrollIntoView({block: 'center'})")
+    pg.wait_for_timeout(900)
+    g.clip = {"x": 170, "y": 150, "width": 1150, "height": 700}
+    g.parado(34, espera=0.12)
+
+
 EPISODIOS = {"brakecool": brakecool, "soundshape": soundshape, "heatsink": heatsink,
-             "pcb": pcb, "afpm": afpm}
+             "pcb": pcb, "afpm": afpm, "ridetune": ridetune}
 
 
 def main() -> None:
