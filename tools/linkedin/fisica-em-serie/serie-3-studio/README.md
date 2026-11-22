@@ -85,11 +85,28 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
   sobre `pinneapple_physics.lithography`): sobe com `uvicorn optics_lab.api:app --port 8166`.
 - O `observatory` precisa do kernel JPL DE421: `pip install skyfield-data` (ou `PINNEAPPLE_DE_KERNEL`
   apontando para um `.bsp`). Sem ele a app não sobe.
-- O `ahmed_twin` só sobe com a pasta `_runs/cfd` do estudo presente, e essa pasta **não está** nesta
-  cópia do repositório nem em nenhum dos arquivos compactados do Mac. O vídeo 02 é o da sessão em que
-  os dados estavam lá. Refazer a campanha exigiria OpenFOAM nativo: sob emulação amd64 nesta máquina
-  o `foamRun` gasta **mais de 6 s por iteração** num caso de 12 mil células, o que põe as 73 corridas
-  de 1.000 iterações na casa dos dias.
+- O `ahmed_twin` só sobe com a pasta `_runs/cfd` do estudo presente. Esta cópia **foi refeita**: a
+  campanha roda com o OpenFOAM **nativo arm64** (`brew install --cask gerlero/openfoam`), ~150× mais
+  rápido que a imagem amd64 do Docker — uma corrida de 1.000 iterações passa de horas para minutos. A
+  ressalva anterior deste README ("refazer exigiria dias") estava errada e fica corrigida aqui.
+  A pasta `_runs/` continua fora do git (é dado, não código): quem clona precisa rodar a campanha.
 - Nenhum episódio usa dado de cliente: os casos são de referência (corpo de Ahmed, motor de fluxo
   axial, placa com FPGA/DDR, dissipador extrudado, duto bass-reflex, rotor ventilado, viga de
   suspensão, céu de São Paulo).
+
+## Versão 9:16 e proveniência
+
+- `vertical.py` compõe a versão 1080×1920 de cada episódio em `midia-vertical/`: fundo da marca, o
+  vídeo 16:9 inteiro em 1080 de largura, o gancho em cima e, no pé, o que o episódio **não** afirma.
+  Não é recorte — recortar comeria justamente o número que dá sentido ao vídeo.
+- `manifesto.py` escreve `midia/<episódio>.manifest.json` (schema `pinneapple.cinema.media/1`) com o
+  SHA-256, a duração e o tamanho **medidos** de cada produto, mais o app, o commit do app e o número
+  que a ficha publica. Com `--biblioteca` ele também escreve `apps/<app>/cinema.json` no checkout da
+  biblioteca, que é o que faz a galeria do Studio entregar a mídia.
+- O portão de mídia reconstrói esses números (`node verify.js` no espelho do `take-a-piece`): clip
+  trocado, manifesto velho ou episódio sem ressalva quebram a verificação.
+
+O que ainda não está no padrão da especificação: os shorts têm **4 a 9 s**, não os 15–30 s pedidos.
+Chegar lá exige capturar mais interação real (e, no `afpm_designer`, mais minutos de job), não repetir
+quadro para encher duração.
+
