@@ -103,6 +103,8 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
   SHA-256, a duração e o tamanho **medidos** de cada produto, mais o app, o commit do app e o número
   que a ficha publica. Com `--biblioteca` ele também escreve `apps/<app>/cinema.json` no checkout da
   biblioteca, que é o que faz a galeria do Studio entregar a mídia.
+- `cinema.py` é o ponto de entrada único: `estado` mostra o que existe por episódio sem gerar nada,
+  `vertical` / `tecnico` / `manifesto` rodam cada etapa e `tudo` encadeia as três na ordem.
 - `tecnico.py` monta o **produto B**: 60 s em 16:9, em cinco blocos — título, a gravação com o número
   na faixa de baixo, como o número foi medido, a verificação que a página mostra, e o que o vídeo não
   afirma. Sai em `midia-tecnica/`.
