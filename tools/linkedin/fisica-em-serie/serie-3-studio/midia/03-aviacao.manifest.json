@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "03-aviacao",
+    "title": "EP S3-03 · Aviação — o avião de 1.920 geometrias",
+    "area": "aerodinâmica de aeronave"
+  },
+  "experiment": {
+    "app": "aero_optimizer",
+    "app_name": "Aircraft Design Optimizer",
+    "app_path": "apps/aero_optimizer",
+    "library_commit": "22107d8ff 2026-11-04"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T03:24:43Z"
+  },
+  "claim": {
+    "number": "47,9 g CO₂/pkm  ·  Cp do OpenFOAM",
+    "source": "aeronave: projeto certificável escolhido sobre o espaço paramétrico varrido",
+    "not_affirmed": "o Cp é de uma corrida guardada, não de um solver no navegador"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/03-aviacao.mp4",
+      "width": 1200,
+      "height": 474,
+      "frames": 140,
+      "fps": 30.0,
+      "duration_s": 4.67,
+      "sha256": "2d8e2be14a4192e2a0834240fa5ad530d09f67198825f81de6b11bc751c2cd52",
+      "bytes": 460783
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/03-aviacao.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 139,
+      "fps": 30.0,
+      "duration_s": 4.63,
+      "sha256": "328c92b0e2763b3921bdb45cd8e875925a3875878627952d1bbc0e251c986303",
+      "bytes": 437301
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}

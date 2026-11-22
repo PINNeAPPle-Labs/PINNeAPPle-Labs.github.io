@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "10-optica",
+    "title": "EP S3-10 · Óptica — a imagem aérea de um clipe litográfico",
+    "area": "óptica"
+  },
+  "experiment": {
+    "app": "optics_lab",
+    "app_name": "Optics Lab, construída nesta campanha",
+    "app_path": "apps/optics_lab",
+    "library_commit": "921f7292f 2026-11-21"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T17:32:39Z"
+  },
+  "claim": {
+    "number": "ArF imersão × EUV  ·  Abbe = Hopkins",
+    "source": "litografia: imagem aérea em cinco planos de foco, conferida na forma fechada",
+    "not_affirmed": "imagem escalar sem polarização; a lente é perfeita além do defoco"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/10-optica.mp4",
+      "width": 1200,
+      "height": 786,
+      "frames": 120,
+      "fps": 30.0,
+      "duration_s": 4.0,
+      "sha256": "0d2fe5bab9ea7ad4e8001919b0db27715f61d16464a41d8ae532252c96c542f2",
+      "bytes": 552632
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/10-optica.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 120,
+      "fps": 30.0,
+      "duration_s": 4.0,
+      "sha256": "707f962da721f12e24516106a95b843aa341dadf7b2fdde38993e05e8ebf4116",
+      "bytes": 483848
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}

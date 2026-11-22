@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "09-astronomia",
+    "title": "EP S3-09 · Astronomia — o céu de agora, em 3-D",
+    "area": "gravitação / mecânica celeste"
+  },
+  "experiment": {
+    "app": "observatory",
+    "app_name": "PINNeAPPle Observatory",
+    "app_path": "apps/observatory",
+    "library_commit": "7182e0643 2026-10-18"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T15:49:34Z"
+  },
+  "claim": {
+    "number": "Lua a 371.661 km  ·  JPL DE421",
+    "source": "céu de São Paulo em 3-D, posições topocêntricas com refração perto do horizonte",
+    "not_affirmed": "posições aparentes, não astrométricas; a cor das estrelas vem do tipo espectral"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/09-astronomia.mp4",
+      "width": 1200,
+      "height": 1062,
+      "frames": 159,
+      "fps": 30.0,
+      "duration_s": 5.3,
+      "sha256": "58f07cc6b3cb0dc09e21ffa4fb522530222b497bca9e19b680f668f11d2734f9",
+      "bytes": 1969194
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/09-astronomia.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 158,
+      "fps": 30.0,
+      "duration_s": 5.27,
+      "sha256": "cd471a81787e55b10ec9adb5d8a815f5b547412511ca8dc93adcc93b0a76fef9",
+      "bytes": 1404666
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}

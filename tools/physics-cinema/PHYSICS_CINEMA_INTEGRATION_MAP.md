@@ -25,40 +25,49 @@ PINNeAPPle (biblioteca)
 O contrato real entre os dois é **um banco SQLite construído a partir do checkout** — não um import Python. É
 por isso que a API roda sem a biblioteca e sem o peso dela.
 
-## 2. O caminho que falta (e onde ele encaixa)
+## 2. O caminho de execução: existe, e é mais curto do que a especificação supunha
+
+Correção da própria auditoria, medida no código depois de escrevê-la: **"rodar esta demonstração pelo id" já
+existe**, só não está na rota que a especificação imaginou. O caminho real é:
 
 ```text
     id de galeria  ─────────────────────────────────────────────┐
-    (ex.: example:autolab_aero)                                 │
+    (ex.: example:fins)                                         │  capability_id = "example." + id
                                                                 ▼
-                                          POST /v1/studio/gallery/{id}/runs      ← NOVO
+                                          POST /v1/jobs                        ← JÁ EXISTE
                                                                 │
-                                          appkit job (fila + progresso)          ← JÁ EXISTE
+                                          app/studio/capabilities.py:get()     ← JÁ EXISTE
                                                                 │
-                                          adapter do app que serve aquele id     ← JÁ EXISTE (app/<app>/api.py)
+                                          forma do exemplo (quick, flow)       ← JÁ EXISTE
                                                                 │
-                                          execução na biblioteca                 ← JÁ EXISTE
+                                          appkit job (fila + progresso)        ← JÁ EXISTE
                                                                 │
-                                          artefato: glTF + métricas + manifesto  ← glTF existe; manifesto NÃO
-                                                                │
-                                          GET .../runs/{run_id}                  ← NOVO (leitura)
+                                          GET /v1/jobs/{id} e /result          ← JÁ EXISTE
 ```
 
-O ponto de extensão é `app/studio/routes.py` (ao lado de `gallery`), e o adapter já existe em cada app. Não há
-necessidade de rota `/demos`: a galeria **é** o catálogo, e o id dela já nomeia o app que executa.
+`tests/test_studio_api.py::test_form_checks` já exercita a montagem da capability (`example.example:fins` é
+executável, `example.example:cfd_car` pede OpenFOAM, `example.app:hub` responde "é uma app"). O prefixo dobra
+(`example.` + id `example:fins`), o que é feio mas não é um buraco funcional.
+
+O que **não** existe, e não deve existir desse jeito: rodar uma **app** pelo id de galeria. Uma app do Studio é um
+serviço FastAPI com página, não um job em sandbox; a entrada de galeria já entrega o comando de subir (`start`) e a
+capability responde `501` dizendo exatamente isso. Criar `POST /v1/studio/gallery/{id}/runs` seria uma segunda
+porta para o que `/v1/jobs` faz, e para apps prometeria o que o desenho não faz.
 
 ## 3. Onde entra a mídia
 
-Hoje a entrada de galeria carrega `thumbs` (WebP por SHA). O que falta:
+Hoje a entrada de galeria carrega `thumbs` (WebP por SHA). O que falta, e o que já foi feito:
 
-| peça | onde entra | por quê |
+| peça | onde entra | estado |
 |---|---|---|
-| `media` na entrada de galeria | `pinneapple_studio` (biblioteca) → tabela `gallery` (API) | o vídeo é do experimento, não de um diretório de marketing |
-| manifesto de proveniência | arquivo ao lado do vídeo (`<episódio>.manifest.json`) | commit, corrida, campo, colormap, duração, hash |
-| validação de mídia | `verify.js` do `take-a-piece` estendido | tamanho, duração, proporção, legenda legível |
+| `cinema` na entrada de galeria | `pinneapple_studio.gallery` → tabela `gallery` (API) | **feito** — PR #2272 (biblioteca) e #753 (API) |
+| `cinema.json` por app | `apps/<app>/cinema.json` | **feito** — dez apps, com SHA-256 e duração medidos |
+| manifesto de proveniência | ao lado do vídeo (`midia/<episódio>.manifest.json`) | **feito** — `manifesto.py`, schema `pinneapple.cinema.media/1` |
+| validação de mídia no portão | `check_cinema` no portão de manifestos; com `PINNEAPPLE_CINEMA_ROOT` confere o hash | **feito** |
 
-Enquanto isso não sobe, a mídia fica nos dois repositórios de conteúdo (site e `take-a-piece`) e a galeria
-continua só com a imagem — que é honesto: o vídeo é consequência, não substituto do dado.
+O bloco `cinema` é **aditivo**: o schema do `experiment.json` continua `pinneapple.experiment/1`. A proposta
+anterior deste documento era subir para `/2`; não é preciso. O validador aceita chave nova, o `Manifest` a preserva
+na ida e volta, e os 174 manifestos já escritos seguem válidos — bumpar o schema invalidaria todos para ganhar nada.
 
 ## 4. Primeira fatia vertical escolhida
 
@@ -69,11 +78,13 @@ continua só com a imagem — que é honesto: o vídeo é consequência, não su
 | experimento na biblioteca | **feito** | `examples/end_to_end/ahmed_body/01_cfd_campaign.py`, 57→64 corridas OpenFOAM |
 | saída científica verificada | **feito** | `_runs/cfd/results/*.json`, validação contra Ahmed 1984 |
 | app do Studio | **feito** | `apps/ahmed_twin`, twin com distância ao caso de treino |
-| vídeo | **a regravar** | `gravar.py ahmed`, driver commitado (`7a0a309`) |
+| vídeo | **a regravar** | `gravar.py ahmed`, driver commitado (`7a0a309`); sai com a campanha completa |
 | showcase reproduzível | **feito** | comando da campanha + ficha do episódio |
-| registro na galeria | **parcial** | `app:ahmed_twin` na galeria; sem mídia e sem execução pelo id |
+| registro na galeria | **feito** | `app:ahmed_twin` com o bloco `cinema` (16:9 e 9:16, hashes medidos) |
+| manifesto de proveniência | **feito** | `midia/02-aerodinamica-externa.manifest.json` |
 
-O que falta para fechar a fatia: manifesto de proveniência do episódio 02 e o vídeo com a campanha completa.
+O que falta para fechar a fatia é só o vídeo com a campanha completa (as últimas corridas da malha L2 e as de CAD
+estão rodando) e a ficha reescrita com os números finais.
 
 ## 5. Convenções respeitadas
 

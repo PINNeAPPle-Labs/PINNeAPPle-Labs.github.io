@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "04-termico-trocador",
+    "title": "EP S3-04 · Térmico de trocador — o dissipador aletado",
+    "area": "transferência de calor / projeto térmico"
+  },
+  "experiment": {
+    "app": "heatsink_sizer",
+    "app_name": "HeatSink Sizer",
+    "app_path": "apps/heatsink_sizer",
+    "library_commit": "9e016ca52 2026-11-05"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T11:09:01Z"
+  },
+  "claim": {
+    "number": "62,1 °C  ·  0,371 K/W  ·  17,2 Pa",
+    "source": "dissipador extrudado: triagem pelo surrogate, número refeito pela física com +15% de pessimismo",
+    "not_affirmed": "não é CFD: convecção por correlação, condução por volumes finitos nas aletas"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/04-termico-trocador.mp4",
+      "width": 1200,
+      "height": 690,
+      "frames": 187,
+      "fps": 30.0,
+      "duration_s": 6.23,
+      "sha256": "ec8ec71b3509ae45bbfd2b8ff859f2a47fc92c74e4b83f3333804ab25b92587a",
+      "bytes": 608490
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/04-termico-trocador.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 187,
+      "fps": 30.0,
+      "duration_s": 6.23,
+      "sha256": "8d033b9cc05fb3af57488a71563485737248242c3dcace6e6f4882a70c06bfbc",
+      "bytes": 513186
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}

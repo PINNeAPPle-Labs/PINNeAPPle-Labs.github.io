@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "05-termico-eletronica",
+    "title": "EP S3-05 · Térmico de eletrônica — a placa com FPGA e DDR",
+    "area": "transferência de calor em eletrônica"
+  },
+  "experiment": {
+    "app": "pcb_hotspot",
+    "app_name": "PCB Hotspot",
+    "app_path": "apps/pcb_hotspot",
+    "library_commit": "22107d8ff 2026-11-04"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T11:10:15Z"
+  },
+  "claim": {
+    "number": "FPGA 99,1 °C  ·  limite 100 °C",
+    "source": "placa com FPGA/DDR: passa nominalmente, não passa com 20% menos refrigeração",
+    "not_affirmed": "não é CFD do ar: convecção por correlação de placa plana com radiação"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/05-termico-eletronica.mp4",
+      "width": 1200,
+      "height": 754,
+      "frames": 151,
+      "fps": 30.0,
+      "duration_s": 5.03,
+      "sha256": "a4cdeb6ba4b692bed90aa365e8d4def5a4d69e27143b8d714e190bbfed607c9e",
+      "bytes": 455627
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/05-termico-eletronica.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 151,
+      "fps": 30.0,
+      "duration_s": 5.03,
+      "sha256": "69cdecbf5ed21a17ccde852de842f61b765c7b0690dd08c6b4bb4afbd67665c3",
+      "bytes": 405601
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}

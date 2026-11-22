@@ -51,9 +51,13 @@ leitura de código, também.
 
 ### O que não existe
 
-- Campo de mídia (vídeo, carrossel, post) no registro da galeria.
-- Proveniência de mídia: qual commit, qual corrida, qual campo gerou aquele vídeo.
-- Nenhuma rota que aceite "rodar esta demonstração" a partir de um id de galeria.
+- Campo de mídia (vídeo, carrossel, post) no registro da galeria — **corrigido depois desta auditoria**: ver o mapa
+  de integração, e os PRs #2272 (biblioteca) e #753 (API).
+- Proveniência de mídia: qual commit, qual corrida, qual campo gerou aquele vídeo — **corrigido**: `cinema` com
+  SHA-256, duração e tamanho medidos, mais o manifesto por episódio.
+- Nenhuma rota que aceite "rodar esta demonstração" a partir de um id de galeria — **premissa errada**, medida
+  depois: `POST /v1/jobs` aceita `capability_id` `example.<entry id>`. O que não existe, e não deve existir, é rodar
+  uma **app** como job: ela é um serviço, e a capability já responde `501` dizendo isso.
 
 ## 3. Onde a mídia está hoje (fora dos dois repositórios)
 

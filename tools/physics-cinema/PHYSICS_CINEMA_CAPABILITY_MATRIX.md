@@ -17,14 +17,14 @@ O contrato **já existe**: `experiment.json`, schema `pinneapple.experiment/1`, 
 | solver, dataset, modelo, treino, inferência | `scripts` + `params` (o script carrega a configuração) |
 | metodologia de validação, métricas, benchmark | `checks` + `metrics` (com `unit` e `how`) |
 | arquivos gerados | `files`, `links` |
-| **visualização** (campos, escalas) | **falta** |
-| **cinema** (short, técnico, carrossel) | **falta** |
-| **integração com a Engineering API** | **falta** |
-| **proveniência** (commit, corrida, hash) | **parcial** — o `id` e os `files` dão o rastro; não há hash nem commit |
+| **visualização** (campos, escalas) | **parcial** — o glTF e o `fieldview3d` existem, mas o manifesto não diz qual campo é | 
+| **cinema** (short, técnico, carrossel) | **feito** — chave `cinema` opcional no `experiment.json` e `apps/<app>/cinema.json` (PR #2272) |
+| **integração com a Engineering API** | **feito** — a entrada de galeria leva `cinema` (PR #753) |
+| **proveniência** (commit, corrida, hash) | **feito** — `provenance` já existia; `cinema` traz SHA-256, duração e tamanho medidos |
 
-Proposta: acrescentar três chaves opcionais (`visualization`, `cinema`, `provenance`) ao mesmo schema, com bump
-para `pinneapple.experiment/2`. **Não** criar um segundo formato: o portão de CI já valida este, e 174 exemplos
-já o preenchem.
+A proposta de bump para `pinneapple.experiment/2` deste documento **não é necessária**: as três chaves são
+aditivas, o validador aceita chave nova e o `Manifest` a preserva. Bumpar invalidaria os 174 manifestos existentes
+para não ganhar nada.
 
 ## 2. Catálogo de demonstrações (§8, §17)
 
@@ -35,10 +35,11 @@ já o preenchem.
 | buscar aplicação de engenharia | **existe** | `q` sobre título, descrição e chave |
 | metadados científicos | **existe** | `measured`, `flows`, `pt`, `blocked_by` |
 | datasets / modelos / validação por demo | **parcial** | via `/v1/studio/tools/{id}` e os campos da entrada |
-| mídia | **falta** | entrada tem `thumbs` (WebP), não tem vídeo |
-| iniciar execução pelo id | **falta** | proposto `POST /v1/studio/gallery/{id}/runs` |
+| mídia | **feito** | `cinema` na entrada: 16:9 e 9:16, com SHA-256 e duração; a lista de `/v1/studio/gallery` também passou a entregar |
+| iniciar execução pelo id | **existe** | `POST /v1/jobs` com `capability_id` `example.<entry id>` — medido no código, não na especificação |
 | acompanhar execução | **existe** | jobs do `appkit` (progresso) |
 | `/demos` como rota nova | **não se aplica** | duplicaria a galeria |
+| rodar uma **app** pelo id | **não se aplica** | app é serviço FastAPI, não job em sandbox; a capability responde 501 com o comando de subir |
 
 ## 3. Os dez episódios já produzidos, por área
 
@@ -61,9 +62,9 @@ Cada linha é um app real, com job de verdade e campo em 3-D no vídeo.
 
 | produto | estado | o que falta |
 |---|---|---|
-| **A · short** (15–30 s, 9:16) | **parcial** — existe o vídeo 16:9 de 4–9 s | recorte 9:16 e gancho legível nos primeiros 3 s |
+| **A · short** (15–30 s, 9:16) | **parcial** — os dez episódios têm versão 9:16 (1080x1920, 30 fps) com gancho e ressalva na cartela | a duração medida é de 4 a 9 s, não os 15–30 s pedidos: chegar lá exige capturar mais interação real, não repetir quadro |
 | **B · técnico** (60–120 s, 16:9) | **falta** — a ficha tem o roteiro, não a narração | locução ou cartelas cronometradas |
-| **C · executável** | **parcial** | roda pelo `uvicorn`; falta o registro e o botão na API |
+| **C · executável** | **parcial** | roda pelo `uvicorn`; o registro na galeria agora existe (com mídia); falta a fatia de mídia no site público |
 
 ## 5. Geração de mídia
 
@@ -73,12 +74,13 @@ Cada linha é um app real, com job de verdade e campo em 3-D no vídeo.
 | render determinístico a partir do dado | **existe** — Playwright + ffmpeg (`gravar.py`), campo vindo do solver |
 | carrossel | **parcial** — a Série 1 tem carrosséis em `serie-1/`; não saem do mesmo pipeline |
 | thumbnail | **existe** — pôster por episódio (`-poster.jpg`) |
-| manifesto de proveniência por mídia | **falta** |
+| manifesto de proveniência por mídia | **feito** — `midia/<episódio>.manifest.json` (`manifesto.py`), com hash, duração e o número da ficha |
 
 ## 6. Prioridade recomendada
 
-1. `media` + `provenance` no `experiment.json` e na entrada de galeria (destrava §15 e §8 de uma vez).
-2. `POST /v1/studio/gallery/{id}/runs` para os dez apps que já têm adapter.
-3. Recorte 9:16 com gancho nos dez vídeos existentes (produto A completo).
-4. Manifesto por episódio e verificação de mídia no gate.
-5. Só então: novos experimentos. Dez áreas já cobertas é material suficiente para um trimestre.
+1. ~~`media` + `provenance` no experimento e na galeria~~ — **feito** (PRs #2272 e #753).
+2. ~~Rota para executar pelo id~~ — **não é preciso**: `POST /v1/jobs` já aceita `example.<entry id>`.
+3. ~~Recorte 9:16 com gancho nos dez vídeos~~ — **feito** (`midia-vertical/`, 10 arquivos).
+4. Manifesto por episódio no portão de mídia do site — **feito**; falta estender o `verify.js` do `take-a-piece`.
+5. O que sobra de verdade: short de 15 a 30 s com interação real, produto B (60–120 s) e a página pública que serve
+   os vídeos a partir da galeria.

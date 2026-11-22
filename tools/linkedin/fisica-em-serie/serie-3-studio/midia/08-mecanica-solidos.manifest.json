@@ -1,0 +1,52 @@
+{
+  "schema": "pinneapple.cinema.media/1",
+  "episode": {
+    "id": "08-mecanica-solidos",
+    "title": "EP S3-08 · Mecânica dos sólidos — o braço de suspensão",
+    "area": "mecânica dos sólidos / fadiga"
+  },
+  "experiment": {
+    "app": "ridetune_ai",
+    "app_name": "RideTune AI",
+    "app_path": "apps/ridetune_ai",
+    "library_commit": "1991b2346 2026-10-24"
+  },
+  "capture": {
+    "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
+    "driver_commit": "7a0a309 2026-11-21",
+    "driver_sha256": "3376181f5604b007dcf813c63e83dc01d9c4c25ff30af2ee0cdbcea2507645c6",
+    "fps": 30,
+    "viewport": "1500x950",
+    "captured_at": "2026-11-21T11:33:24Z"
+  },
+  "claim": {
+    "number": "elasticidade 22,2 × 11,1",
+    "source": "viga de suspensão: vida de fadiga por Basquin, seção reta, carga cíclica declarada",
+    "not_affirmed": "não é FEA: é a fórmula fechada de viga engastada, sem concentração de tensão"
+  },
+  "products": [
+    {
+      "id": "screen-16x9",
+      "file": "midia/08-mecanica-solidos.mp4",
+      "width": 1200,
+      "height": 668,
+      "frames": 191,
+      "fps": 30.0,
+      "duration_s": 6.37,
+      "sha256": "277d45cf48f41d482467b3f89f3c9ddc08a6753e3147c23cd4585b1c751c8e52",
+      "bytes": 243637
+    },
+    {
+      "id": "short-9x16",
+      "file": "midia-vertical/08-mecanica-solidos.mp4",
+      "width": 1080,
+      "height": 1920,
+      "frames": 191,
+      "fps": 30.0,
+      "duration_s": 6.37,
+      "sha256": "4b259608b20f7607e2b5ae8db24641ea59945e8ccc744453b2995f55568b318f",
+      "bytes": 255155
+    }
+  ],
+  "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
+}
