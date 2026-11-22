@@ -1183,3 +1183,47 @@ nav.main a.pre:hover { color: var(--accent-hi); }
 .cs-limits p { font-size: .93rem; color: var(--text-dim); margin-bottom: .8rem; }
 .cs-limits p:last-child { margin-bottom: 0; }
 .cs-limits b { color: var(--text); font-weight: 600; }
+
+/* Física em ação: cada episódio é um cartão com o número, o limite e os três produtos de mídia.
+   O número vem do manifesto do episódio, e o limite fica no mesmo bloco de propósito: quem lê o
+   número lê junto o que ele não cobre. */
+.cinema-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 980px) { .cinema-grid { grid-template-columns: 1fr; } }
+.cinema-count {
+  font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--text-mute); margin: 0 0 1.1rem;
+}
+.cinema-card .thumb { aspect-ratio: 16 / 9; }
+.cinema-card .meta code {
+  font-family: var(--f-mono); font-size: 0.68rem; color: var(--text-mute);
+  background: var(--ink-3); border: 1px solid var(--line-soft); border-radius: 4px; padding: 0 0.3rem;
+}
+.cinema-card .cinema-number {
+  font-size: 1.12rem; font-weight: 700; color: var(--accent-hi); margin: 0.1rem 0 0;
+}
+.cinema-card .cinema-source { font-size: 0.86rem; color: var(--text-dim); margin: 0; }
+.cinema-card .cinema-limit {
+  border-left: 2px solid var(--accent-dk); padding: 0.15rem 0 0.15rem 0.75rem;
+  font-size: 0.84rem; color: var(--text-mute); margin: 0.2rem 0 0;
+}
+.cinema-card .cinema-limit span {
+  display: block; font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent-2); margin-bottom: 0.2rem;
+}
+.cinema-card details { margin-top: 0.2rem; }
+.cinema-card summary {
+  cursor: pointer; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent-2); padding: 0.45rem 0;
+}
+.cinema-card summary:hover { color: var(--accent-2-hi); }
+.cinema-video { margin: 0.5rem 0 0; }
+.cinema-video video {
+  width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 6px;
+  background: #1b1b1b;
+}
+.cinema-video figcaption {
+  font-family: var(--f-mono); font-size: 0.66rem; color: var(--text-mute); margin-top: 0.35rem;
+}
+.cinema-provenance { margin-top: 2rem; font-size: 0.9rem; color: var(--text-dim); max-width: 78ch; }
+.cinema-provenance a { color: var(--accent-2); }
+.cinema-video video.clip.vertical { max-height: 460px; width: auto; max-width: 100%; margin: 0 auto; }

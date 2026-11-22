@@ -20,6 +20,7 @@ pages cannot drift apart. Text lives next to the markup it belongs to, per langu
 """
 from __future__ import annotations
 
+import json
 import shutil
 import urllib.parse
 from pathlib import Path
@@ -1270,6 +1271,54 @@ POSTS = [
 POST_BY_SLUG = {p["slug"]: p for p in POSTS}
 
 # ---------------------------------------------------------------------------
+# Física em ação: a página que serve os vídeos, gerada dos manifestos
+# ---------------------------------------------------------------------------
+#
+# Cada episódio tem um manifesto ao lado da mídia (midia/<ep>.manifest.json, schema
+# pinneapple.cinema.media/1) com os três produtos, o SHA-256 de cada arquivo, a duração medida, o número
+# que a ficha publica e o que o episódio **não** afirma. A página lê esse arquivo em vez de repetir os
+# números à mão: o que está na tela é o que o manifesto registrou, e o portão de mídia do take-a-piece
+# confere os hashes contra os arquivos.
+
+CINEMA_DIR = ROOT / "tools" / "linkedin" / "fisica-em-serie" / "serie-3-studio"
+CINEMA_URL = "tools/linkedin/fisica-em-serie/serie-3-studio"   # caminho público (GitHub Pages)
+
+# O título do episódio vem em português do manifesto; o inglês é escrito aqui, como o resto do site.
+CINEMA_EN = {
+    "01-eletromagnetismo": "Electromagnetism — the axial-flux motor, checked in 3-D",
+    "02-aerodinamica-externa": "External aerodynamics — the Ahmed body, and where the model fails",
+    "03-aviacao": "Aviation — 1,920 wings, one certifiable design",
+    "04-termico-trocador": "Heat-exchanger thermal — 38,301 sinks triaged, 24 checked",
+    "05-termico-eletronica": "Electronics thermal — 0.9 °C is not a margin",
+    "06-acustica": "Acoustics — 40.1 Hz against a 40.0 target",
+    "07-freio": "Brake cooling — tolerance moves the temperature less than the model",
+    "08-mecanica-solidos": "Solid mechanics — thickness weighs twice the width",
+    "09-astronomia": "Astronomy — tonight's sky, computed and not photographed",
+    "10-optica": "Optics — the same mask, 20.7 nm or 0.11 nm of bias",
+}
+
+
+def cinema_episodes() -> list[dict]:
+    """One item per episode manifest: the claim, its limit and the three products, read from disk."""
+    out = []
+    for path in sorted((CINEMA_DIR / "midia").glob("*.manifest.json")):
+        m = json.loads(path.read_text(encoding="utf-8"))
+        ep = m["episode"]["id"]
+        products = {p["id"]: p for p in m.get("products", [])}
+        out.append({
+            "id": ep, "title_pt": m["episode"]["title"].split("·", 1)[-1].strip(),
+            "title_en": CINEMA_EN.get(ep, m["episode"]["title"]), "area": m["episode"]["area"],
+            "app": m["experiment"]["app"], "commit": m["experiment"].get("library_commit", ""),
+            "number": m["claim"].get("number", ""), "source": m["claim"].get("source", ""),
+            "limit": m["claim"].get("not_affirmed", ""), "products": products,
+            "poster": f"{CINEMA_URL}/midia/{ep}-poster.jpg",
+        })
+    return out
+
+
+CINEMA = cinema_episodes()
+
+# ---------------------------------------------------------------------------
 # Pages and URLs
 # ---------------------------------------------------------------------------
 
@@ -1284,6 +1333,7 @@ PAGES = {
     "sucessos": "casos-de-sucesso",
     "lib": "lib",
     "models": "physics-ai-models",
+    "cinema": "fisica-em-acao",
 }
 for _post in POSTS:
     PAGES[f"post:{_post['slug']}"] = f"artigos/{_post['slug']}"
@@ -1315,9 +1365,9 @@ def up(lang: str, page: str) -> str:
 
 NAV = {
     "pt": [("home", "Início"), ("studio", "Studio"), ("relatorios", "Relatórios"),
-           ("artigos", "Artigos"), ("lib", "A lib")],
+           ("artigos", "Artigos"), ("cinema", "Física em ação"), ("lib", "A lib")],
     "en": [("home", "Home"), ("studio", "Studio"), ("relatorios", "Reports"),
-           ("artigos", "Articles"), ("lib", "The library")],
+           ("artigos", "Articles"), ("cinema", "Physics in action"), ("lib", "The library")],
 }
 
 # Short labels for the footer and the cross-links between segment pages.
@@ -1486,10 +1536,23 @@ META = {
             desc="Modelos substitutos, modelos inversos, otimização e fluxos de Physics AI, com roadmap e critério de evidência — e um experimento de calor 1D para conferir a conta.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
-        ),
-        "en": dict(
+        ),        "en": dict(
             title="Physics AI models · PINNeAPPle",
             desc="Surrogate models, inverse models, optimization and Physics AI workflows, each with a roadmap and an evidence criterion — plus a 1D heat experiment you can check.",
+            og="img/portfolio/13-aircraft-render-pressure.jpg",
+            type="website",
+        ),
+    },
+    "cinema": {
+        "pt": dict(
+            title="Física em ação · PINNeAPPle",
+            desc="Dez episódios gravados dentro do Studio: cada um com o número que o solver mediu, a verificação que a tela mostra e o que o vídeo não afirma.",
+            og="img/portfolio/13-aircraft-render-pressure.jpg",
+            type="website",
+        ),
+        "en": dict(
+            title="Physics in action · PINNeAPPle",
+            desc="Ten episodes recorded inside the Studio: each with the number the solver measured, the check the screen shows and what the clip does not claim.",
             og="img/portfolio/13-aircraft-render-pressure.jpg",
             type="website",
         ),
@@ -3390,6 +3453,104 @@ def page_artigos(lang: str) -> str:
     ])
 
 
+CINEMA_TEXT = {
+    "pt": dict(
+        eyebrow="Física em ação",
+        h1="Dez episódios, cada um com o número e o limite",
+        lead=("Um vídeo por área principal da física, gravados dentro do PINNeAPPle Studio: cada app é um "
+              "serviço real, o botão que aparece na tela submete o solver de verdade, e o campo em 3-D que "
+              "gira é o que a app serve depois que o job termina. Nenhum quadro é gráfico decorativo."),
+        how=("Cada episódio tem três produtos: o <b>técnico</b> de 60 s, que explica como o número foi medido; "
+             "o <b>short</b> de 9:16, com o gancho; e a gravação crua da tela. O que o vídeo <b>não</b> afirma "
+             "vem escrito em cada cartão, junto do número — não no rodapé."),
+        provenance=("O SHA-256, a duração e o tamanho de cada arquivo estão no manifesto do episódio, ao lado da "
+                    "mídia; um portão de verificação reconstrói esses números do disco e reprova quando um clipe "
+                    "muda. O número de cada episódio sai do solver, não de uma planilha."),
+        number="o número", app="app", technical="Técnico 16:9", short="Short 9:16",
+        raw="Gravação crua", not_claimed="o que este vídeo não afirma", watch="assistir",
+        files="Ver os manifestos e o gravador", episodes="episódios",
+    ),
+    "en": dict(
+        eyebrow="Physics in action",
+        h1="Ten episodes, each with the number and its limit",
+        lead=("One video per main area of physics, recorded inside PINNeAPPle Studio: every app is a real "
+              "service, the button on screen submits the actual solver, and the 3-D field that turns is what "
+              "the app serves once the job finishes. No frame is a decorative chart."),
+        how=("Each episode has three products: the 60 s <b>technical</b> cut, which explains how the number was "
+             "measured; the 9:16 <b>short</b>, with the hook; and the raw screen recording. What the clip does "
+             "<b>not</b> claim sits on each card, beside the number — not in a footnote."),
+        provenance=("The SHA-256, the duration and the size of every file are in the episode manifest, next to "
+                    "the media; a verification gate rebuilds those numbers from disk and fails when a clip "
+                    "changes. Each number comes from the solver, not from a spreadsheet."),
+        number="the number", app="app", technical="Technical 16:9", short="Short 9:16",
+        raw="Raw recording", not_claimed="what this clip does not claim", watch="watch",
+        files="The manifests and the recorder", episodes="episodes",
+    ),
+}
+
+
+def cinema_card(lang: str, ep: dict, root: str) -> str:
+    C, S = CINEMA_TEXT[lang], STRINGS[lang]
+    tech = ep["products"].get("technical-16x9")
+    short = ep["products"].get("short-9x16")
+    raw = ep["products"].get("screen-16x9")
+    title = ep["title_en"] if lang == "en" else ep["title_pt"]
+    src = lambda p: f"/{CINEMA_URL}/{p['file']}"     # noqa: E731 - absolute: the page sits at a fixed depth
+    videos = ""
+    for produto, rotulo in ((tech, C["technical"]), (short, C["short"]), (raw, C["raw"])):
+        if produto:
+            vertical = " vertical" if produto["height"] > produto["width"] else ""
+            poster = f"/{CINEMA_URL}/midia-vertical/{ep['id']}-poster.jpg" if vertical else f"/{ep['poster']}"
+            videos += (f'\n      <figure class="cinema-video">'
+                       f'<video class="clip{vertical}" controls preload="none" playsinline poster="{poster}" '
+                       f'width="{produto["width"]}" height="{produto["height"]}">'
+                       f'<source src="{src(produto)}" type="video/mp4" /></video>'
+                       f'<figcaption>{rotulo} · {produto["duration_s"]:.1f} s</figcaption></figure>')
+    return f"""<article class="post-card cinema-card">
+  <span class="thumb"><img src="/{ep['poster']}" alt="{S['skip']} {title}" loading="lazy" decoding="async" /></span>
+  <div class="pb">
+    <span class="meta">{ep['area']} · {C['app']} <code>{ep['app']}</code></span>
+    <h3>{title}</h3>
+    <p class="cinema-number">{ep['number']}</p>
+    <p class="cinema-source">{ep['source']}</p>
+    <p class="cinema-limit"><span>{C['not_claimed']}</span>{ep['limit']}</p>
+    <details><summary>{C['watch']}</summary>{videos}
+    </details>
+  </div>
+</article>"""
+
+
+def page_cinema(lang: str) -> str:
+    root = up(lang, "cinema")
+    C = CINEMA_TEXT[lang]
+    cards = "".join(cinema_card(lang, ep, root) for ep in CINEMA)
+    repo = "https://github.com/PINNeAPPle-Labs/PINNeAPPle-Labs.github.io/tree/main/" + CINEMA_URL
+    return "".join([
+        head(lang, "cinema", root), header(lang, "cinema", root),
+        f"""<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{C['eyebrow']}</p>
+      <h1>{C['h1']}</h1>
+      <p class="lead" style="max-width:66ch">{C['lead']}</p>
+      <p class="lead" style="max-width:66ch">{C['how']}</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="cinema-count">{len(CINEMA)} {C['episodes']}</p>
+      <div class="post-grid cinema-grid">{cards}</div>
+      <p class="cinema-provenance">{C['provenance']} <a href="{repo}" target="_blank" rel="noopener">{C['files']} ↗</a></p>
+    </div>
+  </section>
+""",
+        cta_band(lang, root),
+        "</main>",
+        footer(lang, "cinema", root),
+    ])
+
+
 def render_block(lang: str, block: tuple, root: str) -> str:
     kind = block[0]
     if kind == "h2":
@@ -4034,6 +4195,7 @@ BUILDERS = {
     "sucessos": page_sucessos,
     "lib": page_lib,
     "models": page_models,
+    "cinema": page_cinema,
 }
 
 # Old addresses that must keep working: the URL stays, the destination changes.
