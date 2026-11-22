@@ -9,7 +9,7 @@
     "app": "ridetune_ai",
     "app_name": "RideTune AI",
     "app_path": "apps/ridetune_ai",
-    "library_commit": "1991b2346 2026-10-24"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 6.37,
       "sha256": "4b259608b20f7607e2b5ae8db24641ea59945e8ccc744453b2995f55568b318f",
       "bytes": 255155
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/08-mecanica-solidos.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "25a6135e9bf4b8dda26bbd2ecf587102090f46620e17c49c245dfee5f42f572a",
+      "bytes": 1508226
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

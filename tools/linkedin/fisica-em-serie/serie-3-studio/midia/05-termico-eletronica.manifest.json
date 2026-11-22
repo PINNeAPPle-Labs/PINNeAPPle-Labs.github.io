@@ -9,7 +9,7 @@
     "app": "pcb_hotspot",
     "app_name": "PCB Hotspot",
     "app_path": "apps/pcb_hotspot",
-    "library_commit": "22107d8ff 2026-11-04"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 5.03,
       "sha256": "69cdecbf5ed21a17ccde852de842f61b765c7b0690dd08c6b4bb4afbd67665c3",
       "bytes": 405601
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/05-termico-eletronica.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "4d10399d5539d9348f5dd1dc880343e225879d896c5f9cd7c30d4e3931b472d2",
+      "bytes": 2546831
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

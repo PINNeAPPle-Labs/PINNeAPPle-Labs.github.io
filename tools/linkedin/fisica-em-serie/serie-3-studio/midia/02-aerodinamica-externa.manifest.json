@@ -9,7 +9,7 @@
     "app": "ahmed_twin",
     "app_name": "Ahmed Twin",
     "app_path": "apps/ahmed_twin",
-    "library_commit": "7afbdae12 2026-10-31"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 7.0,
       "sha256": "20f3c3b1d18b47c37a0455a06ef02556a74f5681903617ca90c4288edf3f8f17",
       "bytes": 806085
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/02-aerodinamica-externa.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "ff1b16febb5109e073c668bb18f477bd1fc430865c63a87a298b8df8ff029fa3",
+      "bytes": 3514400
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

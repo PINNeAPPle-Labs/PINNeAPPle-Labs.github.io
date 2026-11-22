@@ -9,7 +9,7 @@
     "app": "observatory",
     "app_name": "PINNeAPPle Observatory",
     "app_path": "apps/observatory",
-    "library_commit": "7182e0643 2026-10-18"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 5.27,
       "sha256": "cd471a81787e55b10ec9adb5d8a815f5b547412511ca8dc93adcc93b0a76fef9",
       "bytes": 1404666
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/09-astronomia.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "34249e8e90750e4f097971c46932ed4e254443c984d0b846c951f0d17e579dc9",
+      "bytes": 5105899
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

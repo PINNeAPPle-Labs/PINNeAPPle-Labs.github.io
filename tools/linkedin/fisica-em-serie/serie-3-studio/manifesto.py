@@ -26,6 +26,7 @@ AQUI = Path(__file__).resolve().parent
 REPO = AQUI.parents[3]                      # a raiz do checkout do site
 BIBLIOTECA = Path("/Users/yanbarros/Documents/GitHub/pinneapple-labs/PINNeAPPle")
 MIDIA, VERTICAL, FICHAS = AQUI / "midia", AQUI / "midia-vertical", AQUI / "episodios"
+TECNICA = AQUI / "midia-tecnica"
 SCHEMA = "pinneapple.cinema.media/1"
 
 CABECALHO = re.compile(
@@ -96,9 +97,10 @@ def manif(ep: str) -> Path | None:
         return None
     ficha = _ficha(ep)
     produtos = [{"id": "screen-16x9", "file": f"midia/{ep}.mp4", **_sonda(fonte)}]
-    vert = VERTICAL / f"{ep}.mp4"
-    if vert.is_file():
-        produtos.append({"id": "short-9x16", "file": f"midia-vertical/{ep}.mp4", **_sonda(vert)})
+    for pasta, ident in ((VERTICAL, "short-9x16"), (TECNICA, "technical-16x9")):
+        alt = pasta / f"{ep}.mp4"
+        if alt.is_file():
+            produtos.append({"id": ident, "file": f"{pasta.name}/{ep}.mp4", **_sonda(alt)})
     capturado = datetime.fromtimestamp(fonte.stat().st_mtime, tz=timezone.utc)
     titulo = (FICHAS / f"{ep}.md").read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
     doc = {

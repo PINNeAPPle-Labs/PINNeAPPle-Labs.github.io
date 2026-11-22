@@ -103,10 +103,14 @@ Todos os episódios publicam o limite junto do número, e as fichas em `episodio
   SHA-256, a duração e o tamanho **medidos** de cada produto, mais o app, o commit do app e o número
   que a ficha publica. Com `--biblioteca` ele também escreve `apps/<app>/cinema.json` no checkout da
   biblioteca, que é o que faz a galeria do Studio entregar a mídia.
+- `tecnico.py` monta o **produto B**: 60 s em 16:9, em cinco blocos — título, a gravação com o número
+  na faixa de baixo, como o número foi medido, a verificação que a página mostra, e o que o vídeo não
+  afirma. Sai em `midia-tecnica/`.
 - O portão de mídia reconstrói esses números (`node verify.js` no espelho do `take-a-piece`): clip
-  trocado, manifesto velho ou episódio sem ressalva quebram a verificação.
+  trocado, manifesto velho, arquivo fora do manifesto ou episódio sem ressalva quebram a verificação.
 
-O que ainda não está no padrão da especificação: os shorts têm **4 a 9 s**, não os 15–30 s pedidos.
-Chegar lá exige capturar mais interação real (e, no `afpm_designer`, mais minutos de job), não repetir
-quadro para encher duração.
+Os três produtos de Cinema por episódio: `screen-16x9` (a gravação crua), `short-9x16` (4 a 9 s, com
+gancho) e `technical-16x9` (60 s, cartelas cronometradas). O short ainda está abaixo dos 15–30 s que a
+especificação pede: chegar lá exige capturar mais interação real (e, no `afpm_designer`, mais minutos de
+job), não repetir quadro para encher duração.
 

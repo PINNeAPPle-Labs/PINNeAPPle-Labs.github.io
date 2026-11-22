@@ -63,7 +63,7 @@ Cada linha é um app real, com job de verdade e campo em 3-D no vídeo.
 | produto | estado | o que falta |
 |---|---|---|
 | **A · short** (15–30 s, 9:16) | **parcial** — os dez episódios têm versão 9:16 (1080x1920, 30 fps) com gancho e ressalva na cartela | a duração medida é de 4 a 9 s, não os 15–30 s pedidos: chegar lá exige capturar mais interação real, não repetir quadro |
-| **B · técnico** (60–120 s, 16:9) | **falta** — a ficha tem o roteiro, não a narração | locução ou cartelas cronometradas |
+| **B · técnico** (60–120 s, 16:9) | **feito** — 60 s em cinco blocos (título, gravação com o número na faixa, como foi medido, verificação na tela, o que não afirma) | acima de 120 s exigiria locução; cartela cronometrada dá o conteúdo sem voz sintética |
 | **C · executável** | **parcial** | roda pelo `uvicorn`; o registro na galeria agora existe (com mídia); falta a fatia de mídia no site público |
 
 ## 5. Geração de mídia

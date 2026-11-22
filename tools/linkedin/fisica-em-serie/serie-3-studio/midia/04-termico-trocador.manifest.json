@@ -9,7 +9,7 @@
     "app": "heatsink_sizer",
     "app_name": "HeatSink Sizer",
     "app_path": "apps/heatsink_sizer",
-    "library_commit": "9e016ca52 2026-11-05"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 6.23,
       "sha256": "8d033b9cc05fb3af57488a71563485737248242c3dcace6e6f4882a70c06bfbc",
       "bytes": 513186
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/04-termico-trocador.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "f8892bf9bbfccf79bc26de641b9d18d9ad24dc1bfc7fe470c72c840a01d79536",
+      "bytes": 2837925
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

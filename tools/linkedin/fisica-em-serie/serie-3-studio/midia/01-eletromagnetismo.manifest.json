@@ -9,7 +9,7 @@
     "app": "afpm_designer",
     "app_name": "Axial-Flux Motor Designer",
     "app_path": "apps/afpm_designer",
-    "library_commit": "20c311593 2026-10-31"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 5.73,
       "sha256": "802270ce590c0bbbabacc66aa43163069c33f06988504825f73afe01e68f7f63",
       "bytes": 348438
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/01-eletromagnetismo.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "ed5017f582aa1cec0b4ade0a8fab62f023555d1a049a2e07319b0cd9da9d794c",
+      "bytes": 1889460
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

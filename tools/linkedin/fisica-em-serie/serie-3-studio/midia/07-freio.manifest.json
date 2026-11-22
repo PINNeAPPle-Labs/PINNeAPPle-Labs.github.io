@@ -9,7 +9,7 @@
     "app": "brakecool_ai",
     "app_name": "BrakeCool AI",
     "app_path": "apps/brakecool_ai",
-    "library_commit": "1991b2346 2026-10-24"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 9.03,
       "sha256": "1ac154cd428e6afd7811ccdf1c11460d16cda0830ff0baf968ef5302c5565096",
       "bytes": 756645
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/07-freio.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "871cbc3cbbbb089f2657b33e80148da884b14a6f759d3b403cb2190bcc13e28f",
+      "bytes": 2529172
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"

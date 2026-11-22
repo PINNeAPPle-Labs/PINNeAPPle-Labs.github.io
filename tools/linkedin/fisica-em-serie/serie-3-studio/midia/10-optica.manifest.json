@@ -9,7 +9,7 @@
     "app": "optics_lab",
     "app_name": "Optics Lab, construída nesta campanha",
     "app_path": "apps/optics_lab",
-    "library_commit": "921f7292f 2026-11-21"
+    "library_commit": "b46c2778f 2026-11-21"
   },
   "capture": {
     "driver": "tools/linkedin/fisica-em-serie/serie-3-studio/gravar.py",
@@ -46,6 +46,17 @@
       "duration_s": 4.0,
       "sha256": "707f962da721f12e24516106a95b843aa341dadf7b2fdde38993e05e8ebf4116",
       "bytes": 483848
+    },
+    {
+      "id": "technical-16x9",
+      "file": "midia-tecnica/10-optica.mp4",
+      "width": 1920,
+      "height": 1080,
+      "frames": 1800,
+      "fps": 30.0,
+      "duration_s": 60.0,
+      "sha256": "f6a38abfdeb0d6ec5c5a4d51e70ee0e6752cb123ed5d5e60bbffe8e187e29bc8",
+      "bytes": 3395124
     }
   ],
   "note": "quadros capturados de uma execução real da app; nenhuma etapa generativa"
