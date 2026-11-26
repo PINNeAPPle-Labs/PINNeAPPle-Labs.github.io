@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relatórios de exemplo por área · PINNeAPPle</title>
-<meta name="description" content="Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — cada um com a sua verificação e a sua página de limites." />
+<meta name="description" content="Oito relatórios de estudo: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs, previsão de El Niño e as nove submissões ao benchmark público FluidsBench — cada um com a sua verificação e a sua página de limites." />
 <meta name="theme-color" content="#262626" />
 <link rel="canonical" href="https://pinneapple-labs.github.io/relatorios/" />
 <link rel="alternate" hreflang="pt-BR" href="https://pinneapple-labs.github.io/relatorios/" />
@@ -12,11 +12,11 @@
 <link rel="alternate" hreflang="x-default" href="https://pinneapple-labs.github.io/relatorios/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Relatórios de exemplo por área · PINNeAPPle" />
-<meta property="og:description" content="Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — cada um com a sua verificação e a sua página de limites." />
+<meta property="og:description" content="Oito relatórios de estudo: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs, previsão de El Niño e as nove submissões ao benchmark público FluidsBench — cada um com a sua verificação e a sua página de limites." />
 <meta property="og:image" content="https://pinneapple-labs.github.io/img/portfolio/13-aircraft-render-pressure.jpg" />
 <meta property="og:site_name" content="PINNeAPPle" />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"PINNeAPPle","url":"https://pinneapple-labs.github.io/","logo":"https://pinneapple-labs.github.io/apple-touch-icon.png","description":"Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — cada um com a sua verificação e a sua página de limites.","sameAs":["https://github.com/PINNeAPPle-Labs/PINNeAPPle","https://pypi.org/project/pinneapple/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"PINNeAPPle","url":"https://pinneapple-labs.github.io/","logo":"https://pinneapple-labs.github.io/apple-touch-icon.png","description":"Oito relatórios de estudo: erosão em tubulação, válvula em gás, trocador de calor, aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs, previsão de El Niño e as nove submissões ao benchmark público FluidsBench — cada um com a sua verificação e a sua página de limites.","sameAs":["https://github.com/PINNeAPPle-Labs/PINNeAPPle","https://pypi.org/project/pinneapple/"]}</script>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
@@ -61,8 +61,8 @@
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">Relatórios de exemplo</p>
-      <h1>Sete relatórios,<br />sete áreas de engenharia</h1>
-      <p class="lead" style="max-width:64ch">Cada relatório abaixo é um estudo real de um caso do repositório, em português e em inglês. Todos seguem a mesma estrutura: o que foi pedido, o método, a verificação contra ensaio ou contra uma segunda rota de cálculo, e a página do que <b>não</b> ficou provado.</p>
+      <h1>Oito relatórios:<br />sete áreas e um benchmark externo</h1>
+      <p class="lead" style="max-width:64ch">Cada relatório abaixo é um estudo real de um caso do repositório, em português e em inglês — o do benchmark externo é escrito em inglês, porque é para quem mantém o benchmark. Todos seguem a mesma estrutura: o que foi pedido, o método, a verificação contra ensaio ou contra uma segunda rota de cálculo, e a página do que <b>não</b> ficou provado.</p>
       <p class="hero-note" style="max-width:64ch">São exemplos públicos, e três deles usam dados de demonstração (máquina, estrutura e clima). O que se copia deles é a estrutura de verificação, não o número.</p>
     </div>
   </section>
@@ -130,6 +130,17 @@
         <p class="area-blurb">Trinta configurações sob um protocolo só, com teste de significância e o resultado ruim publicado.</p>
       </div>
       <div class="problem-grid reveal"><article class="problem-card reveal"><h3>El Niño em 30 configurações</h3><p>ACC 0,95 em h = 1, três configurações significativas em h = 6 e um PINN com ACC −0,69 em h = 3.</p><p class="src-note"><a href="../relatorios/el-nino-modelos-pt.pdf" target="_blank" rel="noopener">Relatório de exemplo (PDF) ↗</a></p></article></div>
+    </div>
+  </section>
+
+  <section class="tight" id="area-7">
+    <div class="wrap area-row">
+      <div class="reveal">
+        <p class="eyebrow">Área 07</p>
+        <h2>Benchmark externo</h2>
+        <p class="area-blurb">Um dataset público de outro grupo, com o placar deles: as nove entradas submetidas e o componente que continua sem solução.</p>
+      </div>
+      <div class="problem-grid reveal"><article class="problem-card reveal"><h3>FluidsBench / AirfRANS: nove resultados</h3><p>Score de 29,4 a 75,44 no split completo, com o wall shear preso acima do teto de 20% — em inglês.</p><p class="src-note"><a href="../relatorios/fluidsbench-airfrans-en.pdf" target="_blank" rel="noopener">Relatório de exemplo (PDF) ↗</a></p></article></div>
     </div>
   </section>
 

@@ -853,6 +853,8 @@ def build(slug: str | None = None) -> None:
         if slug and name != slug:
             continue
         for lang in LANGS:
+            if lang not in report:      # a document written for one audience only (an English benchmark report)
+                continue
             html = render(report, lang)
             src = SRC / f"{name}-{lang}.html"
             src.write_text(html, encoding="utf-8")

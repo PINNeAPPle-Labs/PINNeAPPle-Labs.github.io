@@ -100,6 +100,11 @@ REPORT_FILES = {
         "pt": "relatorios/el-nino-modelos-pt.pdf",
         "en": "relatorios/el-nino-modelos-en.pdf",
     },
+    # Written in English for the benchmark it reports on: one document, both languages point at it.
+    "fluidsbench-airfrans": {
+        "pt": "relatorios/fluidsbench-airfrans-en.pdf",
+        "en": "relatorios/fluidsbench-airfrans-en.pdf",
+    },
 }
 REPORT_LABEL = {
     "pt": "Relatório de exemplo (PDF)",
@@ -111,8 +116,9 @@ REPORT_LABEL = {
 REPORTS_INDEX = {
     "pt": {
         "eyebrow": "Relatórios de exemplo",
-        "h1": "Sete relatórios,<br />sete áreas de engenharia",
-        "lead": ("Cada relatório abaixo é um estudo real de um caso do repositório, em português e em inglês. "
+        "h1": "Oito relatórios:<br />sete áreas e um benchmark externo",
+        "lead": ("Cada relatório abaixo é um estudo real de um caso do repositório, em português e em inglês — o do "
+                 "benchmark externo é escrito em inglês, porque é para quem mantém o benchmark. "
                  "Todos seguem a mesma estrutura: o que foi pedido, o método, a verificação contra ensaio ou "
                  "contra uma segunda rota de cálculo, e a página do que <b>não</b> ficou provado."),
         "note": ("São exemplos públicos, e três deles usam dados de demonstração (máquina, estrutura e clima). "
@@ -145,6 +151,11 @@ REPORTS_INDEX = {
              "Trinta configurações sob um protocolo só, com teste de significância e o resultado ruim publicado.",
              [("el-nino-modelos", "El Niño em 30 configurações",
                "ACC 0,95 em h = 1, três configurações significativas em h = 6 e um PINN com ACC −0,69 em h = 3.")]),
+            ("Benchmark externo",
+             "Um dataset público de outro grupo, com o placar deles: as nove entradas submetidas e o componente que "
+             "continua sem solução.",
+             [("fluidsbench-airfrans", "FluidsBench / AirfRANS: nove resultados",
+               "Score de 29,4 a 75,44 no split completo, com o wall shear preso acima do teto de 20% — em inglês.")]),
         ],
         "how_eyebrow": "Estrutura",
         "how_h": "O que todo relatório tem",
@@ -159,8 +170,9 @@ REPORTS_INDEX = {
     },
     "en": {
         "eyebrow": "Example reports",
-        "h1": "Seven reports,<br />seven engineering areas",
-        "lead": ("Every report below is a real study of a case in the repository, in Portuguese and in English. "
+        "h1": "Eight reports:<br />seven areas and one external benchmark",
+        "lead": ("Every report below is a real study of a case in the repository, in Portuguese and in English — the "
+                 "external benchmark one is in English because it is written for the people who run the benchmark. "
                  "They all follow the same structure: what was asked, the method, the check against an experiment "
                  "or a second computation route, and the page of what was <b>not</b> proven."),
         "note": ("These are public examples, and three of them use demonstration data (machine, structure and climate). "
@@ -193,6 +205,11 @@ REPORTS_INDEX = {
              "Thirty configurations under one protocol, with a significance test and the bad result published.",
              [("el-nino-modelos", "El Niño in 30 configurations",
                "ACC 0.95 at h = 1, three significant configurations at h = 6 and a PINN at ACC −0.69 at h = 3.")]),
+            ("External benchmark",
+             "Someone else's public dataset, with their leaderboard: the nine submitted entries and the component "
+             "that is still unsolved.",
+             [("fluidsbench-airfrans", "FluidsBench / AirfRANS: nine results",
+               "From 29.4 to 75.442 on the full split, with the wall shear stuck above the 20% cap.")]),
         ],
         "how_eyebrow": "Structure",
         "how_h": "What every report has",
@@ -2707,16 +2724,18 @@ META["studio"] = META["produto"]
 META["relatorios"] = {
     "pt": dict(
         title="Relatórios de exemplo por área · PINNeAPPle",
-        desc=("Sete relatórios de estudo, um por área: erosão em tubulação, válvula em gás, trocador de calor, "
-              "aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs e previsão de El Niño — "
+        desc=("Oito relatórios de estudo: erosão em tubulação, válvula em gás, trocador de calor, "
+              "aerodinâmica do corpo de Ahmed, otimização topológica, máquina síncrona de ímãs, previsão de El Niño e "
+              "as nove submissões ao benchmark público FluidsBench — "
               "cada um com a sua verificação e a sua página de limites."),
         og="img/portfolio/13-aircraft-render-pressure.jpg",
         type="website",
     ),
     "en": dict(
         title="Example reports by area · PINNeAPPle",
-        desc=("Seven study reports, one per area: erosion in piping, gas valve, heat exchanger, Ahmed-body "
-              "aerodynamics, topology optimization, surface-PM machine and El Niño forecasting — each with its "
+        desc=("Eight study reports: erosion in piping, gas valve, heat exchanger, Ahmed-body "
+              "aerodynamics, topology optimization, surface-PM machine, El Niño forecasting and "
+              "the nine submissions to the public FluidsBench benchmark — each with its "
               "own verification and its own limits page."),
         og="img/portfolio/13-aircraft-render-pressure.jpg",
         type="website",
